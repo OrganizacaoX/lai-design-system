@@ -30,7 +30,7 @@ export function ComponentPreview({
           <TabsTrigger value="code">Código</TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
-          <div className="flex min-h-40 flex-wrap items-center justify-center gap-4 rounded-lg border bg-background p-8">
+          <div className="flex min-h-40 flex-wrap items-center justify-center gap-4 overflow-x-auto rounded-lg border bg-background p-4 sm:p-8">
             {children}
           </div>
         </TabsContent>

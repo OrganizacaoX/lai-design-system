@@ -1,5 +1,5 @@
 import { ComponentPreview } from "../components/component-preview";
-import { demos } from "../demos";
+import { allDemos as demos } from "../all-demos";
 
 export function ComponentsPage() {
   return (
