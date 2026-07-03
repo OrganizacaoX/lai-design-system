@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Search, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import {
   Sheet,
   SheetContent,
@@ -82,6 +87,12 @@ function Nav({
   onGo: (v: View) => void;
   onGoComponent: (id: string) => void;
 }) {
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? allDemos.filter((d) => d.title.toLowerCase().includes(q))
+    : allDemos;
+
   return (
     <nav className="grid gap-0.5">
       <p className="px-3 py-1.5 text-xs font-medium text-muted-foreground">Começar</p>
@@ -92,14 +103,31 @@ function Nav({
         Componentes
       </NavLink>
 
-      <p className="mt-4 px-3 py-1.5 text-xs font-medium text-muted-foreground">
-        Componentes
-      </p>
-      {allDemos.map((d) => (
-        <NavLink key={d.id} indent onClick={() => onGoComponent(d.id)}>
-          {d.title}
-        </NavLink>
-      ))}
+      <div className="mt-4 mb-1 px-1">
+        <InputGroup className="h-8">
+          <InputGroupAddon>
+            <Search />
+          </InputGroupAddon>
+          <InputGroupInput
+            placeholder="Buscar componente..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Buscar componente"
+          />
+        </InputGroup>
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="px-3 py-2 text-[0.8rem] text-muted-foreground">
+          Nenhum componente encontrado.
+        </p>
+      ) : (
+        filtered.map((d) => (
+          <NavLink key={d.id} indent onClick={() => onGoComponent(d.id)}>
+            {d.title}
+          </NavLink>
+        ))
+      )}
     </nav>
   );
 }

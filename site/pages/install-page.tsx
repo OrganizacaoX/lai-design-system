@@ -47,7 +47,7 @@ export function InstallPage() {
           Cria o <code>components.json</code> e o <code>lib/utils</code> (função{" "}
           <code>cn</code>). Pule se já tiver.
         </p>
-        <CodeBlock code="npx shadcn@latest init" />
+        <CodeBlock lang="bash" code="npx shadcn@latest init" />
       </Step>
 
       <Step n={2} title="Registre o namespace @lai no components.json">
@@ -55,6 +55,7 @@ export function InstallPage() {
           Adicione o registry do LAI ao seu <code>components.json</code>:
         </p>
         <CodeBlock
+          lang="json"
           code={`{
   "registries": {
     "@lai": "${registryUrl}"
@@ -68,12 +69,12 @@ export function InstallPage() {
           Instala as cores (oklch light/dark), tipografia e a escala de raios do
           LAI no seu CSS.
         </p>
-        <CodeBlock code="npx shadcn@latest add @lai/theme" />
+        <CodeBlock lang="bash" code="npx shadcn@latest add @lai/theme" />
       </Step>
 
       <Step n={4} title="Adicione componentes">
         <p>As dependências entre componentes vêm juntas automaticamente.</p>
-        <CodeBlock code={`npx shadcn@latest add @lai/button @lai/sidebar @lai/dialog`} />
+        <CodeBlock lang="bash" code={`npx shadcn@latest add @lai/button @lai/sidebar @lai/dialog`} />
       </Step>
 
       <Step n={5} title="Atualizar depois">
@@ -81,7 +82,7 @@ export function InstallPage() {
           Rode o <code>add</code> de novo — o shadcn baixa a versão mais recente e
           sobrescreve o arquivo. Você é dono do código (modelo copy-paste).
         </p>
-        <CodeBlock code="npx shadcn@latest add @lai/button" />
+        <CodeBlock lang="bash" code="npx shadcn@latest add @lai/button" />
       </Step>
     </div>
   );
