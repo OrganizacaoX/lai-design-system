@@ -1,21 +1,34 @@
-// Servidor estático mínimo (zero dependências) para servir o registry.
-// Serve a pasta ./public — os itens ficam em /r/<item>.json.
-// Usado no deploy do Railway (bind em $PORT).
+// Servidor estático mínimo (zero dependências).
+// Serve o site de docs buildado (dist/) + o registry em /r/<item>.json
+// (o Vite copia public/r -> dist/r no build). Usado no deploy do Railway.
 
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { join, normalize, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = fileURLToPath(new URL("./public/", import.meta.url));
+const ROOT = fileURLToPath(new URL("./dist/", import.meta.url));
 const PORT = process.env.PORT || 8080;
 
 const TYPES = {
-  ".json": "application/json; charset=utf-8",
   ".html": "text/html; charset=utf-8",
+  ".js": "text/javascript; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
   ".css": "text/css; charset=utf-8",
+  ".map": "application/json; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
   ".svg": "image/svg+xml",
+  ".ico": "image/x-icon",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+  ".ttf": "font/ttf",
+  ".wasm": "application/wasm",
 };
 
 createServer(async (req, res) => {
@@ -46,6 +59,19 @@ createServer(async (req, res) => {
     res.writeHead(200);
     res.end(body);
   } catch {
+    // SPA fallback: rotas sem extensão (ex.: #hash já é client-side, mas
+    // deep-links tipo /componentes) caem no index.html. /r/*.json (com
+    // extensão) segue retornando 404 JSON quando o item não existe.
+    if (extname(pathname) === "") {
+      try {
+        const html = await readFile(join(ROOT, "index.html"));
+        res.setHeader("Content-Type", TYPES[".html"]);
+        res.writeHead(200);
+        return res.end(html);
+      } catch {
+        /* sem build ainda */
+      }
+    }
     res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "not found", path: pathname }));
   }

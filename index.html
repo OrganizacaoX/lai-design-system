@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-br" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LAI Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Anti-FOUC: aplica o tema salvo antes da pintura. Default = escuro.
+      try {
+        var t = localStorage.getItem("lai-theme");
+        document.documentElement.classList.toggle("dark", t !== "light");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/site/main.tsx"></script>
+  </body>
+</html>
