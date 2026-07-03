@@ -27,13 +27,12 @@ Requisito: o projeto de destino já ter o shadcn inicializado
 {
   // ...resto do components.json...
   "registries": {
-    "@lai": "https://ui.SEU-DOMINIO.com/r/{name}.json"
+    "@lai": "https://ui.lai.ia.br/r/{name}.json"
   }
 }
 ```
 
-> Troque `ui.SEU-DOMINIO.com` pelo domínio configurado no Railway/Cloudflare
-> (veja abaixo).
+> Preview de todos os componentes e docs: **https://ui.lai.ia.br**
 
 ### 2. Instale
 
