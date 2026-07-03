@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LAI Design System — registry</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font: 15px/1.6 ui-sans-serif, system-ui, sans-serif; max-width: 46rem; margin: 4rem auto; padding: 0 1.25rem; }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      pre { background: color-mix(in oklab, currentColor 8%, transparent); padding: 1rem; border-radius: .6rem; overflow-x: auto; }
+      h1 { font-size: 1.5rem; } a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <h1>LAI Design System</h1>
+    <p>Registry <a href="https://ui.shadcn.com/docs/registry">shadcn</a> com os componentes de UI, hooks e o tema do LAI.</p>
+    <p>Configure o namespace <code>@lai</code> no <code>components.json</code> do seu projeto:</p>
+    <pre>"registries": {
+  "@lai": "<span id="host"></span>/r/{name}.json"
+}</pre>
+    <p>Depois:</p>
+    <pre>npx shadcn@latest add @lai/theme @lai/button @lai/sidebar</pre>
+    <p>
+      Fonte / manutenção:
+      <a href="https://github.com/OrganizacaoX/lai-design-system">github.com/OrganizacaoX/lai-design-system</a>
+    </p>
+    <script>
+      document.getElementById("host").textContent = location.origin;
+    </script>
+  </body>
+</html>

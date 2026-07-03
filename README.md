@@ -27,10 +27,13 @@ Requisito: o projeto de destino já ter o shadcn inicializado
 {
   // ...resto do components.json...
   "registries": {
-    "@lai": "https://organizacaox.github.io/lai-design-system/r/{name}.json"
+    "@lai": "https://ui.SEU-DOMINIO.com/r/{name}.json"
   }
 }
 ```
+
+> Troque `ui.SEU-DOMINIO.com` pelo domínio configurado no Railway/Cloudflare
+> (veja abaixo).
 
 ### 2. Instale
 
@@ -47,6 +50,38 @@ versão mais recente e sobrescreve o arquivo. (Modelo copy-paste do shadcn: voc�
 dono do código; edições locais no projeto consumidor são sobrescritas ao
 re-adicionar.)
 
+## Hospedagem (Railway + Cloudflare)
+
+O registry é servido por um servidor estático mínimo (`server.mjs`, zero
+dependências) que expõe a pasta `public/`. O `Dockerfile` builda o registry no
+deploy e sobe o servidor. O Railway **re-deploya a cada push na `main`**.
+
+### Deploy no Railway (uma vez)
+
+1. Em [railway.com](https://railway.com) → **New Project → Deploy from GitHub
+   repo** → selecione `OrganizacaoX/lai-design-system`.
+2. O Railway detecta o `Dockerfile` (config em `railway.json`) e faz o build.
+   Não precisa setar `PORT` — o servidor usa `process.env.PORT` automaticamente.
+3. Ao terminar, **Settings → Networking → Generate Domain** para testar na URL
+   `*.up.railway.app` (ou pule direto pro domínio custom abaixo).
+
+Teste: `https://<seu-app>.up.railway.app/r/theme.json` deve retornar JSON.
+
+### Domínio custom via Cloudflare
+
+1. No Railway: **Settings → Networking → Custom Domain** → informe o subdomínio
+   (ex.: `ui.seu-dominio.com`). O Railway mostra um alvo **CNAME**
+   (algo como `xxxx.up.railway.app`).
+2. Na Cloudflare (DNS do `seu-dominio.com`): **DNS → Add record**
+   - Type: `CNAME`
+   - Name: `ui`
+   - Target: o valor CNAME que o Railway deu
+   - Proxy status: **DNS only** (nuvem cinza) — o Railway já emite o certificado
+     TLS. (Se preferir usar o proxy laranja da Cloudflare, deixe o SSL/TLS em
+     "Full (strict)".)
+3. Aguarde o Railway validar o domínio (fica "Active"). Pronto:
+   `https://ui.seu-dominio.com/r/{name}.json`.
+
 ## Desenvolvimento / manutenção
 
 Os componentes-fonte ficam em `src/`. O `registry.json` é **gerado** a partir
@@ -55,21 +90,12 @@ componentes).
 
 ```bash
 npm install
-npm run registry:build   # gera registry.json + public/r/*.json
+npm run build     # gera registry.json + public/r/*.json
+npm start         # sobe o servidor local em http://localhost:8080
 ```
-
-Ao dar `push` na `main`, o workflow `.github/workflows/deploy-registry.yml`
-rebuilda e publica `public/r` no GitHub Pages automaticamente.
 
 ### Adicionar um componente novo
 
 1. Crie o `.tsx` em `src/components/ui/` (ou `src/components/`, `src/hooks/`).
-2. `npm run registry:build`.
-3. Commit + push. O Pages atualiza sozinho.
-
-## Ativar o GitHub Pages (uma vez só)
-
-Em **Settings → Pages → Build and deployment → Source**, selecione
-**GitHub Actions**. Depois disso o workflow publica a cada push na `main`.
-O registry precisa estar acessível publicamente para o shadcn CLI baixar sem
-autenticação (repo público, ou Pages com token no header em projeto privado).
+2. `npm run build`.
+3. Commit + push na `main`. O Railway rebuilda e publica sozinho.

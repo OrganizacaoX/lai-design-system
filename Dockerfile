@@ -1,0 +1,16 @@
+# --- build: gera o registry (public/r/*.json) -------------------------------
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# --- runtime: serve public/ com o servidor mínimo ---------------------------
+FROM node:22-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /app/public ./public
+COPY server.mjs ./
+EXPOSE 8080
+CMD ["node", "server.mjs"]

@@ -5,7 +5,9 @@
   "description": "Design system / registry shadcn do LAI. Consumido por outros projetos via `npx shadcn add @lai/<item>`.",
   "type": "module",
   "scripts": {
-    "registry:build": "node scripts/build-registry.mjs && shadcn build"
+    "registry:build": "node scripts/build-registry.mjs && shadcn build",
+    "build": "npm run registry:build",
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
