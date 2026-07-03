@@ -62,7 +62,7 @@ export function CodeBlock({
   };
 
   return (
-    <div className={cn("group relative", className)}>
+    <div className={cn("group relative min-w-0 max-w-full", className)}>
       <Highlight theme={laiCodeTheme} code={code} language={lang}>
         {({ className: hlClass, style, tokens, getLineProps, getTokenProps }) => (
           <pre

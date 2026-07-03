@@ -16,7 +16,7 @@ export function ComponentPreview({
   code: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-20">
+    <section id={id} className="min-w-0 scroll-mt-20">
       <div className="mb-3">
         <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
         {description ? (
@@ -24,7 +24,7 @@ export function ComponentPreview({
         ) : null}
       </div>
 
-      <Tabs defaultValue="preview" className="w-full">
+      <Tabs defaultValue="preview" className="w-full min-w-0">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Código</TabsTrigger>

@@ -20,7 +20,9 @@ function Step({
         {n}
       </span>
       <h3 className="mb-2 font-semibold tracking-tight">{title}</h3>
-      <div className="grid gap-3 text-sm text-muted-foreground">{children}</div>
+      <div className="grid min-w-0 grid-cols-1 gap-3 text-sm text-muted-foreground">
+        {children}
+      </div>
     </div>
   );
 }

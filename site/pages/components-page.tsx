@@ -12,7 +12,7 @@ export function ComponentsPage() {
         </p>
       </header>
 
-      <div className="grid gap-12">
+      <div className="grid grid-cols-1 gap-12">
         {demos.map((d) => (
           <ComponentPreview
             key={d.id}
