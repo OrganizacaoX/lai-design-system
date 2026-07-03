@@ -9,6 +9,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { Kbd } from "@/components/ui/kbd";
 import {
   Sheet,
   SheetContent,
@@ -20,6 +21,7 @@ import { cn } from "@/lib/utils";
 
 import { InstallPage } from "./pages/install-page";
 import { ComponentsPage } from "./pages/components-page";
+import { CommandMenu } from "./components/command-menu";
 import { allDemos } from "./all-demos";
 
 type View = "instalacao" | "componentes";
@@ -135,6 +137,7 @@ function Nav({
 export function App() {
   const [view, setView] = useState<View>(viewFromHash);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cmdOpen, setCmdOpen] = useState(false);
 
   useEffect(() => {
     const onHash = () => setView(viewFromHash());
@@ -202,6 +205,26 @@ export function App() {
           </Badge>
 
           <div className="ml-auto flex items-center gap-1">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCmdOpen(true)}
+              className="hidden gap-2 text-muted-foreground sm:flex"
+              aria-label="Buscar"
+            >
+              <Search className="size-4" />
+              <span>Buscar...</span>
+              <Kbd className="ml-1">⌘K</Kbd>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setCmdOpen(true)}
+              className="sm:hidden"
+              aria-label="Buscar"
+            >
+              <Search className="size-4" />
+            </Button>
             <ThemeToggle />
             <Button variant="ghost" size="sm" asChild>
               <a
@@ -225,6 +248,13 @@ export function App() {
           {view === "componentes" ? <ComponentsPage /> : <InstallPage />}
         </main>
       </div>
+
+      <CommandMenu
+        open={cmdOpen}
+        onOpenChange={setCmdOpen}
+        onGo={go}
+        onGoComponent={goComponent}
+      />
 
       <Toaster richColors />
     </div>
