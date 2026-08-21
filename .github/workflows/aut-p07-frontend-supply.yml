@@ -1,0 +1,90 @@
+name: AUT P07 Frontend Supply
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  supply:
+    if: startsWith(github.head_ref, 'aut/p07-frontend-supply')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Resolve exact Monaco and frontend dependency tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir p07-frontend
+          cd p07-frontend
+          cat > package.json <<'JSON'
+          {
+            "name": "flowforge-frontend",
+            "private": true,
+            "version": "0.2.0",
+            "type": "module",
+            "description": "Editor visual de fluxo (dataflow) estilo Quartus — cada bloco é código Python",
+            "scripts": {
+              "dev": "vite",
+              "build": "tsc -b && vite build",
+              "preview": "vite preview",
+              "test": "vitest run",
+              "test:watch": "vitest"
+            },
+            "dependencies": {
+              "@types/diff": "^7.0.2",
+              "@xyflow/react": "^12.3.5",
+              "diff": "^9.0.0",
+              "monaco-editor": "0.56.0",
+              "react": "^18.3.1",
+              "react-dom": "^18.3.1",
+              "zod": "^4.4.3"
+            },
+            "devDependencies": {
+              "@testing-library/jest-dom": "^6.9.1",
+              "@testing-library/react": "^16.3.2",
+              "@types/react": "^18.3.12",
+              "@types/react-dom": "^18.3.1",
+              "@vitejs/plugin-react": "^6.0.5",
+              "@vitest/coverage-v8": "^4.1.7",
+              "jsdom": "^29.1.1",
+              "typescript": "^5.6.3",
+              "vite": "^8.2.1",
+              "vitest": "^4.1.7"
+            }
+          }
+          JSON
+          npm install --ignore-scripts
+          node - <<'NODE'
+          const p=require('./package.json'); const l=require('./package-lock.json');
+          if(p.dependencies['monaco-editor']!=='0.56.0') process.exit(2);
+          if(l.packages['node_modules/monaco-editor'].version!=='0.56.0') process.exit(3);
+          if(!require('fs').existsSync('node_modules/monaco-editor/LICENSE')) process.exit(4);
+          console.log('MONACO_EXACT=0.56.0');
+          NODE
+          npm ci --ignore-scripts
+          npm ls --depth=0 > NPM_LS.txt
+          sha256sum package.json package-lock.json node_modules/monaco-editor/package.json node_modules/monaco-editor/LICENSE > SUPPLY_SHA256SUMS.txt
+          tar -czf node_modules-linux-x64.tgz node_modules
+          sha256sum node_modules-linux-x64.tgz >> SUPPLY_SHA256SUMS.txt
+          cp node_modules/monaco-editor/LICENSE MONACO_LICENSE.txt
+          printf '{"schema":"lai.p07.frontend-supply.v1","monaco":"0.56.0","node":"%s","npm":"%s"}\n' "$(node --version)" "$(npm --version)" > MANIFEST.json
+      - name: Upload P07 supply
+        uses: actions/upload-artifact@v4
+        with:
+          name: p07-frontend-supply-linux-x64
+          path: |
+            p07-frontend/package.json
+            p07-frontend/package-lock.json
+            p07-frontend/node_modules-linux-x64.tgz
+            p07-frontend/MONACO_LICENSE.txt
+            p07-frontend/NPM_LS.txt
+            p07-frontend/SUPPLY_SHA256SUMS.txt
+            p07-frontend/MANIFEST.json
+          if-no-files-found: error
+          retention-days: 1
