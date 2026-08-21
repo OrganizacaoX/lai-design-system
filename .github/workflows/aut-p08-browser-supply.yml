@@ -1,16 +1,15 @@
 name: AUT P08 Browser Supply
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - aut/p08-browser-supply-trigger
 
 permissions:
   contents: read
 
 jobs:
   supply:
-    if: startsWith(github.head_ref, 'aut/p08-browser-supply')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v5
