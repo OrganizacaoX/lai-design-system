@@ -19,7 +19,7 @@ jobs:
           set -euo pipefail
           mkdir -p p09-probe
           python3 - <<'PY'
-          import json, hashlib, subprocess, time, urllib.parse
+          import json, hashlib, subprocess, time
           targets = {
             'gateway_health': 'https://gateway.lai.ia.br/health',
             'gateway_rag_search': 'https://gateway.lai.ia.br/v1/collections/shelf-kb-franquia/search?query=franquia&limit=1',
@@ -29,27 +29,35 @@ jobs:
             'sentinela_health': 'https://sentinela.lai.ia.br/health',
             'sentinela_models': 'https://sentinela.lai.ia.br/v1/models',
             'inference_health': 'https://inference.lai.ia.br/health',
-            'inference_models': 'https://inference.lai.ia.br/v1/models',
+            'inference_openapi': 'https://inference.lai.ia.br/openapi.json',
+            'inference_embed_unauth': 'https://inference.lai.ia.br/embed',
           }
-          out={'schema':'lai.p09.external-probe.v1','generated_at_unix':time.time(),'targets':{}}
+          out={'schema':'lai.p09.external-probe.v2','generated_at_unix':time.time(),'targets':{}}
           for name,url in targets.items():
               body=f'/tmp/{name}.body'; hdr=f'/tmp/{name}.hdr'
-              cmd=['curl','-sS','-L','--max-time','20','-D',hdr,'-o',body,'-w','%{http_code}\n%{remote_ip}\n%{time_total}\n%{content_type}',url]
+              if name=='inference_embed_unauth':
+                  cmd=['curl','-sS','-L','--max-time','20','-X','POST','-H','Content-Type: application/json','--data','{"texts":["probe"]}','-D',hdr,'-o',body,'-w','%{http_code}\n%{remote_ip}\n%{time_total}\n%{content_type}',url]
+              else:
+                  cmd=['curl','-sS','-L','--max-time','20','-D',hdr,'-o',body,'-w','%{http_code}\n%{remote_ip}\n%{time_total}\n%{content_type}',url]
               p=subprocess.run(cmd,text=True,capture_output=True)
               rec={'url':url,'exit':p.returncode,'stderr':p.stderr[-500:]}
               if p.returncode==0:
                   lines=p.stdout.splitlines(); rec.update({'http_code':lines[0] if lines else None,'remote_ip':lines[1] if len(lines)>1 else None,'time_total':lines[2] if len(lines)>2 else None,'content_type':lines[3] if len(lines)>3 else None})
                   try:
                       b=open(body,'rb').read(); rec['body_bytes']=len(b); rec['body_sha256']=hashlib.sha256(b).hexdigest()
-                      if name.endswith('_models') and len(b)<2_000_000:
+                      if name=='inference_health' and len(b)<200000:
+                          try:
+                              j=json.loads(b); rec['safe_health_fields']={k:j.get(k) for k in ('status','embedding_model','reranker_model') if k in j}
+                          except Exception: rec['health_parse']='not_json_or_schema_mismatch'
+                      if name.endswith('_models') and len(b)<2000000:
                           try:
                               j=json.loads(b); ids=[]
                               if isinstance(j,dict):
                                   for x in j.get('data',[]):
                                       if isinstance(x,dict) and isinstance(x.get('id'),str): ids.append(x['id'])
                               rec['model_ids']=sorted(set(ids))[:50]
-                          except Exception as e: rec['models_parse']='not_json_or_schema_mismatch'
-                      if name=='meetcore_openapi' and len(b)<5_000_000:
+                          except Exception: rec['models_parse']='not_json_or_schema_mismatch'
+                      if name in {'meetcore_openapi','inference_openapi'} and len(b)<5000000:
                           try:
                               j=json.loads(b); rec['openapi_title']=j.get('info',{}).get('title'); rec['openapi_version']=j.get('info',{}).get('version'); rec['paths']=sorted(j.get('paths',{}).keys())[:500]; rec['path_count']=len(j.get('paths',{}))
                           except Exception: rec['openapi_parse']='not_json_or_schema_mismatch'
