@@ -148,8 +148,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -165,7 +166,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -184,7 +186,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority@0.7.1"
+        "class-variance-authority@0.7.1",
+        "cn@0.2.5"
       ]
     },
     {
@@ -200,7 +203,7 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -216,8 +219,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -236,7 +240,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -252,8 +257,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -269,8 +275,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -286,8 +293,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -303,8 +311,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/separator"
@@ -323,8 +332,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -340,7 +350,8 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0",
         "react-day-picker@10.0.1"
       ],
       "registryDependencies": [
@@ -358,6 +369,9 @@
           "type": "registry:ui",
           "target": "components/ui/card.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
       ]
     },
     {
@@ -373,8 +387,9 @@
         }
       ],
       "dependencies": [
+        "cn@0.2.5",
         "embla-carousel-react@8.6.0",
-        "lucide-react@1.22.0"
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -393,6 +408,7 @@
         }
       ],
       "dependencies": [
+        "cn@0.2.5",
         "recharts@3.8.0"
       ]
     },
@@ -409,8 +425,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -426,7 +443,7 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0"
       ]
     },
     {
@@ -442,8 +459,9 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react@1.6.0",
-        "lucide-react@1.22.0"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button",
@@ -464,7 +482,8 @@
       ],
       "dependencies": [
         "cmdk@1.1.1",
-        "lucide-react@1.22.0"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/dialog",
@@ -484,8 +503,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -501,8 +521,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -521,7 +542,7 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0"
       ]
     },
     {
@@ -537,7 +558,8 @@
         }
       ],
       "dependencies": [
-        "vaul@1.1.2"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -553,8 +575,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -570,7 +593,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority@0.7.1"
+        "class-variance-authority@0.7.1",
+        "cn@0.2.5"
       ]
     },
     {
@@ -586,7 +610,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority@0.7.1"
+        "class-variance-authority@0.7.1",
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/label",
@@ -606,7 +631,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -622,7 +648,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority@0.7.1"
+        "class-variance-authority@0.7.1",
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/button",
@@ -643,8 +670,9 @@
         }
       ],
       "dependencies": [
-        "input-otp@1.4.2",
-        "lucide-react@1.22.0"
+        "cn@0.2.5",
+        "input-otp@1.5.0",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -658,6 +686,10 @@
           "type": "registry:ui",
           "target": "components/ui/input.tsx"
         }
+      ],
+      "dependencies": [
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -673,8 +705,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/separator"
@@ -691,6 +724,9 @@
           "type": "registry:ui",
           "target": "components/ui/kbd.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
       ]
     },
     {
@@ -706,7 +742,7 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -722,8 +758,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -739,8 +776,12 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/dropdown-menu"
       ]
     },
     {
@@ -756,8 +797,9 @@
         }
       ],
       "dependencies": [
-        "@shadcn/react@0.2.0",
-        "lucide-react@1.22.0"
+        "@shadcn/react@0.3.1",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -774,6 +816,9 @@
           "type": "registry:ui",
           "target": "components/ui/message.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
       ]
     },
     {
@@ -789,7 +834,8 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -805,9 +851,10 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -823,7 +870,8 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -842,7 +890,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -858,7 +907,29 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "files": [
+        {
+          "path": "src/components/ui/questionnaire.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/questionnaire.tsx"
+        }
+      ],
+      "dependencies": [
+        "@shadcn/react@0.3.1",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/button"
       ]
     },
     {
@@ -874,7 +945,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -890,7 +962,8 @@
         }
       ],
       "dependencies": [
-        "react-resizable-panels@4.12.0"
+        "cn@0.2.5",
+        "react-resizable-panels@4.12.3"
       ]
     },
     {
@@ -906,7 +979,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -922,8 +996,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -939,7 +1014,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -955,8 +1031,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button"
@@ -975,9 +1052,10 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "lucide-react@1.22.0",
-        "radix-ui@1.6.1"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ],
       "registryDependencies": [
         "@lai/button",
@@ -1000,6 +1078,9 @@
           "type": "registry:ui",
           "target": "components/ui/skeleton.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
       ]
     },
     {
@@ -1015,7 +1096,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -1031,9 +1113,9 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0",
+        "lucide-react@1.41.0",
         "next-themes@0.4.6",
-        "sonner@2.0.7"
+        "sonner@2.0.8"
       ]
     },
     {
@@ -1049,7 +1131,8 @@
         }
       ],
       "dependencies": [
-        "lucide-react@1.22.0"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -1065,7 +1148,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -1079,6 +1163,9 @@
           "type": "registry:ui",
           "target": "components/ui/table.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
       ]
     },
     {
@@ -1094,8 +1181,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -1109,6 +1197,30 @@
           "type": "registry:ui",
           "target": "components/ui/textarea.tsx"
         }
+      ],
+      "dependencies": [
+        "cn@0.2.5"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toast.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/button"
       ]
     },
     {
@@ -1124,8 +1236,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ],
       "registryDependencies": [
         "@lai/toggle"
@@ -1144,8 +1257,9 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "radix-ui@1.6.1"
+        "cn@0.2.5"
       ]
     },
     {
@@ -1161,7 +1275,8 @@
         }
       ],
       "dependencies": [
-        "radix-ui@1.6.1"
+        "@base-ui/react@1.8.0",
+        "cn@0.2.5"
       ]
     },
     {
@@ -1178,7 +1293,7 @@
       ],
       "dependencies": [
         "date-fns@4.4.0",
-        "lucide-react@1.22.0",
+        "lucide-react@1.41.0",
         "react-day-picker@10.0.1"
       ],
       "registryDependencies": [

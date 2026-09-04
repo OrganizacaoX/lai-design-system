@@ -181,8 +181,8 @@ export const extraDemos: Demo[] = [
     description: "Confirmação destrutiva.",
     node: (
       <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button variant="destructive">Excluir conta</Button>
+        <AlertDialogTrigger render={<Button variant="destructive" />}>
+          Excluir conta
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -201,7 +201,7 @@ export const extraDemos: Demo[] = [
     code: `import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog"
 
 <AlertDialog>
-  <AlertDialogTrigger asChild><Button variant="destructive">Excluir</Button></AlertDialogTrigger>
+  <AlertDialogTrigger render={<Button variant="destructive" />}>Excluir</AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
@@ -220,8 +220,8 @@ export const extraDemos: Demo[] = [
     description: "Painel lateral.",
     node: (
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Abrir sheet</Button>
+        <SheetTrigger render={<Button variant="outline" />}>
+          Abrir sheet
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -236,7 +236,7 @@ export const extraDemos: Demo[] = [
     code: `import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 
 <Sheet>
-  <SheetTrigger asChild><Button variant="outline">Abrir</Button></SheetTrigger>
+  <SheetTrigger render={<Button variant="outline" />}>Abrir</SheetTrigger>
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Editar perfil</SheetTitle>
@@ -251,8 +251,8 @@ export const extraDemos: Demo[] = [
     description: "Gaveta inferior.",
     node: (
       <Drawer>
-        <DrawerTrigger asChild>
-          <Button variant="outline">Abrir drawer</Button>
+        <DrawerTrigger render={<Button variant="outline" />}>
+          Abrir drawer
         </DrawerTrigger>
         <DrawerContent>
           <div className="mx-auto w-full max-w-sm">
@@ -264,8 +264,8 @@ export const extraDemos: Demo[] = [
             </DrawerHeader>
             <DrawerFooter>
               <Button>Confirmar</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancelar</Button>
+              <DrawerClose render={<Button variant="outline" />}>
+                Cancelar
               </DrawerClose>
             </DrawerFooter>
           </div>
@@ -275,7 +275,7 @@ export const extraDemos: Demo[] = [
     code: `import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer"
 
 <Drawer>
-  <DrawerTrigger asChild><Button variant="outline">Abrir</Button></DrawerTrigger>
+  <DrawerTrigger render={<Button variant="outline" />}>Abrir</DrawerTrigger>
   <DrawerContent>{/* ... */}</DrawerContent>
 </Drawer>`,
   },
@@ -285,8 +285,8 @@ export const extraDemos: Demo[] = [
     description: "Cartão ao passar o mouse.",
     node: (
       <HoverCard>
-        <HoverCardTrigger asChild>
-          <Button variant="link">@lai</Button>
+        <HoverCardTrigger render={<Button variant="link" />}>
+          @lai
         </HoverCardTrigger>
         <HoverCardContent className="w-64 text-sm">
           Design system do LAI — componentes shadcn reutilizáveis via registry.
@@ -296,7 +296,7 @@ export const extraDemos: Demo[] = [
     code: `import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
 
 <HoverCard>
-  <HoverCardTrigger asChild><Button variant="link">@lai</Button></HoverCardTrigger>
+  <HoverCardTrigger render={<Button variant="link" />}>@lai</HoverCardTrigger>
   <HoverCardContent>Design system do LAI.</HoverCardContent>
 </HoverCard>`,
   },
@@ -408,10 +408,8 @@ export const extraDemos: Demo[] = [
       <Collapsible className="w-full max-w-sm">
         <div className="flex items-center justify-between gap-4">
           <span className="text-sm font-medium">Componentes favoritos</span>
-          <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm">
-              Alternar
-            </Button>
+          <CollapsibleTrigger render={<Button variant="ghost" size="sm" />}>
+            Alternar
           </CollapsibleTrigger>
         </div>
         <CollapsibleContent className="mt-2 grid gap-2 text-sm">
@@ -423,7 +421,7 @@ export const extraDemos: Demo[] = [
     code: `import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 
 <Collapsible>
-  <CollapsibleTrigger asChild><Button variant="ghost">Alternar</Button></CollapsibleTrigger>
+  <CollapsibleTrigger render={<Button variant="ghost" />}>Alternar</CollapsibleTrigger>
   <CollapsibleContent>...</CollapsibleContent>
 </Collapsible>`,
   },
@@ -530,7 +528,7 @@ import { Bold } from "lucide-react"
     title: "Toggle Group",
     description: "Grupo de toggles.",
     node: (
-      <ToggleGroup type="multiple">
+      <ToggleGroup multiple>
         <ToggleGroupItem value="bold" aria-label="Negrito">
           <Bold />
         </ToggleGroupItem>
@@ -544,7 +542,7 @@ import { Bold } from "lucide-react"
     ),
     code: `import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
-<ToggleGroup type="multiple">
+<ToggleGroup multiple>
   <ToggleGroupItem value="bold"><Bold /></ToggleGroupItem>
   <ToggleGroupItem value="italic"><Italic /></ToggleGroupItem>
 </ToggleGroup>`,
@@ -750,7 +748,7 @@ import { Bold } from "lucide-react"
     description: "Painéis redimensionáveis.",
     node: (
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="h-40 w-full max-w-sm rounded-lg border"
       >
         <ResizablePanel defaultSize={50}>
@@ -764,7 +762,7 @@ import { Bold } from "lucide-react"
     ),
     code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 
-<ResizablePanelGroup direction="horizontal">
+<ResizablePanelGroup orientation="horizontal">
   <ResizablePanel defaultSize={50}>Um</ResizablePanel>
   <ResizableHandle withHandle />
   <ResizablePanel defaultSize={50}>Dois</ResizablePanel>

@@ -1,9 +1,12 @@
-# LAI Design System (`@lai`)
+# LAI Design System
 
-Registry [shadcn](https://ui.shadcn.com/docs/registry) com os componentes de UI,
-hooks e o tema de design do LAI. É a **fonte de verdade** dos componentes: em
-qualquer projeto você roda `npx shadcn add @lai/<item>` e o código é copiado com
-as dependências certas — igual ao registry oficial do shadcn.
+Biblioteca React e registry [shadcn](https://ui.shadcn.com/docs/registry) com os
+componentes, hooks e o tema do LAI. Há dois modos de consumo:
+
+- **GitHub Packages:** instala `@organizacaox/lai-design-system` como uma
+  dependência e recebe atualizações ao mudar a versão do pacote.
+- **Registry shadcn:** copia componentes individuais com
+  `npx shadcn add @lai/<item>` para permitir customização no projeto consumidor.
 
 ## O que tem
 
@@ -16,7 +19,41 @@ as dependências certas — igual ao registry oficial do shadcn.
 As dependências entre itens se resolvem sozinhas (ex.: `@lai/sidebar` traz
 `button`, `sheet`, `tooltip`, `use-mobile`…).
 
-## Consumir em outro projeto
+## Instalar como pacote
+
+O GitHub Packages exige autenticação até para baixar pacotes públicos. Crie um
+Personal Access Token (classic) com `read:packages` e configure o projeto
+consumidor.
+
+No `.npmrc` do projeto consumidor:
+
+```ini
+@organizacaox:registry=https://npm.pkg.github.com
+```
+
+No `~/.npmrc` da sua máquina (não faça commit do token):
+
+```ini
+//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
+```
+
+Depois exporte o token e instale o pacote:
+
+```bash
+export GITHUB_PACKAGES_TOKEN=github_pat_...
+npm install @organizacaox/lai-design-system
+```
+
+Importe os estilos uma vez, no entrypoint da aplicação, e use os componentes:
+
+```tsx
+import "@organizacaox/lai-design-system/styles.css";
+import { Button, DateRangePicker } from "@organizacaox/lai-design-system";
+```
+
+O projeto consumidor precisa ter `react` e `react-dom` 18 ou 19 instalados.
+
+## Consumir pelo registry shadcn
 
 Requisito: o projeto de destino já ter o shadcn inicializado
 (`npx shadcn@latest init` — cria `components.json` e o `lib/utils` com `cn`).
@@ -89,9 +126,30 @@ componentes).
 
 ```bash
 npm install
-npm run build     # gera registry.json + public/r/*.json
+npm run build     # gera o site/registry e o pacote em lib/
+npm run package:build # gera somente o pacote instalável
 npm start         # sobe o servidor local em http://localhost:8080
 ```
+
+## Publicar uma versão
+
+O workflow `.github/workflows/publish-package.yml` publica automaticamente no
+GitHub Packages quando uma GitHub Release é publicada. A tag da release deve
+ser exatamente `v` seguida pela versão do `package.json` (por exemplo,
+`v0.1.0`). O workflow usa o `GITHUB_TOKEN` do próprio repositório; nenhum token
+de publicação precisa ser criado.
+
+Fluxo sugerido:
+
+```bash
+npm version patch
+git push origin main --follow-tags
+gh release create "v$(node -p "require('./package.json').version")" --generate-notes
+```
+
+Para publicar manualmente a partir de uma máquina autenticada, rode
+`npm publish`. O script `prepublishOnly` valida os tipos e gera os artefatos
+antes do upload.
 
 ### Adicionar um componente novo
 

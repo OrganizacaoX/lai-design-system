@@ -174,10 +174,17 @@ export function App() {
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4">
           {/* Menu mobile */}
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu">
-                <Menu className="size-5" />
-              </Button>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Menu"
+                />
+              }
+            >
+              <Menu className="size-5" />
             </SheetTrigger>
             <SheetContent side="left" className="w-72 overflow-y-auto">
               <SheetHeader>
@@ -226,14 +233,18 @@ export function App() {
               <Search className="size-4" />
             </Button>
             <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild>
-              <a
-                href="https://github.com/OrganizacaoX/lai-design-system"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
+            <Button
+              variant="ghost"
+              size="sm"
+              render={
+                <a
+                  href="https://github.com/OrganizacaoX/lai-design-system"
+                  target="_blank"
+                  rel="noreferrer"
+                />
+              }
+            >
+              GitHub
             </Button>
           </div>
         </div>

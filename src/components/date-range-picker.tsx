@@ -43,15 +43,17 @@ export function DateRangePicker({
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          className={cn("justify-start gap-2 font-normal", className)}
-          aria-label="Selecionar período"
-        >
-          <CalendarIcon className="size-4 text-muted-foreground" />
-          <span className="tabular-nums">{label(value)}</span>
-        </Button>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="outline"
+            className={cn("justify-start gap-2 font-normal", className)}
+            aria-label="Selecionar período"
+          />
+        }
+      >
+        <CalendarIcon className="size-4 text-muted-foreground" />
+        <span className="tabular-nums">{label(value)}</span>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <div className="flex flex-wrap gap-1 border-b border-border p-2">

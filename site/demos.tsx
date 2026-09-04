@@ -324,7 +324,7 @@ import { Label } from "@/components/ui/label"
     title: "Accordion",
     description: "Seções expansíveis.",
     node: (
-      <Accordion type="single" collapsible className="w-full max-w-sm">
+      <Accordion className="w-full max-w-sm">
         <AccordionItem value="1">
           <AccordionTrigger>É acessível?</AccordionTrigger>
           <AccordionContent>Sim, segue as práticas de ARIA.</AccordionContent>
@@ -337,7 +337,7 @@ import { Label } from "@/components/ui/label"
     ),
     code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 
-<Accordion type="single" collapsible>
+<Accordion>
   <AccordionItem value="1">
     <AccordionTrigger>É acessível?</AccordionTrigger>
     <AccordionContent>Sim.</AccordionContent>
@@ -448,10 +448,8 @@ import { Label } from "@/components/ui/label"
     node: (
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline">
-              <Bell /> Passe o mouse
-            </Button>
+          <TooltipTrigger render={<Button variant="outline" />}>
+            <Bell /> Passe o mouse
           </TooltipTrigger>
           <TooltipContent>Você tem 3 notificações</TooltipContent>
         </Tooltip>
@@ -461,7 +459,7 @@ import { Label } from "@/components/ui/label"
 
 <TooltipProvider>
   <Tooltip>
-    <TooltipTrigger asChild><Button variant="outline">Hover</Button></TooltipTrigger>
+    <TooltipTrigger render={<Button variant="outline" />}>Hover</TooltipTrigger>
     <TooltipContent>Você tem 3 notificações</TooltipContent>
   </Tooltip>
 </TooltipProvider>`,
@@ -472,8 +470,8 @@ import { Label } from "@/components/ui/label"
     description: "Modal com overlay.",
     node: (
       <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Abrir diálogo</Button>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Abrir diálogo
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -483,8 +481,8 @@ import { Label } from "@/components/ui/label"
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancelar</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancelar
             </DialogClose>
             <Button>Confirmar</Button>
           </DialogFooter>
@@ -494,7 +492,7 @@ import { Label } from "@/components/ui/label"
     code: `import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog"
 
 <Dialog>
-  <DialogTrigger asChild><Button>Abrir</Button></DialogTrigger>
+  <DialogTrigger render={<Button />}>Abrir</DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Confirmar</DialogTitle>
@@ -509,8 +507,8 @@ import { Label } from "@/components/ui/label"
     description: "Menu de ações.",
     node: (
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Abrir menu</Button>
+        <DropdownMenuTrigger render={<Button variant="outline" />}>
+          Abrir menu
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
           <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
@@ -527,7 +525,7 @@ import { Label } from "@/components/ui/label"
     code: `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 
 <DropdownMenu>
-  <DropdownMenuTrigger asChild><Button>Menu</Button></DropdownMenuTrigger>
+  <DropdownMenuTrigger render={<Button />}>Menu</DropdownMenuTrigger>
   <DropdownMenuContent>
     <DropdownMenuItem>Perfil</DropdownMenuItem>
   </DropdownMenuContent>
@@ -539,8 +537,8 @@ import { Label } from "@/components/ui/label"
     description: "Painel flutuante.",
     node: (
       <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline">Abrir popover</Button>
+        <PopoverTrigger render={<Button variant="outline" />}>
+          Abrir popover
         </PopoverTrigger>
         <PopoverContent className="w-72">
           <div className="grid gap-2">
@@ -555,7 +553,7 @@ import { Label } from "@/components/ui/label"
     code: `import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 
 <Popover>
-  <PopoverTrigger asChild><Button>Abrir</Button></PopoverTrigger>
+  <PopoverTrigger render={<Button />}>Abrir</PopoverTrigger>
   <PopoverContent>...</PopoverContent>
 </Popover>`,
   },
