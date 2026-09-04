@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "src/components/theme-provider.tsx",
-      "content": "\"use client\";\n\nimport {\n  ThemeProvider as NextThemesProvider,\n  type ThemeProviderProps,\n  type UseThemeProps,\n  useTheme,\n} from \"next-themes\";\n\nfunction ThemeProvider({\n  attribute = \"class\",\n  defaultTheme = \"dark\",\n  enableSystem = false,\n  storageKey = \"lai-theme\",\n  disableTransitionOnChange = true,\n  ...props\n}: ThemeProviderProps) {\n  return (\n    <NextThemesProvider\n      attribute={attribute}\n      defaultTheme={defaultTheme}\n      enableSystem={enableSystem}\n      storageKey={storageKey}\n      disableTransitionOnChange={disableTransitionOnChange}\n      {...props}\n    />\n  );\n}\n\nexport { ThemeProvider, useTheme };\nexport type { ThemeProviderProps, UseThemeProps };\n",
+      "content": "\"use client\";\n\nimport {\n  ThemeProvider as NextThemesProvider,\n  type ThemeProviderProps,\n  type UseThemeProps,\n  useTheme,\n} from \"next-themes\";\n\nfunction ThemeProvider({\n  attribute = \"class\",\n  defaultTheme = \"system\",\n  enableSystem = true,\n  storageKey = \"lai-theme\",\n  disableTransitionOnChange = true,\n  ...props\n}: ThemeProviderProps) {\n  return (\n    <NextThemesProvider\n      attribute={attribute}\n      defaultTheme={defaultTheme}\n      enableSystem={enableSystem}\n      storageKey={storageKey}\n      disableTransitionOnChange={disableTransitionOnChange}\n      {...props}\n    />\n  );\n}\n\nexport { ThemeProvider, useTheme };\nexport type { ThemeProviderProps, UseThemeProps };\n",
       "type": "registry:component",
       "target": "components/theme-provider.tsx"
     }

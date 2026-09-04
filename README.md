@@ -78,8 +78,9 @@ function App() {
 }
 ```
 
-O provider usa a classe `.dark`, começa no tema escuro e persiste a preferência
-em `localStorage["lai-theme"]`. O hook `useTheme` também é exportado pelo pacote.
+O provider usa a classe `.dark` e, na primeira visita, segue o tema da máquina
+(com fallback claro). Depois, persiste a escolha do usuário em
+`localStorage["lai-theme"]`. O hook `useTheme` também é exportado pelo pacote.
 
 O projeto consumidor precisa ter `react` e `react-dom` 18 ou 19 instalados.
 

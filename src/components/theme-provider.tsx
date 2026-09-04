@@ -9,8 +9,8 @@ import {
 
 function ThemeProvider({
   attribute = "class",
-  defaultTheme = "dark",
-  enableSystem = false,
+  defaultTheme = "system",
+  enableSystem = true,
   storageKey = "lai-theme",
   disableTransitionOnChange = true,
   ...props
