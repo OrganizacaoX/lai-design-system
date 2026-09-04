@@ -40,7 +40,7 @@ No `~/.npmrc` da sua máquina (não faça commit do token):
 Depois exporte o token e instale o pacote:
 
 ```bash
-export GITHUB_PACKAGES_TOKEN=github_pat_...
+export GITHUB_PACKAGES_TOKEN="cole_o_token_aqui"
 npm install @organizacaox/lai-design-system
 ```
 
@@ -138,6 +138,10 @@ GitHub Packages quando uma GitHub Release é publicada. A tag da release deve
 ser exatamente `v` seguida pela versão do `package.json` (por exemplo,
 `v0.1.0`). O workflow usa o `GITHUB_TOKEN` do próprio repositório; nenhum token
 de publicação precisa ser criado.
+
+Na primeira publicação, o GitHub cria o pacote como privado. Depois dela,
+ajuste a visibilidade e os repositórios/equipes com acesso nas configurações do
+pacote da organização, conforme a necessidade.
 
 Fluxo sugerido:
 
