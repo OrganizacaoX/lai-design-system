@@ -1,0 +1,19 @@
+/* Cole no topo de src/index.css, antes dos outros @import.
+   Google Sans Flex e Google Sans Code estão no Google Fonts (OFL) desde nov/2025.
+   Hoje o arquivo declara as duas famílias em @theme mas não carrega webfont
+   nenhuma — quem instala o pacote depende de tê-las no sistema. */
+
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&family=Google+Sans+Code:wght@300..800&display=swap");
+
+/* Alternativa self-hosted (sem dependência do Google em runtime, melhor para
+   LGPD e para o app que roda offline em rede fechada):
+
+   npm i @fontsource-variable/google-sans-flex @fontsource-variable/google-sans-code
+
+   e no entrypoint da aplicação, antes do styles.css:
+
+   import "@fontsource-variable/google-sans-flex";
+   import "@fontsource-variable/google-sans-code";
+
+   As duas famílias são variáveis; os eixos usados na interface são
+   wght (400 e 500) e opsz. Não é preciso pedir pesos avulsos. */

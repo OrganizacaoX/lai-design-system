@@ -18,7 +18,7 @@ export function ComponentPreview({
   return (
     <section id={id} className="min-w-0 scroll-mt-20">
       <div className="mb-3">
-        <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
+        <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
         {description ? (
           <p className="text-sm text-muted-foreground">{description}</p>
         ) : null}

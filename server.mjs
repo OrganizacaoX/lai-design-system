@@ -52,9 +52,12 @@ createServer(async (req, res) => {
 
   try {
     const s = await stat(filePath);
-    if (s.isDirectory()) throw new Error("is directory");
-    const body = await readFile(filePath);
-    res.setHeader("Content-Type", TYPES[extname(filePath)] || "application/octet-stream");
+    const resolvedPath = s.isDirectory() ? join(filePath, "index.html") : filePath;
+    const body = await readFile(resolvedPath);
+    res.setHeader(
+      "Content-Type",
+      TYPES[extname(resolvedPath)] || "application/octet-stream",
+    );
     res.setHeader("Cache-Control", "public, max-age=300");
     res.writeHead(200);
     res.end(body);

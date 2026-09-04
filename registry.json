@@ -60,15 +60,15 @@
           "card-foreground": "oklch(0.145 0 0)",
           "popover": "oklch(1 0 0)",
           "popover-foreground": "oklch(0.145 0 0)",
-          "primary": "oklch(0.547 0.139 276.4)",
+          "primary": "oklch(0.49 0.139 276.4)",
           "primary-foreground": "oklch(0.985 0 0)",
           "secondary": "oklch(0.97 0 0)",
           "secondary-foreground": "oklch(0.205 0 0)",
           "muted": "oklch(0.97 0 0)",
-          "muted-foreground": "oklch(0.556 0 0)",
+          "muted-foreground": "oklch(0.52 0 0)",
           "accent": "oklch(0.97 0 0)",
           "accent-foreground": "oklch(0.205 0 0)",
-          "destructive": "oklch(0.577 0.245 27.325)",
+          "destructive": "oklch(0.51 0.225 27.325)",
           "border": "oklch(0.922 0 0)",
           "input": "oklch(0.922 0 0)",
           "ring": "oklch(0.547 0.139 276.4)",
@@ -80,7 +80,7 @@
           "radius": "0.625rem",
           "sidebar": "oklch(0.985 0 0)",
           "sidebar-foreground": "oklch(0.145 0 0)",
-          "sidebar-primary": "oklch(0.547 0.139 276.4)",
+          "sidebar-primary": "oklch(0.49 0.139 276.4)",
           "sidebar-primary-foreground": "oklch(0.985 0 0)",
           "sidebar-accent": "oklch(0.97 0 0)",
           "sidebar-accent-foreground": "oklch(0.205 0 0)",
@@ -95,7 +95,7 @@
           "popover": "oklch(0.205 0 0)",
           "popover-foreground": "oklch(0.985 0 0)",
           "primary": "oklch(0.62 0.145 276.4)",
-          "primary-foreground": "oklch(0.985 0 0)",
+          "primary-foreground": "oklch(0.145 0 0)",
           "secondary": "oklch(0.269 0 0)",
           "secondary-foreground": "oklch(0.985 0 0)",
           "muted": "oklch(0.269 0 0)",
@@ -114,7 +114,7 @@
           "sidebar": "oklch(0.205 0 0)",
           "sidebar-foreground": "oklch(0.985 0 0)",
           "sidebar-primary": "oklch(0.62 0.145 276.4)",
-          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary-foreground": "oklch(0.145 0 0)",
           "sidebar-accent": "oklch(0.269 0 0)",
           "sidebar-accent-foreground": "oklch(0.985 0 0)",
           "sidebar-border": "oklch(1 0 0 / 10%)",
@@ -1114,8 +1114,10 @@
       ],
       "dependencies": [
         "lucide-react@1.41.0",
-        "next-themes@0.4.6",
         "sonner@2.0.8"
+      ],
+      "registryDependencies": [
+        "@lai/theme-provider"
       ]
     },
     {
@@ -1300,6 +1302,22 @@
         "@lai/button",
         "@lai/calendar",
         "@lai/popover"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "theme-provider",
+      "type": "registry:component",
+      "title": "Theme Provider",
+      "files": [
+        {
+          "path": "src/components/theme-provider.tsx",
+          "type": "registry:component",
+          "target": "components/theme-provider.tsx"
+        }
+      ],
+      "dependencies": [
+        "next-themes@0.4.6"
       ]
     }
   ]

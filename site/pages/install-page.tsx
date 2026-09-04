@@ -19,7 +19,7 @@ function Step({
       <span className="absolute -left-3.5 flex size-7 items-center justify-center rounded-full border bg-background text-sm font-medium">
         {n}
       </span>
-      <h3 className="mb-2 font-semibold tracking-tight">{title}</h3>
+      <h2 className="mb-2 font-semibold tracking-tight">{title}</h2>
       <div className="grid min-w-0 grid-cols-1 gap-3 text-sm text-muted-foreground">
         {children}
       </div>

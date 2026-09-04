@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <script>
-      // Anti-FOUC: aplica o tema salvo antes da pintura. Default = escuro.
+      // Anti-FOUC: antecipa a configuração do ThemeProvider antes da pintura.
       try {
         var t = localStorage.getItem("lai-theme");
         document.documentElement.classList.toggle("dark", t !== "light");

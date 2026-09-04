@@ -51,6 +51,36 @@ import "@organizacaox/lai-design-system/styles.css";
 import { Button, DateRangePicker } from "@organizacaox/lai-design-system";
 ```
 
+O Sonner já é uma dependência do design system. Para exibir notificações, não é
+necessário instalá-lo nem importá-lo diretamente:
+
+```tsx
+import {
+  Button,
+  ThemeProvider,
+  Toaster,
+  useToast,
+} from "@organizacaox/lai-design-system";
+
+function SaveButton() {
+  const { toast } = useToast();
+
+  return <Button onClick={() => toast.success("Salvo!")}>Salvar</Button>;
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <SaveButton />
+      <Toaster />
+    </ThemeProvider>
+  );
+}
+```
+
+O provider usa a classe `.dark`, começa no tema escuro e persiste a preferência
+em `localStorage["lai-theme"]`. O hook `useTheme` também é exportado pelo pacote.
+
 O projeto consumidor precisa ter `react` e `react-dom` 18 ou 19 instalados.
 
 ## Consumir pelo registry shadcn
@@ -70,6 +100,8 @@ Requisito: o projeto de destino já ter o shadcn inicializado
 ```
 
 > Preview de todos os componentes e docs: **https://ui.lai.ia.br**
+>
+> Guia visual interativo: **https://ui.lai.ia.br/design-system/**
 
 ### 2. Instale
 

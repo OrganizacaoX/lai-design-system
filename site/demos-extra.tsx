@@ -461,7 +461,7 @@ export const extraDemos: Demo[] = [
     title: "Native Select",
     description: "Select nativo do HTML.",
     node: (
-      <NativeSelect className="max-w-xs" defaultValue="pro">
+      <NativeSelect aria-label="Plano" className="max-w-xs" defaultValue="pro">
         <NativeSelectOption value="free">Free</NativeSelectOption>
         <NativeSelectOption value="pro">Pro</NativeSelectOption>
         <NativeSelectOption value="enterprise">Enterprise</NativeSelectOption>
@@ -469,7 +469,7 @@ export const extraDemos: Demo[] = [
     ),
     code: `import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 
-<NativeSelect defaultValue="pro">
+<NativeSelect aria-label="Plano" defaultValue="pro">
   <NativeSelectOption value="free">Free</NativeSelectOption>
   <NativeSelectOption value="pro">Pro</NativeSelectOption>
 </NativeSelect>`,
@@ -479,7 +479,7 @@ export const extraDemos: Demo[] = [
     title: "Input OTP",
     description: "Código de verificação.",
     node: (
-      <InputOTP maxLength={6}>
+      <InputOTP aria-label="Código de verificação" maxLength={6}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -495,7 +495,7 @@ export const extraDemos: Demo[] = [
     ),
     code: `import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from "@/components/ui/input-otp"
 
-<InputOTP maxLength={6}>
+<InputOTP aria-label="Código de verificação" maxLength={6}>
   <InputOTPGroup>
     <InputOTPSlot index={0} />
     <InputOTPSlot index={1} />

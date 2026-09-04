@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { Bell, Rocket, Settings, Terminal, User } from "lucide-react";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/sonner";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -84,6 +84,23 @@ export type Demo = {
   node: ReactNode;
   code: string;
 };
+
+function ToastDemo() {
+  const { toast } = useToast();
+
+  return (
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.success("Componente adicionado", {
+          description: "@lai/button foi instalado no projeto.",
+        })
+      }
+    >
+      Mostrar toast
+    </Button>
+  );
+}
 
 export const demos: Demo[] = [
   {
@@ -271,7 +288,7 @@ import { Label } from "@/components/ui/label"
     description: "Menu suspenso.",
     node: (
       <Select>
-        <SelectTrigger className="w-56">
+        <SelectTrigger className="w-56" aria-label="Plano">
           <SelectValue placeholder="Selecione um plano" />
         </SelectTrigger>
         <SelectContent>
@@ -284,7 +301,7 @@ import { Label } from "@/components/ui/label"
     code: `import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 
 <Select>
-  <SelectTrigger><SelectValue placeholder="Selecione" /></SelectTrigger>
+  <SelectTrigger aria-label="Plano"><SelectValue placeholder="Selecione" /></SelectTrigger>
   <SelectContent>
     <SelectItem value="free">Free</SelectItem>
     <SelectItem value="pro">Pro</SelectItem>
@@ -392,19 +409,19 @@ import { Label } from "@/components/ui/label"
     id: "progress",
     title: "Progress",
     description: "Barra de progresso.",
-    node: <Progress value={62} className="w-full max-w-sm" />,
+    node: <Progress value={62} aria-label="Progresso da operação" className="w-full max-w-sm" />,
     code: `import { Progress } from "@/components/ui/progress"
 
-<Progress value={62} />`,
+<Progress value={62} aria-label="Progresso da operação" />`,
   },
   {
     id: "slider",
     title: "Slider",
     description: "Controle deslizante.",
-    node: <Slider defaultValue={[40]} max={100} step={1} className="w-full max-w-sm" />,
+    node: <Slider aria-label="Volume" defaultValue={[40]} max={100} step={1} className="w-full max-w-sm" />,
     code: `import { Slider } from "@/components/ui/slider"
 
-<Slider defaultValue={[40]} max={100} step={1} />`,
+<Slider aria-label="Volume" defaultValue={[40]} max={100} step={1} />`,
   },
   {
     id: "skeleton",
@@ -592,23 +609,26 @@ import { Label } from "@/components/ui/label"
     id: "toast",
     title: "Toast (Sonner)",
     description: "Notificações temporárias.",
-    node: (
-      <Button
-        variant="outline"
-        onClick={() =>
-          toast.success("Componente adicionado", {
-            description: "@lai/button foi instalado no projeto.",
-          })
-        }
-      >
-        Mostrar toast
-      </Button>
-    ),
-    code: `import { toast } from "sonner"
-// Monte <Toaster /> uma vez na raiz do app (@/components/ui/sonner)
+    node: <ToastDemo />,
+    code: `import { ThemeProvider, Toaster, useToast } from "@organizacaox/lai-design-system"
 
-toast.success("Componente adicionado", {
-  description: "@lai/button foi instalado no projeto.",
-})`,
+function SaveButton() {
+  const { toast } = useToast()
+
+  return (
+    <button onClick={() => toast.success("Componente adicionado")}>
+      Salvar
+    </button>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <SaveButton />
+      <Toaster />
+    </ThemeProvider>
+  )
+}`,
   },
 ];

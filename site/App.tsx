@@ -4,6 +4,7 @@ import { Menu, Moon, Search, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/sonner";
+import { useTheme } from "@/components/theme-provider";
 import {
   InputGroup,
   InputGroupAddon,
@@ -33,21 +34,16 @@ function viewFromHash(): View {
 }
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(
-    () => document.documentElement.classList.contains("dark"),
-  );
-  const toggle = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    try {
-      localStorage.setItem("lai-theme", next ? "dark" : "light");
-    } catch {
-      /* ignore */
-    }
-  };
+  const { resolvedTheme, setTheme } = useTheme();
+  const dark = resolvedTheme !== "light";
+
   return (
-    <Button variant="ghost" size="icon" onClick={toggle} aria-label="Alternar tema">
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(dark ? "light" : "dark")}
+      aria-label={dark ? "Ativar tema claro" : "Ativar tema escuro"}
+    >
       {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </Button>
   );
@@ -104,6 +100,12 @@ function Nav({
       <NavLink active={view === "componentes"} onClick={() => onGo("componentes")}>
         Componentes
       </NavLink>
+      <a
+        href="/design-system/"
+        className="block w-full rounded-md px-3 py-1.5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
+      >
+        Guia visual
+      </a>
 
       <div className="mt-4 mb-1 px-1">
         <InputGroup className="h-8">

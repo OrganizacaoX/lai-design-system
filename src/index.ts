@@ -1,6 +1,7 @@
 import "./index.css";
 
 export * from "./components/date-range-picker";
+export * from "./components/theme-provider";
 export * from "./components/ui/accordion";
 export * from "./components/ui/alert-dialog";
 export * from "./components/ui/alert";
