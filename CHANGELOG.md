@@ -1,6 +1,6 @@
 # Changelog
 
-## Não publicado
+## 0.2.1
 
 - Google Sans Flex e Google Sans Code carregadas pelo CSS do pacote e pelo tema do registry, sem configuração adicional no HTML.
 
