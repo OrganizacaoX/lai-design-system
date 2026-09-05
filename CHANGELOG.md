@@ -2,6 +2,13 @@
 
 ## Não publicado
 
+## 0.3.0
+
+- **Atenção ao atualizar:** `DataTableLabels` passou a exigir `actions`, `openRow`, `loading` e `retry`. Quem monta o objeto à mão precisa acrescentar os quatro rótulos.
+
+- Primitivas do `recharts` (`Area`, `Bar`, `BarChart`, `XAxis`, `ResponsiveContainer` e demais) reexportadas pelo pacote. `ChartContainer` só funciona junto delas, e importá-las direto do `recharts` fazia o consumidor carregar uma segunda cópia da biblioteca quando a versão divergia da nossa, dividindo o contexto do React entre duas instâncias. `Label`, `Tooltip` e `Legend` saem como `RechartsLabel`, `RechartsTooltip` e `RechartsLegend`, porque os nomes simples pertencem aos componentes homônimos do LAI.
+- Tipos `DateRange` e `Locale` reexportados. `DateRangePickerProps` e `DateRangePreset` são API pública e dependiam deles, o que obrigava o consumidor a instalar `react-day-picker` e `date-fns` só para nomear uma prop.
+
 - Cada componente mostra contagem e resultado real dos testes associados, com data, cenários e detecção de evidências desatualizadas.
 - Novo comando `test:reliability` gera o relatório após construir e validar as duas suítes completas; CI preserva os resultados.
 
