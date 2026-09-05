@@ -51,6 +51,10 @@ import "@organizacaox/lai-design-system/styles.css";
 import { Button, DateRangePicker } from "@organizacaox/lai-design-system";
 ```
 
+O CSS já carrega a **Google Sans Flex** como fonte padrão e a **Google Sans Code**
+para código, via Google Fonts (`display=swap`). Não é necessário adicionar links
+de fontes no HTML. O tema do registry inclui o mesmo carregamento automático.
+
 O Sonner já é uma dependência do design system. Para exibir notificações, não é
 necessário instalá-lo nem importá-lo diretamente:
 

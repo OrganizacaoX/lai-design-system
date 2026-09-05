@@ -150,14 +150,14 @@ createRoot(document.getElementById('app')!).render(<><PageHeader title="Consumer
   const rules = (values) =>
     Object.entries(values)
       .map(([key, value]) =>
-        typeof value === "object"
+        key.startsWith("@import ") ? `${key};` : typeof value === "object"
           ? `${key} {${rules(value)}}`
           : `${key}: ${value};`,
       )
       .join("\n");
   put(
     "src/styles.css",
-    `@import "tailwindcss"; @import "tw-animate-css"; @custom-variant dark (&:is(.dark *)); @theme inline {${declarations(theme.cssVars.theme)}} :root {${declarations(theme.cssVars.light)}} .dark {${declarations(theme.cssVars.dark)}} ${rules(theme.css)}`,
+    ` ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => key.startsWith("@import "))))} @import "tailwindcss"; @import "tw-animate-css"; @custom-variant dark (&:is(.dark *)); @theme inline {${declarations(theme.cssVars.theme)}} :root {${declarations(theme.cssVars.light)}} .dark {${declarations(theme.cssVars.dark)}} ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => !key.startsWith("@import "))))}`,
   );
   put(
     "src/main.tsx",

@@ -10,6 +10,7 @@
       "title": "LAI Theme",
       "description": "Tokens de design do LAI Disk: cores (oklch) light/dark, tipografia e escala de raios.",
       "css": {
+        "@import url(\"https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap\")": {},
         "@media (prefers-reduced-motion: reduce)": {
           "*,\n  *::before,\n  *::after": {
             "scroll-behavior": "auto !important",
@@ -28,6 +29,56 @@
         },
         "[data-slot=\"button\"], [data-slot=\"input\"], [data-slot=\"select-trigger\"],\n[data-slot=\"combobox-input\"], [data-slot=\"input-group\"]": {
           "transition-duration": "var(--motion-fast)"
+        },
+        ":is(button, a[href], summary, select, input[type=\"button\"], input[type=\"submit\"], input[type=\"reset\"], input[type=\"checkbox\"], input[type=\"radio\"], [role=\"button\"], [role=\"tab\"], [role=\"checkbox\"], [role=\"radio\"], [role=\"switch\"], [role=\"option\"], [role=\"menuitem\"], [role=\"menuitemcheckbox\"], [role=\"menuitemradio\"], label[for]):not(:disabled, [aria-disabled=\"true\"], [data-disabled]:not([data-disabled=\"false\"]))": {
+          "cursor": "pointer"
+        },
+        ":is(button, select, input, [role], label):is(:disabled, [aria-disabled=\"true\"], [data-disabled]:not([data-disabled=\"false\"])),\n:is(label):has(input:disabled),\n:is(label[for]):has(+ input:disabled)": {
+          "cursor": "not-allowed"
+        },
+        "[data-slot=\"checkbox\"], [data-slot=\"radio-group-item\"],\n[data-slot=\"toggle\"], [data-slot=\"tabs-trigger\"], [data-slot=\"switch\"]": {
+          "transition-duration": "var(--motion-fast)",
+          "transition-timing-function": "ease-out"
+        },
+        "[data-slot=\"checkbox-indicator\"][data-checked],\n[data-slot=\"radio-group-indicator\"][data-checked]": {
+          "animation": "lai-selection-in var(--motion-fast) ease-out"
+        },
+        "[data-slot=\"tabs-content\"]:not([hidden], [data-hidden])": {
+          "animation": "lai-panel-in var(--motion-normal) ease-out"
+        },
+        "[data-slot=\"collapsible-content\"]": {
+          "height": "var(--collapsible-panel-height)",
+          "overflow": "hidden",
+          "transition": "height var(--motion-normal) ease-out, opacity var(--motion-normal) ease-out"
+        },
+        "[data-slot=\"collapsible-content\"][data-starting-style],\n[data-slot=\"collapsible-content\"][data-ending-style]": {
+          "height": "0",
+          "opacity": "0"
+        },
+        "@keyframes lai-selection-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "scale(.7)"
+          },
+          "to": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          }
+        },
+        "@keyframes lai-panel-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(4px)"
+          },
+          "to": {
+            "opacity": "1",
+            "transform": "translateY(0)"
+          }
+        },
+        "@media (hover: hover) and (pointer: fine)": {
+          "[data-slot=\"button\"]:not(:disabled, [aria-disabled=\"true\"], [data-disabled]):hover": {
+            "filter": "brightness(.96)"
+          }
         }
       },
       "cssVars": {

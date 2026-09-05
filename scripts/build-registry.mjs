@@ -199,8 +199,8 @@ function buildThemeItem() {
     description:
       "Tokens de design do LAI Disk: cores (oklch) light/dark, tipografia e escala de raios.",
     css: Object.fromEntries(postcss.parse(css).nodes.filter(node =>
-      (node.type === "rule" && (node.selector.startsWith("[data-density=") || node.selector.startsWith('[data-slot='))) ||
-      (node.type === "atrule" && node.name === "media" && node.params === "(prefers-reduced-motion: reduce)")
+      (node.type === "rule" && (node.selector.startsWith("[data-density=") || node.selector.startsWith('[data-slot=') || node.selector.startsWith(":is("))) ||
+      (node.type === "atrule" && ((node.name === "import" && node.params.includes("https://fonts.googleapis.com/")) || node.name === "media" || (node.name === "keyframes" && node.params.startsWith("lai-"))))
     ).map(node => [node.type === "rule" ? node.selector : `@${node.name} ${node.params}`, cssObject(node)])),
     cssVars: {
       theme: themeInline,

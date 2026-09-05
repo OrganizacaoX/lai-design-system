@@ -1,5 +1,12 @@
 # Changelog
 
+## Não publicado
+
+- Google Sans Flex e Google Sans Code carregadas pelo CSS do pacote e pelo tema do registry, sem configuração adicional no HTML.
+
+- Cursor de clique consistente nos controles interativos e nas linhas acionáveis de tabelas.
+- Animações discretas em abas, seleção e painéis expansíveis, com suporte a movimento reduzido no pacote e registry.
+
 ## 0.2.0
 
 - Documentação em largura total e exemplos de comandos com Bun.

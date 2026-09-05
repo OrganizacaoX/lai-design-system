@@ -69,6 +69,8 @@ export function InstallPage() {
         />
         <p className="text-sm text-muted-foreground">
           Importe os estilos uma vez e monte ThemeProvider e Toaster na raiz.
+          Esse CSS já carrega Google Sans Flex e Google Sans Code pelo Google
+          Fonts; não é necessário adicionar links de fontes no HTML.
           Atualize a versão do pacote e confira o changelog antes de adotar
           alterações de API ou tokens.
         </p>

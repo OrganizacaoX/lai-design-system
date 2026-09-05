@@ -239,6 +239,7 @@ export function DataTable<T extends { id: string }>({
                 return (
                   <TableRow
                     key={item.id}
+                    className={onRowClick ? "cursor-pointer" : undefined}
                     onClick={onRowClick ? () => onRowClick(item) : undefined}
                     data-state={isSelected ? "selected" : undefined}
                   >

@@ -141,7 +141,10 @@ export function FoundationsPage() {
         </div>
         <p className="text-sm text-muted-foreground">
           120ms para feedback dos controles; 200ms para transições de contexto.
-          A preferência de movimento reduzido desativa as transições. Use bordas
+          Abas aparecem suavemente, indicadores de seleção ganham uma breve animação
+          e painéis expansíveis abrem com transição de altura. Controles clicáveis
+          usam cursor de ponteiro. A preferência de movimento reduzido desativa
+          as animações e transições. Use bordas
           para agrupar conteúdo e elevação para indicar sobreposição.
         </p>
       </section>
