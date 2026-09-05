@@ -89,3 +89,11 @@ export * from "./components/data-table";
 export * from "./components/data-pagination";
 export * from "./components/bottom-sheet";
 export * from "./components/status-panel";
+
+export * from "./components/app-shell";
+
+export * from "./components/sidebar-profile";
+
+export * from "./components/ui/typography";
+
+export * from "./components/ui/shimmer";

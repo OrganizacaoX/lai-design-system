@@ -82,6 +82,7 @@ function buildItem({ file, srcPath, targetDir, type }) {
       },
     ],
   };
+  if (name === "shimmer") item.css = buildShimmerCss();
   if (dependencies.size) item.dependencies = [...dependencies].sort();
   if (registryDependencies.size)
     item.registryDependencies = [...registryDependencies].sort();
@@ -208,4 +209,24 @@ function buildThemeItem() {
       dark: dark,
     },
   };
+}
+
+// Ship the upstream base effect with copied components too, without installing
+// the shadcn CLI in the consuming app. Customization uses CSS variables.
+function buildShimmerCss() {
+  const css = readFileSync(new URL(import.meta.resolve("shadcn/tailwind.css")), "utf8");
+  const nodes = postcss.parse(css).nodes.filter(node => node.type === "atrule" && (
+    (node.name === "property" && node.params.startsWith("--shimmer-")) ||
+    (node.name === "utility" && ["shimmer", "shimmer-once", "shimmer-reverse", "shimmer-none"].includes(node.params)) ||
+    (node.name === "theme" && node.nodes?.some(child => child.type === "atrule" && child.name === "keyframes" && child.params === "tw-shimmer")) ||
+    (node.name === "media" && node.params.includes("prefers-reduced-motion") && node.nodes?.some(child => child.type === "rule" && child.selector === ".shimmer"))
+  ));
+  if (nodes.length !== 9) throw new Error("Upstream shimmer CSS changed; review its registry export.");
+  function object(node) {
+    return Object.fromEntries((node.nodes ?? []).filter(child => child.type !== "comment").map(child =>
+      child.type === "decl" ? [child.prop, child.value + (child.important ? " !important" : "")]
+        : [child.type === "rule" ? child.selector : `@${child.name} ${child.params}`, object(child)]
+    ));
+  }
+  return Object.fromEntries(nodes.map(node => [`@${node.name} ${node.params}`, object(node)]));
 }

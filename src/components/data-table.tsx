@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { StatusPanel } from "@/components/status-panel";
 import {
   useState,
@@ -57,17 +58,7 @@ export interface DataTableLabels {
   clear: string;
   empty: string;
 }
-const defaultLabels: DataTableLabels = {
-  actions: "Ações",
-  openRow: (row) => `Abrir linha ${row}`,
-  loading: "Carregando resultados…",
-  retry: "Tentar novamente",
-  selected: (count) => `${count} selecionado(s)`,
-  selectRow: (row) => `Selecionar linha ${row}`,
-  selectAll: "Selecionar todos",
-  clear: "Limpar seleção",
-  empty: "Nenhum resultado encontrado.",
-};
+
 
 function useSelection(ids: string[]) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -191,7 +182,14 @@ export function DataTable<T extends { id: string }>({
   onRetry,
   labels: customLabels,
 }: DataTableProps<T>) {
-  const labels = { ...defaultLabels, ...customLabels };
+  const { t } = useLaiTranslation();
+  const labels = {
+    actions: t("table.actions"), openRow: (row: number) => t("table.openRow", { row }),
+    loading: t("table.loading"), retry: t("retry"), selected: (count: number) => t("table.selected", { count }),
+    selectRow: (row: number) => t("table.selectRow", { row }), selectAll: t("table.selectAll"),
+    clear: t("table.clear"), empty: t("table.empty"),
+    ...customLabels,
+  };
   const ids = useMemo(() => data.map((item) => item.id), [data]);
   const { selectedIds, toggle, toggleAll, clear, allSelected } =
     useSelection(ids);

@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import * as React from "react"
 import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
 import { cn } from "cn"
@@ -39,13 +40,15 @@ function SheetContent({
   children,
   side = "right",
   showCloseButton = true,
-  closeLabel = "Fechar",
+  closeLabel,
   ...props
 }: SheetPrimitive.Popup.Props & {
   side?: "top" | "right" | "bottom" | "left"
   closeLabel?: string
   showCloseButton?: boolean
 }) {
+  const { t } = useLaiTranslation();
+  closeLabel ??= t("close");
   return (
     <SheetPortal>
       <SheetOverlay />

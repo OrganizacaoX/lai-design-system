@@ -10,6 +10,7 @@ import { tmpdir } from "node:os";
 import { join, dirname, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 const root = process.cwd();
+const registryCss = {};
 const temp = mkdtempSync(join(tmpdir(), "lai-consumer-"));
 const run = (cmd, args, cwd = temp) =>
   execFileSync(cmd, args, { cwd, stdio: "inherit" });
@@ -41,6 +42,7 @@ try {
     const item = JSON.parse(
       readFileSync(resolve(root, `public/r/${name}.json`), "utf8"),
     );
+    Object.assign(registryCss, item.css ?? {});
     for (const dependency of item.dependencies ?? [])
       dependencies.add(dependency);
     for (const dependency of item.registryDependencies ?? []) {
@@ -51,10 +53,14 @@ try {
     for (const file of item.files ?? []) put(file.path, file.content);
   }
   for (const name of [
+    "shimmer",
+    "typography",
     "button",
     "select",
     "date-range-picker",
     "page-header",
+    "app-shell",
+    "sidebar-profile",
     "filter-bar",
     "data-list",
     "validated-form",
@@ -100,12 +106,12 @@ try {
   put(
     "src/main.tsx",
     `import { createRoot } from 'react-dom/client';
-import { Button, DateRangePicker, PageHeader, FilterBar, DataList, ValidatedForm, DataTable, DataPagination, BottomSheet, isMobile } from '@organizacaox/lai-design-system';
+import { Shimmer, Title, Text, InlineCode, NumberedList, SidebarProfile, AppShell, Button, DateRangePicker, PageHeader, FilterBar, DataList, ValidatedForm, DataTable, DataPagination, BottomSheet, isMobile } from '@organizacaox/lai-design-system';
 import '@organizacaox/lai-design-system/styles.css';
 import { Button as CopiedButton } from './components/ui/button';
 import { DateRangePicker as CopiedPicker } from './components/date-range-picker';
 import { ValidatedForm as CopiedForm } from './components/validated-form';
-createRoot(document.getElementById('app')!).render(<><PageHeader title="Consumer"/><Button>Pacote</Button><CopiedButton>Registry</CopiedButton><DateRangePicker value={undefined} onChange={() => {}}/><CopiedPicker value={undefined} onChange={() => {}}/><FilterBar query="" onQueryChange={() => {}}/><DataList items={['Ana']} getKey={x => x} renderItem={x => x}/><ValidatedForm fields={[]} onSubmit={() => {}}/><CopiedForm fields={[]} onSubmit={() => {}}/><DataTable data={[{id: "1", name: "Ana"}]} columns={[{key: "name", label: "Name", render: x => x.name}]} labels={{selected: count => String(count)}}/><DataPagination page={1} limit={10} totalPages={1} onPageChange={() => {}} onLimitChange={() => {}}/><BottomSheet isOpen={false} onClose={() => {}} title="Panel">Content</BottomSheet><span>{String(isMobile())}</span></>);`,
+createRoot(document.getElementById('app')!).render(<><Shimmer>Loading</Shimmer><Title>Typography</Title><Text>Use <InlineCode>code</InlineCode></Text><NumberedList start={2}><li>Step</li></NumberedList><AppShell brand="Consumer" navigation={[]} footer={<SidebarProfile user={{name: "Ana"}} profile={{onSelect: () => {}}}/>}>Shell</AppShell><PageHeader title="Consumer"/><Button>Pacote</Button><CopiedButton>Registry</CopiedButton><DateRangePicker value={undefined} onChange={() => {}}/><CopiedPicker value={undefined} onChange={() => {}}/><FilterBar query="" onQueryChange={() => {}}/><DataList items={['Ana']} getKey={x => x} renderItem={x => x}/><ValidatedForm fields={[]} onSubmit={() => {}}/><CopiedForm fields={[]} onSubmit={() => {}}/><DataTable data={[{id: "1", name: "Ana"}]} columns={[{key: "name", label: "Name", render: x => x.name}]} labels={{selected: count => String(count)}}/><DataPagination page={1} limit={10} totalPages={1} onPageChange={() => {}} onLimitChange={() => {}}/><BottomSheet isOpen={false} onClose={() => {}} title="Panel">Content</BottomSheet><span>{String(isMobile())}</span></>);`,
   );
   put(
     "index.html",
@@ -157,7 +163,7 @@ createRoot(document.getElementById('app')!).render(<><PageHeader title="Consumer
       .join("\n");
   put(
     "src/styles.css",
-    ` ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => key.startsWith("@import "))))} @import "tailwindcss"; @import "tw-animate-css"; @custom-variant dark (&:is(.dark *)); @theme inline {${declarations(theme.cssVars.theme)}} :root {${declarations(theme.cssVars.light)}} .dark {${declarations(theme.cssVars.dark)}} ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => !key.startsWith("@import "))))}`,
+    ` ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => key.startsWith("@import "))))} @import "tailwindcss"; @import "tw-animate-css"; @custom-variant dark (&:is(.dark *)); @theme inline {${declarations(theme.cssVars.theme)}} :root {${declarations(theme.cssVars.light)}} .dark {${declarations(theme.cssVars.dark)}} ${rules(Object.fromEntries(Object.entries(theme.css).filter(([key]) => !key.startsWith("@import "))))} ${rules(registryCss)}`,
   );
   put(
     "src/main.tsx",
@@ -166,6 +172,10 @@ import './styles.css';
 import {Button} from './components/ui/button';
 import {DateRangePicker} from './components/date-range-picker';
 import {PageHeader} from './components/page-header';
+import {AppShell} from './components/app-shell';
+import {SidebarProfile} from './components/sidebar-profile';
+import {Shimmer} from './components/ui/shimmer';
+import {Title, Text, InlineCode, NumberedList} from './components/ui/typography';
 import {FilterBar} from './components/filter-bar';
 import {DataList} from './components/data-list';
 import {ValidatedForm} from './components/validated-form';
@@ -173,7 +183,7 @@ import {DataTable} from './components/data-table';
 import {DataPagination} from './components/data-pagination';
 import {BottomSheet} from './components/bottom-sheet';
 import {isMobile} from './hooks/use-mobile';
-createRoot(document.getElementById('app')!).render(<><PageHeader title="Registry"/><Button>Registry</Button><DateRangePicker value={undefined} onChange={() => {}}/><FilterBar query="" onQueryChange={() => {}}/><DataList items={['Ana']} getKey={x => x} renderItem={x => x}/><ValidatedForm fields={[]} onSubmit={() => {}}/><DataTable data={[{id: "1", name: "Ana"}]} columns={[{key: "name", label: "Name", render: x => x.name}]} labels={{selected: count => String(count)}}/><DataPagination page={1} limit={10} totalPages={1} onPageChange={() => {}} onLimitChange={() => {}}/><BottomSheet isOpen={false} onClose={() => {}} title="Panel">Content</BottomSheet><span>{String(isMobile())}</span></>);`,
+createRoot(document.getElementById('app')!).render(<><Shimmer>Loading</Shimmer><Title>Typography</Title><Text>Use <InlineCode>code</InlineCode></Text><NumberedList start={2}><li>Step</li></NumberedList><AppShell brand="Registry" navigation={[]} footer={<SidebarProfile user={{name: "Ana"}} profile={{onSelect: () => {}}}/>}>Shell</AppShell><PageHeader title="Registry"/><Button>Registry</Button><DateRangePicker value={undefined} onChange={() => {}}/><FilterBar query="" onQueryChange={() => {}}/><DataList items={['Ana']} getKey={x => x} renderItem={x => x}/><ValidatedForm fields={[]} onSubmit={() => {}}/><DataTable data={[{id: "1", name: "Ana"}]} columns={[{key: "name", label: "Name", render: x => x.name}]} labels={{selected: count => String(count)}}/><DataPagination page={1} limit={10} totalPages={1} onPageChange={() => {}} onLimitChange={() => {}}/><BottomSheet isOpen={false} onClose={() => {}} title="Panel">Content</BottomSheet><span>{String(isMobile())}</span></>);`,
   );
   put(
     "vite.config.js",

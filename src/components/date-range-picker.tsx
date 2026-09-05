@@ -1,6 +1,7 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useState } from "react";
 import type { DateRange, Matcher } from "react-day-picker";
-import { ptBR } from "date-fns/locale";
+import { useLaiLocale } from "@/hooks/use-lai-locale";
 import { format, startOfMonth, startOfDay, subDays, type Locale } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -41,9 +42,9 @@ export function DateRangePicker({
   id,
   onChange,
   className,
-  locale = ptBR,
-  placeholder = "Selecionar período",
-  ariaLabel = placeholder,
+  locale: customLocale,
+  placeholder: customPlaceholder,
+  ariaLabel: customAriaLabel,
   presets: customPresets,
   minDate,
   maxDate,
@@ -51,10 +52,16 @@ export function DateRangePicker({
   numberOfMonths,
   disabled = false,
   clearable = false,
-  clearLabel = "Limpar período",
+  clearLabel: customClearLabel,
   closeOnSelect = false,
   formatLabel,
 }: DateRangePickerProps) {
+  const { t } = useLaiTranslation();
+  const defaultLocale = useLaiLocale();
+  const locale = customLocale ?? defaultLocale;
+  const placeholder = customPlaceholder ?? t("date.placeholder");
+  const ariaLabel = customAriaLabel ?? placeholder;
+  const clearLabel = customClearLabel ?? t("date.clear");
   const [open, setOpen] = useState(false);
   const [selectingEnd, setSelectingEnd] = useState(false);
   const mobile = useIsMobile();
@@ -66,10 +73,10 @@ export function DateRangePicker({
   if (lower) blocked.push({ before: lower });
   if (upper) blocked.push({ after: upper });
   const presets = customPresets ?? [
-    { label: "Hoje", range: { from: today, to: today } },
-    { label: "7 dias", range: { from: subDays(today, 6), to: today } },
-    { label: "30 dias", range: { from: subDays(today, 29), to: today } },
-    { label: "Este mês", range: { from: startOfMonth(today), to: today } },
+    { label: t("date.today"), range: { from: today, to: today } },
+    { label: t("date.days", { count: 7 }), range: { from: subDays(today, 6), to: today } },
+    { label: t("date.days", { count: 30 }), range: { from: subDays(today, 29), to: today } },
+    { label: t("date.month"), range: { from: startOfMonth(today), to: today } },
   ];
   const invalidPreset = (range: DateRange) =>
     [range.from, range.to].some(

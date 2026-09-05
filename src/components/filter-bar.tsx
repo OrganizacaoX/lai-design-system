@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useId, type ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,14 +12,18 @@ export interface FilterBarProps {
   children?: ReactNode;
 }
 export function FilterBar({
-  ariaLabel = "Filtros",
+  ariaLabel,
   query,
   onQueryChange,
   onReset,
-  label = "Buscar registros",
-  resetLabel = "Limpar filtros",
+  label,
+  resetLabel,
   children,
 }: FilterBarProps) {
+  const { t } = useLaiTranslation();
+  ariaLabel ??= t("filter.label");
+  label ??= t("filter.search");
+  resetLabel ??= t("filter.clear");
   const id = useId();
   return (
     <section

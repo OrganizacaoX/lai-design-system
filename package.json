@@ -1,6 +1,6 @@
 {
   "name": "@organizacaox/lai-design-system",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Componentes React e registry shadcn do design system LAI.",
   "type": "module",
   "main": "./lib/index.js",
@@ -15,7 +15,107 @@
       "types": "./styles.css.d.ts",
       "default": "./lib/styles.css"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./app": {
+      "types": "./lib/app/index.d.ts",
+      "import": "./lib/app.js"
+    },
+    "./fetch": {
+      "types": "./lib/entries/fetch.d.ts",
+      "import": "./lib/fetch.js"
+    },
+    "./query": {
+      "types": "./lib/entries/query.d.ts",
+      "import": "./lib/query.js"
+    },
+    "./router": {
+      "types": "./lib/entries/router.d.ts",
+      "import": "./lib/router.js"
+    },
+    "./store": {
+      "types": "./lib/entries/store.d.ts",
+      "import": "./lib/store.js"
+    },
+    "./router/vite": {
+      "types": "./lib/entries/router-vite.d.ts",
+      "import": "./lib/router-vite.js"
+    },
+    "./i18n": {
+      "types": "./lib/entries/i18n.d.ts",
+      "import": "./lib/i18n.js"
+    },
+    "./table": {
+      "types": "./lib/entries/table.d.ts",
+      "import": "./lib/table.js"
+    },
+    "./form": {
+      "types": "./lib/entries/form.d.ts",
+      "import": "./lib/form.js"
+    },
+    "./schema": {
+      "types": "./lib/entries/schema.d.ts",
+      "import": "./lib/schema.js"
+    },
+    "./dnd": {
+      "types": "./lib/entries/dnd.d.ts",
+      "import": "./lib/dnd.js"
+    },
+    "./virtual": {
+      "types": "./lib/entries/virtual.d.ts",
+      "import": "./lib/virtual.js"
+    },
+    "./auth": {
+      "types": "./lib/entries/auth.d.ts",
+      "import": "./lib/auth.js"
+    },
+    "./auth/plugins": {
+      "types": "./lib/entries/auth-plugins.d.ts",
+      "import": "./lib/auth-plugins.js"
+    },
+    "./analytics": {
+      "types": "./lib/entries/analytics.d.ts",
+      "import": "./lib/analytics.js"
+    },
+    "./tour": {
+      "types": "./lib/entries/tour.d.ts",
+      "import": "./lib/tour.js"
+    },
+    "./testing": {
+      "types": "./lib/entries/testing.d.ts",
+      "import": "./lib/testing.js"
+    },
+    "./motion": {
+      "types": "./lib/entries/motion.d.ts",
+      "import": "./lib/motion.js"
+    },
+    "./date": {
+      "types": "./lib/entries/date.d.ts",
+      "import": "./lib/date.js"
+    },
+    "./date/locale": {
+      "types": "./lib/entries/date-locale.d.ts",
+      "import": "./lib/date-locale.js"
+    },
+    "./icons": {
+      "types": "./lib/entries/icons.d.ts",
+      "import": "./lib/icons.js"
+    },
+    "./ai": {
+      "types": "./lib/entries/ai.d.ts",
+      "import": "./lib/ai.js"
+    },
+    "./ai/client": {
+      "types": "./lib/entries/ai-client.d.ts",
+      "import": "./lib/ai-client.js"
+    },
+    "./ai/testing": {
+      "types": "./lib/entries/ai-testing.d.ts",
+      "import": "./lib/ai-testing.js"
+    },
+    "./tour/styles.css": {
+      "types": "./styles.css.d.ts",
+      "default": "./lib/tour.css"
+    }
   },
   "files": [
     "lib",
@@ -51,25 +151,54 @@
     "test:compositions": "playwright test --config playwright.compositions.config.ts",
     "test:consumers": "node scripts/check-consumers.mjs",
     "test:reliability": "node scripts/test-reliability.mjs",
-    "test:reliability-unit": "node --test scripts/reliability/*.test.mjs"
+    "test:reliability-unit": "node --test scripts/reliability/*.test.mjs",
+    "test:app": "node scripts/check-app-consumer.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@better-fetch/fetch": "1.3.1",
+    "@dnd-kit/core": "6.3.1",
+    "@dnd-kit/sortable": "10.0.0",
+    "@dnd-kit/utilities": "3.2.2",
+    "@shadcn/helpers": "0.2.0",
     "@shadcn/react": "^0.3.1",
+    "@tanstack/ai": "0.40.0",
+    "@tanstack/ai-client": "0.20.0",
+    "@tanstack/ai-react": "0.16.4",
+    "@tanstack/form-core": "1.33.5",
+    "@tanstack/react-form": "1.33.5",
+    "@tanstack/react-query": "5.102.8",
+    "@tanstack/react-router": "1.170.32",
+    "@tanstack/react-table": "9.2.4",
+    "@tanstack/react-virtual": "3.14.10",
+    "@tanstack/router-generator": "1.167.33",
+    "@tanstack/router-plugin": "1.168.35",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.7",
+    "better-auth": "1.7.2",
+    "chokidar": "5.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "cn": "^0.2.5",
     "date-fns": "^4.4.0",
+    "driver.js": "1.8.0",
     "embla-carousel-react": "^8.6.0",
+    "i18next": "26.4.2",
     "input-otp": "^1.5.0",
     "lucide-react": "^1.41.0",
+    "motion": "^13.2.0",
     "next-themes": "^0.4.6",
+    "posthog-js": "1.427.2",
     "react-day-picker": "^10.0.1",
+    "react-i18next": "17.0.13",
     "react-resizable-panels": "^4.12.3",
     "recharts": "3.8.0",
     "sonner": "^2.0.8",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "zod": "4.5.4",
+    "zustand": "5.0.15"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

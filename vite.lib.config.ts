@@ -1,4 +1,6 @@
 import path from "node:path";
+import { copyFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
@@ -13,17 +15,19 @@ const externalPackages = new Set([
 ]);
 
 function isExternal(id: string) {
-  return [...externalPackages].some(
+  return id.startsWith("node:") || [...externalPackages].some(
     (packageName) => id === packageName || id.startsWith(`${packageName}/`),
   );
 }
 
 export default defineConfig({
   plugins: [
+    { name: "lai-tour-css", closeBundle() { copyFileSync(fileURLToPath(import.meta.resolve("driver.js/dist/driver.css")), "lib/tour.css"); } },
     react(),
     tailwindcss(),
     dts({
-      bundleTypes: true,
+      // Keep native reexports and Router module augmentations intact.
+      bundleTypes: false,
       include: ["src"],
       tsconfigPath: "./tsconfig.lib.json",
     }),
@@ -39,15 +43,20 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     lib: {
-      entry: path.resolve(import.meta.dirname, "src/index.ts"),
+      entry: {
+        index: path.resolve(import.meta.dirname, "src/index.ts"),
+        app: path.resolve(import.meta.dirname, "src/app/index.ts"),
+        ...Object.fromEntries(["fetch", "query", "router", "store", "router-vite", "i18n", "table", "form", "schema", "dnd", "virtual", "auth", "auth-plugins", "analytics", "tour", "testing", "motion", "date", "date-locale", "icons", "ai", "ai-client", "ai-testing"].map(name =>
+          [name, path.resolve(import.meta.dirname, `src/entries/${name}.ts`)])),
+      },
       formats: ["es"],
-      fileName: "index",
+      fileName: (_format, entryName) => `${entryName}.js`,
       cssFileName: "styles",
     },
     rollupOptions: {
       external: isExternal,
       output: {
-        banner: '"use client";',
+        banner: (chunk) => chunk.name === "router-vite" ? "" : '"use client";',
       },
     },
   },

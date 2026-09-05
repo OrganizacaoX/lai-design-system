@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T03:15:45.213Z",
-  "sourceFingerprint": "ca49960605fdb7ac51bf09e927a74e8113e7877eed22c45098b4169653f994ac",
+  "generatedAt": "2026-09-05T22:48:38.545Z",
+  "sourceFingerprint": "959ebd1f036eb6492a1999a02c8e19f3920484e1c2b9a9585bff24f29230e60f",
   "sourceChangedDuringRun": false,
-  "commit": "3bcb092b0a90a059a75fbd81ccc35eb5bfec74d1",
+  "commit": "b0eb5c06cb7af661a86fefc639c7908e8a275bca",
   "dirty": true,
   "runs": [
     {
@@ -73,6 +73,106 @@
       ],
       "total": 1,
       "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "app-shell": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-e759527e402b0fef4a6a:desktop",
+          "title": "catálogo: app-shell",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-1e1540a7a0d2298b5f96:desktop",
+          "title": "shell expandable groups select subitems and reveal the collapsed sidebar",
+          "file": "app-shell.spec.ts",
+          "line": 79,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-4fea36ee5bb4d92483e2:desktop",
+          "title": "shell controlled state, drawer-only mode and wide content",
+          "file": "app-shell.spec.ts",
+          "line": 60,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-6a8776b2d8c042002312:desktop",
+          "title": "shell keyboard skip link and accessibility in both themes",
+          "file": "app-shell.spec.ts",
+          "line": 48,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-72b12748e98512209df4:mobile",
+          "title": "shell controlled state, drawer-only mode and wide content",
+          "file": "app-shell.spec.ts",
+          "line": 60,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-bff3d4d32753e7e1802c:desktop",
+          "title": "shell navigation, collapse and mobile drawer",
+          "file": "app-shell.spec.ts",
+          "line": 6,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-c89f91b0a90758fc696c:mobile",
+          "title": "shell keyboard skip link and accessibility in both themes",
+          "file": "app-shell.spec.ts",
+          "line": 48,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-cb04bd4203e0aae43643:mobile",
+          "title": "shell expandable groups select subitems and reveal the collapsed sidebar",
+          "file": "app-shell.spec.ts",
+          "line": 79,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:de3ddf94bbc829c059ee-df87b4c7c7fb7ee7c2ef:mobile",
+          "title": "shell navigation, collapse and mobile drawer",
+          "file": "app-shell.spec.ts",
+          "line": 6,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 9,
+      "passed": 9,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,
@@ -1758,6 +1858,46 @@
       "skipped": 0,
       "notRun": 0
     },
+    "shimmer": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-00d2a8099936c345b36b:desktop",
+          "title": "catálogo: shimmer",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:75634c4f453a8575dece-41afed106b7b8762f680:mobile",
+          "title": "shimmer animation, completion, RTL and reduced motion",
+          "file": "typography-shimmer.spec.ts",
+          "line": 20,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:75634c4f453a8575dece-c8c8c1fa527b7b33f455:desktop",
+          "title": "shimmer animation, completion, RTL and reduced motion",
+          "file": "typography-shimmer.spec.ts",
+          "line": 20,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
     "sidebar": {
       "checks": [
         {
@@ -1769,10 +1909,130 @@
           "kind": "render",
           "status": "passed",
           "attempts": 1
+        },
+        {
+          "id": "compositions:13947f1637080b932cf8-0e2b7c01a3f7422d8afd:mobile",
+          "title": "selected indicator follows navigation with subtle fill and stronger icon",
+          "file": "sidebar-selection.spec.ts",
+          "line": 3,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:13947f1637080b932cf8-64bb9135646cde38ed55:mobile",
+          "title": "reduced motion places the indicator directly on the selected item",
+          "file": "sidebar-selection.spec.ts",
+          "line": 42,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:13947f1637080b932cf8-9aa4ae9a88136ea1e907:desktop",
+          "title": "reduced motion places the indicator directly on the selected item",
+          "file": "sidebar-selection.spec.ts",
+          "line": 42,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:13947f1637080b932cf8-eb8c914c5d0cc7d75f9f:desktop",
+          "title": "selected indicator follows navigation with subtle fill and stronger icon",
+          "file": "sidebar-selection.spec.ts",
+          "line": 3,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
         }
       ],
-      "total": 1,
-      "passed": 1,
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "sidebar-profile": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-6bfa88e53b73204966e3:desktop",
+          "title": "catálogo: sidebar-profile",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-0a3a9391434bd1e21d20:desktop",
+          "title": "profile standard actions, keyboard and collapsed sidebar",
+          "file": "sidebar-profile.spec.ts",
+          "line": 9,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-0efa2e6c9a4f14ba4350:mobile",
+          "title": "profile standard actions, keyboard and collapsed sidebar",
+          "file": "sidebar-profile.spec.ts",
+          "line": 9,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-280fba175280872e05b7:desktop",
+          "title": "profile optional actions, links, avatar fallback and pending sign out",
+          "file": "sidebar-profile.spec.ts",
+          "line": 42,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-4981687357b2d4f31537:mobile",
+          "title": "profile optional actions, links, avatar fallback and pending sign out",
+          "file": "sidebar-profile.spec.ts",
+          "line": 42,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-bfcd8cd66e7a7f0030f9:desktop",
+          "title": "profile controlled theme and language selections",
+          "file": "sidebar-profile.spec.ts",
+          "line": 25,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:d8a23f88c48e54d0f776-dceb55f91d408156ed56:mobile",
+          "title": "profile controlled theme and language selections",
+          "file": "sidebar-profile.spec.ts",
+          "line": 25,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,
@@ -2113,6 +2373,46 @@
       ],
       "total": 1,
       "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "typography": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-e2d7de988e609c164086:desktop",
+          "title": "catálogo: typography",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:75634c4f453a8575dece-49a5a90bd02d0e25c9af:desktop",
+          "title": "typography readable at narrow widths with native semantics and refs",
+          "file": "typography-shimmer.spec.ts",
+          "line": 6,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:75634c4f453a8575dece-b1dbfc9187182c4523a2:mobile",
+          "title": "typography readable at narrow widths with native semantics and refs",
+          "file": "typography-shimmer.spec.ts",
+          "line": 6,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,

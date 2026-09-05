@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,14 +34,7 @@ export interface DataPaginationLabels {
   page: (page: number, total: number) => string;
   goTo: (page: number) => string;
 }
-const defaultLabels: DataPaginationLabels = {
-  limit: "Itens por página",
-  pagination: "Paginação",
-  previous: "Página anterior",
-  next: "Próxima página",
-  page: (page, total) => `Página ${page} de ${total}`,
-  goTo: (page) => `Ir para página ${page}`,
-};
+
 
 function getPageNumbers(currentPage: number, totalPages: number): (number | "...")[] {
   if (totalPages <= 7) {
@@ -78,7 +72,12 @@ export function DataPagination({
   labels: customLabels,
   pageSizeOptions = [10, 20, 50],
 }: DataPaginationProps) {
-  const labels = { ...defaultLabels, ...customLabels };
+  const { t } = useLaiTranslation();
+  const labels = {
+    limit: t("pagination.limit"), pagination: t("pagination.label"), previous: t("pagination.previous"), next: t("pagination.next"),
+    page: (page: number, total: number) => t("pagination.page", { page, total }), goTo: (page: number) => t("pagination.goTo", { page }),
+    ...customLabels,
+  };
   const limits = [...new Set([...pageSizeOptions, limit])]
     .filter((n) => Number.isInteger(n) && n > 0)
     .sort((a, b) => a - b);

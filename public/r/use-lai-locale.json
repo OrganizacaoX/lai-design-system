@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-lai-locale",
+  "title": "Use Lai Locale",
+  "dependencies": [
+    "date-fns@4.4.0",
+    "react-day-picker@10.0.1"
+  ],
+  "registryDependencies": [
+    "@lai/use-lai-translation"
+  ],
+  "files": [
+    {
+      "path": "src/hooks/use-lai-locale.ts",
+      "content": "import { ptBR as fallbackLocale } from \"date-fns/locale\";\nimport { ptBR, enUS, es } from \"react-day-picker/locale\";\nimport { useLaiTranslation } from \"@/hooks/use-lai-translation\";\n\n/** Includes translated calendar accessibility labels; explicit locales still win. */\nexport function useLaiLocale() {\n  const { language, i18n } = useLaiTranslation();\n  if (!i18n) return fallbackLocale;\n  if (language.startsWith(\"en\")) return enUS;\n  if (language.startsWith(\"es\")) return es;\n  return ptBR;\n}\n",
+      "type": "registry:hook",
+      "target": "hooks/use-lai-locale.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

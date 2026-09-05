@@ -1,5 +1,6 @@
 "use client"
 
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 import { cn } from "cn"
@@ -43,12 +44,14 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
-  closeLabel = "Fechar",
+  closeLabel,
   ...props
 }: DialogPrimitive.Popup.Props & {
   closeLabel?: string
   showCloseButton?: boolean
 }) {
+  const { t } = useLaiTranslation();
+  closeLabel ??= t("close");
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -95,12 +98,15 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 function DialogFooter({
   className,
   showCloseButton = false,
+  closeLabel,
   children,
   ...props
 }: React.ComponentProps<"div"> & {
   closeLabel?: string
   showCloseButton?: boolean
 }) {
+  const { t, i18n } = useLaiTranslation();
+  closeLabel ??= i18n ? t("close") : "Close";
   return (
     <div
       data-slot="dialog-footer"
@@ -113,7 +119,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close render={<Button variant="outline" />}>
-          Close
+          {closeLabel}
         </DialogPrimitive.Close>
       )}
     </div>

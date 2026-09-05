@@ -1,3 +1,5 @@
+import { Shimmer } from "@/components/ui/shimmer";
+import { TypographyExample } from "./typography-example";
 import { StatusPanel } from "@/components/status-panel";
 import { DataTable } from "@/components/data-table";
 import { DataPagination } from "@/components/data-pagination";
@@ -188,7 +190,65 @@ function BottomSheetExample() {
   );
 }
 
+function ShimmerExample() {
+  const [active, setActive] = useState(true);
+  return <div className="w-full space-y-5">
+    <Shimmer active={active} role="status" className="text-lg">{active ? "Gerando resposta…" : "Resposta concluída"}</Shimmer>
+    <div><Shimmer duration={3500} color="var(--primary)" className="text-sm text-muted-foreground">Analisando os documentos…</Shimmer></div>
+    <Button variant="outline" onClick={() => setActive(value => !value)}>{active ? "Concluir geração" : "Gerar novamente"}</Button>
+  </div>;
+}
+
 export const patternDemos: Demo[] = [
+  {
+    id: "shimmer",
+    title: "Shimmer",
+    description: "Brilho animado no texto para geração de respostas e tarefas em andamento.",
+    node: <ShimmerExample />,
+    code: `import { Shimmer } from "@/components/ui/shimmer"
+
+<Shimmer role="status" active={loading}>Gerando resposta…</Shimmer>
+<Shimmer duration={3500} color="var(--primary)">Analisando documentos…</Shimmer>`,
+  },
+  {
+    id: "typography",
+    title: "Typography",
+    description: "Títulos, parágrafos, citações, listas, links e textos de apoio com a tipografia LAI.",
+    node: <TypographyExample />,
+    code: `import { Title, Lead, Text, InlineCode } from "@/components/ui/typography"
+
+<Title>Uma linguagem compartilhada</Title>
+<Lead>Tipografia para orientar e explicar.</Lead>
+<Text>Use <InlineCode>Text</InlineCode> para o texto principal.</Text>`,
+  },
+  {
+    id: "sidebar-profile",
+    title: "Sidebar Profile",
+    description: "Avatar e menu de conta com perfil, organização, instalação, tema, idioma e saída.",
+    node: <iframe title="Exemplo de Sidebar Profile" src="/examples/app-shell" className="h-[560px] w-full rounded-xl border" />,
+    code: `<AppShell brand="Meu produto" navigation={navigation} footer={
+  <SidebarProfile
+    user={{ name: "Ana Silva", email: "ana@exemplo.com" }}
+    profile={{ onSelect: openProfile }}
+    organization={{ onSelect: openOrganizations }}
+    theme={{ value: theme, onChange: setTheme }}
+    signOut={{ onSelect: signOut, pending: signingOut }}
+  />
+}>{children}</AppShell>`,
+  },
+  {
+    id: "app-shell",
+    title: "App Shell",
+    description: "Estrutura do aplicativo com sidebar, marca, usuário, conteúdo e navegação mobile.",
+    node: <iframe title="Exemplo de App Shell" src="/examples/app-shell" className="h-[560px] w-full rounded-xl border" />,
+    code: `<AppShell
+  brand={<strong>Minha aplicação</strong>}
+  navigation={[{ id: "main", items: [{ id: "home", label: "Início", href: "/", active: true, mobile: true }] }]}
+  footer={<UserMenu />}
+>
+  <PageHeader title="Visão geral" />
+</AppShell>`,
+  },
   {
     id: "status-panel",
     title: "Status Panel",

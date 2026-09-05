@@ -227,6 +227,43 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "use-lai-locale",
+      "type": "registry:hook",
+      "title": "Use Lai Locale",
+      "files": [
+        {
+          "path": "src/hooks/use-lai-locale.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-lai-locale.ts"
+        }
+      ],
+      "dependencies": [
+        "date-fns@4.4.0",
+        "react-day-picker@10.0.1"
+      ],
+      "registryDependencies": [
+        "@lai/use-lai-translation"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "use-lai-translation",
+      "type": "registry:hook",
+      "title": "Use Lai Translation",
+      "files": [
+        {
+          "path": "src/hooks/use-lai-translation.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-lai-translation.ts"
+        }
+      ],
+      "dependencies": [
+        "i18next@26.4.2",
+        "react-i18next@17.0.13"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "use-mobile",
       "type": "registry:hook",
       "title": "Use Mobile",
@@ -381,6 +418,9 @@
         "@base-ui/react@1.8.0",
         "cn@0.2.5",
         "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -459,7 +499,9 @@
         "react-day-picker@10.0.1"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-locale",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -496,7 +538,8 @@
         "lucide-react@1.41.0"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -569,7 +612,8 @@
       ],
       "registryDependencies": [
         "@lai/button",
-        "@lai/input-group"
+        "@lai/input-group",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -591,7 +635,8 @@
       ],
       "registryDependencies": [
         "@lai/dialog",
-        "@lai/input-group"
+        "@lai/input-group",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -630,7 +675,8 @@
         "lucide-react@1.41.0"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -978,7 +1024,8 @@
         "lucide-react@1.41.0"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1140,8 +1187,83 @@
         "lucide-react@1.41.0"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "shimmer",
+      "type": "registry:ui",
+      "title": "Shimmer",
+      "files": [
+        {
+          "path": "src/components/ui/shimmer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shimmer.tsx"
+        }
+      ],
+      "css": {
+        "@property --shimmer-angle": {
+          "syntax": "\"<angle>\"",
+          "inherits": "true",
+          "initial-value": "20deg"
+        },
+        "@property --shimmer-image": {
+          "syntax": "\"*\"",
+          "inherits": "false"
+        },
+        "@property --shimmer-text-fill": {
+          "syntax": "\"*\"",
+          "inherits": "false"
+        },
+        "@theme inline": {
+          "@keyframes tw-shimmer": {
+            "from": {
+              "background-position": "100% 0"
+            },
+            "to": {
+              "background-position": "0 0"
+            }
+          }
+        },
+        "@utility shimmer": {
+          "--_spread": "var(--shimmer-spread, calc(3ch + 40px))",
+          "--_base": "currentColor",
+          "--_highlight": "var(\n    --shimmer-color,\n    oklch(from currentColor l c h / calc(alpha* 0.2))\n  )",
+          "background-image": "var(\n    --shimmer-image,\n    linear-gradient(\n      calc(90deg + var(--shimmer-angle)),\n      var(--_base) calc(50% - var(--_spread)),\n      color-mix(in oklch, var(--_highlight), var(--_base) 50%)\n        calc(50% - var(--_spread) * 0.5),\n      var(--_highlight) 50%,\n      color-mix(in oklch, var(--_highlight), var(--_base) 50%)\n        calc(50% + var(--_spread) * 0.5),\n      var(--_base) calc(50% + var(--_spread))\n    )\n  )",
+          "background-repeat": "no-repeat",
+          "background-size": "calc(200% + var(--_spread) * 2) 100%",
+          "background-position": "0 0",
+          "background-clip": "text",
+          "-webkit-background-clip": "text",
+          "-webkit-text-fill-color": "var(--shimmer-text-fill, transparent)",
+          "animation": "tw-shimmer var(--shimmer-duration, 2s) linear infinite",
+          "@variant dark": {
+            "--_highlight": "var(\n      --shimmer-color,\n      oklch(from currentColor max(0.8, calc(l + 0.4)) c h / calc(alpha + 0.4))\n    )"
+          },
+          "&:where([dir=\"rtl\"], [dir=\"rtl\"] *)": {
+            "animation-direction": "reverse"
+          }
+        },
+        "@utility shimmer-once": {
+          "animation-iteration-count": "1"
+        },
+        "@utility shimmer-reverse": {
+          "animation-direction": "reverse"
+        },
+        "@utility shimmer-none": {
+          "--shimmer-image": "none",
+          "--shimmer-text-fill": "currentColor"
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          ".shimmer": {
+            "animation": "none",
+            "background-image": "none",
+            "-webkit-text-fill-color": "currentColor"
+          }
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1159,7 +1281,8 @@
         "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
         "cn@0.2.5",
-        "lucide-react@1.41.0"
+        "lucide-react@1.41.0",
+        "motion@13.2.0"
       ],
       "registryDependencies": [
         "@lai/button",
@@ -1168,6 +1291,7 @@
         "@lai/sheet",
         "@lai/skeleton",
         "@lai/tooltip",
+        "@lai/use-lai-translation",
         "@lai/use-mobile"
       ]
     },
@@ -1239,6 +1363,9 @@
       "dependencies": [
         "cn@0.2.5",
         "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1326,7 +1453,8 @@
         "lucide-react@1.41.0"
       ],
       "registryDependencies": [
-        "@lai/button"
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1387,6 +1515,42 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "files": [
+        {
+          "path": "src/components/ui/typography.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/typography.tsx"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "app-shell",
+      "type": "registry:component",
+      "title": "App Shell",
+      "files": [
+        {
+          "path": "src/components/app-shell.tsx",
+          "type": "registry:component",
+          "target": "components/app-shell.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/button",
+        "@lai/collapsible",
+        "@lai/sidebar",
+        "@lai/tooltip",
+        "@lai/use-lai-translation"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "bottom-sheet",
       "type": "registry:component",
       "title": "Bottom Sheet",
@@ -1402,7 +1566,8 @@
       ],
       "registryDependencies": [
         "@lai/button",
-        "@lai/drawer"
+        "@lai/drawer",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1419,7 +1584,8 @@
       ],
       "registryDependencies": [
         "@lai/button",
-        "@lai/skeleton"
+        "@lai/skeleton",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1440,7 +1606,8 @@
       "registryDependencies": [
         "@lai/button",
         "@lai/pagination",
-        "@lai/select"
+        "@lai/select",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1463,7 +1630,8 @@
         "@lai/checkbox",
         "@lai/skeleton",
         "@lai/status-panel",
-        "@lai/table"
+        "@lai/table",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1487,6 +1655,8 @@
         "@lai/button",
         "@lai/calendar",
         "@lai/popover",
+        "@lai/use-lai-locale",
+        "@lai/use-lai-translation",
         "@lai/use-mobile"
       ]
     },
@@ -1504,7 +1674,8 @@
       ],
       "registryDependencies": [
         "@lai/button",
-        "@lai/input"
+        "@lai/input",
+        "@lai/use-lai-translation"
       ]
     },
     {
@@ -1518,6 +1689,27 @@
           "type": "registry:component",
           "target": "components/page-header.tsx"
         }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "sidebar-profile",
+      "type": "registry:component",
+      "title": "Sidebar Profile",
+      "files": [
+        {
+          "path": "src/components/sidebar-profile.tsx",
+          "type": "registry:component",
+          "target": "components/sidebar-profile.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/avatar",
+        "@lai/dropdown-menu",
+        "@lai/sidebar"
       ]
     },
     {
@@ -1566,7 +1758,8 @@
       ],
       "registryDependencies": [
         "@lai/button",
-        "@lai/input"
+        "@lai/input",
+        "@lai/use-lai-translation"
       ]
     }
   ]

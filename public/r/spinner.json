@@ -6,10 +6,13 @@
     "cn@0.2.5",
     "lucide-react@1.41.0"
   ],
+  "registryDependencies": [
+    "@lai/use-lai-translation"
+  ],
   "files": [
     {
       "path": "src/components/ui/spinner.tsx",
-      "content": "import { cn } from \"cn\"\nimport { Loader2Icon } from \"lucide-react\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon data-slot=\"spinner\" role=\"status\" aria-label=\"Loading\" className={cn(\"size-4 animate-spin\", className)} {...props} />\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { useLaiTranslation } from \"@/hooks/use-lai-translation\";\nimport { cn } from \"cn\"\nimport { Loader2Icon } from \"lucide-react\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  const { t } = useLaiTranslation();\n  return (\n    <Loader2Icon data-slot=\"spinner\" role=\"status\" aria-label={t(\"loading\", {}, \"Loading\")} className={cn(\"size-4 animate-spin\", className)} {...props} />\n  )\n}\n\nexport { Spinner }\n",
       "type": "registry:ui",
       "target": "components/ui/spinner.tsx"
     }

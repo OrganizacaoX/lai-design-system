@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import { cn } from "cn"
@@ -35,10 +36,11 @@ function ComboboxTrigger({
 }
 
 function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
+  const { t } = useLaiTranslation();
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
-      aria-label="Limpar seleção"
+      aria-label={t("table.clear", {}, "Limpar seleção")}
       render={<InputGroupButton variant="ghost" size="icon-xs" />}
       className={cn(className)}
       {...props}
@@ -54,8 +56,8 @@ function ComboboxInput({
   disabled = false,
   showTrigger = true,
   showClear = false,
-  triggerLabel = "Abrir opções",
-  clearLabel = "Limpar seleção",
+  triggerLabel,
+  clearLabel,
   ...props
 }: ComboboxPrimitive.Input.Props & {
   showTrigger?: boolean
@@ -63,6 +65,9 @@ function ComboboxInput({
   clearLabel?: string
   showClear?: boolean
 }) {
+  const { t } = useLaiTranslation();
+  triggerLabel ??= t("combobox.open", {}, "Abrir opções");
+  clearLabel ??= t("table.clear", {}, "Limpar seleção");
   return (
     <InputGroup className={cn("w-auto", className)}>
       <ComboboxPrimitive.Input
@@ -237,12 +242,14 @@ function ComboboxChip({
   className,
   children,
   showRemove = true,
-  removeLabel = "Remover opção",
+  removeLabel,
   ...props
 }: ComboboxPrimitive.Chip.Props & {
   removeLabel?: string
   showRemove?: boolean
 }) {
+  const { t } = useLaiTranslation();
+  removeLabel ??= t("combobox.remove", {}, "Remover opção");
   return (
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"

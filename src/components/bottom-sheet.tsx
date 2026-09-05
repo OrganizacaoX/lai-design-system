@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useState, type ReactNode, type CSSProperties, useEffect } from "react";
 import { Drawer, DrawerContent, DrawerTitle, DrawerClose } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
@@ -21,8 +22,8 @@ export interface BottomSheetProps {
 
 /** Controlled bottom sheet with accessible title and a scroll area adjusted to the active snap. */
 export function BottomSheet({
-  title = "Painel",
-  closeLabel = "Fechar painel",
+  title,
+  closeLabel,
   isOpen,
   onClose,
   children,
@@ -32,6 +33,9 @@ export function BottomSheet({
   maxHeight = 0.9,
   minHeight = 0.1,
 }: BottomSheetProps) {
+  const { t } = useLaiTranslation();
+  if (title === undefined) title = t("panel.title");
+  closeLabel ??= t("panel.close");
   const initialSnap = snapPoints[initialSnapIndex] ?? snapPoints[0];
   const [snapPoint, setSnapPoint] = useState<number | string | null>(initialSnap);
   useEffect(() => {

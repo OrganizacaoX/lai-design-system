@@ -1,6 +1,26 @@
 # Changelog
 
-## Não publicado
+## 0.4.0 — 2026-09-05
+
+- Base de aplicação: subpaths para TanStack Form/Zod, DnD Kit, TanStack Virtual, Better Auth, Motion, date-fns, Lucide, PostHog, Driver.js, kit Testing Library e TanStack AI com helper shadcn de streaming local.
+
+
+- Internacionalização integrada em `/i18n`: i18next/react-i18next como dependências diretas, factory por aplicação, provider, recursos LAI pt-BR/en/es, persistência opcional, formatação e locale de calendário. Componentes compartilhados traduzem rótulos quando há provider; props explícitas e os padrões anteriores sem provider são preservados. Os hooks de tradução/locale também acompanham os componentes no registry.
+- TanStack Table 9 como dependência direta, com APIs e tipos em `/table`. A API visual de `DataTable` é preservada. `test:app` cobre instalação isolada, tipos de tradução/colunas, idiomas e ordenação/paginação reais no navegador.
+
+- Tipografia: exports renomeados para `Title`, `SubTitle`, `SectionTitle`, `SectionSubTitle`, `Text`, `Quote`, `BulletList`, `NumberedList`, `InlineCode`, `Lead`, `Highlight`, `Caption`, `Description` e `TextLink`. Atualize os imports/JSX com prefixo `Typography`; estilos, propriedades e elementos HTML permanecem iguais. `Label` continua disponível para rótulos de campos.
+
+- `Shimmer` e `@lai/shimmer`: efeito de texto do shadcn com ativação, duração, cor, largura, passagem única e direção configuráveis; CSS incluído no registry e respeito a movimento reduzido.
+
+- `@lai/typography`: 14 componentes semânticos para títulos H1–H4, parágrafos, citação, listas, código inline, links e textos Lead/Large/Small/Muted; exportados pelo pacote, com exemplo completo no catálogo.
+
+- `AppShell`: botão de recolher/fechar movido para dentro da sidebar; removido o cabeçalho interno e a prop `header`. No modo mobile `drawer`, um botão flutuante abre o menu. Renderize cabeçalhos específicos da página em `children`.
+
+- Base de aplicação: Better Fetch, TanStack Query, TanStack Router e Zustand como dependências diretas com versões fixadas; APIs e tipos em `/fetch`, `/query`, `/router` e `/store`. `/app` oferece factories, providers, estados de rota e reset de cache/stores. `/router/vite` fornece geração de rotas com imports LAI. Adição compatível com o entrypoint de UI; consumidores adotam os novos imports conforme migram. Novo `test:app` valida o tarball instalado, tipos, HTTP e fluxos Chromium desktop/mobile.
+
+- `SidebarProfile`: avatar, identificação e dropdown padronizado com ações opcionais de perfil, organização, instalação, tema, idioma e saída; suporte a links, estado de saída pendente e sidebar recolhida/mobile.
+
+- `AppShell` exportado pelo pacote e registry (`@lai/app-shell`): sidebar recolhível, grupos de navegação, slots de marca/usuário/cabeçalho/alertas, integração com links do roteador, atalhos mobile e menu completo. API aditiva; os produtos podem migrar seus layouts sem mover regras de acesso para o design system.
 
 ## 0.3.0
 

@@ -323,3 +323,39 @@ Um hash de conteúdo inclui componentes, documentação, testes e configuraçõe
 Ao reconstruir a documentação após uma mudança, evidências anteriores aparecem
 como desatualizadas até executar novamente a validação completa. Sem relatório,
 a tela informa ausência de execução; nunca presume que os testes passaram.
+
+## App shell compartilhado
+
+`AppShell` reúne sidebar recolhível, marca, usuário, alertas e
+navegação mobile. Disponível no pacote e em `@lai/app-shell`, com exemplo em
+`/examples/app-shell`. Consulte [a API e a integração com roteadores](docs/app-shell.md).
+
+## Base de aplicação
+
+O pacote também entrega Better Fetch, TanStack Query, TanStack Router e Zustand
+como dependências diretas. O frontend instala o LAI e importa as APIs por
+`/fetch`, `/query`, `/router` e `/store`; `/app` fornece configuração integrada,
+providers e limpeza de estado. Para rotas por arquivo, use `laiRouter` de
+`@organizacaox/lai-design-system/router/vite`.
+
+Veja [a configuração, os contratos e o exemplo completo](docs/app-base.md).
+Valide o pacote instalado com `bun run package:build && bun run test:app`.
+
+## Tipografia e efeito de texto
+
+`@lai/typography` oferece títulos H1–H4, parágrafos, citações, listas, links,
+código inline e textos de apoio. Veja [Typography](docs/typography.md).
+`@lai/shimmer` oferece o brilho de texto do shadcn com controle de duração,
+ativação e movimento reduzido. Veja [Shimmer](docs/shimmer.md).
+Ambos também são exportados pelo pacote React e têm exemplos no catálogo.
+
+A base também inclui **i18next/react-i18next** em `/i18n` e **TanStack Table 9**
+em `/table`. `createAppI18n` fornece instâncias isoladas com mensagens LAI em
+português, inglês e espanhol; `AppProviders` recebe `i18n` para traduzir os
+componentes automaticamente. Rótulos explícitos e o uso sem provider continuam
+compatíveis. Veja os exemplos de idiomas, persistência e tabelas no guia acima.
+
+A base também oferece formulários com Zod, ordenação, virtualização, Better Auth,
+Motion, datas, ícones, PostHog, tours, TanStack AI e helpers de teste através de
+subpaths do pacote. Consulte [Integrações de aplicação](docs/app-platform.md) e
+[o plano de implementação](docs/app-platform-plan.md).

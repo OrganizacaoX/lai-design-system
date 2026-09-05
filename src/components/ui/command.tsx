@@ -1,5 +1,6 @@
 "use client"
 
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 import { cn } from "cn"
@@ -34,8 +35,8 @@ function Command({
 }
 
 function CommandDialog({
-  title = "Command Palette",
-  description = "Search for a command to run...",
+  title,
+  description,
   children,
   className,
   showCloseButton = false,
@@ -47,6 +48,9 @@ function CommandDialog({
   showCloseButton?: boolean
   children: React.ReactNode
 }) {
+  const { t } = useLaiTranslation();
+  title ??= t("command.title", {}, "Command Palette");
+  description ??= t("command.description", {}, "Search for a command to run...");
   return (
     <Dialog {...props}>
       <DialogContent

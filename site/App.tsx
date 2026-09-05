@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Search, Sun } from "lucide-react";
 
+import { SidebarActiveIndicator, SidebarSelectionGroup } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/sonner";
@@ -84,13 +85,14 @@ function NavLink({
         }
       }}
       className={cn(
-        "w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors",
+        "relative isolate w-full rounded-md px-3 py-1.5 text-left text-sm transition-[background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none",
         indent && "pl-4 text-[0.8rem]",
         active
-          ? "bg-accent font-medium text-accent-foreground"
+          ? "font-semibold text-foreground"
           : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
       )}
     >
+      {active && <SidebarActiveIndicator />}
       {children}
     </a>
   );
@@ -112,65 +114,67 @@ function Nav({
     : allDemos;
 
   return (
-    <nav aria-label="Documentação" className="grid gap-0.5">
-      <p className="px-3 py-1.5 text-xs font-medium text-muted-foreground">
-        Começar
-      </p>
-      <NavLink
-        href="/instalacao"
-        active={view === "instalacao"}
-        onClick={() => onGo("instalacao")}
-      >
-        Instalação
-      </NavLink>
-      <NavLink
-        href="/componentes"
-        active={
-          view === "componentes" && window.location.pathname === "/componentes"
-        }
-        onClick={() => onGo("componentes")}
-      >
-        Componentes
-      </NavLink>
-      <a
-        href="/fundamentos"
-        className="block w-full rounded-md px-3 py-1.5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
-      >
-        Guia visual
-      </a>
-
-      <div className="mt-4 mb-1 px-1">
-        <InputGroup className="h-8">
-          <InputGroupAddon>
-            <Search />
-          </InputGroupAddon>
-          <InputGroupInput
-            placeholder="Buscar componente..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Buscar componente"
-          />
-        </InputGroup>
-      </div>
-
-      {filtered.length === 0 ? (
-        <p className="px-3 py-2 text-[0.8rem] text-muted-foreground">
-          Nenhum componente encontrado.
+    <SidebarSelectionGroup>
+      <nav aria-label="Documentação" className="grid gap-0.5">
+        <p className="px-3 py-1.5 text-xs font-medium text-muted-foreground">
+          Começar
         </p>
-      ) : (
-        filtered.map((d) => (
-          <NavLink
-            key={d.id}
-            href={`/componentes/${d.id}`}
-            active={window.location.pathname === `/componentes/${d.id}`}
-            indent
-            onClick={() => onGoComponent(d.id)}
-          >
-            {d.title}
-          </NavLink>
-        ))
-      )}
-    </nav>
+        <NavLink
+          href="/instalacao"
+          active={view === "instalacao"}
+          onClick={() => onGo("instalacao")}
+        >
+          Instalação
+        </NavLink>
+        <NavLink
+          href="/componentes"
+          active={
+            view === "componentes" && window.location.pathname === "/componentes"
+          }
+          onClick={() => onGo("componentes")}
+        >
+          Componentes
+        </NavLink>
+        <a
+          href="/fundamentos"
+          className="block w-full rounded-md px-3 py-1.5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
+        >
+          Guia visual
+        </a>
+
+        <div className="mt-4 mb-1 px-1">
+          <InputGroup className="h-8">
+            <InputGroupAddon>
+              <Search />
+            </InputGroupAddon>
+            <InputGroupInput
+              placeholder="Buscar componente..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Buscar componente"
+            />
+          </InputGroup>
+        </div>
+
+        {filtered.length === 0 ? (
+          <p className="px-3 py-2 text-[0.8rem] text-muted-foreground">
+            Nenhum componente encontrado.
+          </p>
+        ) : (
+          filtered.map((d) => (
+            <NavLink
+              key={d.id}
+              href={`/componentes/${d.id}`}
+              active={window.location.pathname === `/componentes/${d.id}`}
+              indent
+              onClick={() => onGoComponent(d.id)}
+            >
+              {d.title}
+            </NavLink>
+          ))
+        )}
+      </nav>
+    </SidebarSelectionGroup>
   );
 }
 

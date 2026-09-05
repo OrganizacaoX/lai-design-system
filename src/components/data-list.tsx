@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import type { ReactNode, Key } from "react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -22,13 +23,20 @@ export function DataList<T>({
   loading,
   error,
   onRetry,
-  label = "Resultados",
-  emptyTitle = "Nenhum resultado",
-  emptyDescription = "Ajuste os filtros ou adicione um registro.",
+  label,
+  emptyTitle,
+  emptyDescription,
   emptyAction,
-  loadingLabel = "Carregando resultados…",
-  retryLabel = "Tentar novamente",
+  loadingLabel,
+  retryLabel,
 }: DataListProps<T>) {
+  const { t } = useLaiTranslation();
+  label ??= t("list.label");
+  emptyTitle ??= t("list.empty");
+  emptyDescription ??= t("list.description");
+  loadingLabel ??= t("table.loading");
+  retryLabel ??= t("retry");
+
   if (loading)
     return (
       <section

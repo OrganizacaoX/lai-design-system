@@ -1,3 +1,4 @@
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useId, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -22,11 +23,17 @@ export function ValidatedForm({
   fields,
   initialValues = {},
   onSubmit,
-  submitLabel = "Salvar",
-  pendingLabel = "Salvando…",
-  successMessage = "Alterações salvas.",
-  errorMessage = "Não foi possível salvar. Tente novamente.",
+  submitLabel,
+  pendingLabel,
+  successMessage,
+  errorMessage,
 }: ValidatedFormProps) {
+  const { t } = useLaiTranslation();
+  submitLabel ??= t("form.save");
+  pendingLabel ??= t("form.pending");
+  successMessage ??= t("form.success");
+  errorMessage ??= t("form.error");
+
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
   const submitting = useRef(false);

@@ -1,5 +1,7 @@
 "use client"
 
+import { useLaiLocale } from "@/hooks/use-lai-locale";
+import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import * as React from "react"
 import { cn } from "cn"
 import {
@@ -18,13 +20,16 @@ function Calendar({
   showOutsideDays = true,
   captionLayout = "label",
   buttonVariant = "ghost",
-  locale,
+  locale: customLocale,
   formatters,
   components,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
 }) {
+  const { i18n } = useLaiTranslation();
+  const defaultLocale = useLaiLocale();
+  const locale = customLocale ?? (i18n ? defaultLocale : undefined);
   const defaultClassNames = getDefaultClassNames()
 
   return (
