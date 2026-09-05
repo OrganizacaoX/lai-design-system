@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T03:04:42.061Z",
-  "sourceFingerprint": "939f7c885c26d56ff8ab20f48485af7535de9638bda55cbb819f6af680d2beed",
+  "generatedAt": "2026-09-05T03:15:45.213Z",
+  "sourceFingerprint": "ca49960605fdb7ac51bf09e927a74e8113e7877eed22c45098b4169653f994ac",
   "sourceChangedDuringRun": false,
-  "commit": "3d9179014a27fe4fcf113814c9e9e44398097ea8",
+  "commit": "3bcb092b0a90a059a75fbd81ccc35eb5bfec74d1",
   "dirty": true,
   "runs": [
     {
@@ -1671,6 +1671,26 @@
           "attempts": 1
         },
         {
+          "id": "browser:bef95681877fac12fa7e-38fac510dc5fe6b65a74:mobile",
+          "title": "select mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-3a146c60eb54d08b7827:desktop",
+          "title": "select mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
           "id": "browser:bef95681877fac12fa7e-98572923d62429241b7d:mobile",
           "title": "playground select: erro acessível e controle desabilitado",
           "file": "evolution.spec.ts",
@@ -1691,8 +1711,8 @@
           "attempts": 1
         }
       ],
-      "total": 9,
-      "passed": 9,
+      "total": 11,
+      "passed": 11,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,
@@ -1889,10 +1909,30 @@
           "kind": "render",
           "status": "passed",
           "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-3ddd3593ec42b22982a1:mobile",
+          "title": "switch mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-4ea6f22079f986174d86:desktop",
+          "title": "switch mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
         }
       ],
-      "total": 1,
-      "passed": 1,
+      "total": 3,
+      "passed": 3,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,
@@ -1929,10 +1969,30 @@
           "kind": "render",
           "status": "passed",
           "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-2f6a2bb8395840ff233f:desktop",
+          "title": "tabs mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-cb519aeaef8848d111e7:mobile",
+          "title": "tabs mantém cursor e interação sem a regra global",
+          "file": "evolution.spec.ts",
+          "line": 282,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
         }
       ],
-      "total": 1,
-      "passed": 1,
+      "total": 3,
+      "passed": 3,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,

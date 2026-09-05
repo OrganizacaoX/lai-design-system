@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 test(
@@ -250,6 +250,15 @@ test("button mantém cursor de clique sem a regra global do tema", { tag: ["@com
   await page.goto("/componentes/button");
   const buttons = page.locator('#example-button [data-slot="button"]');
   await expect(buttons.first()).toBeVisible();
+  await removeGlobalCursorRules(page);
+  for (const button of await buttons.all()) {
+    await expect(button).toHaveClass(/\bcursor-pointer\b/);
+    await expect(button).toHaveCSS("cursor", "pointer");
+  }
+  await expect(page.locator('[data-slot="button"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
+});
+
+async function removeGlobalCursorRules(page: Page) {
   const removed = await page.evaluate(() => {
     let removed = 0;
     function strip(sheet: CSSStyleSheet | CSSGroupingRule) {
@@ -267,9 +276,32 @@ test("button mantém cursor de clique sem a regra global do tema", { tag: ["@com
     return removed;
   });
   expect(removed).toBeGreaterThan(0);
-  for (const button of await buttons.all()) {
-    await expect(button).toHaveClass(/\bcursor-pointer\b/);
-    await expect(button).toHaveCSS("cursor", "pointer");
-  }
-  await expect(page.locator('[data-slot="button"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
-});
+}
+
+for (const [id, slot] of [["switch", "switch"], ["tabs", "tabs-trigger"], ["select", "select-trigger"]]) {
+  test(`${id} mantém cursor e interação sem a regra global`, { tag: [`@component:${id}`, "@kind:interaction"] }, async ({ page }) => {
+    await page.goto(`/componentes/${id}`);
+    const example = page.locator(`#example-${id}`);
+    const controls = example.locator(`[data-slot="${slot}"]`);
+    await expect(controls.first()).toBeVisible();
+    await removeGlobalCursorRules(page);
+    for (const control of await controls.all()) await expect(control).toHaveCSS("cursor", "pointer");
+    if (id === "switch") {
+      await controls.first().click();
+      await expect(controls.first()).not.toBeChecked();
+      await expect(controls.first()).toHaveCSS("cursor", "pointer");
+    } else if (id === "tabs") {
+      await example.getByRole("tab", { name: "Senha", exact: true }).click();
+      await expect(example.getByRole("tab", { name: "Senha", exact: true })).toHaveAttribute("aria-selected", "true");
+      await expect(example.getByText("Altere sua senha aqui.", {exact:true})).toBeVisible();
+    } else {
+      await controls.first().click();
+      const options = page.getByRole("listbox").getByRole("option");
+      await expect(options.first()).toBeVisible();
+      for (const option of await options.all()) await expect(option).toHaveCSS("cursor", "pointer");
+      await options.first().click();
+      await expect(page.getByRole("listbox")).toBeHidden();
+      await expect(page.locator('[data-slot="select-trigger"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
+    }
+  });
+}
