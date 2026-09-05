@@ -151,13 +151,23 @@ try {
     await page.getByRole("button", { name: "Save platform form" }).click();
     await expect(page.getByTestId("saved")).toHaveText("Ana Maria");
     const sortable = page.getByRole("list", { name: "People order" });
-    await sortable.getByRole("button", { name: "Move Ana" }).focus();
-    await page.keyboard.press("Space");
-    await expect(sortable.getByRole("button", { name: "Move Ana" })).toHaveAttribute("aria-pressed", "true");
-    await page.keyboard.press("ArrowDown");
-    await expect(page.locator('[id^="DndLiveRegion"]')).toContainText("2/3");
-    await page.keyboard.press("Space");
-    await expect(sortable.getByRole("listitem")).toHaveText(["⠿Bruno", "⠿Ana", "⠿Carla"]);
+    for (const [key, position, order] of [
+      ["ArrowDown", "2/3", ["⠿Bruno", "⠿Ana", "⠿Carla"]],
+      ["ArrowUp", "1/3", ["⠿Ana", "⠿Bruno", "⠿Carla"]],
+      ["ArrowDown", "2/3", ["⠿Bruno", "⠿Ana", "⠿Carla"]],
+    ]) {
+      await sortable.getByRole("button", { name: "Move Ana" }).focus();
+      await page.keyboard.press("Space");
+      await expect(sortable.getByRole("button", { name: "Move Ana" })).toHaveAttribute("aria-pressed", "true");
+      // KeyboardSensor defers its keydown listener with setTimeout(0), while
+      // droppable measurements settle on render. aria-pressed alone is too early.
+      // Let activation paint before sending the next distinct keyboard action.
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      await page.keyboard.press(key);
+      await expect(page.locator('[id^="DndLiveRegion"]')).toContainText(position);
+      await page.keyboard.press("Space");
+      await expect(sortable.getByRole("listitem")).toHaveText(order);
+    }
     const virtual = page.getByRole("list", { name: "Virtual people" });
     assert(await virtual.getByRole("listitem").count() < 30);
     await virtual.evaluate(element => { element.scrollTop = element.scrollHeight; });
