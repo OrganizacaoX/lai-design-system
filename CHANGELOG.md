@@ -1,6 +1,8 @@
 # Changelog
 
-## Não publicado
+## 0.2.0
+
+- Documentação em largura total e exemplos de comandos com Bun.
 
 - `DataTable`, `DataPagination` e `BottomSheet` compartilhados no pacote e registry, com textos configuráveis e testes em desktop/mobile.
 - `DateRangePicker`: limpeza opcional, fechamento após completar o intervalo e seleção de um único dia; `isMobile()` para consultas de largura em eventos.
@@ -17,8 +19,7 @@
 ### Compatibilidade
 
 O pacote completo declara React 19, corrigindo a faixa anterior de React 18/19:
-`@shadcn/react`, uma dependência já existente, exige React 19. Essa correção deve
-ser tratada como mudança de compatibilidade na próxima publicação. Itens do
+`@shadcn/react`, uma dependência já existente, exige React 19. Essa correção é uma mudança de compatibilidade nesta versão. Itens do
 registry sem essa dependência são validados separadamente com React 18.
 
 ### Migração

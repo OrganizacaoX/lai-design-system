@@ -26,7 +26,6 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - run: npm run test:compositions
-      - run: npm run test:compositions
       - run: npm run test:consumers
       - uses: actions/upload-artifact@v4
         if: failure()

@@ -223,7 +223,7 @@ export function App() {
         Ir para conteúdo
       </a>
       <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4">
+        <div className="flex h-14 w-full items-center gap-2 px-4">
           {/* Menu mobile */}
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger
@@ -302,7 +302,7 @@ export function App() {
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-6xl gap-8 px-4 py-6 sm:py-8">
+      <div className="flex w-full gap-8 px-4 py-6 sm:py-8">
         <aside className="sticky top-20 hidden h-[calc(100svh-6rem)] w-56 shrink-0 overflow-y-auto md:block">
           <Nav view={view} onGo={go} onGoComponent={goComponent} />
         </aside>

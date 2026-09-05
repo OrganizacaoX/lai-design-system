@@ -32,7 +32,7 @@ export function InstallPage() {
   const registryUrl = `${origin}/r/{name}.json`;
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="w-full">
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight">Instalação</h1>
         <p className="mt-2 text-muted-foreground">

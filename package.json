@@ -1,6 +1,6 @@
 {
   "name": "@organizacaox/lai-design-system",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Componentes React e registry shadcn do design system LAI.",
   "type": "module",
   "main": "./lib/index.js",
