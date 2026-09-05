@@ -368,3 +368,44 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+
+// ChartContainer is only usable together with recharts primitives, so consumers
+// had to depend on recharts directly. That pulled a second copy of the library
+// whenever their version differed from ours, splitting recharts' React context
+// across two instances. Re-exported here so the design system stays the single
+// source of the chart runtime.
+// Label, Tooltip and Legend keep a Recharts prefix: the bare names belong to the
+// LAI components of the same name.
+export {
+  Label as RechartsLabel,
+  Legend as RechartsLegend,
+  Tooltip as RechartsTooltip,
+} from "recharts"
+export {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  RadialBar,
+  RadialBarChart,
+  ReferenceArea,
+  ReferenceLine,
+  ResponsiveContainer,
+  Scatter,
+  ScatterChart,
+  XAxis,
+  YAxis,
+  ZAxis,
+} from "recharts"

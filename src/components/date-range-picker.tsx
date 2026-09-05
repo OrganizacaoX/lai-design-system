@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
+// DateRangePickerProps and DateRangePreset are public API and are typed with
+// DateRange and Locale, which come from react-day-picker and date-fns. Without
+// these re-exports a consumer has to install both packages just to name a prop.
+export type { DateRange } from "react-day-picker";
+export type { Locale } from "date-fns";
+
 export type DateRangePreset = { label: string; range: DateRange };
 export interface DateRangePickerProps {
   value?: DateRange;
