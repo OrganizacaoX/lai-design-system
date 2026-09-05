@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-bar",
+  "title": "Filter Bar",
+  "registryDependencies": [
+    "@lai/button",
+    "@lai/input"
+  ],
+  "files": [
+    {
+      "path": "src/components/filter-bar.tsx",
+      "content": "import { useId, type ReactNode } from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport { Button } from \"@/components/ui/button\";\nexport interface FilterBarProps {\n  query: string;\n  onQueryChange: (query: string) => void;\n  onReset?: () => void;\n  label?: string;\n  resetLabel?: string;\n  children?: ReactNode;\n}\nexport function FilterBar({\n  query,\n  onQueryChange,\n  onReset,\n  label = \"Buscar registros\",\n  resetLabel = \"Limpar filtros\",\n  children,\n}: FilterBarProps) {\n  const id = useId();\n  return (\n    <section\n      aria-label=\"Filtros\"\n      className=\"flex flex-wrap items-end gap-3 rounded-xl border bg-card p-4\"\n    >\n      <div className=\"min-w-0 flex-1 basis-48\">\n        <label htmlFor={id} className=\"mb-2 block text-sm font-medium\">\n          {label}\n        </label>\n        <Input\n          id={id}\n          type=\"search\"\n          value={query}\n          onChange={(event) => onQueryChange(event.target.value)}\n        />\n      </div>\n      {children}\n      {onReset && (\n        <Button variant=\"outline\" onClick={onReset}>\n          {resetLabel}\n        </Button>\n      )}\n    </section>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/filter-bar.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

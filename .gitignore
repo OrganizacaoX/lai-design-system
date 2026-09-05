@@ -3,3 +3,6 @@ dist/
 lib/
 *.log
 .DS_Store
+test-results/
+playwright-report/
+.consumer-check/

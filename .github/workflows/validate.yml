@@ -1,0 +1,35 @@
+name: Validate design system
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - name: Verify generated artifacts
+        run: |
+          if [ -n "$(git status --porcelain -- registry.json public/r site/catalog.json)" ]; then
+            git status --short -- registry.json public/r site/catalog.json
+            exit 1
+          fi
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - run: npm run test:compositions
+      - run: npm run test:compositions
+      - run: npm run test:consumers
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failures
+          path: test-results/

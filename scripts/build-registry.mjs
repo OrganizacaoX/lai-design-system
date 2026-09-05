@@ -1,3 +1,4 @@
+import postcss from "postcss";
 // Gera o registry.json a partir dos componentes reais do projeto.
 //
 // Escaneia src/components/ui, src/components e src/hooks, deduz as
@@ -178,6 +179,14 @@ function buildThemeItem() {
     return vars;
   };
 
+  function cssObject(node) {
+    return Object.fromEntries((node.nodes ?? []).filter(child => child.type !== "comment").map(child =>
+      child.type === "decl"
+        ? [child.prop, child.value + (child.important ? " !important" : "")]
+        : [child.type === "rule" ? child.selector : `@${child.name} ${child.params}`, cssObject(child)]
+    ));
+  }
+
   const root = parseBlock(":root");
   const dark = parseBlock("\\.dark");
   const themeInline = parseBlock("@theme inline");
@@ -186,9 +195,13 @@ function buildThemeItem() {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: "theme",
     type: "registry:theme",
-    title: "LAI Disk Theme",
+    title: "LAI Theme",
     description:
       "Tokens de design do LAI Disk: cores (oklch) light/dark, tipografia e escala de raios.",
+    css: Object.fromEntries(postcss.parse(css).nodes.filter(node =>
+      (node.type === "rule" && (node.selector.startsWith("[data-density=") || node.selector.startsWith('[data-slot='))) ||
+      (node.type === "atrule" && node.name === "media" && node.params === "(prefers-reduced-motion: reduce)")
+    ).map(node => [node.type === "rule" ? node.selector : `@${node.name} ${node.params}`, cssObject(node)])),
     cssVars: {
       theme: themeInline,
       light: root,

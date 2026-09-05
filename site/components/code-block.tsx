@@ -66,6 +66,8 @@ export function CodeBlock({
       <Highlight theme={laiCodeTheme} code={code} language={lang}>
         {({ className: hlClass, style, tokens, getLineProps, getTokenProps }) => (
           <pre
+            tabIndex={0}
+            aria-label="Exemplo de código"
             className={cn(
               hlClass,
               "overflow-x-auto rounded-lg border bg-muted/40 p-4 text-sm leading-relaxed",
@@ -88,7 +90,7 @@ export function CodeBlock({
         size="icon"
         variant="ghost"
         onClick={copy}
-        className="absolute right-2 top-2 size-7 opacity-0 transition-opacity group-hover:opacity-100"
+        className="absolute right-2 top-2 size-7 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
         aria-label="Copiar"
       >
         {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}

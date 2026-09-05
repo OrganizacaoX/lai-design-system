@@ -1,0 +1,499 @@
+[
+  {
+    "id": "accordion",
+    "title": "Accordion",
+    "description": "Seções expansíveis.",
+    "group": "core",
+    "api": "Accordion({ className, ...props }: AccordionPrimitive.Root.Props)\n\nAccordionItem({ className, ...props }: AccordionPrimitive.Item.Props)\n\nAccordionTrigger({\n  className,\n  children,\n  ...props\n}: AccordionPrimitive.Trigger.Props)\n\nAccordionContent({\n  className,\n  children,\n  ...props\n}: AccordionPrimitive.Panel.Props)"
+  },
+  {
+    "id": "alert",
+    "title": "Alert",
+    "description": "Mensagem com ícone.",
+    "group": "core",
+    "api": "Alert({\n  className,\n  variant,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>)\n\nAlertTitle({ className, ...props }: React.ComponentProps<\"div\">)\n\nAlertDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAlertAction({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "alert-dialog",
+    "title": "Alert Dialog",
+    "description": "Confirmação destrutiva.",
+    "group": "extra",
+    "api": "AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props)\n\nAlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props)\n\nAlertDialogPortal({ ...props }: AlertDialogPrimitive.Portal.Props)\n\nAlertDialogOverlay({\n  className,\n  ...props\n}: AlertDialogPrimitive.Backdrop.Props)\n\nAlertDialogContent({\n  className,\n  size = \"default\",\n  ...props\n}: AlertDialogPrimitive.Popup.Props & {\n  size?: \"default\" | \"sm\"\n})\n\nAlertDialogHeader({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAlertDialogFooter({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAlertDialogMedia({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAlertDialogTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof AlertDialogPrimitive.Title>)\n\nAlertDialogDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof AlertDialogPrimitive.Description>)\n\nAlertDialogAction({\n  className,\n  ...props\n}: React.ComponentProps<typeof Button>)\n\nAlertDialogCancel({\n  className,\n  variant = \"outline\",\n  size = \"default\",\n  ...props\n}: AlertDialogPrimitive.Close.Props &\n  Pick<React.ComponentProps<typeof Button>, \"variant\" | \"size\">)"
+  },
+  {
+    "id": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Proporção fixa.",
+    "group": "extra",
+    "api": "AspectRatio({\n  ratio,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number })"
+  },
+  {
+    "id": "attachment",
+    "title": "Attachment",
+    "description": "Arquivo anexado e estados de processamento.",
+    "group": "messaging",
+    "api": "Attachment({\n  className,\n  state = \"done\",\n  size = \"default\",\n  orientation = \"horizontal\",\n  ...props\n}: React.ComponentProps<\"div\"> &\n  VariantProps<typeof attachmentVariants> & {\n    state?: \"idle\" | \"uploading\" | \"processing\" | \"error\" | \"done\"\n  })\n\nAttachmentMedia({\n  className,\n  variant = \"icon\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof attachmentMediaVariants>)\n\nAttachmentContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAttachmentTitle({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)\n\nAttachmentDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)\n\nAttachmentActions({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nAttachmentAction({\n  className,\n  variant,\n  size = \"icon-xs\",\n  ...props\n}: React.ComponentProps<typeof Button>)\n\nAttachmentTrigger({\n  className,\n  render,\n  type,\n  ...props\n}: useRender.ComponentProps<\"button\">)\n\nAttachmentGroup({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "avatar",
+    "title": "Avatar",
+    "description": "Imagem de perfil com fallback.",
+    "group": "core",
+    "api": "Avatar({\n  className,\n  size = \"default\",\n  ...props\n}: AvatarPrimitive.Root.Props & {\n  size?: \"default\" | \"sm\" | \"lg\"\n})\n\nAvatarImage({ className, ...props }: AvatarPrimitive.Image.Props)\n\nAvatarFallback({\n  className,\n  ...props\n}: AvatarPrimitive.Fallback.Props)\n\nAvatarBadge({ className, ...props }: React.ComponentProps<\"span\">)\n\nAvatarGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nAvatarGroupCount({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "badge",
+    "title": "Badge",
+    "description": "Etiquetas de status.",
+    "group": "core",
+    "api": "Badge({\n  className,\n  variant = \"default\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants>)"
+  },
+  {
+    "id": "bottom-sheet",
+    "title": "Bottom Sheet",
+    "description": "Painel inferior controlado com alturas de abertura configuráveis.",
+    "group": "patterns",
+    "api": "export interface BottomSheetProps {\n  title?: ReactNode;\n  closeLabel?: string;\n  isOpen: boolean;\n  onClose: () => void;\n  children: ReactNode;\n  className?: string;\n  snapPoints?: number[];\n  initialSnapIndex?: number;\n  maxHeight?: number;\n  minHeight?: number;\n}\n\nBottomSheet({\n  title = \"Painel\",\n  closeLabel = \"Fechar painel\",\n  isOpen,\n  onClose,\n  children,\n  className,\n  snapPoints = DEFAULT_SNAP_POINTS,\n  initialSnapIndex = 1,\n  maxHeight = 0.9,\n  minHeight = 0.1,\n}: BottomSheetProps)"
+  },
+  {
+    "id": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Trilha de navegação.",
+    "group": "core",
+    "api": "Breadcrumb({ className, ...props }: React.ComponentProps<\"nav\">)\n\nBreadcrumbList({ className, ...props }: React.ComponentProps<\"ol\">)\n\nBreadcrumbItem({ className, ...props }: React.ComponentProps<\"li\">)\n\nBreadcrumbLink({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"a\">)\n\nBreadcrumbPage({ className, ...props }: React.ComponentProps<\"span\">)\n\nBreadcrumbSeparator({\n  children,\n  className,\n  ...props\n}: React.ComponentProps<\"li\">)\n\nBreadcrumbEllipsis({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "bubble",
+    "title": "Bubble",
+    "description": "Conteúdo de conversa com alinhamento e variantes.",
+    "group": "messaging",
+    "api": "BubbleGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nBubble({\n  variant = \"default\",\n  align = \"start\",\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> &\n  VariantProps<typeof bubbleVariants> & {\n    align?: \"start\" | \"end\"\n  })\n\nBubbleContent({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\">)\n\nBubbleReactions({\n  side = \"bottom\",\n  align = \"end\",\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  align?: \"start\" | \"end\"\n  side?: \"top\" | \"bottom\"\n})"
+  },
+  {
+    "id": "button",
+    "title": "Button",
+    "description": "Variantes e tamanhos.",
+    "group": "core",
+    "api": "Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>)"
+  },
+  {
+    "id": "button-group",
+    "title": "Button Group",
+    "description": "Botões agrupados.",
+    "group": "extra",
+    "api": "ButtonGroup({\n  className,\n  orientation,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof buttonGroupVariants>)\n\nButtonGroupText({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\">)\n\nButtonGroupSeparator({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: React.ComponentProps<typeof Separator>)"
+  },
+  {
+    "id": "calendar",
+    "title": "Calendar",
+    "description": "Seleção de data.",
+    "group": "extra",
+    "api": "Calendar({\n  className,\n  classNames,\n  showOutsideDays = true,\n  captionLayout = \"label\",\n  buttonVariant = \"ghost\",\n  locale,\n  formatters,\n  components,\n  ...props\n}: React.ComponentProps<typeof DayPicker> & {\n  buttonVariant?: React.ComponentProps<typeof Button>[\"variant\"]\n})\n\nCalendarDayButton({\n  className,\n  day,\n  modifiers,\n  locale,\n  ...props\n}: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> })"
+  },
+  {
+    "id": "card",
+    "title": "Card",
+    "description": "Contêiner de conteúdo.",
+    "group": "core",
+    "api": "Card({\n  className,\n  size = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & { size?: \"default\" | \"sm\" })\n\nCardHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nCardTitle({ className, ...props }: React.ComponentProps<\"div\">)\n\nCardDescription({ className, ...props }: React.ComponentProps<\"div\">)\n\nCardAction({ className, ...props }: React.ComponentProps<\"div\">)\n\nCardContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nCardFooter({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "carousel",
+    "title": "Carousel",
+    "description": "Slides navegáveis.",
+    "group": "extra",
+    "api": "type CarouselApi = UseEmblaCarouselType[1]\n\ntype UseCarouselParameters = Parameters<typeof useEmblaCarousel>\n\ntype CarouselOptions = UseCarouselParameters[0]\n\ntype CarouselPlugin = UseCarouselParameters[1]\n\ntype CarouselProps = {\n  opts?: CarouselOptions\n  plugins?: CarouselPlugin\n  orientation?: \"horizontal\" | \"vertical\"\n  setApi?: (api: CarouselApi) => void\n}\n\ntype CarouselContextProps = {\n  carouselRef: ReturnType<typeof useEmblaCarousel>[0]\n  api: ReturnType<typeof useEmblaCarousel>[1]\n  scrollPrev: () => void\n  scrollNext: () => void\n  canScrollPrev: boolean\n  canScrollNext: boolean\n} & CarouselProps\n\nuseCarousel()\n\nCarousel({\n  orientation = \"horizontal\",\n  opts,\n  setApi,\n  plugins,\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & CarouselProps)\n\nCarouselContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nCarouselItem({ className, ...props }: React.ComponentProps<\"div\">)\n\nCarouselPrevious({\n  className,\n  variant = \"outline\",\n  size = \"icon-sm\",\n  ...props\n}: React.ComponentProps<typeof Button>)\n\nCarouselNext({\n  className,\n  variant = \"outline\",\n  size = \"icon-sm\",\n  ...props\n}: React.ComponentProps<typeof Button>)"
+  },
+  {
+    "id": "chart",
+    "title": "Chart",
+    "description": "Gráficos com Recharts + tokens do tema.",
+    "group": "advanced",
+    "api": "type TooltipNameType = number | string\n\nexport type ChartConfig = Record<\n  string,\n  {\n    label?: React.ReactNode\n    icon?: React.ComponentType\n  } & (\n    | { color?: string; theme?: never }\n    | { color?: never; theme: Record<keyof typeof THEMES, string> }\n  )\n>\n\ntype ChartContextProps = {\n  config: ChartConfig\n}\n\nuseChart()\n\nChartContainer({\n  id,\n  className,\n  children,\n  config,\n  initialDimension = INITIAL_DIMENSION,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  config: ChartConfig\n  children: React.ComponentProps<\n    typeof RechartsPrimitive.ResponsiveContainer\n  >[\"children\"]\n  initialDimension?: {\n    width: number\n    height: number\n  }\n})\n\nChartTooltipContent({\n  active,\n  payload,\n  className,\n  indicator = \"dot\",\n  hideLabel = false,\n  hideIndicator = false,\n  label,\n  labelFormatter,\n  labelClassName,\n  formatter,\n  color,\n  nameKey,\n  labelKey,\n}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &\n  React.ComponentProps<\"div\"> & {\n    hideLabel?: boolean\n    hideIndicator?: boolean\n    indicator?: \"line\" | \"dot\" | \"dashed\"\n    nameKey?: string\n    labelKey?: string\n  } & Omit<\n    RechartsPrimitive.DefaultTooltipContentProps<\n      TooltipValueType,\n      TooltipNameType\n    >,\n    \"accessibilityLayer\"\n  >)\n\nChartLegendContent({\n  className,\n  hideIcon = false,\n  payload,\n  verticalAlign = \"bottom\",\n  nameKey,\n}: React.ComponentProps<\"div\"> & {\n  hideIcon?: boolean\n  nameKey?: string\n} & RechartsPrimitive.DefaultLegendContentProps)\n\ngetPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key: string)"
+  },
+  {
+    "id": "checkbox",
+    "title": "Checkbox",
+    "description": "Seleção booleana.",
+    "group": "core",
+    "api": "Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props)"
+  },
+  {
+    "id": "collapsible",
+    "title": "Collapsible",
+    "description": "Conteúdo recolhível.",
+    "group": "extra",
+    "api": "Collapsible({ ...props }: CollapsiblePrimitive.Root.Props)\n\nCollapsibleTrigger({ ...props }: CollapsiblePrimitive.Trigger.Props)\n\nCollapsibleContent({ ...props }: CollapsiblePrimitive.Panel.Props)"
+  },
+  {
+    "id": "combobox",
+    "title": "Combobox",
+    "description": "Autocomplete com busca.",
+    "group": "advanced",
+    "api": "ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props)\n\nComboboxTrigger({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Trigger.Props)\n\nComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props)\n\nComboboxInput({\n  className,\n  children,\n  disabled = false,\n  showTrigger = true,\n  showClear = false,\n  ...props\n}: ComboboxPrimitive.Input.Props & {\n  showTrigger?: boolean\n  showClear?: boolean\n})\n\nComboboxContent({\n  className,\n  side = \"bottom\",\n  sideOffset = 6,\n  align = \"start\",\n  alignOffset = 0,\n  anchor,\n  ...props\n}: ComboboxPrimitive.Popup.Props &\n  Pick<\n    ComboboxPrimitive.Positioner.Props,\n    \"side\" | \"align\" | \"sideOffset\" | \"alignOffset\" | \"anchor\"\n  >)\n\nComboboxList({ className, ...props }: ComboboxPrimitive.List.Props)\n\nComboboxItem({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Item.Props)\n\nComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props)\n\nComboboxLabel({\n  className,\n  ...props\n}: ComboboxPrimitive.GroupLabel.Props)\n\nComboboxCollection({ ...props }: ComboboxPrimitive.Collection.Props)\n\nComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props)\n\nComboboxSeparator({\n  className,\n  ...props\n}: ComboboxPrimitive.Separator.Props)\n\nComboboxChips({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof ComboboxPrimitive.Chips> &\n  ComboboxPrimitive.Chips.Props)\n\nComboboxChip({\n  className,\n  children,\n  showRemove = true,\n  ...props\n}: ComboboxPrimitive.Chip.Props & {\n  showRemove?: boolean\n})\n\nComboboxChipsInput({\n  className,\n  ...props\n}: ComboboxPrimitive.Input.Props)\n\nuseComboboxAnchor()"
+  },
+  {
+    "id": "command",
+    "title": "Command",
+    "description": "Paleta de comandos.",
+    "group": "extra",
+    "api": "Command({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive>)\n\nCommandDialog({\n  title = \"Command Palette\",\n  description = \"Search for a command to run...\",\n  children,\n  className,\n  showCloseButton = false,\n  ...props\n}: Omit<React.ComponentProps<typeof Dialog>, \"children\"> & {\n  title?: string\n  description?: string\n  className?: string\n  showCloseButton?: boolean\n  children: React.ReactNode\n})\n\nCommandInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.Input>)\n\nCommandList({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.List>)\n\nCommandEmpty({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.Empty>)\n\nCommandGroup({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.Group>)\n\nCommandSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.Separator>)\n\nCommandItem({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof CommandPrimitive.Item>)\n\nCommandShortcut({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "context-menu",
+    "title": "Context Menu",
+    "description": "Menu com botão direito.",
+    "group": "extra",
+    "api": "ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props)\n\nContextMenuPortal({ ...props }: ContextMenuPrimitive.Portal.Props)\n\nContextMenuTrigger({\n  className,\n  ...props\n}: ContextMenuPrimitive.Trigger.Props)\n\nContextMenuContent({\n  className,\n  align = \"start\",\n  alignOffset = 4,\n  side = \"right\",\n  sideOffset = 0,\n  ...props\n}: ContextMenuPrimitive.Popup.Props &\n  Pick<\n    ContextMenuPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  >)\n\nContextMenuGroup({ ...props }: ContextMenuPrimitive.Group.Props)\n\nContextMenuLabel({\n  className,\n  inset,\n  ...props\n}: ContextMenuPrimitive.GroupLabel.Props & {\n  inset?: boolean\n})\n\nContextMenuItem({\n  className,\n  inset,\n  variant = \"default\",\n  ...props\n}: ContextMenuPrimitive.Item.Props & {\n  inset?: boolean\n  variant?: \"default\" | \"destructive\"\n})\n\nContextMenuSub({ ...props }: ContextMenuPrimitive.SubmenuRoot.Props)\n\nContextMenuSubTrigger({\n  className,\n  inset,\n  children,\n  ...props\n}: ContextMenuPrimitive.SubmenuTrigger.Props & {\n  inset?: boolean\n})\n\nContextMenuSubContent({\n  ...props\n}: React.ComponentProps<typeof ContextMenuContent>)\n\nContextMenuCheckboxItem({\n  className,\n  children,\n  checked,\n  inset,\n  ...props\n}: ContextMenuPrimitive.CheckboxItem.Props & {\n  inset?: boolean\n})\n\nContextMenuRadioGroup({\n  ...props\n}: ContextMenuPrimitive.RadioGroup.Props)\n\nContextMenuRadioItem({\n  className,\n  children,\n  inset,\n  ...props\n}: ContextMenuPrimitive.RadioItem.Props & {\n  inset?: boolean\n})\n\nContextMenuSeparator({\n  className,\n  ...props\n}: ContextMenuPrimitive.Separator.Props)\n\nContextMenuShortcut({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "data-list",
+    "title": "Data List",
+    "description": "Listagem com estados de carregamento, erro e vazio.",
+    "group": "patterns",
+    "api": "export interface DataListProps<T> {\n  items: T[];\n  getKey: (item: T) => Key;\n  renderItem: (item: T) => ReactNode;\n  loading?: boolean;\n  error?: string;\n  onRetry?: () => void;\n  label?: string;\n  emptyTitle?: string;\n  emptyDescription?: string;\n  emptyAction?: ReactNode;\n  loadingLabel?: string;\n  retryLabel?: string;\n}\n\nDataList({\n  items,\n  getKey,\n  renderItem,\n  loading,\n  error,\n  onRetry,\n  label = \"Resultados\",\n  emptyTitle = \"Nenhum resultado\",\n  emptyDescription = \"Ajuste os filtros ou adicione um registro.\",\n  emptyAction,\n  loadingLabel = \"Carregando resultados…\",\n  retryLabel = \"Tentar novamente\",\n}: DataListProps<T>)"
+  },
+  {
+    "id": "data-pagination",
+    "title": "Data Pagination",
+    "description": "Navegação controlada por páginas e quantidade de registros.",
+    "group": "patterns",
+    "api": "export interface DataPaginationProps {\n  labels?: Partial<DataPaginationLabels>;\n  pageSizeOptions?: number[];\n  page: number;\n  limit: number;\n  totalPages: number;\n  onPageChange: (page: number) => void;\n  onLimitChange: (limit: number) => void;\n}\n\nexport interface DataPaginationLabels {\n  limit: string;\n  pagination: string;\n  previous: string;\n  next: string;\n  page: (page: number, total: number) => string;\n  goTo: (page: number) => string;\n}\n\ngetPageNumbers(currentPage: number, totalPages: number)\n\nDataPagination({\n  page,\n  totalPages,\n  onPageChange,\n  onLimitChange,\n  limit,\n  labels: customLabels,\n  pageSizeOptions = [10, 20, 50],\n}: DataPaginationProps)"
+  },
+  {
+    "id": "data-table",
+    "title": "Data Table",
+    "description": "Tabela com seleção de registros e ações em lote.",
+    "group": "patterns",
+    "api": "export interface DataTableColumn<T> {\n  key: string;\n  label: string;\n  width?: number | string;\n  align?: \"left\" | \"center\" | \"right\";\n  render: (item: T) => ReactNode;\n}\n\nexport interface DataTableBulkAction {\n  label: string;\n  icon?: LucideIcon;\n  variant?: \"default\" | \"destructive\" | \"outline\" | \"ghost\";\n  onAction: (selectedIds: string[]) => void;\n}\n\nexport interface DataTableProps<T extends { id: string }> {\n  data: T[];\n  columns: DataTableColumn<T>[];\n  onRowClick?: (item: T) => void;\n  bulkActions?: DataTableBulkAction[];\n  isLoading?: boolean;\n  emptyState?: ReactNode;\n  labels?: Partial<DataTableLabels>;\n}\n\nexport interface DataTableLabels {\n  selected: (count: number) => string;\n  selectRow: (row: number) => string;\n  selectAll: string;\n  clear: string;\n  empty: string;\n}\n\nuseSelection(ids: string[])\n\nBulkActionBar({\n  count,\n  actions,\n  selectedIds,\n  onClear,\n  labels,\n}: {\n  count: number;\n  actions: DataTableBulkAction[];\n  selectedIds: string[];\n  onClear: () => void;\n  labels: DataTableLabels;\n})\n\nTableSkeleton({\n  columns,\n  rows = 5,\n  hasBulkActions = false,\n}: {\n  columns: number;\n  rows?: number;\n  hasBulkActions?: boolean;\n})\n\nDataTable({\n  data,\n  columns,\n  onRowClick,\n  bulkActions,\n  isLoading,\n  emptyState,\n  labels: customLabels,\n}: DataTableProps<T>)"
+  },
+  {
+    "id": "date-range-picker",
+    "title": "Date Range Picker",
+    "description": "Seleção de intervalo de datas.",
+    "group": "extra",
+    "api": "export type DateRangePreset = { label: string; range: DateRange };\n\nexport interface DateRangePickerProps {\n  value?: DateRange;\n  id?: string;\n  onChange: (range: DateRange | undefined) => void;\n  className?: string;\n  locale?: Locale;\n  placeholder?: string;\n  ariaLabel?: string;\n  presets?: DateRangePreset[];\n  minDate?: Date;\n  maxDate?: Date;\n  allowFuture?: boolean;\n  numberOfMonths?: number;\n  disabled?: boolean;\n  clearable?: boolean;\n  clearLabel?: string;\n  closeOnSelect?: boolean;\n  formatLabel?: (range: DateRange, locale: Locale) => string;\n}\n\nDateRangePicker({\n  value,\n  id,\n  onChange,\n  className,\n  locale = ptBR,\n  placeholder = \"Selecionar período\",\n  ariaLabel = placeholder,\n  presets: customPresets,\n  minDate,\n  maxDate,\n  allowFuture = false,\n  numberOfMonths,\n  disabled = false,\n  clearable = false,\n  clearLabel = \"Limpar período\",\n  closeOnSelect = false,\n  formatLabel,\n}: DateRangePickerProps)"
+  },
+  {
+    "id": "dialog",
+    "title": "Dialog",
+    "description": "Modal com overlay.",
+    "group": "core",
+    "api": "Dialog({ ...props }: DialogPrimitive.Root.Props)\n\nDialogTrigger({ ...props }: DialogPrimitive.Trigger.Props)\n\nDialogPortal({ ...props }: DialogPrimitive.Portal.Props)\n\nDialogClose({ ...props }: DialogPrimitive.Close.Props)\n\nDialogOverlay({\n  className,\n  ...props\n}: DialogPrimitive.Backdrop.Props)\n\nDialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogPrimitive.Popup.Props & {\n  showCloseButton?: boolean\n})\n\nDialogHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nDialogFooter({\n  className,\n  showCloseButton = false,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showCloseButton?: boolean\n})\n\nDialogTitle({ className, ...props }: DialogPrimitive.Title.Props)\n\nDialogDescription({\n  className,\n  ...props\n}: DialogPrimitive.Description.Props)"
+  },
+  {
+    "id": "direction",
+    "title": "Direction",
+    "description": "Direção de leitura para componentes e layouts.",
+    "group": "messaging",
+    "api": "export {\n  DirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\"\n"
+  },
+  {
+    "id": "drawer",
+    "title": "Drawer",
+    "description": "Gaveta inferior.",
+    "group": "extra",
+    "api": "type DrawerContextProps = {\n  hasSnapPoints: boolean\n  modal: DrawerPrimitive.Root.Props[\"modal\"]\n  showSwipeHandle: boolean\n  swipeDirection: NonNullable<DrawerPrimitive.Root.Props[\"swipeDirection\"]>\n}\n\nuseDrawer()\n\nDrawer({\n  modal = true,\n  showSwipeHandle = false,\n  snapPoints,\n  swipeDirection = \"down\",\n  ...props\n}: DrawerPrimitive.Root.Props & {\n  showSwipeHandle?: boolean\n})\n\nDrawerTrigger({ ...props }: DrawerPrimitive.Trigger.Props)\n\nDrawerPortal({ ...props }: DrawerPrimitive.Portal.Props)\n\nDrawerClose({ ...props }: DrawerPrimitive.Close.Props)\n\nDrawerOverlay({\n  className,\n  ...props\n}: DrawerPrimitive.Backdrop.Props)\n\nDrawerSwipeHandle({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nDrawerContent({\n  className,\n  children,\n  ...props\n}: DrawerPrimitive.Popup.Props)\n\nDrawerHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nDrawerFooter({ className, ...props }: React.ComponentProps<\"div\">)\n\nDrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props)\n\nDrawerDescription({\n  className,\n  ...props\n}: DrawerPrimitive.Description.Props)"
+  },
+  {
+    "id": "dropdown-menu",
+    "title": "Dropdown Menu",
+    "description": "Menu de ações.",
+    "group": "core",
+    "api": "DropdownMenu({ ...props }: MenuPrimitive.Root.Props)\n\nDropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props)\n\nDropdownMenuTrigger({ ...props }: MenuPrimitive.Trigger.Props)\n\nDropdownMenuContent({\n  align = \"start\",\n  alignOffset = 0,\n  side = \"bottom\",\n  sideOffset = 4,\n  className,\n  ...props\n}: MenuPrimitive.Popup.Props &\n  Pick<\n    MenuPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  >)\n\nDropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props)\n\nDropdownMenuLabel({\n  className,\n  inset,\n  ...props\n}: MenuPrimitive.GroupLabel.Props & {\n  inset?: boolean\n})\n\nDropdownMenuItem({\n  className,\n  inset,\n  variant = \"default\",\n  ...props\n}: MenuPrimitive.Item.Props & {\n  inset?: boolean\n  variant?: \"default\" | \"destructive\"\n})\n\nDropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props)\n\nDropdownMenuSubTrigger({\n  className,\n  inset,\n  children,\n  ...props\n}: MenuPrimitive.SubmenuTrigger.Props & {\n  inset?: boolean\n})\n\nDropdownMenuSubContent({\n  align = \"start\",\n  alignOffset = -3,\n  side = \"right\",\n  sideOffset = 0,\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuContent>)\n\nDropdownMenuCheckboxItem({\n  className,\n  children,\n  checked,\n  inset,\n  ...props\n}: MenuPrimitive.CheckboxItem.Props & {\n  inset?: boolean\n})\n\nDropdownMenuRadioGroup({ ...props }: MenuPrimitive.RadioGroup.Props)\n\nDropdownMenuRadioItem({\n  className,\n  children,\n  inset,\n  ...props\n}: MenuPrimitive.RadioItem.Props & {\n  inset?: boolean\n})\n\nDropdownMenuSeparator({\n  className,\n  ...props\n}: MenuPrimitive.Separator.Props)\n\nDropdownMenuShortcut({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "empty",
+    "title": "Empty",
+    "description": "Estado vazio.",
+    "group": "extra",
+    "api": "Empty({ className, ...props }: React.ComponentProps<\"div\">)\n\nEmptyHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nEmptyMedia({\n  className,\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof emptyMediaVariants>)\n\nEmptyTitle({ className, ...props }: React.ComponentProps<\"div\">)\n\nEmptyDescription({ className, ...props }: React.ComponentProps<\"p\">)\n\nEmptyContent({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "field",
+    "title": "Field",
+    "description": "Campo com rótulo e descrição.",
+    "group": "extra",
+    "api": "FieldSet({ className, ...props }: React.ComponentProps<\"fieldset\">)\n\nFieldLegend({\n  className,\n  variant = \"legend\",\n  ...props\n}: React.ComponentProps<\"legend\"> & { variant?: \"legend\" | \"label\" })\n\nFieldGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nField({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof fieldVariants>)\n\nFieldContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nFieldLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof Label>)\n\nFieldTitle({ className, ...props }: React.ComponentProps<\"div\">)\n\nFieldDescription({ className, ...props }: React.ComponentProps<\"p\">)\n\nFieldSeparator({\n  children,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  children?: React.ReactNode\n})\n\nFieldError({\n  className,\n  children,\n  errors,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  errors?: Array<{ message?: string } | undefined>\n})"
+  },
+  {
+    "id": "filter-bar",
+    "title": "Filter Bar",
+    "description": "Busca controlada, filtros adicionais e ação de limpeza.",
+    "group": "patterns",
+    "api": "export interface FilterBarProps {\n  query: string;\n  onQueryChange: (query: string) => void;\n  onReset?: () => void;\n  label?: string;\n  resetLabel?: string;\n  children?: ReactNode;\n}\n\nFilterBar({\n  query,\n  onQueryChange,\n  onReset,\n  label = \"Buscar registros\",\n  resetLabel = \"Limpar filtros\",\n  children,\n}: FilterBarProps)"
+  },
+  {
+    "id": "hover-card",
+    "title": "Hover Card",
+    "description": "Cartão ao passar o mouse.",
+    "group": "extra",
+    "api": "HoverCard({ ...props }: PreviewCardPrimitive.Root.Props)\n\nHoverCardTrigger({ ...props }: PreviewCardPrimitive.Trigger.Props)\n\nHoverCardContent({\n  className,\n  side = \"bottom\",\n  sideOffset = 4,\n  align = \"center\",\n  alignOffset = 4,\n  ...props\n}: PreviewCardPrimitive.Popup.Props &\n  Pick<\n    PreviewCardPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  >)"
+  },
+  {
+    "id": "input",
+    "title": "Input & Label",
+    "description": "Campo de texto com rótulo.",
+    "group": "core",
+    "api": "Input({ className, type, ...props }: React.ComponentProps<\"input\">)"
+  },
+  {
+    "id": "input-group",
+    "title": "Input Group",
+    "description": "Input com adornos.",
+    "group": "extra",
+    "api": "InputGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nInputGroupAddon({\n  className,\n  align = \"inline-start\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof inputGroupAddonVariants>)\n\nInputGroupButton({\n  className,\n  type = \"button\",\n  variant = \"ghost\",\n  size = \"xs\",\n  ...props\n}: Omit<React.ComponentProps<typeof Button>, \"size\" | \"type\"> &\n  VariantProps<typeof inputGroupButtonVariants> & {\n    type?: \"button\" | \"submit\" | \"reset\"\n  })\n\nInputGroupText({ className, ...props }: React.ComponentProps<\"span\">)\n\nInputGroupInput({\n  className,\n  ...props\n}: React.ComponentProps<\"input\">)\n\nInputGroupTextarea({\n  className,\n  ...props\n}: React.ComponentProps<\"textarea\">)"
+  },
+  {
+    "id": "input-otp",
+    "title": "Input OTP",
+    "description": "Código de verificação.",
+    "group": "extra",
+    "api": "InputOTP({\n  className,\n  containerClassName,\n  ...props\n}: React.ComponentProps<typeof OTPInput> & {\n  containerClassName?: string\n})\n\nInputOTPGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nInputOTPSlot({\n  index,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  index: number\n})\n\nInputOTPSeparator({ ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "item",
+    "title": "Item",
+    "description": "Linha de lista com mídia e ações.",
+    "group": "extra",
+    "api": "ItemGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nItemSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Separator>)\n\nItem({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\"> & VariantProps<typeof itemVariants>)\n\nItemMedia({\n  className,\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof itemMediaVariants>)\n\nItemContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nItemTitle({ className, ...props }: React.ComponentProps<\"div\">)\n\nItemDescription({ className, ...props }: React.ComponentProps<\"p\">)\n\nItemActions({ className, ...props }: React.ComponentProps<\"div\">)\n\nItemHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nItemFooter({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "kbd",
+    "title": "Kbd",
+    "description": "Teclas de atalho.",
+    "group": "extra",
+    "api": "Kbd({ className, ...props }: React.ComponentProps<\"kbd\">)\n\nKbdGroup({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "label",
+    "title": "Label",
+    "description": "Rótulo associado a um controle de formulário.",
+    "group": "messaging",
+    "api": "Label({ className, ...props }: React.ComponentProps<\"label\">)"
+  },
+  {
+    "id": "marker",
+    "title": "Marker",
+    "description": "Marcador de data ou mudança de contexto em uma conversa.",
+    "group": "messaging",
+    "api": "Marker({\n  className,\n  variant = \"default\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\"> & VariantProps<typeof markerVariants>)\n\nMarkerIcon({ className, ...props }: React.ComponentProps<\"span\">)\n\nMarkerContent({ className, ...props }: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "menubar",
+    "title": "Menubar",
+    "description": "Barra de menus.",
+    "group": "extra",
+    "api": "Menubar({ className, ...props }: MenubarPrimitive.Props)\n\nMenubarMenu({ ...props }: React.ComponentProps<typeof DropdownMenu>)\n\nMenubarGroup({\n  ...props\n}: React.ComponentProps<typeof DropdownMenuGroup>)\n\nMenubarPortal({\n  ...props\n}: React.ComponentProps<typeof DropdownMenuPortal>)\n\nMenubarTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuTrigger>)\n\nMenubarContent({\n  className,\n  align = \"start\",\n  alignOffset = -4,\n  sideOffset = 8,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuContent>)\n\nMenubarItem({\n  className,\n  inset,\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<typeof DropdownMenuItem>)\n\nMenubarCheckboxItem({\n  className,\n  children,\n  checked,\n  inset,\n  ...props\n}: MenuPrimitive.CheckboxItem.Props & {\n  inset?: boolean\n})\n\nMenubarRadioGroup({\n  ...props\n}: React.ComponentProps<typeof DropdownMenuRadioGroup>)\n\nMenubarRadioItem({\n  className,\n  children,\n  inset,\n  ...props\n}: MenuPrimitive.RadioItem.Props & {\n  inset?: boolean\n})\n\nMenubarLabel({\n  className,\n  inset,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuLabel> & {\n  inset?: boolean\n})\n\nMenubarSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuSeparator>)\n\nMenubarShortcut({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuShortcut>)\n\nMenubarSub({\n  ...props\n}: React.ComponentProps<typeof DropdownMenuSub>)\n\nMenubarSubTrigger({\n  className,\n  inset,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuSubTrigger> & {\n  inset?: boolean\n})\n\nMenubarSubContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuSubContent>)"
+  },
+  {
+    "id": "message",
+    "title": "Message",
+    "description": "Mensagem com identificação do autor e conteúdo.",
+    "group": "messaging",
+    "api": "MessageGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nMessage({\n  className,\n  align = \"start\",\n  ...props\n}: React.ComponentProps<\"div\"> & { align?: \"start\" | \"end\" })\n\nMessageAvatar({ className, ...props }: React.ComponentProps<\"div\">)\n\nMessageContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nMessageHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nMessageFooter({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "message-scroller",
+    "title": "Message Scroller",
+    "description": "Área de conversa com rolagem gerenciada.",
+    "group": "messaging",
+    "api": "MessageScrollerProvider(props: React.ComponentProps<typeof MessageScrollerPrimitive.Provider>)\n\nMessageScroller({\n  className,\n  ...props\n}: React.ComponentProps<typeof MessageScrollerPrimitive.Root>)\n\nMessageScrollerViewport({\n  className,\n  ...props\n}: React.ComponentProps<typeof MessageScrollerPrimitive.Viewport>)\n\nMessageScrollerContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof MessageScrollerPrimitive.Content>)\n\nMessageScrollerItem({\n  className,\n  scrollAnchor = false,\n  ...props\n}: React.ComponentProps<typeof MessageScrollerPrimitive.Item>)\n\nMessageScrollerButton({\n  direction = \"end\",\n  className,\n  children,\n  render,\n  variant = \"secondary\",\n  size = \"icon-sm\",\n  ...props\n}: React.ComponentProps<typeof MessageScrollerPrimitive.Button> &\n  Pick<React.ComponentProps<typeof Button>, \"variant\" | \"size\">)"
+  },
+  {
+    "id": "native-select",
+    "title": "Native Select",
+    "description": "Select nativo do HTML.",
+    "group": "extra",
+    "api": "type NativeSelectProps = Omit<React.ComponentProps<\"select\">, \"size\"> & {\n  size?: \"sm\" | \"default\"\n}\n\nNativeSelect({\n  className,\n  size = \"default\",\n  ...props\n}: NativeSelectProps)\n\nNativeSelectOption({\n  className,\n  ...props\n}: React.ComponentProps<\"option\">)\n\nNativeSelectOptGroup({\n  className,\n  ...props\n}: React.ComponentProps<\"optgroup\">)"
+  },
+  {
+    "id": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "Navegação com submenus.",
+    "group": "extra",
+    "api": "NavigationMenu({\n  align = \"start\",\n  className,\n  children,\n  ...props\n}: NavigationMenuPrimitive.Root.Props &\n  Pick<NavigationMenuPrimitive.Positioner.Props, \"align\">)\n\nNavigationMenuList({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.List>)\n\nNavigationMenuItem({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Item>)\n\nNavigationMenuTrigger({\n  className,\n  children,\n  ...props\n}: NavigationMenuPrimitive.Trigger.Props)\n\nNavigationMenuContent({\n  className,\n  ...props\n}: NavigationMenuPrimitive.Content.Props)\n\nNavigationMenuPositioner({\n  className,\n  side = \"bottom\",\n  sideOffset = 8,\n  align = \"start\",\n  alignOffset = 0,\n  ...props\n}: NavigationMenuPrimitive.Positioner.Props)\n\nNavigationMenuLink({\n  className,\n  ...props\n}: NavigationMenuPrimitive.Link.Props)\n\nNavigationMenuIndicator({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Icon>)"
+  },
+  {
+    "id": "page-header",
+    "title": "Page Header",
+    "description": "Título, descrição e ações de uma página.",
+    "group": "patterns",
+    "api": "export interface PageHeaderProps {\n  title: string;\n  description?: string;\n  actions?: ReactNode;\n  breadcrumbs?: ReactNode;\n  className?: string;\n}\n\nPageHeader({\n  title,\n  description,\n  actions,\n  breadcrumbs,\n  className,\n}: PageHeaderProps)"
+  },
+  {
+    "id": "pagination",
+    "title": "Pagination",
+    "description": "Navegação entre páginas.",
+    "group": "extra",
+    "api": "Pagination({ className, ...props }: React.ComponentProps<\"nav\">)\n\nPaginationContent({\n  className,\n  ...props\n}: React.ComponentProps<\"ul\">)\n\nPaginationItem({ ...props }: React.ComponentProps<\"li\">)\n\ntype PaginationLinkProps = {\n  isActive?: boolean\n} & Pick<React.ComponentProps<typeof Button>, \"size\"> &\n  React.ComponentProps<\"a\">\n\nPaginationLink({\n  className,\n  isActive,\n  size = \"icon\",\n  ...props\n}: PaginationLinkProps)\n\nPaginationPrevious({\n  className,\n  text = \"Previous\",\n  ...props\n}: React.ComponentProps<typeof PaginationLink> & { text?: string })\n\nPaginationNext({\n  className,\n  text = \"Next\",\n  ...props\n}: React.ComponentProps<typeof PaginationLink> & { text?: string })\n\nPaginationEllipsis({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)"
+  },
+  {
+    "id": "popover",
+    "title": "Popover",
+    "description": "Painel flutuante.",
+    "group": "core",
+    "api": "Popover({ ...props }: PopoverPrimitive.Root.Props)\n\nPopoverTrigger({ ...props }: PopoverPrimitive.Trigger.Props)\n\nPopoverContent({\n  className,\n  align = \"center\",\n  alignOffset = 0,\n  side = \"bottom\",\n  sideOffset = 4,\n  ...props\n}: PopoverPrimitive.Popup.Props &\n  Pick<\n    PopoverPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  >)\n\nPopoverHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nPopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props)\n\nPopoverDescription({\n  className,\n  ...props\n}: PopoverPrimitive.Description.Props)"
+  },
+  {
+    "id": "progress",
+    "title": "Progress",
+    "description": "Barra de progresso.",
+    "group": "core",
+    "api": "Progress({\n  className,\n  children,\n  value,\n  ...props\n}: ProgressPrimitive.Root.Props)\n\nProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props)\n\nProgressIndicator({\n  className,\n  ...props\n}: ProgressPrimitive.Indicator.Props)\n\nProgressLabel({ className, ...props }: ProgressPrimitive.Label.Props)\n\nProgressValue({ className, ...props }: ProgressPrimitive.Value.Props)"
+  },
+  {
+    "id": "questionnaire",
+    "title": "Questionnaire",
+    "description": "Perguntas sequenciais com escolhas e ações traduzíveis.",
+    "group": "messaging",
+    "api": "Questionnaire({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Root>)\n\nQuestionnaireProgress({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Progress>)\n\nQuestionnaireItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Item>)\n\nQuestionnaireTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Title>)\n\nQuestionnaireDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Description>)\n\nQuestionnaireChoices({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Choices>)\n\nQuestionnaireChoice({\n  children,\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Choice>)\n\nQuestionnaireChoiceDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">)\n\nQuestionnaireInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Input>)\n\nQuestionnaireError({\n  className,\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Error>)\n\nQuestionnaireActions({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nQuestionnairePrevious({\n  children,\n  className,\n  size = \"default\",\n  variant = \"outline\",\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Previous> &\n  Pick<React.ComponentProps<typeof Button>, \"size\" | \"variant\">)\n\nQuestionnaireSkip({\n  children,\n  className,\n  size = \"default\",\n  variant = \"outline\",\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Skip> &\n  Pick<React.ComponentProps<typeof Button>, \"size\" | \"variant\">)\n\nQuestionnaireNext({\n  children,\n  className,\n  size = \"default\",\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Next> &\n  Pick<React.ComponentProps<typeof Button>, \"size\" | \"variant\">)\n\nQuestionnaireSubmit({\n  children,\n  className,\n  size = \"default\",\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<typeof QuestionnairePrimitive.Submit> &\n  Pick<React.ComponentProps<typeof Button>, \"size\" | \"variant\">)"
+  },
+  {
+    "id": "radio-group",
+    "title": "Radio Group",
+    "description": "Escolha única.",
+    "group": "core",
+    "api": "RadioGroup({ className, ...props }: RadioGroupPrimitive.Props)\n\nRadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props)"
+  },
+  {
+    "id": "resizable",
+    "title": "Resizable",
+    "description": "Painéis redimensionáveis.",
+    "group": "extra",
+    "api": "ResizablePanelGroup({\n  className,\n  ...props\n}: ResizablePrimitive.GroupProps)\n\nResizablePanel({ ...props }: ResizablePrimitive.PanelProps)\n\nResizableHandle({\n  withHandle,\n  className,\n  ...props\n}: ResizablePrimitive.SeparatorProps & {\n  withHandle?: boolean\n})"
+  },
+  {
+    "id": "scroll-area",
+    "title": "Scroll Area",
+    "description": "Área com rolagem estilizada.",
+    "group": "extra",
+    "api": "ScrollArea({\n  className,\n  children,\n  ...props\n}: ScrollAreaPrimitive.Root.Props)\n\nScrollBar({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: ScrollAreaPrimitive.Scrollbar.Props)"
+  },
+  {
+    "id": "select",
+    "title": "Select",
+    "description": "Menu suspenso.",
+    "group": "core",
+    "api": "SelectGroup({ className, ...props }: SelectPrimitive.Group.Props)\n\nSelectValue({ className, ...props }: SelectPrimitive.Value.Props)\n\nSelectTrigger({\n  className,\n  size = \"default\",\n  children,\n  ...props\n}: SelectPrimitive.Trigger.Props & {\n  size?: \"sm\" | \"default\"\n})\n\nSelectContent({\n  className,\n  children,\n  side = \"bottom\",\n  sideOffset = 4,\n  align = \"center\",\n  alignOffset = 0,\n  alignItemWithTrigger = true,\n  ...props\n}: SelectPrimitive.Popup.Props &\n  Pick<\n    SelectPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\" | \"alignItemWithTrigger\"\n  >)\n\nSelectLabel({\n  className,\n  ...props\n}: SelectPrimitive.GroupLabel.Props)\n\nSelectItem({\n  className,\n  children,\n  ...props\n}: SelectPrimitive.Item.Props)\n\nSelectSeparator({\n  className,\n  ...props\n}: SelectPrimitive.Separator.Props)\n\nSelectScrollUpButton({\n  className,\n  ...props\n}: React.ComponentProps<typeof SelectPrimitive.ScrollUpArrow>)\n\nSelectScrollDownButton({\n  className,\n  ...props\n}: React.ComponentProps<typeof SelectPrimitive.ScrollDownArrow>)"
+  },
+  {
+    "id": "separator",
+    "title": "Separator",
+    "description": "Divisor horizontal/vertical.",
+    "group": "core",
+    "api": "Separator({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: SeparatorPrimitive.Props)"
+  },
+  {
+    "id": "sheet",
+    "title": "Sheet",
+    "description": "Painel lateral.",
+    "group": "extra",
+    "api": "Sheet({ ...props }: SheetPrimitive.Root.Props)\n\nSheetTrigger({ ...props }: SheetPrimitive.Trigger.Props)\n\nSheetClose({ ...props }: SheetPrimitive.Close.Props)\n\nSheetPortal({ ...props }: SheetPrimitive.Portal.Props)\n\nSheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props)\n\nSheetContent({\n  className,\n  children,\n  side = \"right\",\n  showCloseButton = true,\n  ...props\n}: SheetPrimitive.Popup.Props & {\n  side?: \"top\" | \"right\" | \"bottom\" | \"left\"\n  showCloseButton?: boolean\n})\n\nSheetHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetFooter({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetTitle({ className, ...props }: SheetPrimitive.Title.Props)\n\nSheetDescription({\n  className,\n  ...props\n}: SheetPrimitive.Description.Props)"
+  },
+  {
+    "id": "sidebar",
+    "title": "Sidebar",
+    "description": "Navegação lateral completa.",
+    "group": "advanced",
+    "api": "type SidebarContextProps = {\n  state: \"expanded\" | \"collapsed\"\n  open: boolean\n  setOpen: (open: boolean) => void\n  openMobile: boolean\n  setOpenMobile: (open: boolean) => void\n  isMobile: boolean\n  toggleSidebar: () => void\n}\n\nuseSidebar()\n\nSidebarProvider({\n  defaultOpen = true,\n  open: openProp,\n  onOpenChange: setOpenProp,\n  className,\n  style,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  defaultOpen?: boolean\n  open?: boolean\n  onOpenChange?: (open: boolean) => void\n})\n\nSidebar({\n  side = \"left\",\n  variant = \"sidebar\",\n  collapsible = \"offcanvas\",\n  className,\n  children,\n  dir,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  side?: \"left\" | \"right\"\n  variant?: \"sidebar\" | \"floating\" | \"inset\"\n  collapsible?: \"offcanvas\" | \"icon\" | \"none\"\n})\n\nSidebarTrigger({\n  className,\n  onClick,\n  ...props\n}: React.ComponentProps<typeof Button>)\n\nSidebarRail({ className, ...props }: React.ComponentProps<\"button\">)\n\nSidebarInset({ className, ...props }: React.ComponentProps<\"main\">)\n\nSidebarInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof Input>)\n\nSidebarHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nSidebarFooter({ className, ...props }: React.ComponentProps<\"div\">)\n\nSidebarSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Separator>)\n\nSidebarContent({ className, ...props }: React.ComponentProps<\"div\">)\n\nSidebarGroup({ className, ...props }: React.ComponentProps<\"div\">)\n\nSidebarGroupLabel({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\"> & React.ComponentProps<\"div\">)\n\nSidebarGroupAction({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"button\"> & React.ComponentProps<\"button\">)\n\nSidebarGroupContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nSidebarMenu({ className, ...props }: React.ComponentProps<\"ul\">)\n\nSidebarMenuItem({ className, ...props }: React.ComponentProps<\"li\">)\n\nSidebarMenuButton({\n  render,\n  isActive = false,\n  variant = \"default\",\n  size = \"default\",\n  tooltip,\n  className,\n  ...props\n}: useRender.ComponentProps<\"button\"> &\n  React.ComponentProps<\"button\"> & {\n    isActive?: boolean\n    tooltip?: string | React.ComponentProps<typeof TooltipContent>\n  } & VariantProps<typeof sidebarMenuButtonVariants>)\n\nSidebarMenuAction({\n  className,\n  render,\n  showOnHover = false,\n  ...props\n}: useRender.ComponentProps<\"button\"> &\n  React.ComponentProps<\"button\"> & {\n    showOnHover?: boolean\n  })\n\nSidebarMenuBadge({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">)\n\nSidebarMenuSkeleton({\n  className,\n  showIcon = false,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showIcon?: boolean\n})\n\nSidebarMenuSub({ className, ...props }: React.ComponentProps<\"ul\">)\n\nSidebarMenuSubItem({\n  className,\n  ...props\n}: React.ComponentProps<\"li\">)\n\nSidebarMenuSubButton({\n  render,\n  size = \"md\",\n  isActive = false,\n  className,\n  ...props\n}: useRender.ComponentProps<\"a\"> &\n  React.ComponentProps<\"a\"> & {\n    size?: \"sm\" | \"md\"\n    isActive?: boolean\n  })"
+  },
+  {
+    "id": "skeleton",
+    "title": "Skeleton",
+    "description": "Placeholder de carregamento.",
+    "group": "core",
+    "api": "Skeleton({ className, ...props }: React.ComponentProps<\"div\">)"
+  },
+  {
+    "id": "slider",
+    "title": "Slider",
+    "description": "Controle deslizante.",
+    "group": "core",
+    "api": "Slider({\n  className,\n  defaultValue,\n  value,\n  min = 0,\n  max = 100,\n  thumbLabels,\n  \"aria-label\": ariaLabel,\n  \"aria-labelledby\": ariaLabelledby,\n  ...props\n}: SliderPrimitive.Root.Props & { thumbLabels?: string[] })"
+  },
+  {
+    "id": "sonner",
+    "title": "Sonner",
+    "description": "Notificações temporárias com Toaster e useToast.",
+    "group": "messaging",
+    "api": "type ToastId = string | number;\n\ntype ToastMessage = ReactNode | (() => ReactNode);\n\ntype ToastPromiseResult<Data = unknown> =\n  | ReactNode\n  | string\n  | ((data: Data) => ReactNode | string | Promise<ReactNode | string>);\n\ntype ToastPromiseExtendedResult = ExternalToast & {\n  message: ReactNode;\n};\n\ntype ToastPromiseExtendedResolver<Data = unknown> = (\n  data: Data,\n) => ToastPromiseExtendedResult | Promise<ToastPromiseExtendedResult>;\n\ntype ToastPromiseOptions<Data = unknown> = Omit<ExternalToast, \"description\"> & {\n  loading?: ReactNode | string;\n  success?: ToastPromiseResult<Data> | ToastPromiseExtendedResolver<Data>;\n  error?: ToastPromiseResult | ToastPromiseExtendedResolver;\n  description?: ToastPromiseResult<Data>;\n  finally?: () => void | Promise<void>;\n};\n\ntype ToastPromiseHandle<Data> = {\n  unwrap: () => Promise<Data>;\n};\n\ntype ToastPromiseId<Data> =\n  | (string & ToastPromiseHandle<Data>)\n  | (number & ToastPromiseHandle<Data>)\n  | ToastPromiseHandle<Data>;\n\ntype ToastApi = {\n  (message: ToastMessage, data?: ExternalToast): ToastId;\n  success: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  info: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  warning: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  error: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  loading: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  message: (message: ToastMessage, data?: ExternalToast) => ToastId;\n  custom: (\n    content: (id: ToastId) => ReactElement,\n    data?: ExternalToast,\n  ) => ToastId;\n  promise: <Data>(\n    promise: Promise<Data> | (() => Promise<Data>),\n    data?: ToastPromiseOptions<Data>,\n  ) => ToastPromiseId<Data>;\n  dismiss: (id?: ToastId) => ToastId;\n};\n\ntype UseToastResult = {\n  toast: ToastApi;\n  toasts: ToastT[];\n  dismiss: ToastApi[\"dismiss\"];\n};\n\nuseToast()"
+  },
+  {
+    "id": "spinner",
+    "title": "Spinner",
+    "description": "Indicador de carregamento.",
+    "group": "core",
+    "api": "Spinner({ className, ...props }: React.ComponentProps<\"svg\">)"
+  },
+  {
+    "id": "switch",
+    "title": "Switch",
+    "description": "Liga/desliga.",
+    "group": "core",
+    "api": "Switch({\n  className,\n  size = \"default\",\n  ...props\n}: SwitchPrimitive.Root.Props & {\n  size?: \"sm\" | \"default\"\n})"
+  },
+  {
+    "id": "table",
+    "title": "Table",
+    "description": "Tabela de dados.",
+    "group": "extra",
+    "api": "Table({ className, ...props }: React.ComponentProps<\"table\">)\n\nTableHeader({ className, ...props }: React.ComponentProps<\"thead\">)\n\nTableBody({ className, ...props }: React.ComponentProps<\"tbody\">)\n\nTableFooter({ className, ...props }: React.ComponentProps<\"tfoot\">)\n\nTableRow({ className, ...props }: React.ComponentProps<\"tr\">)\n\nTableHead({ className, ...props }: React.ComponentProps<\"th\">)\n\nTableCell({ className, ...props }: React.ComponentProps<\"td\">)\n\nTableCaption({\n  className,\n  ...props\n}: React.ComponentProps<\"caption\">)"
+  },
+  {
+    "id": "tabs",
+    "title": "Tabs",
+    "description": "Abas de conteúdo.",
+    "group": "core",
+    "api": "Tabs({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: TabsPrimitive.Root.Props)\n\nTabsList({\n  className,\n  variant = \"default\",\n  ...props\n}: TabsPrimitive.List.Props & VariantProps<typeof tabsListVariants>)\n\nTabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props)\n\nTabsContent({ className, ...props }: TabsPrimitive.Panel.Props)"
+  },
+  {
+    "id": "textarea",
+    "title": "Textarea",
+    "description": "Campo de múltiplas linhas.",
+    "group": "core",
+    "api": "Textarea({ className, ...props }: React.ComponentProps<\"textarea\">)"
+  },
+  {
+    "id": "theme-provider",
+    "title": "Theme Provider",
+    "description": "Tema do sistema e preferência persistida do usuário.",
+    "group": "messaging",
+    "api": "ThemeProvider({\n  attribute = \"class\",\n  defaultTheme = \"system\",\n  enableSystem = true,\n  storageKey = \"lai-theme\",\n  disableTransitionOnChange = true,\n  ...props\n}: ThemeProviderProps)"
+  },
+  {
+    "id": "toast",
+    "title": "Toast (Sonner)",
+    "description": "Notificações temporárias.",
+    "group": "core",
+    "api": "ToastProvider({ ...props }: ToastPrimitive.Provider.Props)\n\nToastPortal({ ...props }: ToastPrimitive.Portal.Props)\n\nToastViewport({ className, ...props }: ToastPrimitive.Viewport.Props)\n\nToast({ className, ...props }: ToastPrimitive.Root.Props)\n\nToastContent({ className, ...props }: ToastPrimitive.Content.Props)\n\nToastTitle({ className, ...props }: ToastPrimitive.Title.Props)\n\nToastDescription({\n  className,\n  ...props\n}: ToastPrimitive.Description.Props)\n\nToastAction({\n  className,\n  render = <Button variant=\"outline\" size=\"sm\" />,\n  ...props\n}: ToastPrimitive.Action.Props)\n\nToastClose({\n  className,\n  children,\n  render = <Button variant=\"ghost\" size=\"icon-sm\" />,\n  ...props\n}: ToastPrimitive.Close.Props)\n\nToastIcon({ type }: { type: string | undefined })\n\nToastList()\n\nToaster({\n  children,\n  toastManager = toast,\n  ...props\n}: ToastPrimitive.Provider.Props)"
+  },
+  {
+    "id": "toggle",
+    "title": "Toggle",
+    "description": "Botão de dois estados.",
+    "group": "extra",
+    "api": "Toggle({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>)"
+  },
+  {
+    "id": "toggle-group",
+    "title": "Toggle Group",
+    "description": "Grupo de toggles.",
+    "group": "extra",
+    "api": "ToggleGroup({\n  className,\n  variant,\n  size,\n  spacing = 2,\n  orientation = \"horizontal\",\n  children,\n  ...props\n}: ToggleGroupPrimitive.Props &\n  VariantProps<typeof toggleVariants> & {\n    spacing?: number\n    orientation?: \"horizontal\" | \"vertical\"\n  })\n\nToggleGroupItem({\n  className,\n  children,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>)"
+  },
+  {
+    "id": "tooltip",
+    "title": "Tooltip",
+    "description": "Dica ao passar o mouse.",
+    "group": "core",
+    "api": "TooltipProvider({\n  delay = 0,\n  ...props\n}: TooltipPrimitive.Provider.Props)\n\nTooltip({ ...props }: TooltipPrimitive.Root.Props)\n\nTooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props)\n\nTooltipContent({\n  className,\n  side = \"top\",\n  sideOffset = 4,\n  align = \"center\",\n  alignOffset = 0,\n  children,\n  ...props\n}: TooltipPrimitive.Popup.Props &\n  Pick<\n    TooltipPrimitive.Positioner.Props,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  >)"
+  },
+  {
+    "id": "validated-form",
+    "title": "Validated Form",
+    "description": "Formulário com validação, foco no erro e envio assíncrono.",
+    "group": "patterns",
+    "api": "export interface FormFieldDefinition {\n  name: string;\n  label: string;\n  type?: \"text\" | \"email\" | \"password\" | \"tel\" | \"url\";\n  description?: string;\n  autoComplete?: string;\n  validate?: (value: string) => string | undefined;\n}\n\nexport interface ValidatedFormProps {\n  fields: FormFieldDefinition[];\n  initialValues?: Record<string, string>;\n  onSubmit: (values: Record<string, string>) => void | Promise<void>;\n  submitLabel?: string;\n  pendingLabel?: string;\n  successMessage?: string;\n  errorMessage?: string;\n}\n\nValidatedForm({\n  fields,\n  initialValues = {},\n  onSubmit,\n  submitLabel = \"Salvar\",\n  pendingLabel = \"Salvando…\",\n  successMessage = \"Alterações salvas.\",\n  errorMessage = \"Não foi possível salvar. Tente novamente.\",\n}: ValidatedFormProps)"
+  }
+]

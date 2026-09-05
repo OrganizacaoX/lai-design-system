@@ -9,7 +9,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { allDemos } from "../all-demos";
+import allDemos from "../catalog.json";
 
 export function CommandMenu({
   open,

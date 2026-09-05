@@ -8,7 +8,7 @@
 /* Alternativa self-hosted (sem dependência do Google em runtime, melhor para
    LGPD e para o app que roda offline em rede fechada):
 
-   npm i @fontsource-variable/google-sans-flex @fontsource-variable/google-sans-code
+   bun add @fontsource-variable/google-sans-flex @fontsource-variable/google-sans-code
 
    e no entrypoint da aplicação, antes do styles.css:
 

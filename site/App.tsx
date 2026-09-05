@@ -23,14 +23,20 @@ import { cn } from "@/lib/utils";
 import { InstallPage } from "./pages/install-page";
 import { ComponentsPage } from "./pages/components-page";
 import { CommandMenu } from "./components/command-menu";
-import { allDemos } from "./all-demos";
+import allDemos from "./catalog.json";
+import { FoundationsPage } from "./pages/foundations-page";
 
-type View = "instalacao" | "componentes";
+type View = "instalacao" | "componentes" | "fundamentos";
 
 function viewFromHash(): View {
-  return window.location.hash.replace("#", "").startsWith("componentes")
-    ? "componentes"
-    : "instalacao";
+  if (
+    window.location.pathname.startsWith("/componentes") ||
+    window.location.hash.startsWith("#componentes")
+  )
+    return "componentes";
+  if (["/fundamentos", "/design-system/"].includes(window.location.pathname))
+    return "fundamentos";
+  return "instalacao";
 }
 
 function ThemeToggle() {
@@ -54,15 +60,29 @@ function NavLink({
   onClick,
   children,
   indent,
+  href,
 }: {
   active?: boolean;
   onClick: () => void;
   children: React.ReactNode;
   indent?: boolean;
+  href: string;
 }) {
   return (
-    <button
-      onClick={onClick}
+    <a
+      href={href}
+      aria-current={active ? "page" : undefined}
+      onClick={(event) => {
+        if (
+          !event.ctrlKey &&
+          !event.metaKey &&
+          !event.shiftKey &&
+          !event.altKey
+        ) {
+          event.preventDefault();
+          onClick();
+        }
+      }}
       className={cn(
         "w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors",
         indent && "pl-4 text-[0.8rem]",
@@ -72,7 +92,7 @@ function NavLink({
       )}
     >
       {children}
-    </button>
+    </a>
   );
 }
 
@@ -92,16 +112,28 @@ function Nav({
     : allDemos;
 
   return (
-    <nav className="grid gap-0.5">
-      <p className="px-3 py-1.5 text-xs font-medium text-muted-foreground">Começar</p>
-      <NavLink active={view === "instalacao"} onClick={() => onGo("instalacao")}>
+    <nav aria-label="Documentação" className="grid gap-0.5">
+      <p className="px-3 py-1.5 text-xs font-medium text-muted-foreground">
+        Começar
+      </p>
+      <NavLink
+        href="/instalacao"
+        active={view === "instalacao"}
+        onClick={() => onGo("instalacao")}
+      >
         Instalação
       </NavLink>
-      <NavLink active={view === "componentes"} onClick={() => onGo("componentes")}>
+      <NavLink
+        href="/componentes"
+        active={
+          view === "componentes" && window.location.pathname === "/componentes"
+        }
+        onClick={() => onGo("componentes")}
+      >
         Componentes
       </NavLink>
       <a
-        href="/design-system/"
+        href="/fundamentos"
         className="block w-full rounded-md px-3 py-1.5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
       >
         Guia visual
@@ -127,7 +159,13 @@ function Nav({
         </p>
       ) : (
         filtered.map((d) => (
-          <NavLink key={d.id} indent onClick={() => onGoComponent(d.id)}>
+          <NavLink
+            key={d.id}
+            href={`/componentes/${d.id}`}
+            active={window.location.pathname === `/componentes/${d.id}`}
+            indent
+            onClick={() => onGoComponent(d.id)}
+          >
             {d.title}
           </NavLink>
         ))
@@ -138,40 +176,52 @@ function Nav({
 
 export function App() {
   const [view, setView] = useState<View>(viewFromHash);
+  const [componentId, setComponentId] = useState(
+    () => window.location.pathname.split("/")[2] ?? "",
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [cmdOpen, setCmdOpen] = useState(false);
+  useEffect(() => {
+    document.title = `${allDemos.find((d) => d.id === componentId)?.title ?? (view === "fundamentos" ? "Fundamentos" : view === "componentes" ? "Componentes" : "Instalação")} — LAI Design System`;
+  }, [componentId, view]);
 
   useEffect(() => {
-    const onHash = () => setView(viewFromHash());
+    const onHash = () => {
+      setView(viewFromHash());
+      setComponentId(window.location.pathname.split("/")[2] ?? "");
+    };
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    window.addEventListener("popstate", onHash);
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("popstate", onHash);
+    };
   }, []);
 
   const go = (v: View) => {
-    window.location.hash = v;
+    window.history.pushState({}, "", `/${v}`);
+    setComponentId("");
     setView(v);
     setMenuOpen(false);
     window.scrollTo({ top: 0 });
   };
 
   const goComponent = (id: string) => {
-    if (view !== "componentes") {
-      window.location.hash = "componentes";
-      setView("componentes");
-    }
+    window.history.pushState({}, "", `/componentes/${id}`);
+    setView("componentes");
+    setComponentId(id);
     setMenuOpen(false);
-    // aguarda a página de componentes montar antes de rolar
-    setTimeout(
-      () =>
-        document
-          .getElementById(id)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" }),
-      60,
-    );
+    window.scrollTo({ top: 0 });
   };
 
   return (
     <div className="min-h-svh bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:bg-background focus:p-3"
+      >
+        Ir para conteúdo
+      </a>
       <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4">
           {/* Menu mobile */}
@@ -257,8 +307,14 @@ export function App() {
           <Nav view={view} onGo={go} onGoComponent={goComponent} />
         </aside>
 
-        <main className="min-w-0 flex-1">
-          {view === "componentes" ? <ComponentsPage /> : <InstallPage />}
+        <main id="main" className="min-w-0 flex-1">
+          {view === "componentes" ? (
+            <ComponentsPage id={componentId} />
+          ) : view === "fundamentos" ? (
+            <FoundationsPage />
+          ) : (
+            <InstallPage />
+          )}
         </main>
       </div>
 
