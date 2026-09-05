@@ -51,7 +51,15 @@ test("shell keyboard skip link and accessibility in both themes", { tag: ["@comp
   await page.keyboard.press("Enter");
   await expect(page.locator('[tabindex="-1"]').filter({ has: page.getByRole("heading", { name: "Visão geral", exact: true }) })).toBeFocused();
   for (const dark of [false, true]) {
-    await page.evaluate(dark => document.documentElement.classList.toggle("dark", dark), dark);
+    await page.evaluate(async dark => {
+      document.documentElement.classList.toggle("dark", dark);
+      // Audit the selected palette after CSS color transitions finish, rather
+      // than a transient foreground from the previous theme on the new surface.
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await Promise.allSettled(document.getAnimations()
+        .filter(animation => animation.effect?.getTiming().iterations !== Infinity)
+        .map(animation => animation.finished));
+    }, dark);
     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
     expect(results.violations).toEqual([]);
   }
