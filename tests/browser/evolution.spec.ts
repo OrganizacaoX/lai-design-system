@@ -245,3 +245,31 @@ for (const id of ["input", "select"]) {
     },
   );
 }
+
+test("button mantém cursor de clique sem a regra global do tema", { tag: ["@component:button", "@kind:interaction"] }, async ({ page }) => {
+  await page.goto("/componentes/button");
+  const buttons = page.locator('#example-button [data-slot="button"]');
+  await expect(buttons.first()).toBeVisible();
+  const removed = await page.evaluate(() => {
+    let removed = 0;
+    function strip(sheet: CSSStyleSheet | CSSGroupingRule) {
+      const rules = sheet.cssRules;
+      for (let i = rules.length - 1; i >= 0; i--) {
+        const rule = rules[i];
+        if (rule instanceof CSSStyleRule && rule.selectorText.startsWith(":is(button")) {
+          sheet.deleteRule(i); removed++;
+        } else if ("cssRules" in rule && "deleteRule" in rule) strip(rule as CSSGroupingRule);
+      }
+    }
+    for (const sheet of document.styleSheets) {
+      try { strip(sheet); } catch { /* Folhas externas de fontes não são editáveis. */ }
+    }
+    return removed;
+  });
+  expect(removed).toBeGreaterThan(0);
+  for (const button of await buttons.all()) {
+    await expect(button).toHaveClass(/\bcursor-pointer\b/);
+    await expect(button).toHaveCSS("cursor", "pointer");
+  }
+  await expect(page.locator('[data-slot="button"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
+});

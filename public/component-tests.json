@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T02:56:20.759Z",
-  "sourceFingerprint": "9cc9a75f488d99fa771fe1bb65e0161c6987b7eb5189539bc9605b13982db801",
+  "generatedAt": "2026-09-05T03:04:42.061Z",
+  "sourceFingerprint": "939f7c885c26d56ff8ab20f48485af7535de9638bda55cbb819f6af680d2beed",
   "sourceChangedDuringRun": false,
-  "commit": "8c300ee5bd232da4e1972b5585888fc61ba96432",
+  "commit": "3d9179014a27fe4fcf113814c9e9e44398097ea8",
   "dirty": true,
   "runs": [
     {
@@ -291,6 +291,16 @@
           "attempts": 1
         },
         {
+          "id": "browser:bef95681877fac12fa7e-2e605cb25ebf8b918cb7:mobile",
+          "title": "button mantém cursor de clique sem a regra global do tema",
+          "file": "evolution.spec.ts",
+          "line": 249,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
           "id": "browser:bef95681877fac12fa7e-7c1f20f271aa4c283fd3:desktop",
           "title": "personalização exporta os tokens mostrados na prévia",
           "file": "evolution.spec.ts",
@@ -316,6 +326,16 @@
           "file": "evolution.spec.ts",
           "line": 4,
           "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-a66240d930553dd3a74a:desktop",
+          "title": "button mantém cursor de clique sem a regra global do tema",
+          "file": "evolution.spec.ts",
+          "line": 249,
+          "project": "desktop",
           "kind": "interaction",
           "status": "passed",
           "attempts": 1
@@ -351,8 +371,8 @@
           "attempts": 1
         }
       ],
-      "total": 11,
-      "passed": 11,
+      "total": 13,
+      "passed": 13,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,
