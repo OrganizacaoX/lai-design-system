@@ -24,8 +24,16 @@ jobs:
             exit 1
           fi
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
-      - run: npm run test:compositions
+      - run: npm run test:reliability-unit
+      - run: npm run test:reliability
+      - name: Preserve component reliability report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-reliability
+          path: |
+            public/component-tests.json
+            test-results/reliability/
       - run: npm run test:consumers
       - uses: actions/upload-artifact@v4
         if: failure()

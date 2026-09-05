@@ -1,3 +1,7 @@
+import { WorkflowDemo } from "../components/workflow-demo";
+import workflowSource from "../components/workflow-demo?raw";
+import { CodeBlock } from "../components/code-block";
+import { ThemeCustomizer } from "../components/theme-customizer";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +28,37 @@ export function FoundationsPage() {
           aplicações.
         </p>
       </header>
+      <ThemeCustomizer />
+      <WorkflowDemo />
+      <details className="rounded-xl border p-4">
+        <summary className="font-medium">Código do fluxo completo</summary>
+        <CodeBlock code={workflowSource} />
+      </details>
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold">
+          Hierarquia de ações e feedback
+        </h2>
+        <p>
+          Use uma ação principal por etapa: salvar na edição, editar nos
+          detalhes. Ações secundárias usam outline; exclusões usam destructive e
+          uma confirmação que identifica o registro. O cancelamento mantém os
+          dados.
+        </p>
+        <p>
+          Estados vazios explicam o motivo e oferecem uma próxima ação. Erros
+          mostram como tentar novamente. Sucesso confirma o resultado;
+          indisponibilidade explica o que impede a ação. Use StatusPanel e
+          personalize título, descrição e ação para o contexto.
+        </p>
+        <h3 className="font-semibold">Movimento com propósito</h3>
+        <p>
+          Use --motion-fast (120ms) para seleção e hover, --motion-normal
+          (200ms) para troca de contexto e expansão. --motion-ease define a
+          curva compartilhada. Evite animar grandes deslocamentos ou repetir
+          animações decorativas. Toda nova transição deve respeitar
+          prefers-reduced-motion.
+        </p>
+      </section>
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Cores semânticas</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -141,11 +176,11 @@ export function FoundationsPage() {
         </div>
         <p className="text-sm text-muted-foreground">
           120ms para feedback dos controles; 200ms para transições de contexto.
-          Abas aparecem suavemente, indicadores de seleção ganham uma breve animação
-          e painéis expansíveis abrem com transição de altura. Controles clicáveis
-          usam cursor de ponteiro. A preferência de movimento reduzido desativa
-          as animações e transições. Use bordas
-          para agrupar conteúdo e elevação para indicar sobreposição.
+          Abas aparecem suavemente, indicadores de seleção ganham uma breve
+          animação e painéis expansíveis abrem com transição de altura.
+          Controles clicáveis usam cursor de ponteiro. A preferência de
+          movimento reduzido desativa as animações e transições. Use bordas para
+          agrupar conteúdo e elevação para indicar sobreposição.
         </p>
       </section>
       <section className="space-y-4">

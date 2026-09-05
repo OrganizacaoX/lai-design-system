@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
+  outputDir: "test-results/compositions",
   testDir: "./tests/compositions",
   workers: 2,
   use: { baseURL: "http://127.0.0.1:4185", trace: "retain-on-failure" },

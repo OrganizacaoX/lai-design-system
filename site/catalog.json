@@ -74,7 +74,7 @@
     "title": "Button",
     "description": "Variantes e tamanhos.",
     "group": "core",
-    "api": "Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>)"
+    "api": "export type ButtonProps = ButtonPrimitive.Props &\n  VariantProps<typeof buttonVariants> & {\n    loading?: boolean;\n    loadingLabel?: ReactNode;\n  };\n\nButton({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  loading = false,\n  loadingLabel,\n  disabled,\n  children,\n  ...props\n}: ButtonProps)"
   },
   {
     "id": "button-group",
@@ -130,7 +130,7 @@
     "title": "Combobox",
     "description": "Autocomplete com busca.",
     "group": "advanced",
-    "api": "ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props)\n\nComboboxTrigger({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Trigger.Props)\n\nComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props)\n\nComboboxInput({\n  className,\n  children,\n  disabled = false,\n  showTrigger = true,\n  showClear = false,\n  ...props\n}: ComboboxPrimitive.Input.Props & {\n  showTrigger?: boolean\n  showClear?: boolean\n})\n\nComboboxContent({\n  className,\n  side = \"bottom\",\n  sideOffset = 6,\n  align = \"start\",\n  alignOffset = 0,\n  anchor,\n  ...props\n}: ComboboxPrimitive.Popup.Props &\n  Pick<\n    ComboboxPrimitive.Positioner.Props,\n    \"side\" | \"align\" | \"sideOffset\" | \"alignOffset\" | \"anchor\"\n  >)\n\nComboboxList({ className, ...props }: ComboboxPrimitive.List.Props)\n\nComboboxItem({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Item.Props)\n\nComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props)\n\nComboboxLabel({\n  className,\n  ...props\n}: ComboboxPrimitive.GroupLabel.Props)\n\nComboboxCollection({ ...props }: ComboboxPrimitive.Collection.Props)\n\nComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props)\n\nComboboxSeparator({\n  className,\n  ...props\n}: ComboboxPrimitive.Separator.Props)\n\nComboboxChips({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof ComboboxPrimitive.Chips> &\n  ComboboxPrimitive.Chips.Props)\n\nComboboxChip({\n  className,\n  children,\n  showRemove = true,\n  ...props\n}: ComboboxPrimitive.Chip.Props & {\n  showRemove?: boolean\n})\n\nComboboxChipsInput({\n  className,\n  ...props\n}: ComboboxPrimitive.Input.Props)\n\nuseComboboxAnchor()"
+    "api": "ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props)\n\nComboboxTrigger({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Trigger.Props)\n\nComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props)\n\nComboboxInput({\n  className,\n  children,\n  disabled = false,\n  showTrigger = true,\n  showClear = false,\n  triggerLabel = \"Abrir opções\",\n  clearLabel = \"Limpar seleção\",\n  ...props\n}: ComboboxPrimitive.Input.Props & {\n  showTrigger?: boolean\n  triggerLabel?: string\n  clearLabel?: string\n  showClear?: boolean\n})\n\nComboboxContent({\n  className,\n  side = \"bottom\",\n  sideOffset = 6,\n  align = \"start\",\n  alignOffset = 0,\n  anchor,\n  ...props\n}: ComboboxPrimitive.Popup.Props &\n  Pick<\n    ComboboxPrimitive.Positioner.Props,\n    \"side\" | \"align\" | \"sideOffset\" | \"alignOffset\" | \"anchor\"\n  >)\n\nComboboxList({ className, ...props }: ComboboxPrimitive.List.Props)\n\nComboboxItem({\n  className,\n  children,\n  ...props\n}: ComboboxPrimitive.Item.Props)\n\nComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props)\n\nComboboxLabel({\n  className,\n  ...props\n}: ComboboxPrimitive.GroupLabel.Props)\n\nComboboxCollection({ ...props }: ComboboxPrimitive.Collection.Props)\n\nComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props)\n\nComboboxSeparator({\n  className,\n  ...props\n}: ComboboxPrimitive.Separator.Props)\n\nComboboxChips({\n  className,\n  ...props\n}: React.ComponentPropsWithRef<typeof ComboboxPrimitive.Chips> &\n  ComboboxPrimitive.Chips.Props)\n\nComboboxChip({\n  className,\n  children,\n  showRemove = true,\n  removeLabel = \"Remover opção\",\n  ...props\n}: ComboboxPrimitive.Chip.Props & {\n  removeLabel?: string\n  showRemove?: boolean\n})\n\nComboboxChipsInput({\n  className,\n  ...props\n}: ComboboxPrimitive.Input.Props)\n\nuseComboboxAnchor()"
   },
   {
     "id": "command",
@@ -165,7 +165,7 @@
     "title": "Data Table",
     "description": "Tabela com seleção de registros e ações em lote.",
     "group": "patterns",
-    "api": "export interface DataTableColumn<T> {\n  key: string;\n  label: string;\n  width?: number | string;\n  align?: \"left\" | \"center\" | \"right\";\n  render: (item: T) => ReactNode;\n}\n\nexport interface DataTableBulkAction {\n  label: string;\n  icon?: LucideIcon;\n  variant?: \"default\" | \"destructive\" | \"outline\" | \"ghost\";\n  onAction: (selectedIds: string[]) => void;\n}\n\nexport interface DataTableProps<T extends { id: string }> {\n  data: T[];\n  columns: DataTableColumn<T>[];\n  onRowClick?: (item: T) => void;\n  bulkActions?: DataTableBulkAction[];\n  isLoading?: boolean;\n  emptyState?: ReactNode;\n  labels?: Partial<DataTableLabels>;\n}\n\nexport interface DataTableLabels {\n  selected: (count: number) => string;\n  selectRow: (row: number) => string;\n  selectAll: string;\n  clear: string;\n  empty: string;\n}\n\nuseSelection(ids: string[])\n\nBulkActionBar({\n  count,\n  actions,\n  selectedIds,\n  onClear,\n  labels,\n}: {\n  count: number;\n  actions: DataTableBulkAction[];\n  selectedIds: string[];\n  onClear: () => void;\n  labels: DataTableLabels;\n})\n\nTableSkeleton({\n  columns,\n  rows = 5,\n  hasBulkActions = false,\n}: {\n  columns: number;\n  rows?: number;\n  hasBulkActions?: boolean;\n})\n\nDataTable({\n  data,\n  columns,\n  onRowClick,\n  bulkActions,\n  isLoading,\n  emptyState,\n  labels: customLabels,\n}: DataTableProps<T>)"
+    "api": "export interface DataTableColumn<T> {\n  key: string;\n  label: string;\n  width?: number | string;\n  align?: \"left\" | \"center\" | \"right\";\n  render: (item: T) => ReactNode;\n}\n\nexport interface DataTableBulkAction {\n  label: string;\n  icon?: LucideIcon;\n  variant?: \"default\" | \"destructive\" | \"outline\" | \"ghost\";\n  onAction: (selectedIds: string[]) => void;\n}\n\nexport interface DataTableProps<T extends { id: string }> {\n  data: T[];\n  columns: DataTableColumn<T>[];\n  onRowClick?: (item: T) => void;\n  bulkActions?: DataTableBulkAction[];\n  isLoading?: boolean;\n  emptyState?: ReactNode;\n  error?: string;\n  onRetry?: () => void;\n  labels?: Partial<DataTableLabels>;\n}\n\nexport interface DataTableLabels {\n  actions: string;\n  openRow: (row: number) => string;\n  loading: string;\n  retry: string;\n  selected: (count: number) => string;\n  selectRow: (row: number) => string;\n  selectAll: string;\n  clear: string;\n  empty: string;\n}\n\nuseSelection(ids: string[])\n\nBulkActionBar({\n  count,\n  actions,\n  selectedIds,\n  onClear,\n  labels,\n}: {\n  count: number;\n  actions: DataTableBulkAction[];\n  selectedIds: string[];\n  onClear: () => void;\n  labels: DataTableLabels;\n})\n\nTableSkeleton({\n  columns,\n  rows = 5,\n  hasBulkActions = false,\n}: {\n  columns: number;\n  rows?: number;\n  hasBulkActions?: boolean;\n})\n\nDataTable({\n  data,\n  columns,\n  onRowClick,\n  bulkActions,\n  isLoading,\n  emptyState,\n  error,\n  onRetry,\n  labels: customLabels,\n}: DataTableProps<T>)"
   },
   {
     "id": "date-range-picker",
@@ -179,7 +179,7 @@
     "title": "Dialog",
     "description": "Modal com overlay.",
     "group": "core",
-    "api": "Dialog({ ...props }: DialogPrimitive.Root.Props)\n\nDialogTrigger({ ...props }: DialogPrimitive.Trigger.Props)\n\nDialogPortal({ ...props }: DialogPrimitive.Portal.Props)\n\nDialogClose({ ...props }: DialogPrimitive.Close.Props)\n\nDialogOverlay({\n  className,\n  ...props\n}: DialogPrimitive.Backdrop.Props)\n\nDialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: DialogPrimitive.Popup.Props & {\n  showCloseButton?: boolean\n})\n\nDialogHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nDialogFooter({\n  className,\n  showCloseButton = false,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showCloseButton?: boolean\n})\n\nDialogTitle({ className, ...props }: DialogPrimitive.Title.Props)\n\nDialogDescription({\n  className,\n  ...props\n}: DialogPrimitive.Description.Props)"
+    "api": "Dialog({ ...props }: DialogPrimitive.Root.Props)\n\nDialogTrigger({ ...props }: DialogPrimitive.Trigger.Props)\n\nDialogPortal({ ...props }: DialogPrimitive.Portal.Props)\n\nDialogClose({ ...props }: DialogPrimitive.Close.Props)\n\nDialogOverlay({\n  className,\n  ...props\n}: DialogPrimitive.Backdrop.Props)\n\nDialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  closeLabel = \"Fechar\",\n  ...props\n}: DialogPrimitive.Popup.Props & {\n  closeLabel?: string\n  showCloseButton?: boolean\n})\n\nDialogHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nDialogFooter({\n  className,\n  showCloseButton = false,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  closeLabel?: string\n  showCloseButton?: boolean\n})\n\nDialogTitle({ className, ...props }: DialogPrimitive.Title.Props)\n\nDialogDescription({\n  className,\n  ...props\n}: DialogPrimitive.Description.Props)"
   },
   {
     "id": "direction",
@@ -221,7 +221,7 @@
     "title": "Filter Bar",
     "description": "Busca controlada, filtros adicionais e ação de limpeza.",
     "group": "patterns",
-    "api": "export interface FilterBarProps {\n  query: string;\n  onQueryChange: (query: string) => void;\n  onReset?: () => void;\n  label?: string;\n  resetLabel?: string;\n  children?: ReactNode;\n}\n\nFilterBar({\n  query,\n  onQueryChange,\n  onReset,\n  label = \"Buscar registros\",\n  resetLabel = \"Limpar filtros\",\n  children,\n}: FilterBarProps)"
+    "api": "export interface FilterBarProps {\n  ariaLabel?: string;\n  query: string;\n  onQueryChange: (query: string) => void;\n  onReset?: () => void;\n  label?: string;\n  resetLabel?: string;\n  children?: ReactNode;\n}\n\nFilterBar({\n  ariaLabel = \"Filtros\",\n  query,\n  onQueryChange,\n  onReset,\n  label = \"Buscar registros\",\n  resetLabel = \"Limpar filtros\",\n  children,\n}: FilterBarProps)"
   },
   {
     "id": "hover-card",
@@ -389,7 +389,7 @@
     "title": "Sheet",
     "description": "Painel lateral.",
     "group": "extra",
-    "api": "Sheet({ ...props }: SheetPrimitive.Root.Props)\n\nSheetTrigger({ ...props }: SheetPrimitive.Trigger.Props)\n\nSheetClose({ ...props }: SheetPrimitive.Close.Props)\n\nSheetPortal({ ...props }: SheetPrimitive.Portal.Props)\n\nSheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props)\n\nSheetContent({\n  className,\n  children,\n  side = \"right\",\n  showCloseButton = true,\n  ...props\n}: SheetPrimitive.Popup.Props & {\n  side?: \"top\" | \"right\" | \"bottom\" | \"left\"\n  showCloseButton?: boolean\n})\n\nSheetHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetFooter({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetTitle({ className, ...props }: SheetPrimitive.Title.Props)\n\nSheetDescription({\n  className,\n  ...props\n}: SheetPrimitive.Description.Props)"
+    "api": "Sheet({ ...props }: SheetPrimitive.Root.Props)\n\nSheetTrigger({ ...props }: SheetPrimitive.Trigger.Props)\n\nSheetClose({ ...props }: SheetPrimitive.Close.Props)\n\nSheetPortal({ ...props }: SheetPrimitive.Portal.Props)\n\nSheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props)\n\nSheetContent({\n  className,\n  children,\n  side = \"right\",\n  showCloseButton = true,\n  closeLabel = \"Fechar\",\n  ...props\n}: SheetPrimitive.Popup.Props & {\n  side?: \"top\" | \"right\" | \"bottom\" | \"left\"\n  closeLabel?: string\n  showCloseButton?: boolean\n})\n\nSheetHeader({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetFooter({ className, ...props }: React.ComponentProps<\"div\">)\n\nSheetTitle({ className, ...props }: SheetPrimitive.Title.Props)\n\nSheetDescription({\n  className,\n  ...props\n}: SheetPrimitive.Description.Props)"
   },
   {
     "id": "sidebar",
@@ -425,6 +425,13 @@
     "description": "Indicador de carregamento.",
     "group": "core",
     "api": "Spinner({ className, ...props }: React.ComponentProps<\"svg\">)"
+  },
+  {
+    "id": "status-panel",
+    "title": "Status Panel",
+    "description": "Feedback de carregamento, erro, vazio, sucesso e indisponibilidade.",
+    "group": "patterns",
+    "api": "export interface StatusPanelProps {\n  state: \"loading\" | \"error\" | \"empty\" | \"success\" | \"unavailable\";\n  title: string;\n  description?: string;\n  action?: ReactNode;\n  className?: string;\n}\n\nStatusPanel({\n  state,\n  title,\n  description,\n  action,\n  className,\n}: StatusPanelProps)"
   },
   {
     "id": "switch",

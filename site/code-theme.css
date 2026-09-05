@@ -2,7 +2,7 @@
    Adapta automaticamente ao light/dark (via .dark). */
 :root {
   --code-fg: oklch(0.3 0 0);
-  --code-comment: oklch(0.6 0 0);
+  --code-comment: oklch(0.53 0 0);
   --code-punctuation: oklch(0.55 0 0);
   --code-keyword: oklch(0.52 0.19 296);
   --code-string: oklch(0.52 0.12 150);

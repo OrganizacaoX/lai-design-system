@@ -49,7 +49,9 @@
     "check": "tsc --noEmit",
     "test:e2e": "playwright test",
     "test:compositions": "playwright test --config playwright.compositions.config.ts",
-    "test:consumers": "node scripts/check-consumers.mjs"
+    "test:consumers": "node scripts/check-consumers.mjs",
+    "test:reliability": "node scripts/test-reliability.mjs",
+    "test:reliability-unit": "node --test scripts/reliability/*.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

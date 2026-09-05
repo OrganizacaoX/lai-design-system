@@ -88,3 +88,4 @@ export * from "./components/validated-form";
 export * from "./components/data-table";
 export * from "./components/data-pagination";
 export * from "./components/bottom-sheet";
+export * from "./components/status-panel";

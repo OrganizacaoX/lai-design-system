@@ -54,9 +54,13 @@ function ComboboxInput({
   disabled = false,
   showTrigger = true,
   showClear = false,
+  triggerLabel = "Abrir opções",
+  clearLabel = "Limpar seleção",
   ...props
 }: ComboboxPrimitive.Input.Props & {
   showTrigger?: boolean
+  triggerLabel?: string
+  clearLabel?: string
   showClear?: boolean
 }) {
   return (
@@ -70,14 +74,14 @@ function ComboboxInput({
           <InputGroupButton
             size="icon-xs"
             variant="ghost"
-            aria-label="Abrir opções"
+            aria-label={triggerLabel}
             render={<ComboboxTrigger />}
             data-slot="input-group-button"
             className="group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent"
             disabled={disabled}
           />
         )}
-        {showClear && <ComboboxClear disabled={disabled} />}
+        {showClear && <ComboboxClear disabled={disabled} aria-label={clearLabel} />}
       </InputGroupAddon>
       {children}
     </InputGroup>
@@ -233,8 +237,10 @@ function ComboboxChip({
   className,
   children,
   showRemove = true,
+  removeLabel = "Remover opção",
   ...props
 }: ComboboxPrimitive.Chip.Props & {
+  removeLabel?: string
   showRemove?: boolean
 }) {
   return (
@@ -250,7 +256,7 @@ function ComboboxChip({
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
           render={<Button variant="ghost" size="icon-xs" />}
-          aria-label="Remover opção"
+          aria-label={removeLabel}
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >

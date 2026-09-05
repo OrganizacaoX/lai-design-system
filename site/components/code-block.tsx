@@ -46,7 +46,7 @@ export function CodeBlock({
   className,
 }: {
   code: string;
-  lang?: "tsx" | "bash" | "json" | "jsx";
+  lang?: "tsx" | "bash" | "json" | "jsx" | "css";
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
@@ -64,7 +64,13 @@ export function CodeBlock({
   return (
     <div className={cn("group relative min-w-0 max-w-full", className)}>
       <Highlight theme={laiCodeTheme} code={code} language={lang}>
-        {({ className: hlClass, style, tokens, getLineProps, getTokenProps }) => (
+        {({
+          className: hlClass,
+          style,
+          tokens,
+          getLineProps,
+          getTokenProps,
+        }) => (
           <pre
             tabIndex={0}
             aria-label="Exemplo de código"
@@ -93,7 +99,11 @@ export function CodeBlock({
         className="absolute right-2 top-2 size-7 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
         aria-label="Copiar"
       >
-        {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+        {copied ? (
+          <Check className="size-3.5" />
+        ) : (
+          <Copy className="size-3.5" />
+        )}
       </Button>
     </div>
   );

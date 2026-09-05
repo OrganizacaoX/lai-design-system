@@ -261,3 +261,65 @@ pacote e nos itens `@lai/data-table`, `@lai/data-pagination` e `@lai/bottom-shee
 O `DateRangePicker` também oferece limpeza do período e fechamento após seleção.
 Veja os [contratos e exemplos de migração](docs/meetcore-components.md).
 Valide essas composições com `bun run test:compositions`.
+
+## Estados, playground e personalização
+
+`Button` oferece `loading` e `loadingLabel`: durante o envio, bloqueia a ação,
+expõe `aria-busy` e mostra progresso. Use `disabled` para indisponibilidade.
+`StatusPanel` compartilha os estados `loading`, `error`, `empty`, `success` e
+`unavailable`; título, descrição e ação pertencem ao contexto do produto.
+
+`DataTable` mantém o clique da linha e oferece um botão de ação por registro
+quando `onRowClick` está definido. Links, botões e campos dentro da linha não
+acionam o callback da linha. Personalize `labels.actions`, `labels.openRow`,
+`labels.loading` e `labels.retry`; `error` e `onRetry` oferecem recuperação.
+`FilterBar.ariaLabel` permite traduzir também o nome acessível da região.
+
+Os playgrounds de Button, Input e Select sincronizam opções, prévia e código.
+Em `/fundamentos`, o editor visual exporta um `lai-theme.css` para importar
+depois dos estilos do pacote. A mesma página contém o fluxo completo de
+contatos com código copiável: busca, paginação, detalhes, edição e exclusão
+confirmada. Os dados do exemplo são locais e podem ser restaurados.
+
+Movimento: `--motion-fast` para feedback, `--motion-normal` para contexto e
+`--motion-ease` para a curva compartilhada. Preserve suporte a movimento reduzido.
+
+`DialogContent` e `SheetContent` aceitam `closeLabel` (padrão: Fechar).
+`ComboboxInput` aceita `triggerLabel` e `clearLabel`; `ComboboxChip` aceita
+`removeLabel`. Em controles que expõem diretamente o elemento interativo, use
+`aria-label` e os filhos para personalizar o nome e o texto.
+
+Os testes de documentação usam a porta 4197 (`LAI_E2E_PORT` para sobrescrever),
+com servidor próprio e porta estrita. Os testes de composições usam 4185 e
+artefatos em outra pasta, permitindo execução simultânea sem compartilhar arquivos.
+
+## Confiabilidade por componente
+
+Cada página de componente mostra quantidade, resultado, data e cenários de testes
+associados. Um cenário executado em desktop e mobile conta duas vezes; retries
+não aumentam a quantidade. Falhas, instabilidade, testes ignorados e testes não
+executados aparecem separadamente. Um teste de renderização não é apresentado
+como cobertura de interação ou porcentagem de cobertura de código.
+
+Para atualizar a evidência real, execute:
+
+```bash
+bun run test:reliability-unit
+bun run test:reliability
+```
+
+O segundo comando constrói a documentação atual, executa integralmente as duas
+suítes Playwright e gera `public/component-tests.json`, também copiado para `dist`.
+Inclua esse arquivo ao entregar uma nova execução; execuções focadas de
+`test:e2e` não alteram o painel. A CI preserva o relatório e os JSONs originais
+como artefatos. Uma execução com falhas ainda gera resultados e termina com erro.
+
+Associe cada cenário explicitamente com tags como `@component:button` e
+`@kind:interaction`. Tipos disponíveis: `render`, `visual`, `interaction`,
+`accessibility` e `integration`. Associe somente componentes cujo comportamento
+é verificado pelas asserções do teste, evitando inflar os números.
+
+Um hash de conteúdo inclui componentes, documentação, testes e configurações.
+Ao reconstruir a documentação após uma mudança, evidências anteriores aparecem
+como desatualizadas até executar novamente a validação completa. Sem relatório,
+a tela informa ausência de execução; nunca presume que os testes passaram.

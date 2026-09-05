@@ -1,0 +1,2102 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-05T02:56:20.759Z",
+  "sourceFingerprint": "9cc9a75f488d99fa771fe1bb65e0161c6987b7eb5189539bc9605b13982db801",
+  "sourceChangedDuringRun": false,
+  "commit": "8c300ee5bd232da4e1972b5585888fc61ba96432",
+  "dirty": true,
+  "runs": [
+    {
+      "name": "browser",
+      "complete": true,
+      "exitCode": 0
+    },
+    {
+      "name": "compositions",
+      "complete": true,
+      "exitCode": 0
+    }
+  ],
+  "components": {
+    "accordion": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-969391603c5590e7fad4:desktop",
+          "title": "catálogo: accordion",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "alert": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-ff478f8ea2dd8b95e714:desktop",
+          "title": "catálogo: alert",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "alert-dialog": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-18f54c02f9c5e2101a0b:desktop",
+          "title": "catálogo: alert-dialog",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "aspect-ratio": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-dc82512627df2cd52460:desktop",
+          "title": "catálogo: aspect-ratio",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "attachment": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-806dbe3380494492d953:desktop",
+          "title": "catálogo: attachment",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "avatar": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-f1cff8771749b10c79aa:desktop",
+          "title": "catálogo: avatar",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "badge": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-bbc57db58516cb9f73a2:desktop",
+          "title": "catálogo: badge",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "bottom-sheet": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-8ed3246d6b6474ddd6ff:desktop",
+          "title": "catálogo: bottom-sheet",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-3c606167fc8dbf46be54:mobile",
+          "title": "bottom sheet closes, restores focus and reopens; responsiveness follows viewport",
+          "file": "compositions.spec.ts",
+          "line": 89,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-42e0a1cc507a40e38f26:desktop",
+          "title": "bottom sheet closes, restores focus and reopens; responsiveness follows viewport",
+          "file": "compositions.spec.ts",
+          "line": 89,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "breadcrumb": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-9cc3b48e233e9086118e:desktop",
+          "title": "catálogo: breadcrumb",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "bubble": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-d30fcafdaca6cd70541e:desktop",
+          "title": "catálogo: bubble",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "button": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-6669f014b935a54dc41c:desktop",
+          "title": "catálogo: button",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-173faa9567a7644a013e:mobile",
+          "title": "button dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-e00a6fcdd98c9f439ea9:mobile",
+          "title": "button light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-e09d30adb2dbfef71ef5:desktop",
+          "title": "button dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-e0d5e5754586613b5ff5:desktop",
+          "title": "button light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-7c1f20f271aa4c283fd3:desktop",
+          "title": "personalização exporta os tokens mostrados na prévia",
+          "file": "evolution.spec.ts",
+          "line": 48,
+          "project": "desktop",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-8a313027a16d6e931520:mobile",
+          "title": "personalização exporta os tokens mostrados na prévia",
+          "file": "evolution.spec.ts",
+          "line": 48,
+          "project": "mobile",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-9c39a3f43da653151717:mobile",
+          "title": "playground sincroniza estado, código, densidade e tema",
+          "file": "evolution.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-bbaced8fb11ac7ab679b:desktop",
+          "title": "playground sincroniza estado, código, densidade e tema",
+          "file": "evolution.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-3042460eaf76d719d16f:mobile",
+          "title": "loading button blocks duplicate submissions and becomes available again",
+          "file": "compositions.spec.ts",
+          "line": 140,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-ceb07fad254c6f86e2f1:desktop",
+          "title": "loading button blocks duplicate submissions and becomes available again",
+          "file": "compositions.spec.ts",
+          "line": 140,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "button-group": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-4606b9aea492f0832375:desktop",
+          "title": "catálogo: button-group",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "calendar": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-8424f63440e8c80a1344:desktop",
+          "title": "catálogo: calendar",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "card": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-482b78eee3d9c2164751:desktop",
+          "title": "catálogo: card",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "carousel": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-bee3cf8a784011deb1f5:desktop",
+          "title": "catálogo: carousel",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "chart": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-2ee31ba99625824fdc8f:desktop",
+          "title": "catálogo: chart",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "checkbox": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-62e108d90a61e8355538:desktop",
+          "title": "catálogo: checkbox",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-4cf22baef1212b041e3f:mobile",
+          "title": "seleção e painéis respeitam movimento reduzido",
+          "file": "evolution.spec.ts",
+          "line": 159,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-75b0e6936c5d21f171d1:desktop",
+          "title": "seleção e painéis respeitam movimento reduzido",
+          "file": "evolution.spec.ts",
+          "line": 159,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "collapsible": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-e7d3721876b476608e3a:desktop",
+          "title": "catálogo: collapsible",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-4cf22baef1212b041e3f:mobile",
+          "title": "seleção e painéis respeitam movimento reduzido",
+          "file": "evolution.spec.ts",
+          "line": 159,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-75b0e6936c5d21f171d1:desktop",
+          "title": "seleção e painéis respeitam movimento reduzido",
+          "file": "evolution.spec.ts",
+          "line": 159,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "combobox": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-77180790bda27c7508be:desktop",
+          "title": "catálogo: combobox",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "command": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-692e77ad9e947ae7bd78:desktop",
+          "title": "catálogo: command",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "context-menu": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-7b9d8529b465206ed90b:desktop",
+          "title": "catálogo: context-menu",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "data-list": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-10662909caea2dfae638:mobile",
+          "title": "listagem busca, estados e recuperação",
+          "file": "system.spec.ts",
+          "line": 76,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-eb36584e3fb49bb17020:desktop",
+          "title": "listagem busca, estados e recuperação",
+          "file": "system.spec.ts",
+          "line": 76,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-a741e8bd9bb7d6937d55:desktop",
+          "title": "catálogo: data-list",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-0001fb33cb84af4bf5f4:desktop",
+          "title": "data-list dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-7fc47b003db8bffeb268:desktop",
+          "title": "data-list light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-c1be4671f15b90a464e6:mobile",
+          "title": "data-list dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-dd2d889e25d5430c6bb9:mobile",
+          "title": "data-list light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "data-pagination": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-91024ce400c361c98c84:desktop",
+          "title": "catálogo: data-pagination",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-53a55ca095064a352f92:mobile",
+          "title": "pagination boundaries and page size",
+          "file": "compositions.spec.ts",
+          "line": 39,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-9d0ea629eb9f6b01f6a7:desktop",
+          "title": "pagination boundaries and page size",
+          "file": "compositions.spec.ts",
+          "line": 39,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "data-table": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-9f8cb0a4ae5167767d14:desktop",
+          "title": "catálogo: data-table",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-26e7dddd68461bff66d1:mobile",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "mobile",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-435e90209f1305691464:desktop",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "desktop",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-1f88b310e3025d5f1b49:mobile",
+          "title": "row action is keyboard accessible and nested actions do not bubble",
+          "file": "compositions.spec.ts",
+          "line": 118,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-77853f5535f655a5b620:desktop",
+          "title": "selection is isolated from row actions, pruned and disabled during loading",
+          "file": "compositions.spec.ts",
+          "line": 6,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-7bfeb98cef8458538425:mobile",
+          "title": "selection is isolated from row actions, pruned and disabled during loading",
+          "file": "compositions.spec.ts",
+          "line": 6,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-bf9afa05ed53d4a67dc6:desktop",
+          "title": "row action is keyboard accessible and nested actions do not bubble",
+          "file": "compositions.spec.ts",
+          "line": 118,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "date-range-picker": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-6eff67b5620fafda6992:mobile",
+          "title": "período respeita idioma e limites em atalhos",
+          "file": "system.spec.ts",
+          "line": 152,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-7b2a0aa30c6423e22763:mobile",
+          "title": "seletor de período abre e fecha com teclado",
+          "file": "system.spec.ts",
+          "line": 99,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-af93ce7096b60455f3f2:desktop",
+          "title": "período respeita idioma e limites em atalhos",
+          "file": "system.spec.ts",
+          "line": 152,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-c739fdc986ce6d9c483b:desktop",
+          "title": "seletor de período abre e fecha com teclado",
+          "file": "system.spec.ts",
+          "line": 99,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-559e296ba185fca6b9b7:desktop",
+          "title": "catálogo: date-range-picker",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-97d0eb390bfb6e485c24:mobile",
+          "title": "date ranges need two clicks, allow same day, and can be cleared",
+          "file": "compositions.spec.ts",
+          "line": 63,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:4833e7e6fc622e2491db-b6878e1d72ae44a85af2:desktop",
+          "title": "date ranges need two clicks, allow same day, and can be cleared",
+          "file": "compositions.spec.ts",
+          "line": 63,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "dialog": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-47644a15c0e3f3f8196d:desktop",
+          "title": "diálogo preserva foco e seleção funciona pelo teclado",
+          "file": "system.spec.ts",
+          "line": 118,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-b3292d45c8ce620041e3:mobile",
+          "title": "diálogo preserva foco e seleção funciona pelo teclado",
+          "file": "system.spec.ts",
+          "line": 118,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-bab6f7981f1fc49d3063:desktop",
+          "title": "catálogo: dialog",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-26e7dddd68461bff66d1:mobile",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "mobile",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-435e90209f1305691464:desktop",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "desktop",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "direction": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-cf99c6b5b098c801b7c6:desktop",
+          "title": "catálogo: direction",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "drawer": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-387b46d9f7ec4d0d585c:desktop",
+          "title": "catálogo: drawer",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "dropdown-menu": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-7b793b45770b6069677d:desktop",
+          "title": "catálogo: dropdown-menu",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "empty": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-d431780ffb1f81762c6c:desktop",
+          "title": "catálogo: empty",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "field": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-82e2ac8b79662e944497:desktop",
+          "title": "catálogo: field",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "filter-bar": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-10662909caea2dfae638:mobile",
+          "title": "listagem busca, estados e recuperação",
+          "file": "system.spec.ts",
+          "line": 76,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-eb36584e3fb49bb17020:desktop",
+          "title": "listagem busca, estados e recuperação",
+          "file": "system.spec.ts",
+          "line": 76,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-3cf207791f27d817fa05:desktop",
+          "title": "catálogo: filter-bar",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-26e7dddd68461bff66d1:mobile",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "mobile",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-435e90209f1305691464:desktop",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "desktop",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "hover-card": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-92bf6ea13211589ca667:desktop",
+          "title": "catálogo: hover-card",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "input": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-c497999e6b6c309158e9:desktop",
+          "title": "catálogo: input",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-05bde16d23f2681f3919:mobile",
+          "title": "input dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-181795dfdf16882a88fd:desktop",
+          "title": "input light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-5f4f93ca9090775dd4a6:mobile",
+          "title": "input light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-f76fc7dbe8def5750fc8:desktop",
+          "title": "input dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-62ee2b31bf1270284bfe:mobile",
+          "title": "playground input: erro acessível e controle desabilitado",
+          "file": "evolution.spec.ts",
+          "line": 222,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-d3e5285194773e630707:desktop",
+          "title": "playground input: erro acessível e controle desabilitado",
+          "file": "evolution.spec.ts",
+          "line": 222,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "input-group": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-3f5d89577c39e34746c6:desktop",
+          "title": "catálogo: input-group",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "input-otp": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-43def58f17af9c059105:desktop",
+          "title": "catálogo: input-otp",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "item": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-ad311a199575c4725e6e:desktop",
+          "title": "catálogo: item",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "kbd": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-21da0a12fb8aa2d5ba7d:desktop",
+          "title": "catálogo: kbd",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "label": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-567884881f53ffe709a4:desktop",
+          "title": "catálogo: label",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "marker": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-42d81f6f82fcf9821e61:desktop",
+          "title": "catálogo: marker",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "menubar": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-b417b63558348eeb3197:desktop",
+          "title": "catálogo: menubar",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "message": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-74713a493f0666f26b47:desktop",
+          "title": "catálogo: message",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "message-scroller": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-eade160b492f63234e5c:desktop",
+          "title": "catálogo: message-scroller",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "native-select": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-c2852cccbeadeab550e2:desktop",
+          "title": "catálogo: native-select",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "navigation-menu": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-3d91ac845cbfa3d834e9:desktop",
+          "title": "catálogo: navigation-menu",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "page-header": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-cd3193948d3e1b862d39:desktop",
+          "title": "catálogo: page-header",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "pagination": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-354325b8094e351ef8bf:desktop",
+          "title": "catálogo: pagination",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "popover": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-b65bd8a51a0edf931c24:desktop",
+          "title": "catálogo: popover",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "progress": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-01bce087b00275159383:desktop",
+          "title": "catálogo: progress",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "questionnaire": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-84dea98cf6eb305b241b:desktop",
+          "title": "catálogo: questionnaire",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "radio-group": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-a2c75ba9c3732f5de2cc:desktop",
+          "title": "catálogo: radio-group",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "resizable": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-75fec72979e6ef417749:desktop",
+          "title": "catálogo: resizable",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "scroll-area": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-c0bbad91b16d86928329:desktop",
+          "title": "catálogo: scroll-area",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "select": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-47644a15c0e3f3f8196d:desktop",
+          "title": "diálogo preserva foco e seleção funciona pelo teclado",
+          "file": "system.spec.ts",
+          "line": 118,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-b3292d45c8ce620041e3:mobile",
+          "title": "diálogo preserva foco e seleção funciona pelo teclado",
+          "file": "system.spec.ts",
+          "line": 118,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-27b9cd13c9731e600521:desktop",
+          "title": "catálogo: select",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-3593fcddb807769c7d7e:mobile",
+          "title": "select dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-66464d0a0efcc0be8ee4:mobile",
+          "title": "select light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "mobile",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-c90ebdb497e2a583f591:desktop",
+          "title": "select light",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:8324bb52c49185e48ff4-fd5f0b0de03a361b4244:desktop",
+          "title": "select dark",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "project": "desktop",
+          "kind": "visual",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-98572923d62429241b7d:mobile",
+          "title": "playground select: erro acessível e controle desabilitado",
+          "file": "evolution.spec.ts",
+          "line": 222,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-9f44b86117ba9f91ee72:desktop",
+          "title": "playground select: erro acessível e controle desabilitado",
+          "file": "evolution.spec.ts",
+          "line": 222,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "separator": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-8396bac61d000bc53021:desktop",
+          "title": "catálogo: separator",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "sheet": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-3b0ccdc14a5cf25de188:desktop",
+          "title": "catálogo: sheet",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "sidebar": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-edf85cea6ad684958a0f:desktop",
+          "title": "catálogo: sidebar",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "skeleton": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-4eb6aaf6efadd7d26b32:desktop",
+          "title": "catálogo: skeleton",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "slider": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-fdbefd0f3831d40aa0cd:desktop",
+          "title": "catálogo: slider",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "sonner": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-43560fcc0b5e9f79f8eb:desktop",
+          "title": "catálogo: sonner",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "spinner": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-9515651f1c1bfc63f5bc:desktop",
+          "title": "catálogo: spinner",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "status-panel": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-c9923a358454ce47c362:desktop",
+          "title": "catálogo: status-panel",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-3509987c4333a247650f:mobile",
+          "title": "feedback de erro permite recuperar e anuncia o resultado",
+          "file": "evolution.spec.ts",
+          "line": 194,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-f929aac313f1b6ed783a:desktop",
+          "title": "feedback de erro permite recuperar e anuncia o resultado",
+          "file": "evolution.spec.ts",
+          "line": 194,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "switch": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-a9a60cc507009d6fd009:desktop",
+          "title": "catálogo: switch",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "table": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-7ddd7fc6ea186230e537:desktop",
+          "title": "catálogo: table",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "tabs": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-65493c26f0e725b42943:desktop",
+          "title": "catálogo: tabs",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "textarea": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-685825448451bdcc399e:desktop",
+          "title": "catálogo: textarea",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "theme-provider": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-580306a9763c95b20d8d:desktop",
+          "title": "catálogo: theme-provider",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "toast": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-7d1f7759c98c22f00dcd:desktop",
+          "title": "catálogo: toast",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "toggle": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-06cfd6e4c7d7cacc3fa5:desktop",
+          "title": "catálogo: toggle",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "toggle-group": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-57aa66d9cefb94a7dbb2:desktop",
+          "title": "catálogo: toggle-group",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "tooltip": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-66c0af16f6bd3aa4acdf:desktop",
+          "title": "catálogo: tooltip",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "validated-form": {
+      "checks": [
+        {
+          "id": "browser:19fec53437319cd87246-2fa5cb4bc71d9643d6aa:mobile",
+          "title": "formulário valida, foca e envia",
+          "file": "system.spec.ts",
+          "line": 54,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:19fec53437319cd87246-ca0fe70c6d40091ad19f:desktop",
+          "title": "formulário valida, foca e envia",
+          "file": "system.spec.ts",
+          "line": 54,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-2e476b0f2fe7a2725ffc:desktop",
+          "title": "catálogo: validated-form",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-26e7dddd68461bff66d1:mobile",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "mobile",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "browser:bef95681877fac12fa7e-435e90209f1305691464:desktop",
+          "title": "fluxo de contatos oferece detalhes, edição, confirmação e recuperação",
+          "file": "evolution.spec.ts",
+          "line": 82,
+          "project": "desktop",
+          "kind": "integration",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    }
+  }
+}

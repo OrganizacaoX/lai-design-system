@@ -1,4 +1,5 @@
 export const usageGuidance: Record<string, string> = {
+  "status-panel": "Use para loading, error, empty, success e unavailable. Informe título e descrição no idioma do produto; ofereça ação de recuperação para erros e estados vazios. O painel anuncia alterações e não usa apenas cor para comunicar o estado.",
   "data-table":
     "Use para comparar registros por colunas e executar ações em lote. Forneça IDs estáveis, rótulos traduzidos e renderizadores de célula. A seleção acompanha os registros atuais e fica indisponível durante o carregamento.",
   "data-pagination":

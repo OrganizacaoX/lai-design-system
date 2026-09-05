@@ -8,7 +8,6 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { Spinner } from "@/components/ui/spinner";
 
 export function ControlStates({ id }: { id: string }) {
   const [pending, setPending] = useState(false);
@@ -24,11 +23,10 @@ export function ControlStates({ id }: { id: string }) {
                 setPending(true);
                 setTimeout(() => setPending(false), 1000);
               }}
-              disabled={pending}
-              aria-busy={pending}
+              loading={pending}
+              loadingLabel="Salvando…"
             >
-              {pending && <Spinner />}
-              {pending ? "Salvando…" : "Testar carregamento"}
+              Testar carregamento
             </Button>
             <Button disabled>Indisponível</Button>
             <Button variant="destructive">Excluir registro</Button>

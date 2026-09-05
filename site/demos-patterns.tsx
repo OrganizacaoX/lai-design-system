@@ -1,3 +1,4 @@
+import { StatusPanel } from "@/components/status-panel";
 import { DataTable } from "@/components/data-table";
 import { DataPagination } from "@/components/data-pagination";
 import { BottomSheet } from "@/components/bottom-sheet";
@@ -8,6 +9,60 @@ import { FilterBar } from "@/components/filter-bar";
 import { DataList } from "@/components/data-list";
 import { ValidatedForm } from "@/components/validated-form";
 import { Button } from "@/components/ui/button";
+
+function StatusExample() {
+  const [state, setState] = useState<
+    "loading" | "error" | "empty" | "success" | "unavailable"
+  >("empty");
+  const titles = {
+    loading: "Carregando registros…",
+    error: "Não foi possível carregar",
+    empty: "Nenhum registro",
+    success: "Registros carregados",
+    unavailable: "Acesso indisponível",
+  };
+  const descriptions = {
+    loading: "Aguarde a resposta da consulta.",
+    error: "A conexão falhou. Tente carregar os registros novamente.",
+    empty: "Ajuste os filtros para encontrar registros.",
+    success: "A consulta foi concluída.",
+    unavailable: "Seu perfil não tem acesso a estes registros.",
+  };
+  return (
+    <div className="w-full space-y-4">
+      <label className="grid gap-2 text-sm">
+        Estado do feedback
+        <select
+          className="h-10 rounded-md border bg-background px-2"
+          value={state}
+          onChange={(event) => setState(event.target.value as typeof state)}
+        >
+          {Object.keys(titles).map((value) => (
+            <option key={value}>{value}</option>
+          ))}
+        </select>
+      </label>
+      <StatusPanel
+        state={state}
+        title={titles[state]}
+        description={descriptions[state]}
+        action={
+          state === "error" ? (
+            <Button
+              variant="outline"
+              onClick={() => {
+                setState("loading");
+                setTimeout(() => setState("success"), 500);
+              }}
+            >
+              Tentar novamente
+            </Button>
+          ) : undefined
+        }
+      />
+    </div>
+  );
+}
 
 function ListExample() {
   const [query, setQuery] = useState("");
@@ -134,6 +189,15 @@ function BottomSheetExample() {
 }
 
 export const patternDemos: Demo[] = [
+  {
+    id: "status-panel",
+    title: "Status Panel",
+    description:
+      "Feedback de carregamento, erro, vazio, sucesso e indisponibilidade.",
+    node: <StatusExample />,
+    code: `import { StatusPanel } from "@/components/status-panel"
+<StatusPanel state="empty" title="Nenhum projeto" description="Crie o primeiro projeto para começar." />`,
+  },
   {
     id: "data-table",
     title: "Data Table",

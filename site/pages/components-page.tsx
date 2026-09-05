@@ -1,3 +1,5 @@
+import { ComponentReliability } from "../components/component-reliability";
+import { ComponentPlayground } from "../components/component-playground";
 import { usageGuidance } from "../usage-guidance";
 import { ControlStates } from "../components/control-states";
 import { lazy, Suspense, useEffect, useState } from "react";
@@ -99,6 +101,7 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
         <h1 className="mt-3 text-3xl font-semibold">{entry.title}</h1>
         <p className="mt-2 text-muted-foreground">{entry.description}</p>
       </header>
+      <ComponentReliability id={id} />
       <section className="space-y-2">
         <h2 className="text-xl font-semibold">Quando usar</h2>
         <p className="leading-relaxed text-muted-foreground">
@@ -119,6 +122,7 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
         </p>
       )}
       <ControlStates id={id} />
+      <ComponentPlayground key={id} id={id} />
       {id === "date-range-picker" && (
         <Suspense fallback={<p role="status">Carregando opções…</p>}>
           <DateRangeOptions />

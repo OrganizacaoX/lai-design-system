@@ -19,6 +19,10 @@ function App() {
   ]);
   const [selected, setSelected] = useState("");
   const [clicked, setClicked] = useState("");
+  const [rowCalls, setRowCalls] = useState(0);
+  const [internalCalls, setInternalCalls] = useState(0);
+  const [saving, setSaving] = useState(false);
+  const [submissions, setSubmissions] = useState(0);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -29,6 +33,8 @@ function App() {
   return (
     <main className="flex flex-col gap-4 p-4">
       <Button onClick={() => setLoading(!loading)}>Loading</Button>
+      <Button loading={saving} loadingLabel="Saving operation" onClick={() => {setSaving(true);setSubmissions(n => n + 1);setTimeout(() => setSaving(false), 1000);}}>Save operation</Button>
+      <output aria-label="Submissions">{submissions}</output>
       <Button onClick={() => setData(data.slice(1))}>Remove first</Button>
       <Button
         onClick={() => {
@@ -41,11 +47,13 @@ function App() {
       <Button onClick={() => setTotal(1)}>Single</Button>
       <DataTable
         data={data}
-        columns={[{ key: "name", label: "Name", render: (item) => item.name }]}
+        columns={[{ key: "name", label: "Name", render: (item) => item.name }, {key: "internal", label: "Internal", render: item => <Button variant="outline" onClick={() => setInternalCalls(n => n + 1)}>Internal {item.name}</Button>}]}
         isLoading={loading}
-        onRowClick={(item) => setClicked(item.id)}
+        onRowClick={(item) => {setClicked(item.id);setRowCalls(n => n + 1);}}
         bulkActions={[{ label: "Apply", onAction: (ids) => setSelected(ids.join(",")) }]}
         labels={{
+          openRow: row => `Open row ${row}`,
+          actions: "Actions",
           selectAll: "Select all",
           selectRow: (row) => `Select row ${row}`,
           clear: "Clear selection",
@@ -55,6 +63,8 @@ function App() {
       />
       <output aria-label="Selected">{selected}</output>
       <output aria-label="Clicked">{clicked}</output>
+      <output aria-label="Row calls">{rowCalls}</output>
+      <output aria-label="Internal calls">{internalCalls}</output>
       <DataPagination
         page={page}
         limit={limit}

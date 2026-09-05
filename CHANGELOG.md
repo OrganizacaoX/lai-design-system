@@ -1,5 +1,16 @@
 # Changelog
 
+## Não publicado
+
+- Cada componente mostra contagem e resultado real dos testes associados, com data, cenários e detecção de evidências desatualizadas.
+- Novo comando `test:reliability` gera o relatório após construir e validar as duas suítes completas; CI preserva os resultados.
+
+- Button com loading/aria-busy e StatusPanel para estados comuns.
+- Ações de tabela acessíveis por teclado, eventos internos isolados e recuperação de erro.
+- Playground de controles, editor de tema com exportação CSS e fluxo completo de contatos.
+- Rótulos acessíveis configuráveis e curva de movimento compartilhada.
+- Testes de teclado, estados, exportação de tokens e edição/exclusão.
+
 ## 0.2.1
 
 - Google Sans Flex e Google Sans Code carregadas pelo CSS do pacote e pelo tema do registry, sem configuração adicional no HTML.

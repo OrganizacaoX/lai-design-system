@@ -38,18 +38,18 @@
         },
         "[data-slot=\"checkbox\"], [data-slot=\"radio-group-item\"],\n[data-slot=\"toggle\"], [data-slot=\"tabs-trigger\"], [data-slot=\"switch\"]": {
           "transition-duration": "var(--motion-fast)",
-          "transition-timing-function": "ease-out"
+          "transition-timing-function": "var(--motion-ease)"
         },
         "[data-slot=\"checkbox-indicator\"][data-checked],\n[data-slot=\"radio-group-indicator\"][data-checked]": {
-          "animation": "lai-selection-in var(--motion-fast) ease-out"
+          "animation": "lai-selection-in var(--motion-fast) var(--motion-ease)"
         },
         "[data-slot=\"tabs-content\"]:not([hidden], [data-hidden])": {
-          "animation": "lai-panel-in var(--motion-normal) ease-out"
+          "animation": "lai-panel-in var(--motion-normal) var(--motion-ease)"
         },
         "[data-slot=\"collapsible-content\"]": {
           "height": "var(--collapsible-panel-height)",
           "overflow": "hidden",
-          "transition": "height var(--motion-normal) ease-out, opacity var(--motion-normal) ease-out"
+          "transition": "height var(--motion-normal) var(--motion-ease), opacity var(--motion-normal) var(--motion-ease)"
         },
         "[data-slot=\"collapsible-content\"][data-starting-style],\n[data-slot=\"collapsible-content\"][data-ending-style]": {
           "height": "0",
@@ -144,6 +144,7 @@
           "control-padding": "0.625rem",
           "motion-fast": "120ms",
           "motion-normal": "200ms",
+          "motion-ease": "cubic-bezier(0.2, 0, 0, 1)",
           "elevation-surface": "0 1px 3px rgb(0 0 0 / 8%)",
           "elevation-overlay": "0 12px 32px rgb(0 0 0 / 16%)",
           "text-page-title": "1.875rem",
@@ -436,7 +437,8 @@
       "dependencies": [
         "@base-ui/react@1.8.0",
         "class-variance-authority@0.7.1",
-        "cn@0.2.5"
+        "cn@0.2.5",
+        "lucide-react@1.41.0"
       ]
     },
     {
@@ -1460,6 +1462,7 @@
         "@lai/button",
         "@lai/checkbox",
         "@lai/skeleton",
+        "@lai/status-panel",
         "@lai/table"
       ]
     },
@@ -1515,6 +1518,22 @@
           "type": "registry:component",
           "target": "components/page-header.tsx"
         }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "status-panel",
+      "type": "registry:component",
+      "title": "Status Panel",
+      "files": [
+        {
+          "path": "src/components/status-panel.tsx",
+          "type": "registry:component",
+          "target": "components/status-panel.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react@1.41.0"
       ]
     },
     {

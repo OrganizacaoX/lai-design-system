@@ -1,4 +1,11 @@
-import { useState, useCallback, useEffect, useMemo, type ReactNode } from "react";
+import { StatusPanel } from "@/components/status-panel";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  type ReactNode,
+} from "react";
 import {
   Table,
   TableHead,
@@ -34,10 +41,16 @@ export interface DataTableProps<T extends { id: string }> {
   bulkActions?: DataTableBulkAction[];
   isLoading?: boolean;
   emptyState?: ReactNode;
+  error?: string;
+  onRetry?: () => void;
   labels?: Partial<DataTableLabels>;
 }
 
 export interface DataTableLabels {
+  actions: string;
+  openRow: (row: number) => string;
+  loading: string;
+  retry: string;
   selected: (count: number) => string;
   selectRow: (row: number) => string;
   selectAll: string;
@@ -45,6 +58,10 @@ export interface DataTableLabels {
   empty: string;
 }
 const defaultLabels: DataTableLabels = {
+  actions: "Ações",
+  openRow: (row) => `Abrir linha ${row}`,
+  loading: "Carregando resultados…",
+  retry: "Tentar novamente",
   selected: (count) => `${count} selecionado(s)`,
   selectRow: (row) => `Selecionar linha ${row}`,
   selectAll: "Selecionar todos",
@@ -73,7 +90,9 @@ function useSelection(ids: string[]) {
   }, []);
 
   const toggleAll = useCallback(() => {
-    setSelectedIds((prev) => (prev.size === ids.length ? new Set() : new Set(ids)));
+    setSelectedIds((prev) =>
+      prev.size === ids.length ? new Set() : new Set(ids),
+    );
   }, [ids]);
 
   const clear = useCallback(() => setSelectedIds(new Set()), []);
@@ -101,7 +120,9 @@ function BulkActionBar({
       className="flex flex-wrap items-center gap-3 rounded-lg border border-border px-4 py-2.5"
       aria-live="polite"
     >
-      <span className="text-sm text-muted-foreground flex-1">{labels.selected(count)}</span>
+      <span className="text-sm text-muted-foreground flex-1">
+        {labels.selected(count)}
+      </span>
       <div className="flex items-center gap-2">
         {actions.map((action) => {
           const IconComponent = action.icon;
@@ -166,17 +187,40 @@ export function DataTable<T extends { id: string }>({
   bulkActions,
   isLoading,
   emptyState,
+  error,
+  onRetry,
   labels: customLabels,
 }: DataTableProps<T>) {
   const labels = { ...defaultLabels, ...customLabels };
   const ids = useMemo(() => data.map((item) => item.id), [data]);
-  const { selectedIds, toggle, toggleAll, clear, allSelected } = useSelection(ids);
+  const { selectedIds, toggle, toggleAll, clear, allSelected } =
+    useSelection(ids);
 
   const hasBulkActions = (bulkActions?.length ?? 0) > 0;
   const hasSelection = selectedIds.size > 0;
 
+  if (error && !isLoading)
+    return (
+      <StatusPanel
+        state="error"
+        title={error}
+        action={
+          onRetry && (
+            <Button variant="outline" onClick={onRetry}>
+              {labels.retry}
+            </Button>
+          )
+        }
+      />
+    );
+
   return (
     <div className="flex flex-col gap-2">
+      {isLoading && (
+        <p role="status" className="text-sm text-muted-foreground">
+          {labels.loading}
+        </p>
+      )}
       {hasBulkActions && hasSelection && !isLoading && (
         <BulkActionBar
           count={selectedIds.size}
@@ -215,18 +259,27 @@ export function DataTable<T extends { id: string }>({
                   {col.label}
                 </TableHead>
               ))}
+              {onRowClick && <TableHead>{labels.actions}</TableHead>}
             </TableRow>
           </TableHeader>
 
           {isLoading ? (
-            <TableSkeleton columns={columns.length} rows={5} hasBulkActions={hasBulkActions} />
+            <TableSkeleton
+              columns={columns.length + (onRowClick ? 1 : 0)}
+              rows={5}
+              hasBulkActions={hasBulkActions}
+            />
           ) : data.length === 0 ? (
             <TableBody>
               <TableRow>
                 <TableCell
                   style={{ textAlign: "center", padding: 40 }}
                   className="text-muted-foreground"
-                  colSpan={columns.length + (hasBulkActions ? 1 : 0)}
+                  colSpan={
+                    columns.length +
+                    (hasBulkActions ? 1 : 0) +
+                    (onRowClick ? 1 : 0)
+                  }
                 >
                   {emptyState ?? labels.empty}
                 </TableCell>
@@ -240,7 +293,18 @@ export function DataTable<T extends { id: string }>({
                   <TableRow
                     key={item.id}
                     className={onRowClick ? "cursor-pointer" : undefined}
-                    onClick={onRowClick ? () => onRowClick(item) : undefined}
+                    onClick={
+                      onRowClick
+                        ? (event) => {
+                            if (
+                              !(event.target as Element).closest(
+                                "button, a, input, select, textarea, [role=button], [role=checkbox]",
+                              )
+                            )
+                              onRowClick(item);
+                          }
+                        : undefined
+                    }
                     data-state={isSelected ? "selected" : undefined}
                   >
                     {hasBulkActions && (
@@ -268,6 +332,17 @@ export function DataTable<T extends { id: string }>({
                         {col.render(item)}
                       </TableCell>
                     ))}
+                    {onRowClick && (
+                      <TableCell>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => onRowClick(item)}
+                        >
+                          {labels.openRow(index + 1)}
+                        </Button>
+                      </TableCell>
+                    )}
                   </TableRow>
                 );
               })}

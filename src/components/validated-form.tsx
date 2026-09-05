@@ -122,7 +122,11 @@ export function ValidatedForm({
           </div>
         );
       })}
-      <Button type="submit" disabled={status === "pending"}>
+      <Button
+        type="submit"
+        loading={status === "pending"}
+        loadingLabel={pendingLabel}
+      >
         {status === "pending" ? pendingLabel : submitLabel}
       </Button>
       <p role="status" className="text-sm text-success">
