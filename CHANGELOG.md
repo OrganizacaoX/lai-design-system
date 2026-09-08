@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 — 2026-09-08
+
+- `SidebarMenuButton`: no modo de ícones o botão volta a recortar o próprio conteúdo, então rótulos e ações à direita não sobram no trilho de 48px. O `overflow-visible` do estado expandido continua valendo, preservando a animação do indicador de item ativo.
+
 ## 0.4.0 — 2026-09-05
 
 - Base de aplicação: subpaths para TanStack Form/Zod, DnD Kit, TanStack Virtual, Better Auth, Motion, date-fns, Lucide, PostHog, Driver.js, kit Testing Library e TanStack AI com helper shadcn de streaming local.
