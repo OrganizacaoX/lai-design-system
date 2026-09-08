@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2 — 2026-09-08
+
+- `AppShell`: o espaçamento da navegação passou a viver no `<nav>` (`gap-1.5`, o mesmo ritmo do disk/front) em vez do padding de cada `SidebarGroup`. Antes, produtos que mapeiam um item de topo por grupo viam 16px entre itens vizinhos e 8px entre seções colapsáveis; agora a distância é de 6px em toda a lista. Itens dentro de um mesmo grupo também ganharam `gap-1.5`.
+
 ## 0.4.1 — 2026-09-08
 
 - `SidebarMenuButton`: no modo de ícones o botão volta a recortar o próprio conteúdo, então rótulos e ações à direita não sobram no trilho de 48px. O `overflow-visible` do estado expandido continua valendo, preservando a animação do indicador de item ativo.

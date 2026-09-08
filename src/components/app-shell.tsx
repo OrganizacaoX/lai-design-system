@@ -80,11 +80,13 @@ function AppShellNavigationGroup({ group, renderItem }: {
   const activeId = group.items.find(item => item.active)?.id;
   const [expanded, setExpanded] = useState(group.defaultOpen ?? !!activeId);
   useEffect(() => { if (activeId) setExpanded(true); }, [activeId]);
-  if (!group.collapsible) return <SidebarGroup>
+  // O espaçamento entre grupos vive no <nav> (`gap-1.5`), então o grupo em si não
+  // adiciona padding — senão itens vizinhos ficariam a 16px um do outro.
+  if (!group.collapsible) return <SidebarGroup className="p-0">
     {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
-    <SidebarMenu>{group.items.map(item => <SidebarMenuItem key={item.id}>{renderItem(item)}</SidebarMenuItem>)}</SidebarMenu>
+    <SidebarMenu className="gap-1.5">{group.items.map(item => <SidebarMenuItem key={item.id}>{renderItem(item)}</SidebarMenuItem>)}</SidebarMenu>
   </SidebarGroup>;
-  return <SidebarGroup className="py-0.5">
+  return <SidebarGroup className="p-0">
     <SidebarMenu>
       <Collapsible open={expanded} onOpenChange={next => {
         if (!isMobile && state === "collapsed") { setOpen(true); setExpanded(true); }
@@ -153,7 +155,7 @@ function AppShellContent({ brand, brandIcon, navigation, footer, banner, childre
           </Button>
         </SidebarHeader>
         <SidebarContent>
-          <nav aria-label={labels.navigation}>
+          <nav aria-label={labels.navigation} className="flex flex-col gap-1.5 p-2">
             {navigation.map(group => group.items.length > 0 && (
               <AppShellNavigationGroup key={group.id} group={group} renderItem={link} />
             ))}
