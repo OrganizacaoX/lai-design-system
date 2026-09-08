@@ -11,6 +11,7 @@ import { FilterBar } from "@/components/filter-bar";
 import { DataList } from "@/components/data-list";
 import { ValidatedForm } from "@/components/validated-form";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 function StatusExample() {
   const [state, setState] = useState<
@@ -283,15 +284,38 @@ export const patternDemos: Demo[] = [
   {
     id: "page-header",
     title: "Page Header",
-    description: "Título, descrição e ações de uma página.",
+    description:
+      "Título, descrição, badges, meta, voltar e ações de uma página. A variante bar é a versão compacta para telas de altura fixa.",
     node: (
-      <PageHeader
-        title="Contatos"
-        description="Gerencie as pessoas da sua organização."
-        actions={<Button>Novo contato</Button>}
-      />
+      <div className="w-full space-y-8">
+        <PageHeader
+          title="Contatos"
+          description="Gerencie as pessoas da sua organização."
+          actions={<Button>Novo contato</Button>}
+        />
+        <PageHeader
+          title="Ana Ribeiro"
+          back={{ href: "#" }}
+          badges={<Badge variant="secondary">Ativo</Badge>}
+          meta="Criado em 12/03/2025"
+          actions={<Button variant="outline">Editar</Button>}
+        />
+        <PageHeader
+          variant="bar"
+          title="Fluxo de análise"
+          back={{ href: "#" }}
+          badges={<Badge variant="outline">Rascunho v3</Badge>}
+          actions={<Button size="sm">Publicar</Button>}
+          className="rounded-xl border"
+        />
+      </div>
     ),
-    code: '<PageHeader title="Contatos" description="Gerencie sua organização." actions={<Button>Novo contato</Button>} />',
+    code: `<PageHeader title="Contatos" description="Gerencie sua organização." actions={<Button>Novo contato</Button>} />
+
+<PageHeader title="Ana Ribeiro" back={{ href: "/contatos", render: <Link to="/contatos" /> }}
+  badges={<Badge variant="secondary">Ativo</Badge>} meta="Criado em 12/03/2025" />
+
+<PageHeader variant="bar" title="Fluxo de análise" back={{ href: "/fluxos" }} actions={<Button size="sm">Publicar</Button>} />`,
   },
   {
     id: "filter-bar",

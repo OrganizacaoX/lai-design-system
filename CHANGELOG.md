@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 — 2026-09-08
+
+- `PageHeader`: novas props `badges`, `meta`, `back` e `variant`. `badges` põe estado (versão, rascunho, status) ao lado do título e fora do `<h1>`, para o leitor de tela anunciar só o título da página; `meta` é a linha discreta abaixo (data, identificador, origem); `back` renderiza o botão voltar à esquerda e continua livre de roteador — sem `render` cai num `<a href>`, com `render` recebe o `Link` do consumidor. `variant="bar"` é a versão compacta com borda inferior, para telas de altura fixa (canvas, editores) que antes montavam o cabeçalho à mão e acabavam com o título em tamanhos diferentes do resto do app. O `<h1>` usa `--text-page-title` nas duas variantes. Nada muda para quem já usa `title`/`description`/`actions`/`breadcrumbs`. Rótulo acessível do voltar em `pageHeader.back` (pt-BR/en/es). Documentado em `docs/page-header.md`.
+
 ## 0.4.2 — 2026-09-08
 
 - `AppShell`: o espaçamento da navegação passou a viver no `<nav>` (`gap-1.5`, o mesmo ritmo do disk/front) em vez do padding de cada `SidebarGroup`. Antes, produtos que mapeiam um item de topo por grupo viam 16px entre itens vizinhos e 8px entre seções colapsáveis; agora a distância é de 6px em toda a lista. Itens dentro de um mesmo grupo também ganharam `gap-1.5`.

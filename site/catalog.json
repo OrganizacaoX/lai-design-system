@@ -324,9 +324,9 @@
   {
     "id": "page-header",
     "title": "Page Header",
-    "description": "Título, descrição e ações de uma página.",
+    "description": "Título, descrição, badges, meta, voltar e ações de uma página. A variante bar é a versão compacta para telas de altura fixa.",
     "group": "patterns",
-    "api": "export interface PageHeaderProps {\n  title: string;\n  description?: string;\n  actions?: ReactNode;\n  breadcrumbs?: ReactNode;\n  className?: string;\n}\n\nPageHeader({\n  title,\n  description,\n  actions,\n  breadcrumbs,\n  className,\n}: PageHeaderProps)"
+    "api": "export interface PageHeaderBack {\n  href: string;\n  label?: string;\n  render?: ReactElement;\n}\n\nexport interface PageHeaderProps {\n  title: string;\n  description?: string;\n  actions?: ReactNode;\n  breadcrumbs?: ReactNode;\n  /** Estado ao lado do título (versão, rascunho, status). Fica fora do <h1>\n      para o leitor de tela anunciar só o título da página. */\n  badges?: ReactNode;\n  /** Linha discreta abaixo do título: data, identificador, origem. */\n  meta?: ReactNode;\n  back?: PageHeaderBack;\n  /** `bar` é a versão compacta com borda inferior, para telas de altura fixa\n      (canvas, editores) onde o header divide a viewport com o conteúdo. */\n  variant?: \"page\" | \"bar\";\n  className?: string;\n}\n\nBackButton({ back }: { back: PageHeaderBack })\n\nPageHeader({\n  title,\n  description,\n  actions,\n  breadcrumbs,\n  badges,\n  meta,\n  back,\n  variant = \"page\",\n  className,\n}: PageHeaderProps)"
   },
   {
     "id": "pagination",

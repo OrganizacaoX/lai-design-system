@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T23:07:07.949Z",
-  "sourceFingerprint": "1b1b42e5614b25d1533428342691df3d69980e9f7fa1884657addb723ef45287",
+  "generatedAt": "2026-09-08T17:44:31.541Z",
+  "sourceFingerprint": "aab22c8050ee2791c7902bc4b5ee059b6742ca33ce9a26cf689233fd55ec1c8c",
   "sourceChangedDuringRun": false,
-  "commit": "60bbf9a72e6bfcd678b589acbb8ecf1ddb8b3b52",
+  "commit": "8d5d8a9b10a9fec66879f2da6e5687c3e56aa79e",
   "dirty": true,
   "runs": [
     {
@@ -1949,13 +1949,33 @@
           "kind": "interaction",
           "status": "passed",
           "attempts": 1
+        },
+        {
+          "id": "compositions:f093d64308e6a6314376-0a6d92453fd6a7ac5c9a:mobile",
+          "title": "colapsada mostra só os ícones, sem sobra de rótulo",
+          "file": "sidebar-collapsed.spec.ts",
+          "line": 20,
+          "project": "mobile",
+          "kind": "layout",
+          "status": "skipped",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:f093d64308e6a6314376-9b9b81d22af028c8414e:desktop",
+          "title": "colapsada mostra só os ícones, sem sobra de rótulo",
+          "file": "sidebar-collapsed.spec.ts",
+          "line": 20,
+          "project": "desktop",
+          "kind": "layout",
+          "status": "passed",
+          "attempts": 1
         }
       ],
-      "total": 5,
-      "passed": 5,
+      "total": 7,
+      "passed": 6,
       "failed": 0,
       "flaky": 0,
-      "skipped": 0,
+      "skipped": 1,
       "notRun": 0
     },
     "sidebar-profile": {
