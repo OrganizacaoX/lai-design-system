@@ -21,10 +21,16 @@ test("tela mostra o progresso e oferece saída quando a atualização falha", { 
   const screen = page.getByRole("status").filter({ hasText: "Atualizando para a nova versão" });
   await expect(screen).toBeVisible();
   await expect(screen).toHaveAttribute("aria-live", "polite");
+  await expect(page.getByText("Isso leva alguns segundos.")).toBeVisible();
+  await expect(page.getByTestId("brand")).toBeVisible();
   await expect(page.getByRole("button", { name: "Tentar novamente", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Tela falha", exact: true }).click();
   await expect(page.getByText("Não foi possível atualizar")).toBeVisible();
   await expect(page.getByText("Verifique sua conexão e tente novamente.")).toBeVisible();
+  // A marca fica nas duas variantes: uma tela cheia sem ela parece página de
+  // terceiro travando o app. A descrição é só do progresso.
+  await expect(page.getByTestId("brand")).toBeVisible();
+  await expect(page.getByText("Isso leva alguns segundos.")).toHaveCount(0);
   // Sem onClearCache não existe segundo botão: dois rótulos para a mesma saída confundem.
   await expect(page.getByRole("button", { name: "Limpar cache e reiniciar", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Tentar novamente", exact: true }).click();

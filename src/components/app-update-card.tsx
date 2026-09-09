@@ -69,6 +69,13 @@ export interface AppUpdatingScreenProps {
   /** Marca do produto no lugar do spinner: o design system não conhece o logo
       de cada app. */
   icon?: ReactNode;
+  /** Marca acima do conteúdo, nas duas variantes. Uma tela cheia sem nada do
+      produto parece página de terceiro travando o app — e é justamente na falha
+      que a pessoa fica olhando para ela. */
+  brand?: ReactNode;
+  /** Segunda linha do progresso, para o app dizer o que está acontecendo. A
+      variante `failed` já tem a sua. */
+  description?: ReactNode;
   className?: string;
 }
 
@@ -78,6 +85,8 @@ export function AppUpdatingScreen({
   onRetry,
   onClearCache,
   icon,
+  brand,
+  description,
   className,
 }: AppUpdatingScreenProps) {
   const { t } = useLaiTranslation();
@@ -90,11 +99,13 @@ export function AppUpdatingScreen({
         className,
       )}
     >
+      {brand}
       {variant === "updating" ? (
         <>
           {/* O container já é a região viva; o ícone não anuncia de novo. */}
           {icon ?? <Spinner role="presentation" aria-label={undefined} className="size-8 text-muted-foreground" />}
           <p className="text-sm text-muted-foreground">{t("appUpdate.updating")}</p>
+          {description && <p className="max-w-xs text-xs text-muted-foreground">{description}</p>}
         </>
       ) : (
         <>

@@ -336,9 +336,15 @@ export const patternDemos: Demo[] = [
           onUpdate={() => {}}
         />
         <div className="grid gap-4 sm:grid-cols-2">
-          <AppUpdatingScreen className="static h-56 rounded-xl border" onRetry={() => {}} />
           <AppUpdatingScreen
             className="static h-56 rounded-xl border"
+            brand={<span className="text-sm font-semibold">Produto</span>}
+            description="Isso leva alguns segundos."
+            onRetry={() => {}}
+          />
+          <AppUpdatingScreen
+            className="static h-56 rounded-xl border"
+            brand={<span className="text-sm font-semibold">Produto</span>}
             variant="failed"
             onRetry={() => {}}
             onClearCache={() => {}}
@@ -351,6 +357,8 @@ export const patternDemos: Demo[] = [
 <AppUpdateCard onUpdate={startUpdate} description="Atualizar agora interrompe a ligação." />
 
 <AppUpdatingScreen icon={<Logo className="size-20 animate-pulse" />} onRetry={retry} />
+
+<AppUpdatingScreen brand={<Logo />} description="Isso leva alguns segundos." onRetry={retry} />
 
 <AppUpdatingScreen variant="failed" onRetry={retry} onClearCache={clearCacheAndRestart} />`,
   },

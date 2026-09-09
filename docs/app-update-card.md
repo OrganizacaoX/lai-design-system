@@ -50,7 +50,9 @@ dentro do tempo esperado — sem ela a pessoa fica presa num spinner.
 | `variant`      | `"updating"` \| `"failed"`  | Padrão `updating`.                                             |
 | `onRetry`      | `() => void`                | Botão "Tentar novamente" da variante `failed`.                  |
 | `onClearCache` | `() => void`                | Renderiza o botão secundário. Sem ele, o botão não existe.      |
-| `icon`         | `ReactNode`                 | Padrão: `Spinner`. Passe a marca do produto no lugar.           |
+| `icon`         | `ReactNode`                 | Padrão: `Spinner`. Só aparece na variante `updating`.           |
+| `brand`        | `ReactNode`                 | Marca acima do conteúdo, nas **duas** variantes.                |
+| `description`  | `ReactNode`                 | Segunda linha do progresso (a `failed` já tem a sua).           |
 | `className`    | `string`                    | Classes adicionais no overlay.                                  |
 
 `onClearCache` é opcional de propósito: dois botões com rótulos diferentes para
@@ -65,6 +67,20 @@ antigo.
   variant="failed"
   onRetry={retry}
   onClearCache={() => void clearCacheAndRestart()}
+/>
+```
+
+`icon` e `brand` respondem a perguntas diferentes. `icon` substitui o spinner
+enquanto a atualização acontece — é o disk, que anima a própria logo no lugar
+dele. `brand` fica acima do conteúdo nas duas variantes, inclusive na falha: uma
+tela cheia sem nada do produto parece uma página de terceiro travando o app, e é
+justamente na falha que a pessoa fica olhando para ela.
+
+```tsx
+<AppUpdatingScreen
+  brand={<Logo variant="green" showWordmark imageClassName="size-20" />}
+  description={t("global.updateDescription")}
+  onRetry={retry}
 />
 ```
 

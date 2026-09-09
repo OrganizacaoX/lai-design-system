@@ -32,6 +32,8 @@ function Fixture() {
       ) : (
         <AppUpdatingScreen
           variant={screen}
+          brand={<span data-testid="brand">Marca do produto</span>}
+          description="Isso leva alguns segundos."
           onRetry={() => setRetries(value => value + 1)}
           onClearCache={withClearCache ? () => setCleared(value => value + 1) : undefined}
         />

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0 — 2026-09-09
+
+- `AppUpdatingScreen`: novas props `brand` e `description`. `brand` renderiza a marca acima do conteúdo nas **duas** variantes — uma tela cheia sem nada do produto parece uma página de terceiro travando o app, e é justamente na falha que a pessoa fica olhando para ela; o `icon` continua substituindo só o spinner do progresso. `description` é a segunda linha da variante `updating`, para o app dizer o que está acontecendo (a `failed` já tem a sua). As duas saíram das telas do cadence e do meetcore, que faziam exatamente isso à mão. Nada muda para quem já usa `variant`/`onRetry`/`onClearCache`/`icon`.
+
 ## 0.6.0 — 2026-09-09
 
 - `AppUpdateCard` e `AppUpdatingScreen`: a interface do fluxo de atualização que o disk, o cadence e o disk-admin mantinham cada um em uma cópia divergente do mesmo arquivo. O card é o aviso flutuante de versão nova — persistente, mas não bloqueante, com `role="status"` e a atualização só no clique da pessoa; `description` cobre o caso em que atualizar agora custa algo (uma ligação em curso). A tela é o overlay que assume o app depois do clique, com a variante `failed` que oferece saída manual em vez de deixar a pessoa presa num spinner. `onClearCache` é opcional: sem ele o botão secundário não existe, porque dois rótulos para a mesma ação só confundem. `icon` recebe a marca do produto, que não pertence ao design system. A detecção da versão (service worker, sondagem de build, erro de chunk após deploy) continua no app. Textos em `appUpdate.*` (pt-BR/en/es). Documentado em `docs/app-update-card.md`.

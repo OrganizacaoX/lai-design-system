@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-09T13:32:44.328Z",
-  "sourceFingerprint": "41b36a7e639695964f45fd707cfae901f2b6c114ef099a1b547752013331f884",
+  "generatedAt": "2026-09-09T14:11:53.386Z",
+  "sourceFingerprint": "4c86db682f2a9e16d9e59f2db25b1f1d3437ed16076bdf6fef65680e751af6ad",
   "sourceChangedDuringRun": false,
-  "commit": "a7ae27edd80d5c8774bba7b323611c3fce05d275",
+  "commit": "024c23536e8bd11e1768d1548c230017030aaac9",
   "dirty": true,
   "runs": [
     {
@@ -204,7 +204,7 @@
           "id": "compositions:0162aabc503a38751003-6aef7b55205f9c28568f:desktop",
           "title": "card e tela acessíveis nos dois temas",
           "file": "app-update.spec.ts",
-          "line": 37,
+          "line": 43,
           "project": "desktop",
           "kind": "accessibility",
           "status": "passed",
@@ -234,7 +234,7 @@
           "id": "compositions:0162aabc503a38751003-abd7cac407eaf9b9345e:mobile",
           "title": "card e tela acessíveis nos dois temas",
           "file": "app-update.spec.ts",
-          "line": 37,
+          "line": 43,
           "project": "mobile",
           "kind": "accessibility",
           "status": "passed",
