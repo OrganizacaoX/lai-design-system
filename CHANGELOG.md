@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 — 2026-09-09
+
+- `AppUpdateCard` e `AppUpdatingScreen`: a interface do fluxo de atualização que o disk, o cadence e o disk-admin mantinham cada um em uma cópia divergente do mesmo arquivo. O card é o aviso flutuante de versão nova — persistente, mas não bloqueante, com `role="status"` e a atualização só no clique da pessoa; `description` cobre o caso em que atualizar agora custa algo (uma ligação em curso). A tela é o overlay que assume o app depois do clique, com a variante `failed` que oferece saída manual em vez de deixar a pessoa presa num spinner. `onClearCache` é opcional: sem ele o botão secundário não existe, porque dois rótulos para a mesma ação só confundem. `icon` recebe a marca do produto, que não pertence ao design system. A detecção da versão (service worker, sondagem de build, erro de chunk após deploy) continua no app. Textos em `appUpdate.*` (pt-BR/en/es). Documentado em `docs/app-update-card.md`.
+
 ## 0.5.0 — 2026-09-08
 
 - `PageHeader`: novas props `badges`, `meta`, `back` e `variant`. `badges` põe estado (versão, rascunho, status) ao lado do título e fora do `<h1>`, para o leitor de tela anunciar só o título da página; `meta` é a linha discreta abaixo (data, identificador, origem); `back` renderiza o botão voltar à esquerda e continua livre de roteador — sem `render` cai num `<a href>`, com `render` recebe o `Link` do consumidor. `variant="bar"` é a versão compacta com borda inferior, para telas de altura fixa (canvas, editores) que antes montavam o cabeçalho à mão e acabavam com o título em tamanhos diferentes do resto do app. O `<h1>` usa `--text-page-title` nas duas variantes. Nada muda para quem já usa `title`/`description`/`actions`/`breadcrumbs`. Rótulo acessível do voltar em `pageHeader.back` (pt-BR/en/es). Documentado em `docs/page-header.md`.

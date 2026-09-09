@@ -1551,6 +1551,28 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "app-update-card",
+      "type": "registry:component",
+      "title": "App Update Card",
+      "files": [
+        {
+          "path": "src/components/app-update-card.tsx",
+          "type": "registry:component",
+          "target": "components/app-update-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/alert",
+        "@lai/button",
+        "@lai/spinner",
+        "@lai/use-lai-translation"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "bottom-sheet",
       "type": "registry:component",
       "title": "Bottom Sheet",
@@ -1689,6 +1711,13 @@
           "type": "registry:component",
           "target": "components/page-header.tsx"
         }
+      ],
+      "dependencies": [
+        "lucide-react@1.41.0"
+      ],
+      "registryDependencies": [
+        "@lai/button",
+        "@lai/use-lai-translation"
       ]
     },
     {

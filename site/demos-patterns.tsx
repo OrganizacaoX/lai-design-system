@@ -7,6 +7,7 @@ import { BottomSheet } from "@/components/bottom-sheet";
 import { useState } from "react";
 import type { Demo } from "./demos";
 import { PageHeader } from "@/components/page-header";
+import { AppUpdateCard, AppUpdatingScreen } from "@/components/app-update-card";
 import { FilterBar } from "@/components/filter-bar";
 import { DataList } from "@/components/data-list";
 import { ValidatedForm } from "@/components/validated-form";
@@ -316,6 +317,42 @@ export const patternDemos: Demo[] = [
   badges={<Badge variant="secondary">Ativo</Badge>} meta="Criado em 12/03/2025" />
 
 <PageHeader variant="bar" title="Fluxo de análise" back={{ href: "/fluxos" }} actions={<Button size="sm">Publicar</Button>} />`,
+  },
+  {
+    id: "app-update-card",
+    title: "App Update Card",
+    description:
+      "Aviso de versão nova e a tela que assume o app durante a atualização, com saída manual quando ela falha.",
+    node: (
+      <div className="w-full space-y-6">
+        {/* No app os dois flutuam sobre a tela; aqui ficam no fluxo do demo. */}
+        <AppUpdateCard
+          className="static w-full translate-x-0"
+          onUpdate={() => {}}
+        />
+        <AppUpdateCard
+          className="static w-full translate-x-0"
+          description="Atualizar agora interrompe a ligação. Finalize o atendimento antes de continuar."
+          onUpdate={() => {}}
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <AppUpdatingScreen className="static h-56 rounded-xl border" onRetry={() => {}} />
+          <AppUpdatingScreen
+            className="static h-56 rounded-xl border"
+            variant="failed"
+            onRetry={() => {}}
+            onClearCache={() => {}}
+          />
+        </div>
+      </div>
+    ),
+    code: `<AppUpdateCard onUpdate={startUpdate} />
+
+<AppUpdateCard onUpdate={startUpdate} description="Atualizar agora interrompe a ligação." />
+
+<AppUpdatingScreen icon={<Logo className="size-20 animate-pulse" />} onRetry={retry} />
+
+<AppUpdatingScreen variant="failed" onRetry={retry} onClearCache={clearCacheAndRestart} />`,
   },
   {
     id: "filter-bar",

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T17:44:31.541Z",
-  "sourceFingerprint": "aab22c8050ee2791c7902bc4b5ee059b6742ca33ce9a26cf689233fd55ec1c8c",
+  "generatedAt": "2026-09-09T13:32:44.328Z",
+  "sourceFingerprint": "41b36a7e639695964f45fd707cfae901f2b6c114ef099a1b547752013331f884",
   "sourceChangedDuringRun": false,
-  "commit": "8d5d8a9b10a9fec66879f2da6e5687c3e56aa79e",
+  "commit": "a7ae27edd80d5c8774bba7b323611c3fce05d275",
   "dirty": true,
   "runs": [
     {
@@ -173,6 +173,86 @@
       ],
       "total": 9,
       "passed": 9,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "notRun": 0
+    },
+    "app-update-card": {
+      "checks": [
+        {
+          "id": "browser:30aa42b97d8966d0c2dc-507409d505b800625a25:desktop",
+          "title": "catálogo: app-update-card",
+          "file": "catalog.spec.ts",
+          "line": 7,
+          "project": "desktop",
+          "kind": "render",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-21f6770f7d9fe3885d92:mobile",
+          "title": "tela mostra o progresso e oferece saída quando a atualização falha",
+          "file": "app-update.spec.ts",
+          "line": 19,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-6aef7b55205f9c28568f:desktop",
+          "title": "card e tela acessíveis nos dois temas",
+          "file": "app-update.spec.ts",
+          "line": 37,
+          "project": "desktop",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-8d2bc7a427db92425d51:desktop",
+          "title": "tela mostra o progresso e oferece saída quando a atualização falha",
+          "file": "app-update.spec.ts",
+          "line": 19,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-9f61d77961f16270e86e:desktop",
+          "title": "card anuncia a versão nova sem interromper o app",
+          "file": "app-update.spec.ts",
+          "line": 6,
+          "project": "desktop",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-abd7cac407eaf9b9345e:mobile",
+          "title": "card e tela acessíveis nos dois temas",
+          "file": "app-update.spec.ts",
+          "line": 37,
+          "project": "mobile",
+          "kind": "accessibility",
+          "status": "passed",
+          "attempts": 1
+        },
+        {
+          "id": "compositions:0162aabc503a38751003-f86636bf557547389387:mobile",
+          "title": "card anuncia a versão nova sem interromper o app",
+          "file": "app-update.spec.ts",
+          "line": 6,
+          "project": "mobile",
+          "kind": "interaction",
+          "status": "passed",
+          "attempts": 1
+        }
+      ],
+      "total": 7,
+      "passed": 7,
       "failed": 0,
       "flaky": 0,
       "skipped": 0,

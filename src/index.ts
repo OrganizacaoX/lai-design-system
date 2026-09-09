@@ -92,6 +92,8 @@ export * from "./components/status-panel";
 
 export * from "./components/app-shell";
 
+export * from "./components/app-update-card";
+
 export * from "./components/sidebar-profile";
 
 export * from "./components/ui/typography";
