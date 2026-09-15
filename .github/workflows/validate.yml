@@ -16,11 +16,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run lint
+      - run: npm run format:check
       - run: npm run build
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - run: bun test ./tests/navigation-menu-css.test.ts
       - name: Verify generated artifacts
         run: |
-          if [ -n "$(git status --porcelain -- registry.json public/r site/catalog.json)" ]; then
-            git status --short -- registry.json public/r site/catalog.json
+          if [ -n "$(git status --porcelain -- registry.json public/r site/catalog.json site/test-source.json)" ]; then
+            git status --short -- registry.json public/r site/catalog.json site/test-source.json
             exit 1
           fi
       - run: npx playwright install --with-deps chromium

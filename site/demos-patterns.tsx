@@ -196,15 +196,13 @@ function ShimmerExample() {
   const [active, setActive] = useState(true);
   return (
     <div className="w-full space-y-5">
-      <Shimmer active={active} role="status" className="text-lg">
-        {active ? "Gerando resposta…" : "Resposta concluída"}
-      </Shimmer>
-      <div>
-        <Shimmer
-          duration={3500}
-          color="var(--primary)"
-          className="text-sm text-muted-foreground"
-        >
+      <div className="text-lg">
+        <Shimmer active={active} role="status">
+          {active ? "Gerando resposta…" : "Resposta concluída"}
+        </Shimmer>
+      </div>
+      <div className="text-sm text-muted-foreground">
+        <Shimmer duration={3500} color="var(--primary)">
           Analisando os documentos…
         </Shimmer>
       </div>
@@ -331,14 +329,15 @@ export const patternDemos: Demo[] = [
           meta="Criado em 12/03/2025"
           actions={<Button variant="outline">Editar</Button>}
         />
-        <PageHeader
-          variant="bar"
-          title="Fluxo de análise"
-          back={{ href: "#" }}
-          badges={<Badge variant="outline">Rascunho v3</Badge>}
-          actions={<Button size="sm">Publicar</Button>}
-          className="rounded-xl border"
-        />
+        <div className="overflow-hidden rounded-xl border">
+          <PageHeader
+            variant="bar"
+            title="Fluxo de análise"
+            back={{ href: "#" }}
+            badges={<Badge variant="outline">Rascunho v3</Badge>}
+            actions={<Button size="sm">Publicar</Button>}
+          />
+        </div>
       </div>
     ),
     code: `<PageHeader title="Contatos" description="Gerencie sua organização." actions={<Button>Novo contato</Button>} />
@@ -366,19 +365,23 @@ export const patternDemos: Demo[] = [
           onUpdate={() => {}}
         />
         <div className="grid gap-4 sm:grid-cols-2">
-          <AppUpdatingScreen
-            className="static h-56 rounded-xl border"
-            brand={<span className="text-sm font-semibold">Produto</span>}
-            description="Isso leva alguns segundos."
-            onRetry={() => {}}
-          />
-          <AppUpdatingScreen
-            className="static h-56 rounded-xl border"
-            brand={<span className="text-sm font-semibold">Produto</span>}
-            variant="failed"
-            onRetry={() => {}}
-            onClearCache={() => {}}
-          />
+          <div className="overflow-hidden rounded-xl border">
+            <AppUpdatingScreen
+              className="static h-56"
+              brand={<span className="text-sm font-semibold">Produto</span>}
+              description="Isso leva alguns segundos."
+              onRetry={() => {}}
+            />
+          </div>
+          <div className="overflow-hidden rounded-xl border">
+            <AppUpdatingScreen
+              className="static h-56"
+              brand={<span className="text-sm font-semibold">Produto</span>}
+              variant="failed"
+              onRetry={() => {}}
+              onClearCache={() => {}}
+            />
+          </div>
         </div>
       </div>
     ),

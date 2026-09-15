@@ -92,19 +92,20 @@ export function CodeBlock({
           </pre>
         )}
       </Highlight>
-      <Button
-        size="icon"
-        variant="ghost"
-        onClick={copy}
-        className="absolute right-2 top-2 size-7 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
-        aria-label="Copiar"
-      >
-        {copied ? (
-          <Check className="size-3.5" />
-        ) : (
-          <Copy className="size-3.5" />
-        )}
-      </Button>
+      <div className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100">
+        <Button
+          size="icon-sm"
+          variant="ghost"
+          onClick={copy}
+          aria-label="Copiar"
+        >
+          {copied ? (
+            <Check className="size-3.5" />
+          ) : (
+            <Copy className="size-3.5" />
+          )}
+        </Button>
+      </div>
     </div>
   );
 }

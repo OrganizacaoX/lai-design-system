@@ -17,13 +17,23 @@
     }
   },
   "rules": {
-    "shadcn/no-restyle": ["error", { "allow": ["layout"] }]
+    "shadcn/no-restyle": ["error", { "allow": ["layout"] }],
+    "shadcn/no-unknown-classes": [
+      "error",
+      { "allow": ["toaster", "cn-input-otp"] }
+    ],
+    "shadcn/no-raw-colors": [
+      "error",
+      { "allow": ["shadow-surface", "shadow-overlay"] }
+    ],
+    "shadcn/require-static-classes": "error"
   },
   "overrides": [
     {
       "files": ["src/components/**/*.tsx"],
       "rules": {
-        "shadcn/no-restyle": "off"
+        "shadcn/no-restyle": "off",
+        "shadcn/require-static-classes": "off"
       }
     }
   ]

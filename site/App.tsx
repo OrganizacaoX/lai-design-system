@@ -276,7 +276,7 @@ export function App() {
               variant="outline"
               size="sm"
               onClick={() => setCmdOpen(true)}
-              className="hidden gap-2 text-muted-foreground sm:flex"
+              className="hidden sm:flex"
               aria-label="Buscar"
             >
               <Search className="size-4" />

@@ -64,7 +64,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
   Collapsible,
@@ -154,12 +153,9 @@ import { DateRangePicker } from "@/components/date-range-picker";
 function CalendarDemo() {
   const [date, setDate] = useState<Date | undefined>();
   return (
-    <Calendar
-      mode="single"
-      selected={date}
-      onSelect={setDate}
-      className="rounded-md border"
-    />
+    <div className="w-fit rounded-md border">
+      <Calendar mode="single" selected={date} onSelect={setDate} />
+    </div>
   );
 }
 
@@ -282,7 +278,7 @@ export const extraDemos: Demo[] = [
         <HoverCardTrigger render={<Button variant="link" />}>
           @lai
         </HoverCardTrigger>
-        <HoverCardContent className="w-64 text-sm">
+        <HoverCardContent>
           Design system do LAI — componentes shadcn reutilizáveis via registry.
         </HoverCardContent>
       </HoverCard>
@@ -300,9 +296,11 @@ export const extraDemos: Demo[] = [
     description: "Menu com botão direito.",
     node: (
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-24 w-full max-w-sm items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
-          Clique com o botão direito
-        </ContextMenuTrigger>
+        <div className="w-full max-w-sm rounded-md border border-dashed text-sm text-muted-foreground">
+          <ContextMenuTrigger className="flex h-24 w-full items-center justify-center">
+            Clique com o botão direito
+          </ContextMenuTrigger>
+        </div>
         <ContextMenuContent>
           <ContextMenuItem>Voltar</ContextMenuItem>
           <ContextMenuItem>Recarregar</ContextMenuItem>
@@ -376,17 +374,14 @@ export const extraDemos: Demo[] = [
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink
-              href="#"
-              className={navigationMenuTriggerStyle()}
-            >
+            <NavigationMenuLink href="#" variant="trigger">
               Docs
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     ),
-    code: `import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+    code: `import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu"
 
 <NavigationMenu>
   <NavigationMenuList>
@@ -409,9 +404,11 @@ export const extraDemos: Demo[] = [
             Alternar
           </CollapsibleTrigger>
         </div>
-        <CollapsibleContent className="mt-2 grid gap-2 text-sm">
-          <div className="rounded-md border px-3 py-2">@lai/button</div>
-          <div className="rounded-md border px-3 py-2">@lai/card</div>
+        <CollapsibleContent className="mt-2">
+          <div className="grid gap-2 text-sm">
+            <div className="rounded-md border px-3 py-2">@lai/button</div>
+            <div className="rounded-md border px-3 py-2">@lai/card</div>
+          </div>
         </CollapsibleContent>
       </Collapsible>
     ),
@@ -427,19 +424,21 @@ export const extraDemos: Demo[] = [
     title: "Command",
     description: "Paleta de comandos.",
     node: (
-      <Command className="w-full max-w-sm rounded-lg border shadow-sm">
-        <CommandInput placeholder="Buscar componente..." />
-        <CommandList>
-          <CommandEmpty>Nada encontrado.</CommandEmpty>
-          <CommandGroup heading="Componentes">
-            <CommandItem>
-              <Star /> Button
-            </CommandItem>
-            <CommandItem>Card</CommandItem>
-            <CommandItem>Dialog</CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
+      <div className="w-full max-w-sm overflow-hidden rounded-lg border shadow-sm">
+        <Command>
+          <CommandInput placeholder="Buscar componente..." />
+          <CommandList>
+            <CommandEmpty>Nada encontrado.</CommandEmpty>
+            <CommandGroup heading="Componentes">
+              <CommandItem>
+                <Star /> Button
+              </CommandItem>
+              <CommandItem>Card</CommandItem>
+              <CommandItem>Dialog</CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </div>
     ),
     code: `import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command"
 
@@ -707,11 +706,8 @@ import { Bold } from "lucide-react"
     title: "Aspect Ratio",
     description: "Proporção fixa.",
     node: (
-      <div className="w-full max-w-sm">
-        <AspectRatio
-          ratio={16 / 9}
-          className="grid place-items-center rounded-lg bg-muted text-sm text-muted-foreground"
-        >
+      <div className="w-full max-w-sm rounded-lg bg-muted text-sm text-muted-foreground">
+        <AspectRatio ratio={16 / 9} className="grid place-items-center">
           16 / 9
         </AspectRatio>
       </div>
@@ -727,17 +723,19 @@ import { Bold } from "lucide-react"
     title: "Scroll Area",
     description: "Área com rolagem estilizada.",
     node: (
-      <ScrollArea className="h-40 w-full max-w-xs rounded-md border p-4">
-        <div className="grid gap-2 text-sm">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i}>Item {i + 1}</div>
-          ))}
-        </div>
-      </ScrollArea>
+      <div className="h-40 w-full max-w-xs overflow-hidden rounded-md border">
+        <ScrollArea className="h-full">
+          <div className="grid gap-2 p-4 text-sm">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div key={i}>Item {i + 1}</div>
+            ))}
+          </div>
+        </ScrollArea>
+      </div>
     ),
     code: `import { ScrollArea } from "@/components/ui/scroll-area"
 
-<ScrollArea className="h-40 w-48 rounded-md border p-4">
+<ScrollArea className="h-40 w-48">
   {/* conteúdo longo */}
 </ScrollArea>`,
   },
@@ -746,18 +744,19 @@ import { Bold } from "lucide-react"
     title: "Resizable",
     description: "Painéis redimensionáveis.",
     node: (
-      <ResizablePanelGroup
-        orientation="horizontal"
-        className="h-40 w-full max-w-sm rounded-lg border"
-      >
-        <ResizablePanel defaultSize={50}>
-          <div className="grid h-full place-items-center p-4 text-sm">Um</div>
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={50}>
-          <div className="grid h-full place-items-center p-4 text-sm">Dois</div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+      <div className="h-40 w-full max-w-sm overflow-hidden rounded-lg border">
+        <ResizablePanelGroup orientation="horizontal">
+          <ResizablePanel defaultSize={50}>
+            <div className="grid h-full place-items-center p-4 text-sm">Um</div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={50}>
+            <div className="grid h-full place-items-center p-4 text-sm">
+              Dois
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
     ),
     code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 
@@ -772,7 +771,7 @@ import { Bold } from "lucide-react"
     title: "Item",
     description: "Linha de lista com mídia e ações.",
     node: (
-      <ItemGroup className="w-full max-w-sm gap-2">
+      <ItemGroup className="w-full max-w-sm">
         <Item>
           <ItemMedia>
             <Avatar>
@@ -807,18 +806,22 @@ import { Bold } from "lucide-react"
     title: "Empty",
     description: "Estado vazio.",
     node: (
-      <Empty className="w-full max-w-sm border rounded-lg">
-        <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <Inbox />
-          </EmptyMedia>
-          <EmptyTitle>Sem resultados</EmptyTitle>
-          <EmptyDescription>Nenhum item encontrado por aqui.</EmptyDescription>
-        </EmptyHeader>
-        <EmptyContent>
-          <Button size="sm">Adicionar item</Button>
-        </EmptyContent>
-      </Empty>
+      <div className="w-full max-w-sm overflow-hidden rounded-lg border">
+        <Empty>
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <Inbox />
+            </EmptyMedia>
+            <EmptyTitle>Sem resultados</EmptyTitle>
+            <EmptyDescription>
+              Nenhum item encontrado por aqui.
+            </EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
+            <Button size="sm">Adicionar item</Button>
+          </EmptyContent>
+        </Empty>
+      </div>
     ),
     code: `import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from "@/components/ui/empty"
 
