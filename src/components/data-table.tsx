@@ -59,7 +59,6 @@ export interface DataTableLabels {
   empty: string;
 }
 
-
 function useSelection(ids: string[]) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
@@ -184,10 +183,15 @@ export function DataTable<T extends { id: string }>({
 }: DataTableProps<T>) {
   const { t } = useLaiTranslation();
   const labels = {
-    actions: t("table.actions"), openRow: (row: number) => t("table.openRow", { row }),
-    loading: t("table.loading"), retry: t("retry"), selected: (count: number) => t("table.selected", { count }),
-    selectRow: (row: number) => t("table.selectRow", { row }), selectAll: t("table.selectAll"),
-    clear: t("table.clear"), empty: t("table.empty"),
+    actions: t("table.actions"),
+    openRow: (row: number) => t("table.openRow", { row }),
+    loading: t("table.loading"),
+    retry: t("retry"),
+    selected: (count: number) => t("table.selected", { count }),
+    selectRow: (row: number) => t("table.selectRow", { row }),
+    selectAll: t("table.selectAll"),
+    clear: t("table.clear"),
+    empty: t("table.empty"),
     ...customLabels,
   };
   const ids = useMemo(() => data.map((item) => item.id), [data]);

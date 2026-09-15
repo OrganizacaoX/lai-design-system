@@ -13,10 +13,24 @@ export interface AppProvidersProps {
 }
 
 /** Pass the same queryClient to the router context. No hidden global clients. */
-export function AppProviders({ queryClient, children, theme, i18n, updateDocumentLanguage }: AppProvidersProps) {
-  return <QueryClientProvider client={queryClient}>
-    <ThemeProvider {...theme}>{i18n
-      ? <LaiI18nProvider i18n={i18n} updateDocument={updateDocumentLanguage}>{children}</LaiI18nProvider>
-      : children}</ThemeProvider>
-  </QueryClientProvider>;
+export function AppProviders({
+  queryClient,
+  children,
+  theme,
+  i18n,
+  updateDocumentLanguage,
+}: AppProvidersProps) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider {...theme}>
+        {i18n ? (
+          <LaiI18nProvider i18n={i18n} updateDocument={updateDocumentLanguage}>
+            {children}
+          </LaiI18nProvider>
+        ) : (
+          children
+        )}
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }

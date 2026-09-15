@@ -1,9 +1,22 @@
 import { useState } from "react";
-import { ChevronRight, Contact, LayoutDashboard, Settings, Shield, SlidersHorizontal, UserPlus, Users } from "lucide-react";
+import {
+  ChevronRight,
+  Contact,
+  LayoutDashboard,
+  Settings,
+  Shield,
+  SlidersHorizontal,
+  UserPlus,
+  Users,
+} from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import type { Demo } from "./demos";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 import {
   ChartContainer,
@@ -52,10 +65,18 @@ const chartConfig = {
 
 function ChartDemo() {
   return (
-    <ChartContainer config={chartConfig} className="min-h-[240px] w-full max-w-md">
+    <ChartContainer
+      config={chartConfig}
+      className="min-h-[240px] w-full max-w-md"
+    >
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
-        <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
+        <XAxis
+          dataKey="month"
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+        />
         <ChartTooltip content={<ChartTooltipContent />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
@@ -70,7 +91,10 @@ const frameworks = ["Next.js", "SvelteKit", "Nuxt", "Remix", "Astro", "Vite"];
 function ComboboxDemo() {
   return (
     <Combobox items={frameworks}>
-      <ComboboxInput placeholder="Buscar framework..." className="w-full max-w-xs" />
+      <ComboboxInput
+        placeholder="Buscar framework..."
+        className="w-full max-w-xs"
+      />
       <ComboboxContent>
         <ComboboxEmpty>Nenhum encontrado.</ComboboxEmpty>
         <ComboboxList>
@@ -89,44 +113,77 @@ function ComboboxDemo() {
 function SidebarDemo() {
   const [active, setActive] = useState("Dashboard");
   const groups = [
-    { label: "Leads", icon: Users, defaultOpen: true, items: [
-      { label: "Todos os leads", icon: Contact },
-      { label: "Novos leads", icon: UserPlus },
-    ] },
-    { label: "Configurações", icon: Settings, defaultOpen: false, items: [
-      { label: "Preferências", icon: SlidersHorizontal },
-      { label: "Permissões", icon: Shield },
-    ] },
+    {
+      label: "Leads",
+      icon: Users,
+      defaultOpen: true,
+      items: [
+        { label: "Todos os leads", icon: Contact },
+        { label: "Novos leads", icon: UserPlus },
+      ],
+    },
+    {
+      label: "Configurações",
+      icon: Settings,
+      defaultOpen: false,
+      items: [
+        { label: "Preferências", icon: SlidersHorizontal },
+        { label: "Permissões", icon: Shield },
+      ],
+    },
   ];
   return (
     <div className="w-full overflow-hidden rounded-lg border bg-sidebar text-sidebar-foreground">
       <SidebarProvider className="min-h-[360px] items-stretch">
         <Sidebar collapsible="none" className="w-48 shrink-0 border-r sm:w-56">
-          <SidebarHeader className="px-3 py-2 text-sm font-semibold">LAI Disk</SidebarHeader>
+          <SidebarHeader className="px-3 py-2 text-sm font-semibold">
+            LAI Disk
+          </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>
               <SidebarGroupLabel>Plataforma</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   <SidebarMenuItem>
-                    <SidebarMenuButton isActive={active === "Dashboard"} onClick={() => setActive("Dashboard")}>
-                      <LayoutDashboard /><span>Dashboard</span>
+                    <SidebarMenuButton
+                      isActive={active === "Dashboard"}
+                      onClick={() => setActive("Dashboard")}
+                    >
+                      <LayoutDashboard />
+                      <span>Dashboard</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                  {groups.map(group => (
-                    <Collapsible key={group.label} defaultOpen={group.defaultOpen} render={<SidebarMenuItem />}>
-                      <CollapsibleTrigger render={<SidebarMenuButton />} className="group/collapsible-trigger">
-                        <group.icon /><span>{group.label}</span>
+                  {groups.map((group) => (
+                    <Collapsible
+                      key={group.label}
+                      defaultOpen={group.defaultOpen}
+                      render={<SidebarMenuItem />}
+                    >
+                      <CollapsibleTrigger
+                        render={<SidebarMenuButton />}
+                        className="group/collapsible-trigger"
+                      >
+                        <group.icon />
+                        <span>{group.label}</span>
                         <ChevronRight className="ml-auto transition-transform duration-200 ease-linear group-aria-expanded/collapsible-trigger:rotate-90 motion-reduce:transition-none" />
                       </CollapsibleTrigger>
                       <CollapsibleContent>
                         <SidebarMenuSub>
-                          {group.items.map(item => (
+                          {group.items.map((item) => (
                             <SidebarMenuSubItem key={item.label}>
-                              <SidebarMenuSubButton href={`#${item.label.toLowerCase().replaceAll(" ", "-")}`}
-                                isActive={active === item.label} aria-current={active === item.label ? "page" : undefined}
-                                onClick={event => { event.preventDefault(); setActive(item.label); }}>
-                                <item.icon /><span>{item.label}</span>
+                              <SidebarMenuSubButton
+                                href={`#${item.label.toLowerCase().replaceAll(" ", "-")}`}
+                                isActive={active === item.label}
+                                aria-current={
+                                  active === item.label ? "page" : undefined
+                                }
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  setActive(item.label);
+                                }}
+                              >
+                                <item.icon />
+                                <span>{item.label}</span>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
                           ))}
@@ -140,8 +197,12 @@ function SidebarDemo() {
           </SidebarContent>
         </Sidebar>
         <div className="min-w-0 flex-1 bg-background p-4 text-sm">
-          <p className="font-semibold" aria-live="polite">{active}</p>
-          <p className="mt-2 text-muted-foreground">Abra os grupos e selecione um subitem para navegar.</p>
+          <p className="font-semibold" aria-live="polite">
+            {active}
+          </p>
+          <p className="mt-2 text-muted-foreground">
+            Abra os grupos e selecione um subitem para navegar.
+          </p>
         </div>
       </SidebarProvider>
     </div>
@@ -194,7 +255,8 @@ const frameworks = ["Next.js", "SvelteKit", "Nuxt", "Remix", "Astro"]
   {
     id: "sidebar",
     title: "Sidebar",
-    description: "Navegação lateral com grupos expansíveis e seleção animada de subitens.",
+    description:
+      "Navegação lateral com grupos expansíveis e seleção animada de subitens.",
     node: <SidebarDemo />,
     code: `import { useState } from "react"
 import { Contact, LayoutDashboard, UserPlus, Users } from "lucide-react"

@@ -50,7 +50,10 @@ export function CommandMenu({
         <CommandList>
           <CommandEmpty>Nada encontrado.</CommandEmpty>
           <CommandGroup heading="Navegação">
-            <CommandItem value="Instalação" onSelect={() => run(() => onGo("instalacao"))}>
+            <CommandItem
+              value="Instalação"
+              onSelect={() => run(() => onGo("instalacao"))}
+            >
               Instalação
             </CommandItem>
             <CommandItem

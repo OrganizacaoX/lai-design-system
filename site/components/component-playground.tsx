@@ -29,7 +29,12 @@ export function ComponentPlayground({ id }: { id: string }) {
       : id === "input"
         ? `<label htmlFor="name">Nome</label>\n<Input id="name"${props} />`
         : `<Select>\n  <SelectTrigger aria-label="Equipe"${props}><SelectValue placeholder="Selecionar equipe" /></SelectTrigger>\n  <SelectContent><SelectItem value="design">Design</SelectItem><SelectItem value="produto">Produto</SelectItem></SelectContent>\n</Select>`;
-  const imports = id === "button" ? "Button" : id === "input" ? "Input" : "Select, SelectTrigger, SelectValue, SelectContent, SelectItem";
+  const imports =
+    id === "button"
+      ? "Button"
+      : id === "input"
+        ? "Input"
+        : "Select, SelectTrigger, SelectValue, SelectContent, SelectItem";
   const code = `import { ThemeProvider, ${imports} } from "@organizacaox/lai-design-system";\nimport "@organizacaox/lai-design-system/styles.css";\n\nexport function Example() {\n  return (\n    <ThemeProvider forcedTheme="${resolvedTheme}">\n      <div data-density="${density}">\n${example}\n${invalid ? '<p id="playground-error">Revise o valor informado.</p>\n' : ""}      </div>\n    </ThemeProvider>\n  );\n}`;
   const control = (
     label: string,

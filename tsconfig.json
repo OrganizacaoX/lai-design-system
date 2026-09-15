@@ -15,5 +15,11 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "site/**/*.ts", "site/**/*.tsx", "vite.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "site/**/*.ts",
+    "site/**/*.tsx",
+    "vite.config.ts"
+  ]
 }

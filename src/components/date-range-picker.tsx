@@ -2,13 +2,23 @@ import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useState } from "react";
 import type { DateRange, Matcher } from "react-day-picker";
 import { useLaiLocale } from "@/hooks/use-lai-locale";
-import { format, startOfMonth, startOfDay, subDays, type Locale } from "date-fns";
+import {
+  format,
+  startOfMonth,
+  startOfDay,
+  subDays,
+  type Locale,
+} from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 // DateRangePickerProps and DateRangePreset are public API and are typed with
 // DateRange and Locale, which come from react-day-picker and date-fns. Without
@@ -74,14 +84,22 @@ export function DateRangePicker({
   if (upper) blocked.push({ after: upper });
   const presets = customPresets ?? [
     { label: t("date.today"), range: { from: today, to: today } },
-    { label: t("date.days", { count: 7 }), range: { from: subDays(today, 6), to: today } },
-    { label: t("date.days", { count: 30 }), range: { from: subDays(today, 29), to: today } },
+    {
+      label: t("date.days", { count: 7 }),
+      range: { from: subDays(today, 6), to: today },
+    },
+    {
+      label: t("date.days", { count: 30 }),
+      range: { from: subDays(today, 29), to: today },
+    },
     { label: t("date.month"), range: { from: startOfMonth(today), to: today } },
   ];
   const invalidPreset = (range: DateRange) =>
     [range.from, range.to].some(
       (date) =>
-        date && ((lower && startOfDay(date) < lower) || (upper && startOfDay(date) > upper)),
+        date &&
+        ((lower && startOfDay(date) < lower) ||
+          (upper && startOfDay(date) > upper)),
     );
   const fmt = (date: Date) => format(date, "PP", { locale });
   const label = !value?.from
@@ -106,7 +124,10 @@ export function DateRangePicker({
             id={id}
             disabled={disabled}
             variant="outline"
-            className={cn("max-w-full justify-start gap-2 font-normal", className)}
+            className={cn(
+              "max-w-full justify-start gap-2 font-normal",
+              className,
+            )}
             aria-label={`${ariaLabel}${value?.from ? `: ${label}` : ""}`}
           />
         }
@@ -114,7 +135,10 @@ export function DateRangePicker({
         <CalendarIcon className="size-4 shrink-0 text-muted-foreground" />
         <span className="truncate tabular-nums">{label}</span>
       </PopoverTrigger>
-      <PopoverContent className="w-auto max-w-[calc(100vw-2rem)] p-0" align="start">
+      <PopoverContent
+        className="w-auto max-w-[calc(100vw-2rem)] p-0"
+        align="start"
+      >
         {presets.length > 0 && (
           <div className="flex flex-wrap gap-1 border-b border-border p-2">
             {presets.map((preset) => (

@@ -15,8 +15,12 @@ function Fixture() {
       {/* Abaixo do card e acima do overlay: o teste continua dirigindo a fixture
           sem que os controles cubram o que está sendo testado. */}
       <div className="relative z-60 mt-56 flex flex-wrap items-center gap-2">
-        <Button onClick={() => setContextual(value => !value)}>Alternar textos</Button>
-        <Button onClick={() => setWithClearCache(value => !value)}>Alternar limpar cache</Button>
+        <Button onClick={() => setContextual((value) => !value)}>
+          Alternar textos
+        </Button>
+        <Button onClick={() => setWithClearCache((value) => !value)}>
+          Alternar limpar cache
+        </Button>
         <Button onClick={() => setScreen("updating")}>Tela atualizando</Button>
         <Button onClick={() => setScreen("failed")}>Tela falha</Button>
         <Button onClick={() => setScreen("none")}>Fechar tela</Button>
@@ -26,16 +30,20 @@ function Fixture() {
       </div>
       {screen === "none" ? (
         <AppUpdateCard
-          onUpdate={() => setUpdates(value => value + 1)}
-          description={contextual ? "Atualizar agora interrompe a ligação." : undefined}
+          onUpdate={() => setUpdates((value) => value + 1)}
+          description={
+            contextual ? "Atualizar agora interrompe a ligação." : undefined
+          }
         />
       ) : (
         <AppUpdatingScreen
           variant={screen}
           brand={<span data-testid="brand">Marca do produto</span>}
           description="Isso leva alguns segundos."
-          onRetry={() => setRetries(value => value + 1)}
-          onClearCache={withClearCache ? () => setCleared(value => value + 1) : undefined}
+          onRetry={() => setRetries((value) => value + 1)}
+          onClearCache={
+            withClearCache ? () => setCleared((value) => value + 1) : undefined
+          }
         />
       )}
     </main>

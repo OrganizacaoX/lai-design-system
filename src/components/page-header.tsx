@@ -80,7 +80,9 @@ export function PageHeader({
           {description && (
             <span className="text-sm text-muted-foreground">{description}</span>
           )}
-          {meta && <span className="text-xs text-muted-foreground">{meta}</span>}
+          {meta && (
+            <span className="text-xs text-muted-foreground">{meta}</span>
+          )}
         </div>
         {actions && (
           <div className="flex flex-wrap items-center gap-2">{actions}</div>

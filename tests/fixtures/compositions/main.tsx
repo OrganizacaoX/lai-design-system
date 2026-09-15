@@ -33,7 +33,17 @@ function App() {
   return (
     <main className="flex flex-col gap-4 p-4">
       <Button onClick={() => setLoading(!loading)}>Loading</Button>
-      <Button loading={saving} loadingLabel="Saving operation" onClick={() => {setSaving(true);setSubmissions(n => n + 1);setTimeout(() => setSaving(false), 1000);}}>Save operation</Button>
+      <Button
+        loading={saving}
+        loadingLabel="Saving operation"
+        onClick={() => {
+          setSaving(true);
+          setSubmissions((n) => n + 1);
+          setTimeout(() => setSaving(false), 1000);
+        }}
+      >
+        Save operation
+      </Button>
       <output aria-label="Submissions">{submissions}</output>
       <Button onClick={() => setData(data.slice(1))}>Remove first</Button>
       <Button
@@ -47,12 +57,31 @@ function App() {
       <Button onClick={() => setTotal(1)}>Single</Button>
       <DataTable
         data={data}
-        columns={[{ key: "name", label: "Name", render: (item) => item.name }, {key: "internal", label: "Internal", render: item => <Button variant="outline" onClick={() => setInternalCalls(n => n + 1)}>Internal {item.name}</Button>}]}
+        columns={[
+          { key: "name", label: "Name", render: (item) => item.name },
+          {
+            key: "internal",
+            label: "Internal",
+            render: (item) => (
+              <Button
+                variant="outline"
+                onClick={() => setInternalCalls((n) => n + 1)}
+              >
+                Internal {item.name}
+              </Button>
+            ),
+          },
+        ]}
         isLoading={loading}
-        onRowClick={(item) => {setClicked(item.id);setRowCalls(n => n + 1);}}
-        bulkActions={[{ label: "Apply", onAction: (ids) => setSelected(ids.join(",")) }]}
+        onRowClick={(item) => {
+          setClicked(item.id);
+          setRowCalls((n) => n + 1);
+        }}
+        bulkActions={[
+          { label: "Apply", onAction: (ids) => setSelected(ids.join(",")) },
+        ]}
         labels={{
-          openRow: row => `Open row ${row}`,
+          openRow: (row) => `Open row ${row}`,
           actions: "Actions",
           selectAll: "Select all",
           selectRow: (row) => `Select row ${row}`,

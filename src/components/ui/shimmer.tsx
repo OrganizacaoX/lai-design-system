@@ -13,11 +13,39 @@ export interface ShimmerProps extends ComponentProps<"span"> {
 }
 
 /** Text shimmer from shadcn. Add role="status" only when the text is a live status. */
-export function Shimmer({ active = true, duration = 2000, once = false, reverse = false,
-  color, spread, className, style, ...props }: ShimmerProps) {
-  const durationMs = Number.isFinite(duration) && duration > 0 ? duration : 2000;
-  return <span data-slot="shimmer" data-active={active}
-    className={cn("inline-block", active && "shimmer", active && once && "shimmer-once", active && reverse && "shimmer-reverse", className)}
-    style={{ "--shimmer-duration": `${durationMs}ms`, ...(color && { "--shimmer-color": color }), ...(spread && { "--shimmer-spread": spread }), ...style } as CSSProperties}
-    {...props} />;
+export function Shimmer({
+  active = true,
+  duration = 2000,
+  once = false,
+  reverse = false,
+  color,
+  spread,
+  className,
+  style,
+  ...props
+}: ShimmerProps) {
+  const durationMs =
+    Number.isFinite(duration) && duration > 0 ? duration : 2000;
+  return (
+    <span
+      data-slot="shimmer"
+      data-active={active}
+      className={cn(
+        "inline-block",
+        active && "shimmer",
+        active && once && "shimmer-once",
+        active && reverse && "shimmer-reverse",
+        className,
+      )}
+      style={
+        {
+          "--shimmer-duration": `${durationMs}ms`,
+          ...(color && { "--shimmer-color": color }),
+          ...(spread && { "--shimmer-spread": spread }),
+          ...style,
+        } as CSSProperties
+      }
+      {...props}
+    />
+  );
 }

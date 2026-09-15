@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Search, Sun } from "lucide-react";
 
-import { SidebarActiveIndicator, SidebarSelectionGroup } from "@/components/ui/sidebar";
+import {
+  SidebarActiveIndicator,
+  SidebarSelectionGroup,
+} from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Toaster } from "@/components/ui/sonner";
@@ -129,7 +132,8 @@ function Nav({
         <NavLink
           href="/componentes"
           active={
-            view === "componentes" && window.location.pathname === "/componentes"
+            view === "componentes" &&
+            window.location.pathname === "/componentes"
           }
           onClick={() => onGo("componentes")}
         >

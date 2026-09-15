@@ -11,7 +11,11 @@ import { AppShellExample } from "./app-shell-example";
 createRoot(document.getElementById("app")!).render(
   <StrictMode>
     <ThemeProvider>
-      {window.location.pathname === "/examples/app-shell" ? <AppShellExample /> : <App />}
+      {window.location.pathname === "/examples/app-shell" ? (
+        <AppShellExample />
+      ) : (
+        <App />
+      )}
     </ThemeProvider>
   </StrictMode>,
 );

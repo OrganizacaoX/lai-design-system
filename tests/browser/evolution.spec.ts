@@ -246,17 +246,23 @@ for (const id of ["input", "select"]) {
   );
 }
 
-test("button mantém cursor de clique sem a regra global do tema", { tag: ["@component:button", "@kind:interaction"] }, async ({ page }) => {
-  await page.goto("/componentes/button");
-  const buttons = page.locator('#example-button [data-slot="button"]');
-  await expect(buttons.first()).toBeVisible();
-  await removeGlobalCursorRules(page);
-  for (const button of await buttons.all()) {
-    await expect(button).toHaveClass(/\bcursor-pointer\b/);
-    await expect(button).toHaveCSS("cursor", "pointer");
-  }
-  await expect(page.locator('[data-slot="button"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
-});
+test(
+  "button mantém cursor de clique sem a regra global do tema",
+  { tag: ["@component:button", "@kind:interaction"] },
+  async ({ page }) => {
+    await page.goto("/componentes/button");
+    const buttons = page.locator('#example-button [data-slot="button"]');
+    await expect(buttons.first()).toBeVisible();
+    await removeGlobalCursorRules(page);
+    for (const button of await buttons.all()) {
+      await expect(button).toHaveClass(/\bcursor-pointer\b/);
+      await expect(button).toHaveCSS("cursor", "pointer");
+    }
+    await expect(
+      page.locator('[data-slot="button"][disabled]').first(),
+    ).toHaveCSS("cursor", "not-allowed");
+  },
+);
 
 async function removeGlobalCursorRules(page: Page) {
   const removed = await page.evaluate(() => {
@@ -265,43 +271,68 @@ async function removeGlobalCursorRules(page: Page) {
       const rules = sheet.cssRules;
       for (let i = rules.length - 1; i >= 0; i--) {
         const rule = rules[i];
-        if (rule instanceof CSSStyleRule && rule.selectorText.startsWith(":is(button")) {
-          sheet.deleteRule(i); removed++;
-        } else if ("cssRules" in rule && "deleteRule" in rule) strip(rule as CSSGroupingRule);
+        if (
+          rule instanceof CSSStyleRule &&
+          rule.selectorText.startsWith(":is(button")
+        ) {
+          sheet.deleteRule(i);
+          removed++;
+        } else if ("cssRules" in rule && "deleteRule" in rule)
+          strip(rule as CSSGroupingRule);
       }
     }
     for (const sheet of document.styleSheets) {
-      try { strip(sheet); } catch { /* Folhas externas de fontes não são editáveis. */ }
+      try {
+        strip(sheet);
+      } catch {
+        /* Folhas externas de fontes não são editáveis. */
+      }
     }
     return removed;
   });
   expect(removed).toBeGreaterThan(0);
 }
 
-for (const [id, slot] of [["switch", "switch"], ["tabs", "tabs-trigger"], ["select", "select-trigger"]]) {
-  test(`${id} mantém cursor e interação sem a regra global`, { tag: [`@component:${id}`, "@kind:interaction"] }, async ({ page }) => {
-    await page.goto(`/componentes/${id}`);
-    const example = page.locator(`#example-${id}`);
-    const controls = example.locator(`[data-slot="${slot}"]`);
-    await expect(controls.first()).toBeVisible();
-    await removeGlobalCursorRules(page);
-    for (const control of await controls.all()) await expect(control).toHaveCSS("cursor", "pointer");
-    if (id === "switch") {
-      await controls.first().click();
-      await expect(controls.first()).not.toBeChecked();
-      await expect(controls.first()).toHaveCSS("cursor", "pointer");
-    } else if (id === "tabs") {
-      await example.getByRole("tab", { name: "Senha", exact: true }).click();
-      await expect(example.getByRole("tab", { name: "Senha", exact: true })).toHaveAttribute("aria-selected", "true");
-      await expect(example.getByText("Altere sua senha aqui.", {exact:true})).toBeVisible();
-    } else {
-      await controls.first().click();
-      const options = page.getByRole("listbox").getByRole("option");
-      await expect(options.first()).toBeVisible();
-      for (const option of await options.all()) await expect(option).toHaveCSS("cursor", "pointer");
-      await options.first().click();
-      await expect(page.getByRole("listbox")).toBeHidden();
-      await expect(page.locator('[data-slot="select-trigger"][disabled]').first()).toHaveCSS("cursor", "not-allowed");
-    }
-  });
+for (const [id, slot] of [
+  ["switch", "switch"],
+  ["tabs", "tabs-trigger"],
+  ["select", "select-trigger"],
+]) {
+  test(
+    `${id} mantém cursor e interação sem a regra global`,
+    { tag: [`@component:${id}`, "@kind:interaction"] },
+    async ({ page }) => {
+      await page.goto(`/componentes/${id}`);
+      const example = page.locator(`#example-${id}`);
+      const controls = example.locator(`[data-slot="${slot}"]`);
+      await expect(controls.first()).toBeVisible();
+      await removeGlobalCursorRules(page);
+      for (const control of await controls.all())
+        await expect(control).toHaveCSS("cursor", "pointer");
+      if (id === "switch") {
+        await controls.first().click();
+        await expect(controls.first()).not.toBeChecked();
+        await expect(controls.first()).toHaveCSS("cursor", "pointer");
+      } else if (id === "tabs") {
+        await example.getByRole("tab", { name: "Senha", exact: true }).click();
+        await expect(
+          example.getByRole("tab", { name: "Senha", exact: true }),
+        ).toHaveAttribute("aria-selected", "true");
+        await expect(
+          example.getByText("Altere sua senha aqui.", { exact: true }),
+        ).toBeVisible();
+      } else {
+        await controls.first().click();
+        const options = page.getByRole("listbox").getByRole("option");
+        await expect(options.first()).toBeVisible();
+        for (const option of await options.all())
+          await expect(option).toHaveCSS("cursor", "pointer");
+        await options.first().click();
+        await expect(page.getByRole("listbox")).toBeHidden();
+        await expect(
+          page.locator('[data-slot="select-trigger"][disabled]').first(),
+        ).toHaveCSS("cursor", "not-allowed");
+      }
+    },
+  );
 }

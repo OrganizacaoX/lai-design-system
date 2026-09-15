@@ -52,7 +52,9 @@ createServer(async (req, res) => {
 
   try {
     const s = await stat(filePath);
-    const resolvedPath = s.isDirectory() ? join(filePath, "index.html") : filePath;
+    const resolvedPath = s.isDirectory()
+      ? join(filePath, "index.html")
+      : filePath;
     const body = await readFile(resolvedPath);
     res.setHeader(
       "Content-Type",

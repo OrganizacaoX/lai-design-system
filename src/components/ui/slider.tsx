@@ -1,5 +1,5 @@
-import { Slider as SliderPrimitive } from "@base-ui/react/slider"
-import { cn } from "cn"
+import { Slider as SliderPrimitive } from "@base-ui/react/slider";
+import { cn } from "cn";
 
 function Slider({
   className,
@@ -16,7 +16,7 @@ function Slider({
     ? value
     : Array.isArray(defaultValue)
       ? defaultValue
-      : [min, max]
+      : [min, max];
 
   return (
     <SliderPrimitive.Root
@@ -55,7 +55,7 @@ function Slider({
         ))}
       </SliderPrimitive.Control>
     </SliderPrimitive.Root>
-  )
+  );
 }
 
-export { Slider }
+export { Slider };

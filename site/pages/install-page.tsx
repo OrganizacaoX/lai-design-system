@@ -58,10 +58,7 @@ export function InstallPage() {
           Disponibilize GITHUB_PACKAGES_TOKEN no ambiente da máquina ou no
           gerenciador de segredos do CI. Depois instale:
         </p>
-        <CodeBlock
-          lang="bash"
-          code="bun add @organizacaox/lai-design-system"
-        />
+        <CodeBlock lang="bash" code="bun add @organizacaox/lai-design-system" />
         <CodeBlock
           code={
             'import "@organizacaox/lai-design-system/styles.css";\nimport { Button, ThemeProvider, Toaster } from "@organizacaox/lai-design-system";\n\nfunction App() {\n  return <ThemeProvider><Button>Salvar contato</Button><Toaster /></ThemeProvider>;\n}'
@@ -70,9 +67,9 @@ export function InstallPage() {
         <p className="text-sm text-muted-foreground">
           Importe os estilos uma vez e monte ThemeProvider e Toaster na raiz.
           Esse CSS já carrega Google Sans Flex e Google Sans Code pelo Google
-          Fonts; não é necessário adicionar links de fontes no HTML.
-          Atualize a versão do pacote e confira o changelog antes de adotar
-          alterações de API ou tokens.
+          Fonts; não é necessário adicionar links de fontes no HTML. Atualize a
+          versão do pacote e confira o changelog antes de adotar alterações de
+          API ou tokens.
         </p>
       </section>
       <h2 className="mb-4 text-xl font-semibold">

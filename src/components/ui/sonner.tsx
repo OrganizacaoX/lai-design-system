@@ -64,7 +64,10 @@ type ToastPromiseExtendedResolver<Data = unknown> = (
   data: Data,
 ) => ToastPromiseExtendedResult | Promise<ToastPromiseExtendedResult>;
 
-type ToastPromiseOptions<Data = unknown> = Omit<ExternalToast, "description"> & {
+type ToastPromiseOptions<Data = unknown> = Omit<
+  ExternalToast,
+  "description"
+> & {
   loading?: ReactNode | string;
   success?: ToastPromiseResult<Data> | ToastPromiseExtendedResolver<Data>;
   error?: ToastPromiseResult | ToastPromiseExtendedResolver;

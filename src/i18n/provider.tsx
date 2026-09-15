@@ -17,9 +17,15 @@ export interface LaiI18nProviderProps {
   /** Disable for embedded/nested applications that do not own the document. */
   updateDocument?: boolean;
 }
-export function LaiI18nProvider({ i18n, children, updateDocument = true }: LaiI18nProviderProps) {
-  return <I18nextProvider i18n={i18n}>
-    {updateDocument && <DocumentLanguage />}
-    {children}
-  </I18nextProvider>;
+export function LaiI18nProvider({
+  i18n,
+  children,
+  updateDocument = true,
+}: LaiI18nProviderProps) {
+  return (
+    <I18nextProvider i18n={i18n}>
+      {updateDocument && <DocumentLanguage />}
+      {children}
+    </I18nextProvider>
+  );
 }

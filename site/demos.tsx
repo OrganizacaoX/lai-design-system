@@ -224,7 +224,9 @@ import { Label } from "@/components/ui/label"
     id: "textarea",
     title: "Textarea",
     description: "Campo de múltiplas linhas.",
-    node: <Textarea className="max-w-sm" placeholder="Escreva uma mensagem..." />,
+    node: (
+      <Textarea className="max-w-sm" placeholder="Escreva uma mensagem..." />
+    ),
     code: `import { Textarea } from "@/components/ui/textarea"
 
 <Textarea placeholder="Escreva uma mensagem..." />`,
@@ -348,7 +350,9 @@ import { Label } from "@/components/ui/label"
         </AccordionItem>
         <AccordionItem value="2">
           <AccordionTrigger>É estilizável?</AccordionTrigger>
-          <AccordionContent>Sim, com Tailwind e os tokens do tema.</AccordionContent>
+          <AccordionContent>
+            Sim, com Tailwind e os tokens do tema.
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     ),
@@ -409,7 +413,13 @@ import { Label } from "@/components/ui/label"
     id: "progress",
     title: "Progress",
     description: "Barra de progresso.",
-    node: <Progress value={62} aria-label="Progresso da operação" className="w-full max-w-sm" />,
+    node: (
+      <Progress
+        value={62}
+        aria-label="Progresso da operação"
+        className="w-full max-w-sm"
+      />
+    ),
     code: `import { Progress } from "@/components/ui/progress"
 
 <Progress value={62} aria-label="Progresso da operação" />`,
@@ -418,7 +428,15 @@ import { Label } from "@/components/ui/label"
     id: "slider",
     title: "Slider",
     description: "Controle deslizante.",
-    node: <Slider aria-label="Volume" defaultValue={[40]} max={100} step={1} className="w-full max-w-sm" />,
+    node: (
+      <Slider
+        aria-label="Volume"
+        defaultValue={[40]}
+        max={100}
+        step={1}
+        className="w-full max-w-sm"
+      />
+    ),
     code: `import { Slider } from "@/components/ui/slider"
 
 <Slider aria-label="Volume" defaultValue={[40]} max={100} step={1} />`,

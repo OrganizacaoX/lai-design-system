@@ -194,18 +194,33 @@ function BottomSheetExample() {
 
 function ShimmerExample() {
   const [active, setActive] = useState(true);
-  return <div className="w-full space-y-5">
-    <Shimmer active={active} role="status" className="text-lg">{active ? "Gerando resposta…" : "Resposta concluída"}</Shimmer>
-    <div><Shimmer duration={3500} color="var(--primary)" className="text-sm text-muted-foreground">Analisando os documentos…</Shimmer></div>
-    <Button variant="outline" onClick={() => setActive(value => !value)}>{active ? "Concluir geração" : "Gerar novamente"}</Button>
-  </div>;
+  return (
+    <div className="w-full space-y-5">
+      <Shimmer active={active} role="status" className="text-lg">
+        {active ? "Gerando resposta…" : "Resposta concluída"}
+      </Shimmer>
+      <div>
+        <Shimmer
+          duration={3500}
+          color="var(--primary)"
+          className="text-sm text-muted-foreground"
+        >
+          Analisando os documentos…
+        </Shimmer>
+      </div>
+      <Button variant="outline" onClick={() => setActive((value) => !value)}>
+        {active ? "Concluir geração" : "Gerar novamente"}
+      </Button>
+    </div>
+  );
 }
 
 export const patternDemos: Demo[] = [
   {
     id: "shimmer",
     title: "Shimmer",
-    description: "Brilho animado no texto para geração de respostas e tarefas em andamento.",
+    description:
+      "Brilho animado no texto para geração de respostas e tarefas em andamento.",
     node: <ShimmerExample />,
     code: `import { Shimmer } from "@/components/ui/shimmer"
 
@@ -215,7 +230,8 @@ export const patternDemos: Demo[] = [
   {
     id: "typography",
     title: "Typography",
-    description: "Títulos, parágrafos, citações, listas, links e textos de apoio com a tipografia LAI.",
+    description:
+      "Títulos, parágrafos, citações, listas, links e textos de apoio com a tipografia LAI.",
     node: <TypographyExample />,
     code: `import { Title, Lead, Text, InlineCode } from "@/components/ui/typography"
 
@@ -226,8 +242,15 @@ export const patternDemos: Demo[] = [
   {
     id: "sidebar-profile",
     title: "Sidebar Profile",
-    description: "Avatar e menu de conta com perfil, organização, instalação, tema, idioma e saída.",
-    node: <iframe title="Exemplo de Sidebar Profile" src="/examples/app-shell" className="h-[560px] w-full rounded-xl border" />,
+    description:
+      "Avatar e menu de conta com perfil, organização, instalação, tema, idioma e saída.",
+    node: (
+      <iframe
+        title="Exemplo de Sidebar Profile"
+        src="/examples/app-shell"
+        className="h-[560px] w-full rounded-xl border"
+      />
+    ),
     code: `<AppShell brand="Meu produto" navigation={navigation} footer={
   <SidebarProfile
     user={{ name: "Ana Silva", email: "ana@exemplo.com" }}
@@ -241,8 +264,15 @@ export const patternDemos: Demo[] = [
   {
     id: "app-shell",
     title: "App Shell",
-    description: "Estrutura do aplicativo com sidebar, marca, usuário, conteúdo e navegação mobile.",
-    node: <iframe title="Exemplo de App Shell" src="/examples/app-shell" className="h-[560px] w-full rounded-xl border" />,
+    description:
+      "Estrutura do aplicativo com sidebar, marca, usuário, conteúdo e navegação mobile.",
+    node: (
+      <iframe
+        title="Exemplo de App Shell"
+        src="/examples/app-shell"
+        className="h-[560px] w-full rounded-xl border"
+      />
+    ),
     code: `<AppShell
   brand={<strong>Minha aplicação</strong>}
   navigation={[{ id: "main", items: [{ id: "home", label: "Início", href: "/", active: true, mobile: true }] }]}

@@ -17,7 +17,8 @@
   --shadow-overlay: var(--elevation-overlay);
   --font-heading: var(--font-sans);
   --font-sans: "Google Sans Flex", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono:
+    "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -181,24 +182,58 @@
   --control-height: 2.75rem;
   --control-padding: 0.625rem;
 }
-[data-slot="button"], [data-slot="input"], [data-slot="select-trigger"],
-[data-slot="combobox-input"], [data-slot="input-group"] {
+[data-slot="button"],
+[data-slot="input"],
+[data-slot="select-trigger"],
+[data-slot="combobox-input"],
+[data-slot="input-group"] {
   transition-duration: var(--motion-fast);
 }
 
 /* Interactive affordances apply to native controls and accessible custom controls. */
-:is(button, a[href], summary, select, input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"], input[type="radio"], [role="button"], [role="tab"], [role="checkbox"], [role="radio"], [role="switch"], [role="option"], [role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"], label[for]):not(:disabled, [aria-disabled="true"], [data-disabled]:not([data-disabled="false"])) {
+:is(
+  button,
+  a[href],
+  summary,
+  select,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  [role="button"],
+  [role="tab"],
+  [role="checkbox"],
+  [role="radio"],
+  [role="switch"],
+  [role="option"],
+  [role="menuitem"],
+  [role="menuitemcheckbox"],
+  [role="menuitemradio"],
+  label[for]
+):not(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]:not([data-disabled="false"])
+) {
   cursor: pointer;
 }
 
-:is(button, select, input, [role], label):is(:disabled, [aria-disabled="true"], [data-disabled]:not([data-disabled="false"])),
+:is(button, select, input, [role], label):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]:not([data-disabled="false"])
+),
 :is(label):has(input:disabled),
 :is(label[for]):has(+ input:disabled) {
   cursor: not-allowed;
 }
 
-[data-slot="checkbox"], [data-slot="radio-group-item"],
-[data-slot="toggle"], [data-slot="tabs-trigger"], [data-slot="switch"] {
+[data-slot="checkbox"],
+[data-slot="radio-group-item"],
+[data-slot="toggle"],
+[data-slot="tabs-trigger"],
+[data-slot="switch"] {
   transition-duration: var(--motion-fast);
   transition-timing-function: var(--motion-ease);
 }
@@ -215,7 +250,9 @@
 [data-slot="collapsible-content"] {
   height: var(--collapsible-panel-height);
   overflow: hidden;
-  transition: height var(--motion-normal) var(--motion-ease), opacity var(--motion-normal) var(--motion-ease);
+  transition:
+    height var(--motion-normal) var(--motion-ease),
+    opacity var(--motion-normal) var(--motion-ease);
 }
 
 [data-slot="collapsible-content"][data-starting-style],
@@ -225,17 +262,33 @@
 }
 
 @keyframes lai-selection-in {
-  from { opacity: 0; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes lai-panel-in {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  [data-slot="button"]:not(:disabled, [aria-disabled="true"], [data-disabled]):hover {
-    filter: brightness(.96);
+  [data-slot="button"]:not(
+      :disabled,
+      [aria-disabled="true"],
+      [data-disabled]
+    ):hover {
+    filter: brightness(0.96);
   }
 }

@@ -13,7 +13,9 @@ try {
       if (tree.includes("/dev-check") === present) return;
       await setTimeout(100);
     }
-    throw new Error(`Dev route ${present ? "creation" : "removal"} was not generated`);
+    throw new Error(
+      `Dev route ${present ? "creation" : "removal"} was not generated`,
+    );
   };
   await writeFile("src/routes/dev-check.tsx", "");
   await waitForRoute(true);
@@ -24,7 +26,9 @@ try {
   assert.equal(response.status, 200);
   await unlink("src/routes/dev-check.tsx");
   await waitForRoute(false);
-  console.log("Vite dev: new routes scaffold and removed routes disappear from generated types.");
+  console.log(
+    "Vite dev: new routes scaffold and removed routes disappear from generated types.",
+  );
 } finally {
   await server.close();
 }

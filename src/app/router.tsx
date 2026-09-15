@@ -1,5 +1,9 @@
 import { useLaiTranslation } from "../hooks/use-lai-translation";
-import { createRouter, useRouter, type ErrorComponentProps } from "@tanstack/react-router";
+import {
+  createRouter,
+  useRouter,
+  type ErrorComponentProps,
+} from "@tanstack/react-router";
 import { Button } from "../components/ui/button";
 import { StatusPanel } from "../components/status-panel";
 
@@ -14,16 +18,24 @@ export function AppNotFound() {
 export function AppRouteError(_props: ErrorComponentProps) {
   const { t } = useLaiTranslation();
   const router = useRouter();
-  return <StatusPanel state="error" title={t("app.error")}
-    action={<Button onClick={() => void router.invalidate()}>{t("retry")}</Button>} />;
+  return (
+    <StatusPanel
+      state="error"
+      title={t("app.error")}
+      action={
+        <Button onClick={() => void router.invalidate()}>{t("retry")}</Button>
+      }
+    />
+  );
 }
 
 /** Preserves TanStack's route inference. Override defaults to localize the UI. */
-export const createAppRouter: typeof createRouter = (options) => createRouter({
-  defaultPreload: "intent",
-  defaultPreloadStaleTime: 0,
-  defaultPendingComponent: AppPending,
-  defaultErrorComponent: AppRouteError,
-  defaultNotFoundComponent: AppNotFound,
-  ...options,
-});
+export const createAppRouter: typeof createRouter = (options) =>
+  createRouter({
+    defaultPreload: "intent",
+    defaultPreloadStaleTime: 0,
+    defaultPendingComponent: AppPending,
+    defaultErrorComponent: AppRouteError,
+    defaultNotFoundComponent: AppNotFound,
+    ...options,
+  });

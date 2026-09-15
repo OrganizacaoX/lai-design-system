@@ -156,9 +156,11 @@ createRoot(document.getElementById('app')!).render(<><Shimmer>Loading</Shimmer><
   const rules = (values) =>
     Object.entries(values)
       .map(([key, value]) =>
-        key.startsWith("@import ") ? `${key};` : typeof value === "object"
-          ? `${key} {${rules(value)}}`
-          : `${key}: ${value};`,
+        key.startsWith("@import ")
+          ? `${key};`
+          : typeof value === "object"
+            ? `${key} {${rules(value)}}`
+            : `${key}: ${value};`,
       )
       .join("\n");
   put(

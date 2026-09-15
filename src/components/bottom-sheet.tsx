@@ -1,6 +1,11 @@
 import { useLaiTranslation } from "@/hooks/use-lai-translation";
 import { useState, type ReactNode, type CSSProperties, useEffect } from "react";
-import { Drawer, DrawerContent, DrawerTitle, DrawerClose } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTitle,
+  DrawerClose,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,7 +42,9 @@ export function BottomSheet({
   if (title === undefined) title = t("panel.title");
   closeLabel ??= t("panel.close");
   const initialSnap = snapPoints[initialSnapIndex] ?? snapPoints[0];
-  const [snapPoint, setSnapPoint] = useState<number | string | null>(initialSnap);
+  const [snapPoint, setSnapPoint] = useState<number | string | null>(
+    initialSnap,
+  );
   useEffect(() => {
     if (isOpen) setSnapPoint(initialSnap);
   }, [isOpen, initialSnap]);
@@ -65,7 +72,11 @@ export function BottomSheet({
       >
         <div className="flex shrink-0 items-center justify-between gap-2 px-4 py-2">
           <DrawerTitle>{title}</DrawerTitle>
-          <DrawerClose render={<Button variant="ghost" size="icon-sm" aria-label={closeLabel} />}>
+          <DrawerClose
+            render={
+              <Button variant="ghost" size="icon-sm" aria-label={closeLabel} />
+            }
+          >
             <X />
           </DrawerClose>
         </div>

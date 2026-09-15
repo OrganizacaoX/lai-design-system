@@ -10,17 +10,60 @@ export interface VirtualListProps<T> {
   label: string;
   className?: string;
 }
-export function VirtualList<T>({ items, getKey, renderItem, height = 400, estimateSize = 48, overscan = 5, label, className }: VirtualListProps<T>) {
+export function VirtualList<T>({
+  items,
+  getKey,
+  renderItem,
+  height = 400,
+  estimateSize = 48,
+  overscan = 5,
+  label,
+  className,
+}: VirtualListProps<T>) {
   const parent = useRef<HTMLDivElement>(null);
-  const virtual = useVirtualizer({ count: items.length, getScrollElement: () => parent.current, estimateSize: () => estimateSize,
-    overscan, getItemKey: index => getKey(items[index], index) });
-  return <div ref={parent} role="list" aria-label={label} tabIndex={0} className={className} style={{ height, overflow: "auto" }}>
-    <div style={{ height: virtual.getTotalSize(), position: "relative", width: "100%" }}>
-      {virtual.getVirtualItems().map(row => <div key={row.key} ref={virtual.measureElement} data-index={row.index}
-        role="listitem" aria-posinset={row.index + 1} aria-setsize={items.length}
-        style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${row.start}px)` }}>
-        {renderItem(items[row.index], row.index)}
-      </div>)}
+  const virtual = useVirtualizer({
+    count: items.length,
+    getScrollElement: () => parent.current,
+    estimateSize: () => estimateSize,
+    overscan,
+    getItemKey: (index) => getKey(items[index], index),
+  });
+  return (
+    <div
+      ref={parent}
+      role="list"
+      aria-label={label}
+      tabIndex={0}
+      className={className}
+      style={{ height, overflow: "auto" }}
+    >
+      <div
+        style={{
+          height: virtual.getTotalSize(),
+          position: "relative",
+          width: "100%",
+        }}
+      >
+        {virtual.getVirtualItems().map((row) => (
+          <div
+            key={row.key}
+            ref={virtual.measureElement}
+            data-index={row.index}
+            role="listitem"
+            aria-posinset={row.index + 1}
+            aria-setsize={items.length}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              transform: `translateY(${row.start}px)`,
+            }}
+          >
+            {renderItem(items[row.index], row.index)}
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 }

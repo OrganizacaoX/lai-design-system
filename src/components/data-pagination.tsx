@@ -35,8 +35,10 @@ export interface DataPaginationLabels {
   goTo: (page: number) => string;
 }
 
-
-function getPageNumbers(currentPage: number, totalPages: number): (number | "...")[] {
+function getPageNumbers(
+  currentPage: number,
+  totalPages: number,
+): (number | "...")[] {
   if (totalPages <= 7) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
@@ -74,17 +76,24 @@ export function DataPagination({
 }: DataPaginationProps) {
   const { t } = useLaiTranslation();
   const labels = {
-    limit: t("pagination.limit"), pagination: t("pagination.label"), previous: t("pagination.previous"), next: t("pagination.next"),
-    page: (page: number, total: number) => t("pagination.page", { page, total }), goTo: (page: number) => t("pagination.goTo", { page }),
+    limit: t("pagination.limit"),
+    pagination: t("pagination.label"),
+    previous: t("pagination.previous"),
+    next: t("pagination.next"),
+    page: (page: number, total: number) =>
+      t("pagination.page", { page, total }),
+    goTo: (page: number) => t("pagination.goTo", { page }),
     ...customLabels,
   };
   const limits = [...new Set([...pageSizeOptions, limit])]
     .filter((n) => Number.isInteger(n) && n > 0)
     .sort((a, b) => a - b);
   const lastPage = Math.max(0, totalPages);
-  const currentPage = lastPage === 0 ? 0 : Math.min(Math.max(1, page), lastPage);
+  const currentPage =
+    lastPage === 0 ? 0 : Math.min(Math.max(1, page), lastPage);
   const changePage = (next: number) => {
-    if (next >= 1 && next <= lastPage && next !== currentPage) onPageChange(next);
+    if (next >= 1 && next <= lastPage && next !== currentPage)
+      onPageChange(next);
   };
   return (
     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -113,7 +122,10 @@ export function DataPagination({
       <span className="text-sm text-muted-foreground" aria-live="polite">
         {labels.page(currentPage, lastPage)}
       </span>
-      <PaginationNav aria-label={labels.pagination} className="mx-0 w-auto max-w-full">
+      <PaginationNav
+        aria-label={labels.pagination}
+        className="mx-0 w-auto max-w-full"
+      >
         <PaginationContent className="flex-wrap">
           <PaginationItem>
             <Button

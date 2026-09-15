@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Bold,
-  Inbox,
-  Italic,
-  Search,
-  Star,
-  Underline,
-} from "lucide-react";
+import { Bold, Inbox, Italic, Search, Star, Underline } from "lucide-react";
 import type { DateRange } from "react-day-picker";
 
 import type { Demo } from "./demos";
@@ -104,11 +97,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import {
   Table,
   TableBody,
@@ -165,7 +154,12 @@ import { DateRangePicker } from "@/components/date-range-picker";
 function CalendarDemo() {
   const [date, setDate] = useState<Date | undefined>();
   return (
-    <Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      className="rounded-md border"
+    />
   );
 }
 
@@ -382,7 +376,10 @@ export const extraDemos: Demo[] = [
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink
+              href="#"
+              className={navigationMenuTriggerStyle()}
+            >
               Docs
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -592,7 +589,9 @@ import { Bold } from "lucide-react"
         <Field>
           <FieldLabel htmlFor="fld-name">Nome de exibição</FieldLabel>
           <Input id="fld-name" placeholder="LAI" />
-          <FieldDescription>É assim que aparece no seu perfil.</FieldDescription>
+          <FieldDescription>
+            É assim que aparece no seu perfil.
+          </FieldDescription>
         </Field>
       </div>
     ),

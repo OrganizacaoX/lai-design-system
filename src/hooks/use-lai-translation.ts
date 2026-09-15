@@ -5,13 +5,14 @@ import { I18nContext } from "react-i18next";
 /** Shared namespace; kept in this registry hook so copied components are self-contained. */
 export const laiTranslations = {
   "pt-BR": {
-    "close": "Fechar",
-    "retry": "Tentar novamente",
+    close: "Fechar",
+    retry: "Tentar novamente",
     "app.loading": "Carregando…",
     "app.notFound": "Página não encontrada",
     "app.error": "Não foi possível carregar esta página",
     "appUpdate.available": "Nova versão disponível",
-    "appUpdate.availableDescription": "Atualize quando for conveniente para usar a versão mais recente.",
+    "appUpdate.availableDescription":
+      "Atualize quando for conveniente para usar a versão mais recente.",
     "appUpdate.updateNow": "Atualizar agora",
     "appUpdate.updating": "Atualizando para a nova versão…",
     "appUpdate.failed": "Não foi possível atualizar",
@@ -68,18 +69,19 @@ export const laiTranslations = {
     "carousel.next": "Próximo slide",
     "command.title": "Paleta de comandos",
     "command.description": "Busque um comando para executar…",
-    "more": "Mais",
+    more: "Mais",
     "toast.close": "Fechar notificação",
-    "loading": "Carregando"
+    loading: "Carregando",
   },
-  "en": {
-    "close": "Close",
-    "retry": "Try again",
+  en: {
+    close: "Close",
+    retry: "Try again",
     "app.loading": "Loading…",
     "app.notFound": "Page not found",
     "app.error": "Unable to load this page",
     "appUpdate.available": "New version available",
-    "appUpdate.availableDescription": "Update when convenient to use the latest version.",
+    "appUpdate.availableDescription":
+      "Update when convenient to use the latest version.",
     "appUpdate.updateNow": "Update now",
     "appUpdate.updating": "Updating to the new version…",
     "appUpdate.failed": "Unable to update",
@@ -136,18 +138,19 @@ export const laiTranslations = {
     "carousel.next": "Next slide",
     "command.title": "Command Palette",
     "command.description": "Search for a command to run...",
-    "more": "More",
+    more: "More",
     "toast.close": "Close toast",
-    "loading": "Loading"
+    loading: "Loading",
   },
-  "es": {
-    "close": "Cerrar",
-    "retry": "Reintentar",
+  es: {
+    close: "Cerrar",
+    retry: "Reintentar",
     "app.loading": "Cargando…",
     "app.notFound": "Página no encontrada",
     "app.error": "No se pudo cargar esta página",
     "appUpdate.available": "Nueva versión disponible",
-    "appUpdate.availableDescription": "Actualiza cuando te convenga para usar la versión más reciente.",
+    "appUpdate.availableDescription":
+      "Actualiza cuando te convenga para usar la versión más reciente.",
     "appUpdate.updateNow": "Actualizar ahora",
     "appUpdate.updating": "Actualizando a la nueva versión…",
     "appUpdate.failed": "No se pudo actualizar",
@@ -204,12 +207,12 @@ export const laiTranslations = {
     "carousel.next": "Diapositiva siguiente",
     "command.title": "Paleta de comandos",
     "command.description": "Busca un comando para ejecutar…",
-    "more": "Más",
+    more: "Más",
     "toast.close": "Cerrar notificación",
-    "loading": "Cargando"
-  }
+    loading: "Cargando",
+  },
 } as const;
-export type LaiMessageKey = keyof typeof laiTranslations["pt-BR"];
+export type LaiMessageKey = keyof (typeof laiTranslations)["pt-BR"];
 export type LaiTranslationValues = Record<string, string | number | undefined>;
 
 /** No provider means the existing Portuguese labels, with no global i18next instance. */
@@ -219,7 +222,10 @@ export function useLaiTranslation() {
     let revision = 0;
     return {
       subscribe: (notify: () => void) => {
-        const changed = () => { revision++; notify(); };
+        const changed = () => {
+          revision++;
+          notify();
+        };
         instance?.on("languageChanged loaded initialized", changed);
         instance?.store?.on("added", changed);
         instance?.store?.on("removed", changed);
@@ -229,15 +235,35 @@ export function useLaiTranslation() {
           instance?.store?.off("removed", changed);
         };
       },
-      snapshot: () => `${instance?.resolvedLanguage ?? instance?.language ?? "pt-BR"}:${revision}`,
+      snapshot: () =>
+        `${instance?.resolvedLanguage ?? instance?.language ?? "pt-BR"}:${revision}`,
     };
   }, [instance]);
-  useSyncExternalStore(subscription.subscribe, subscription.snapshot, subscription.snapshot);
+  useSyncExternalStore(
+    subscription.subscribe,
+    subscription.snapshot,
+    subscription.snapshot,
+  );
   const language = instance?.resolvedLanguage ?? instance?.language ?? "pt-BR";
-  const t = (key: LaiMessageKey, values: LaiTranslationValues = {}, withoutProvider?: string): string => {
+  const t = (
+    key: LaiMessageKey,
+    values: LaiTranslationValues = {},
+    withoutProvider?: string,
+  ): string => {
     const fallback = laiTranslations["pt-BR"][key];
-    if (instance) return String(instance.t(key, { ...values, ns: "lai", keySeparator: false, defaultValue: fallback }));
-    return (withoutProvider ?? fallback).replace(/{{(\w+)}}/g, (match, name: string) => String(values[name] ?? match));
+    if (instance)
+      return String(
+        instance.t(key, {
+          ...values,
+          ns: "lai",
+          keySeparator: false,
+          defaultValue: fallback,
+        }),
+      );
+    return (withoutProvider ?? fallback).replace(
+      /{{(\w+)}}/g,
+      (match, name: string) => String(values[name] ?? match),
+    );
   };
   return { t, language, i18n: instance };
 }

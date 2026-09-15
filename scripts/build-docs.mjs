@@ -75,4 +75,7 @@ for (const dir of ["src/components/ui", "src/components"]) {
 entries.sort((a, b) => a.title.localeCompare(b.title, "pt-BR"));
 writeFileSync("site/catalog.json", JSON.stringify(entries, null, 2) + "\n");
 
-writeFileSync("site/test-source.json", JSON.stringify({ fingerprint: sourceFingerprint() }, null, 2) + "\n");
+writeFileSync(
+  "site/test-source.json",
+  JSON.stringify({ fingerprint: sourceFingerprint() }, null, 2) + "\n",
+);

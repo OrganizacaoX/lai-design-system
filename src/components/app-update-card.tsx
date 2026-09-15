@@ -103,14 +103,28 @@ export function AppUpdatingScreen({
       {variant === "updating" ? (
         <>
           {/* O container já é a região viva; o ícone não anuncia de novo. */}
-          {icon ?? <Spinner role="presentation" aria-label={undefined} className="size-8 text-muted-foreground" />}
-          <p className="text-sm text-muted-foreground">{t("appUpdate.updating")}</p>
-          {description && <p className="max-w-xs text-xs text-muted-foreground">{description}</p>}
+          {icon ?? (
+            <Spinner
+              role="presentation"
+              aria-label={undefined}
+              className="size-8 text-muted-foreground"
+            />
+          )}
+          <p className="text-sm text-muted-foreground">
+            {t("appUpdate.updating")}
+          </p>
+          {description && (
+            <p className="max-w-xs text-xs text-muted-foreground">
+              {description}
+            </p>
+          )}
         </>
       ) : (
         <>
           <p className="text-base font-medium">{t("appUpdate.failed")}</p>
-          <p className="max-w-xs text-sm text-muted-foreground">{t("appUpdate.checkConnection")}</p>
+          <p className="max-w-xs text-sm text-muted-foreground">
+            {t("appUpdate.checkConnection")}
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <Button onClick={onRetry}>{t("retry")}</Button>
             {onClearCache && (
