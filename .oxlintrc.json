@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["@shadcn/lint"],
+  "ignorePatterns": [
+    "lib/**",
+    "dist/**",
+    "docs/**",
+    "public/**",
+    "test-results/**",
+    "playwright-report/**",
+    "LAI design system setup/**"
+  ],
+  "settings": {
+    "shadcn": {
+      "ui": "@/components/ui",
+      "componentImports": ["^@/components(/|$)"]
+    }
+  },
+  "rules": {
+    "shadcn/no-restyle": ["error", { "allow": ["layout"] }]
+  },
+  "overrides": [
+    {
+      "files": ["src/components/**/*.tsx"],
+      "rules": {
+        "shadcn/no-restyle": "off"
+      }
+    }
+  ]
+}

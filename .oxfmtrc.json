@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "ignorePatterns": [
+    "**/*.md",
+    "LAI design system setup/**",
+    "registry.json",
+    "site/catalog.json",
+    "site/test-source.json",
+    "docs/**",
+    "public/**"
+  ]
+}

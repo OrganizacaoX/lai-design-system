@@ -2,7 +2,22 @@
   "name": "@organizacaox/lai-design-system",
   "version": "0.7.0",
   "description": "Componentes React e registry shadcn do design system LAI.",
+  "homepage": "https://github.com/OrganizacaoX/lai-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/OrganizacaoX/lai-design-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrganizacaoX/lai-design-system.git"
+  },
+  "files": [
+    "lib",
+    "styles.css.d.ts"
+  ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -117,21 +132,6 @@
       "default": "./lib/tour.css"
     }
   },
-  "files": [
-    "lib",
-    "styles.css.d.ts"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OrganizacaoX/lai-design-system.git"
-  },
-  "homepage": "https://github.com/OrganizacaoX/lai-design-system#readme",
-  "bugs": {
-    "url": "https://github.com/OrganizacaoX/lai-design-system/issues"
-  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -147,6 +147,9 @@
     "prepublishOnly": "npm run package:check && npm run package:build",
     "docs:build": "node scripts/build-docs.mjs",
     "check": "tsc --noEmit",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "test:e2e": "playwright test",
     "test:compositions": "playwright test --config playwright.compositions.config.ts",
     "test:consumers": "node scripts/check-consumers.mjs",
@@ -208,11 +211,14 @@
     "@microsoft/api-extractor": "^7.59.0",
     "@playwright/test": "^1.63.0",
     "@rolldown/plugin-babel": "^0.2.3",
+    "@shadcn/lint": "^0.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.4.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
     "postcss": "^8.5.28",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.8",
