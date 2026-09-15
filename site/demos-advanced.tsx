@@ -135,9 +135,9 @@ function SidebarDemo() {
   return (
     <div className="w-full overflow-hidden rounded-lg border bg-sidebar text-sidebar-foreground">
       <SidebarProvider className="min-h-[360px] items-stretch">
-        <Sidebar collapsible="none" className="w-48 shrink-0 border-r sm:w-56">
-          <SidebarHeader className="px-3 py-2 text-sm font-semibold">
-            LAI Disk
+        <Sidebar collapsible="none" className="w-48 shrink-0 sm:w-56">
+          <SidebarHeader>
+            <span className="text-sm font-semibold">LAI Disk</span>
           </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>

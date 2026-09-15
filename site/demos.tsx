@@ -182,7 +182,7 @@ import { Terminal } from "lucide-react"
           <CardTitle>Entrar</CardTitle>
           <CardDescription>Acesse sua conta.</CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-3">
+        <CardContent>
           <div className="grid gap-1.5">
             <Label htmlFor="c-email">E-mail</Label>
             <Input id="c-email" type="email" placeholder="voce@empresa.com" />
@@ -266,7 +266,7 @@ import { Label } from "@/components/ui/label"
     title: "Radio Group",
     description: "Escolha única.",
     node: (
-      <RadioGroup defaultValue="mensal" className="gap-2">
+      <RadioGroup defaultValue="mensal">
         <div className="flex items-center gap-2">
           <RadioGroupItem value="mensal" id="r-mensal" />
           <Label htmlFor="r-mensal">Mensal</Label>
@@ -320,12 +320,8 @@ import { Label } from "@/components/ui/label"
           <TabsTrigger value="conta">Conta</TabsTrigger>
           <TabsTrigger value="senha">Senha</TabsTrigger>
         </TabsList>
-        <TabsContent value="conta" className="text-sm text-muted-foreground">
-          Gerencie os dados da sua conta.
-        </TabsContent>
-        <TabsContent value="senha" className="text-sm text-muted-foreground">
-          Altere sua senha aqui.
-        </TabsContent>
+        <TabsContent value="conta">Gerencie os dados da sua conta.</TabsContent>
+        <TabsContent value="senha">Altere sua senha aqui.</TabsContent>
       </Tabs>
     ),
     code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
@@ -447,7 +443,7 @@ import { Label } from "@/components/ui/label"
     description: "Placeholder de carregamento.",
     node: (
       <div className="flex items-center gap-4">
-        <Skeleton className="size-12 rounded-full" />
+        <Skeleton variant="circle" className="size-12" />
         <div className="grid gap-2">
           <Skeleton className="h-4 w-40" />
           <Skeleton className="h-4 w-24" />
@@ -456,7 +452,7 @@ import { Label } from "@/components/ui/label"
     ),
     code: `import { Skeleton } from "@/components/ui/skeleton"
 
-<Skeleton className="size-12 rounded-full" />
+<Skeleton variant="circle" className="size-12" />
 <Skeleton className="h-4 w-40" />`,
   },
   {
