@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../browser/authenticated";
 
 test(
   "selected indicator follows navigation with subtle fill and stronger icon",

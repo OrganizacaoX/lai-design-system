@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../browser/authenticated";
 
 // Largura realmente pintada do elemento: interseção com todos os ancestrais que
 // recortam. Mede o que o usuário vê, sem depender de qual camada faz o recorte.

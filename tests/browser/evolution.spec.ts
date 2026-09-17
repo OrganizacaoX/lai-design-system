@@ -175,15 +175,17 @@ test(
       page.locator('[data-slot="checkbox-indicator"]').first(),
     ).toHaveCSS("animation-duration", "1e-05s");
     await page.goto("/componentes/collapsible");
-    const trigger = page.locator('[data-slot="collapsible-trigger"]');
+    const trigger = page
+      .locator("#example-collapsible")
+      .getByRole("button", { name: "Alternar", exact: true });
     await trigger.focus();
     await page.keyboard.press("Enter");
     await expect(
-      page.locator('[data-slot="collapsible-content"]'),
+      page.locator('#example-collapsible [data-slot="collapsible-content"]'),
     ).toBeVisible();
     await page.keyboard.press("Enter");
     await expect(
-      page.locator('[data-slot="collapsible-content"]'),
+      page.locator('#example-collapsible [data-slot="collapsible-content"]'),
     ).toBeHidden();
   },
 );
