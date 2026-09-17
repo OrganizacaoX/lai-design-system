@@ -1,8 +1,10 @@
 node_modules/
 dist/
-lib/
+/lib/
 *.log
 .DS_Store
 test-results/
 playwright-report/
 .consumer-check/
+.env.local
+.env.*.local

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./authenticated";
 import { readFileSync } from "node:fs";
 const source = JSON.parse(readFileSync("site/test-source.json", "utf8"));
 // Testes do painel de documentação não são contados como testes do Button.

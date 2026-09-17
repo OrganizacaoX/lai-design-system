@@ -10,6 +10,15 @@ componentes, hooks e o tema do LAI. Há dois modos de consumo:
 
 ## O que tem
 
+O site exige a senha definida em `VITE_SITE_PASSWORD`. Para desenvolvimento,
+copie `.env.example` para `.env.local` e configure a senha. No ambiente de
+publicação, defina essa variável **antes do build** (`npm run site:build`);
+alterá-la exige um novo build. Sem a variável, o acesso fica bloqueado.
+
+O acesso é lembrado durante a sessão da aba. Essa barreira é apenas visual:
+variáveis `VITE_` são incluídas no JavaScript público e os arquivos estáticos
+(incluindo o registry) continuam acessíveis. Não substitui autenticação no servidor.
+
 - **`@lai/theme`** — todo o sistema de design (cores oklch light/dark,
   tipografia Google Sans, escala de raios).
 - **Componentes de UI** (`@lai/button`, `@lai/sidebar`, `@lai/dialog`, …).
@@ -128,8 +137,21 @@ re-adicionar.)
 ## Hospedagem (Railway + Cloudflare)
 
 O registry é servido por um servidor estático mínimo (`server.mjs`, zero
-dependências) que expõe a pasta `public/`. O `Dockerfile` builda o registry no
-deploy e sobe o servidor. O Railway **re-deploya a cada push na `main`**.
+dependências) que expõe a pasta `dist/`. O `Dockerfile` builda o registry no
+deploy e sobe o servidor. A senha `VITE_SITE_PASSWORD` é recebida como argumento
+do build Docker a partir das variáveis do serviço no Railway.
+
+O serviço atual é `lai-design-system`, no projeto **Workers**, ambiente
+**production**. O deploy é feito pelo CLI com os arquivos locais:
+
+```bash
+railway up --project ba41231e-8c05-4f33-bfbe-636bc6db67c5 \
+  --environment d08bcd69-1d7b-4431-b7c3-a972293ed981 \
+  --service 493eb5cd-5f90-4f98-a43c-c939a4001a8e
+```
+
+O healthcheck usa `/health`. O domínio de teste é
+`https://lai-design-system-production.up.railway.app`.
 
 ### Deploy no Railway (uma vez)
 

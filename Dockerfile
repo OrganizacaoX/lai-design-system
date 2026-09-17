@@ -1,9 +1,10 @@
 # --- build: gera o registry (public/r) e o site de docs (dist) --------------
 FROM node:22-alpine AS build
 WORKDIR /app
-COPY package.json ./
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
+ARG VITE_SITE_PASSWORD
 # npm run build = registry:build (public/r/*.json) + vite build (dist/, que já
 # inclui dist/r/*.json porque o Vite copia a pasta public/).
 RUN npm run build

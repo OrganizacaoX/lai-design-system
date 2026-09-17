@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./authenticated";
 for (const theme of ["light", "dark"]) {
   for (const component of ["button", "input", "select", "data-list"]) {
     test(

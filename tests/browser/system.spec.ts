@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./authenticated";
 import AxeBuilder from "@axe-core/playwright";
 
 for (const theme of ["light", "dark"]) {
