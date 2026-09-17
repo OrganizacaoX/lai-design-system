@@ -26,6 +26,8 @@ jobs:
         with:
           bun-version: 1.4.0
       - run: bun test ./tests/navigation-menu-css.test.ts
+      - run: bun test ./tests/lint-policy.test.ts
+      - run: bun test ./tests/theme-registry.test.ts
       - name: Verify generated artifacts
         run: |
           if [ -n "$(git status --porcelain -- registry.json public/r site/catalog.json site/test-source.json)" ]; then
@@ -34,6 +36,7 @@ jobs:
           fi
       - run: npx playwright install --with-deps chromium
       - run: bun test ./tests/site-auth.test.ts ./tests/component-reliability.test.ts
+      - run: bun test ./tests/style-runtime.test.ts
       - run: npm run test:reliability-unit
       - run: npm run test:reliability
       - name: Preserve component reliability report

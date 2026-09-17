@@ -135,10 +135,7 @@ export function DateRangePicker({
         <CalendarIcon className="size-4 shrink-0 text-muted-foreground" />
         <span className="truncate tabular-nums">{label}</span>
       </PopoverTrigger>
-      <PopoverContent
-        className="w-auto max-w-[calc(100vw-2rem)] p-0"
-        align="start"
-      >
+      <PopoverContent className="w-auto max-w-screen-inset p-0" align="start">
         {presets.length > 0 && (
           <div className="flex flex-wrap gap-1 border-b border-border p-2">
             {presets.map((preset) => (

@@ -31,24 +31,27 @@ describe("NavigationMenu production CSS", () => {
     ["starting", "right", "50%"],
   ] as const) {
     test(`${phase} toward ${direction} translates ${offset}`, () => {
-      const escapedOffset = offset.replace("%", String.raw`\%`);
+      const directionPrefix = offset.startsWith("-") ? "-" : "";
       const selector =
         String.raw`data-\[` +
         `${phase}-style` +
         String.raw`\]\:data-\[activation-direction\=` +
         direction +
-        String.raw`\]\:translate-x-\[` +
-        escapedOffset +
-        String.raw`\]`;
+        String.raw`\]\:` +
+        directionPrefix +
+        String.raw`translate-x-1\/2`;
       const rule = emittedRule(selector);
       expect(rule).toContain(`[data-${phase}-style]`);
       expect(rule).toContain(`[data-activation-direction=${direction}]`);
-      expect(rule).toContain(`--tw-translate-x:${offset}`);
+      const translation = offset.startsWith("-")
+        ? "calc(calc(1 / 2 * 100%) * -1)"
+        : "calc(1 / 2 * 100%)";
+      expect(rule).toContain(`--tw-translate-x:${translation}`);
     });
   }
 
   test("ending popup uses an emitted ease rule", () => {
-    const rule = emittedRule(String.raw`data-\[ending-style\]\:ease-\[ease\]`);
+    const rule = emittedRule(String.raw`data-\[ending-style\]\:ease-default`);
     expect(rule).toContain("[data-ending-style]");
     expect(rule).toContain("transition-timing-function:ease");
   });

@@ -42,7 +42,7 @@ function NativeSelectOption({
   return (
     <option
       data-slot="native-select-option"
-      className={cn("bg-[Canvas] text-[CanvasText]", className)}
+      className={cn("bg-canvas text-canvas-text", className)}
       {...props}
     />
   );
@@ -55,7 +55,7 @@ function NativeSelectOptGroup({
   return (
     <optgroup
       data-slot="native-select-optgroup"
-      className={cn("bg-[Canvas] text-[CanvasText]", className)}
+      className={cn("bg-canvas text-canvas-text", className)}
       {...props}
     />
   );

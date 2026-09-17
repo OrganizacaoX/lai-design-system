@@ -42,18 +42,30 @@ export function ComponentPlayground({ id }: { id: string }) {
     change: (v: string) => void,
     options: string[],
   ) => (
-    <label className="grid gap-1 text-sm">
-      {label}
-      <select
-        className="h-10 rounded-md border bg-background px-2"
+    <div className="grid gap-1 text-sm">
+      <label htmlFor={`${uid}-${label.replaceAll(" ", "-")}`}>{label}</label>
+      <Select
         value={value}
-        onChange={(e) => change(e.target.value)}
+        onValueChange={(nextValue) => {
+          if (nextValue !== null) change(nextValue);
+        }}
+        items={options.map((option) => ({ label: option, value: option }))}
       >
-        {options.map((option) => (
-          <option key={option}>{option}</option>
-        ))}
-      </select>
-    </label>
+        <SelectTrigger
+          id={`${uid}-${label.replaceAll(" ", "-")}`}
+          className="w-full"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option} value={option}>
+              {option}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
   return (
     <section aria-label="Playground" className="space-y-4">

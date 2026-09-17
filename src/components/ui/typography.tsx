@@ -111,7 +111,7 @@ export function InlineCode({ className, ...props }: ComponentProps<"code">) {
     <code
       data-slot="typography-inline-code"
       className={cn(
-        "rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.875em] font-semibold wrap-anywhere",
+        "rounded bg-muted px-code-x py-code-y font-mono text-(length:--text-code) font-semibold wrap-anywhere",
         className,
       )}
       {...props}

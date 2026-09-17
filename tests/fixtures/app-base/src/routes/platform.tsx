@@ -109,7 +109,7 @@ function Platform() {
       <VirtualList
         items={rows}
         getKey={(item) => item.id}
-        renderItem={(item) => <div style={{ height: 48 }}>{item.name}</div>}
+        renderItem={(item) => <div className="h-12">{item.name}</div>}
         label="Virtual people"
         height={240}
       />

@@ -65,10 +65,7 @@ const chartConfig = {
 
 function ChartDemo() {
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="min-h-[240px] w-full max-w-md"
-    >
+    <ChartContainer config={chartConfig} className="min-h-60 w-full max-w-md">
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis
@@ -134,7 +131,7 @@ function SidebarDemo() {
   ];
   return (
     <div className="w-full overflow-hidden rounded-lg border bg-sidebar text-sidebar-foreground">
-      <SidebarProvider className="min-h-[360px] items-stretch">
+      <SidebarProvider className="min-h-90 items-stretch">
         <Sidebar collapsible="none" className="w-48 shrink-0 sm:w-56">
           <SidebarHeader>
             <span className="text-sm font-semibold">LAI Disk</span>
@@ -223,7 +220,7 @@ const chartConfig = {
   mobile: { label: "Mobile", color: "var(--chart-3)" },
 } satisfies ChartConfig
 
-<ChartContainer config={chartConfig} className="min-h-[240px] w-full">
+<ChartContainer config={chartConfig} className="min-h-60 w-full">
   <BarChart accessibilityLayer data={chartData}>
     <CartesianGrid vertical={false} />
     <XAxis dataKey="month" tickLine={false} axisLine={false} />

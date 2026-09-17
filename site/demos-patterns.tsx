@@ -246,7 +246,7 @@ export const patternDemos: Demo[] = [
       <iframe
         title="Exemplo de Sidebar Profile"
         src="/examples/app-shell"
-        className="h-[560px] w-full rounded-xl border"
+        className="h-140 w-full rounded-xl border"
       />
     ),
     code: `<AppShell brand="Meu produto" navigation={navigation} footer={
@@ -268,7 +268,7 @@ export const patternDemos: Demo[] = [
       <iframe
         title="Exemplo de App Shell"
         src="/examples/app-shell"
-        className="h-[560px] w-full rounded-xl border"
+        className="h-140 w-full rounded-xl border"
       />
     ),
     code: `<AppShell

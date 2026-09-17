@@ -53,7 +53,7 @@ function Fixture() {
       <output aria-label="Sign out attempts">{attempts}</output>
       <output aria-label="Sidebar state">{open ? "open" : "closed"}</output>
       <div className="max-w-full overflow-x-auto">
-        <div style={{ width: 1800 }}>Wide table</div>
+        <div className="w-450">Wide table</div>
       </div>
     </AppShell>
   );

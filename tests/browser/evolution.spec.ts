@@ -7,18 +7,16 @@ test(
   async ({ page }) => {
     await page.goto("/componentes/button");
     const area = page.getByRole("region", { name: "Playground", exact: true });
-    await area
-      .getByRole("combobox", { name: "Variante", exact: true })
-      .selectOption("outline");
-    await area
-      .getByRole("combobox", { name: "Tamanho", exact: true })
-      .selectOption("lg");
+    await area.getByRole("combobox", { name: "Variante", exact: true }).click();
+    await page.getByRole("option", { name: "outline", exact: true }).click();
+    await area.getByRole("combobox", { name: "Tamanho", exact: true }).click();
+    await page.getByRole("option", { name: "lg", exact: true }).click();
     await area
       .getByRole("combobox", { name: "Densidade", exact: true })
-      .selectOption("compact");
-    await area
-      .getByRole("combobox", { name: "Estado", exact: true })
-      .selectOption("loading");
+      .click();
+    await page.getByRole("option", { name: "compact", exact: true }).click();
+    await area.getByRole("combobox", { name: "Estado", exact: true }).click();
+    await page.getByRole("option", { name: "loading", exact: true }).click();
     const preview = area.getByTestId("playground-preview");
     await expect(
       preview.getByRole("button", { name: "Salvando…" }),
@@ -32,15 +30,14 @@ test(
     );
     await area
       .getByRole("combobox", { name: "Tema do playground", exact: true })
-      .selectOption("dark");
+      .click();
+    await page.getByRole("option", { name: "dark", exact: true }).click();
     await expect(page.locator("html")).toHaveClass(/dark/);
-    await area
-      .getByRole("combobox", { name: "Estado", exact: true })
-      .selectOption("default");
+    await area.getByRole("combobox", { name: "Estado", exact: true }).click();
+    await page.getByRole("option", { name: "default", exact: true }).click();
     await expect(preview.getByRole("button")).toBeEnabled();
-    await area
-      .getByRole("combobox", { name: "Tamanho", exact: true })
-      .selectOption("default");
+    await area.getByRole("combobox", { name: "Tamanho", exact: true }).click();
+    await page.getByRole("option", { name: "default", exact: true }).click();
     await expect(preview.getByRole("button")).toHaveCSS("height", "36px");
   },
 );
@@ -228,9 +225,8 @@ for (const id of ["input", "select"]) {
         name: "Playground",
         exact: true,
       });
-      await area
-        .getByRole("combobox", { name: "Estado", exact: true })
-        .selectOption("error");
+      await area.getByRole("combobox", { name: "Estado", exact: true }).click();
+      await page.getByRole("option", { name: "error", exact: true }).click();
       const control = area
         .getByTestId("playground-preview")
         .getByRole(id === "input" ? "textbox" : "combobox");
@@ -238,9 +234,8 @@ for (const id of ["input", "select"]) {
       await expect(control).toHaveAccessibleDescription(
         "Revise o valor informado.",
       );
-      await area
-        .getByRole("combobox", { name: "Estado", exact: true })
-        .selectOption("disabled");
+      await area.getByRole("combobox", { name: "Estado", exact: true }).click();
+      await page.getByRole("option", { name: "disabled", exact: true }).click();
       await expect(control).toBeDisabled();
     },
   );

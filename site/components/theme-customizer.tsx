@@ -92,8 +92,9 @@ export function ThemeCustomizer() {
       </div>
       <div
         data-testid="theme-preview"
-        style={{ ...tokens, fontFamily: "var(--font-sans)" } as CSSProperties}
-        className="space-y-4 rounded-xl border bg-card p-6"
+        // oxlint-disable-next-line shadcn/no-inline-styles -- This editor previews the user-selected theme by defining CSS variables on its isolated preview.
+        style={tokens as CSSProperties}
+        className="space-y-4 rounded-xl border bg-card p-6 font-(family-name:--font-sans)"
       >
         <p className="text-xl font-semibold">Sua marca com LAI</p>
         <label className="grid gap-2">

@@ -381,3 +381,8 @@ A base também oferece formulários com Zod, ordenação, virtualização, Bette
 Motion, datas, ícones, PostHog, tours, TanStack AI e helpers de teste através de
 subpaths do pacote. Consulte [Integrações de aplicação](docs/app-platform.md) e
 [o plano de implementação](docs/app-platform-plan.md).
+
+## Lint
+
+Execute `npm run lint`. As seis regras do shadcn são erros e avisos bloqueiam a validação.
+Veja a [política de lint e as exceções técnicas](LINT.md).

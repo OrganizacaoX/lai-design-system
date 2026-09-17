@@ -1,5 +1,6 @@
-import { useRef, type ReactNode, type Key } from "react";
+import { useRef, type ReactNode, type Key, type CSSProperties } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { cn } from "../lib/utils";
 export interface VirtualListProps<T> {
   items: readonly T[];
   getKey: (item: T, index: number) => Key;
@@ -34,15 +35,16 @@ export function VirtualList<T>({
       role="list"
       aria-label={label}
       tabIndex={0}
-      className={className}
-      style={{ height, overflow: "auto" }}
+      className={cn("h-(--virtual-height) overflow-auto", className)}
+      style={{ "--virtual-height": `${height}px` } as CSSProperties}
     >
       <div
-        style={{
-          height: virtual.getTotalSize(),
-          position: "relative",
-          width: "100%",
-        }}
+        className="relative h-(--virtual-total-height) w-full"
+        style={
+          {
+            "--virtual-total-height": `${virtual.getTotalSize()}px`,
+          } as CSSProperties
+        }
       >
         {virtual.getVirtualItems().map((row) => (
           <div
@@ -52,13 +54,12 @@ export function VirtualList<T>({
             role="listitem"
             aria-posinset={row.index + 1}
             aria-setsize={items.length}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              transform: `translateY(${row.start}px)`,
-            }}
+            className="absolute top-0 left-0 w-full transform-(--virtual-transform)"
+            style={
+              {
+                "--virtual-transform": `translateY(${row.start}px)`,
+              } as CSSProperties
+            }
           >
             {renderItem(items[row.index], row.index)}
           </div>

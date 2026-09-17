@@ -17,24 +17,78 @@
     }
   },
   "rules": {
-    "shadcn/no-restyle": ["error", { "allow": ["layout"] }],
+    "shadcn/no-restyle": [
+      "error",
+      {
+        "allow": ["layout"]
+      }
+    ],
     "shadcn/no-unknown-classes": [
       "error",
-      { "allow": ["toaster", "cn-input-otp"] }
+      {
+        "allow": ["toaster", "cn-input-otp"]
+      }
     ],
     "shadcn/no-raw-colors": [
       "error",
-      { "allow": ["shadow-surface", "shadow-overlay"] }
+      {
+        "allow": ["shadow-surface", "shadow-overlay"]
+      }
     ],
-    "shadcn/require-static-classes": "error"
+    "shadcn/require-static-classes": "error",
+    "shadcn/no-arbitrary-values": "error",
+    "shadcn/no-inline-styles": "error",
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-var": "error",
+    "prefer-const": "error"
   },
   "overrides": [
     {
       "files": ["src/components/**/*.tsx"],
       "rules": {
-        "shadcn/no-restyle": "off",
-        "shadcn/require-static-classes": "off"
+        "shadcn/no-restyle": "off"
+      }
+    },
+    {
+      "files": ["src/components/ui/**/*.tsx"],
+      "rules": {
+        "shadcn/require-static-classes": "off",
+        "shadcn/no-arbitrary-values": [
+          "error",
+          {
+            "allow": [
+              "*-[calc(*)]",
+              "*-[min(*)]",
+              "*-[max(*)]",
+              "*-[clamp(*)]",
+              "[--*:*]",
+              "transition-[*]",
+              "grid-cols-[*]",
+              "grid-rows-[*]",
+              "transform-[*]",
+              "[transform:*]",
+              "[transition:*]",
+              "*:[--*:*]",
+              "*:[transform:*]",
+              "*:[transition:*]"
+            ]
+          }
+        ]
       }
     }
-  ]
+  ],
+  "plugins": ["unicorn", "typescript", "oxc"],
+  "categories": {
+    "correctness": "error"
+  },
+  "options": {
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  }
 }

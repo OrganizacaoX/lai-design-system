@@ -40,8 +40,8 @@ export function Shimmer({
       style={
         {
           "--shimmer-duration": `${durationMs}ms`,
-          ...(color && { "--shimmer-color": color }),
-          ...(spread && { "--shimmer-spread": spread }),
+          "--shimmer-color": color || undefined,
+          "--shimmer-spread": spread || undefined,
           ...style,
         } as CSSProperties
       }

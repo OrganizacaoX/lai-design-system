@@ -181,7 +181,7 @@ export function SidebarProfile({
           <DropdownMenuContent
             side="top"
             align="start"
-            className="min-w-56 max-w-[calc(100vw-2rem)]"
+            className="min-w-56 max-w-screen-inset"
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel className="font-normal">

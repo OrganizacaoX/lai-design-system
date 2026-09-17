@@ -88,6 +88,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   }
 
   return (
+    // oxlint-disable-next-line shadcn/no-inline-styles -- Per-chart series keys and light/dark colors are provided at runtime; scope their CSS variables to this chart ID.
     <style
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
@@ -219,11 +220,11 @@ function ChartTooltipContent({
                       !hideIndicator && (
                         <div
                           className={cn(
-                            "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                            "shrink-0 rounded-xs border-(--color-border) bg-(--color-bg)",
                             {
                               "h-2.5 w-2.5": indicator === "dot",
                               "w-1": indicator === "line",
-                              "w-0 border-[1.5px] border-dashed bg-transparent":
+                              "w-0 chart-indicator-border border-dashed bg-transparent":
                                 indicator === "dashed",
                               "my-0.5": nestLabel && indicator === "dashed",
                             },
@@ -310,10 +311,12 @@ function ChartLegendContent({
                 <itemConfig.icon />
               ) : (
                 <div
-                  className="h-2 w-2 shrink-0 rounded-[2px]"
-                  style={{
-                    backgroundColor: item.color,
-                  }}
+                  className="h-2 w-2 shrink-0 rounded-xs bg-(--legend-color)"
+                  style={
+                    {
+                      "--legend-color": item.color,
+                    } as React.CSSProperties
+                  }
                 />
               )}
               {itemConfig?.label}

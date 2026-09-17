@@ -167,17 +167,19 @@ console.log(`registry.json gerado com ${items.length} itens.`);
 // todo o sistema de cores/tipografia/raios em qualquer projeto.
 function buildThemeItem() {
   const css = readFileSync(join(ROOT, "src/index.css"), "utf8");
+  const stylesheet = postcss.parse(css);
 
   const parseBlock = (selector) => {
-    const re = new RegExp(`${selector}\\s*\\{([\\s\\S]*?)\\n\\}`, "m");
-    const match = css.match(re);
-    if (!match) return {};
-    const vars = {};
-    for (const line of match[1].split("\n")) {
-      const m = line.match(/^\s*--([\w-]+)\s*:\s*(.+?);\s*$/);
-      if (m) vars[m[1]] = m[2].trim();
-    }
-    return vars;
+    const block = stylesheet.nodes.find((node) =>
+      node.type === "rule"
+        ? node.selector === selector
+        : node.type === "atrule" && `@${node.name} ${node.params}` === selector,
+    );
+    return Object.fromEntries(
+      (block?.nodes ?? [])
+        .filter((node) => node.type === "decl" && node.prop.startsWith("--"))
+        .map((node) => [node.prop.slice(2), node.value]),
+    );
   };
 
   function cssObject(node) {
@@ -198,7 +200,7 @@ function buildThemeItem() {
   }
 
   const root = parseBlock(":root");
-  const dark = parseBlock("\\.dark");
+  const dark = parseBlock(".dark");
   const themeInline = parseBlock("@theme inline");
 
   return {
@@ -209,9 +211,8 @@ function buildThemeItem() {
     description:
       "Tokens de design do LAI Disk: cores (oklch) light/dark, tipografia e escala de raios.",
     css: Object.fromEntries(
-      postcss
-        .parse(css)
-        .nodes.filter(
+      stylesheet.nodes
+        .filter(
           (node) =>
             (node.type === "rule" &&
               (node.selector.startsWith("[data-density=") ||
@@ -221,6 +222,7 @@ function buildThemeItem() {
               ((node.name === "import" &&
                 node.params.includes("https://fonts.googleapis.com/")) ||
                 node.name === "media" ||
+                node.name === "utility" ||
                 (node.name === "keyframes" && node.params.startsWith("lai-")))),
         )
         .map((node) => [

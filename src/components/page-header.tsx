@@ -60,7 +60,7 @@ export function PageHeader({
   // Um único tamanho de título nas duas variantes: é o token que mantém todas
   // as telas do app alinhadas, inclusive as compactas.
   const heading = (
-    <h1 className="text-[length:var(--text-page-title)] font-semibold tracking-tight">
+    <h1 className="text-(length:--text-page-title) font-semibold tracking-tight">
       {title}
     </h1>
   );

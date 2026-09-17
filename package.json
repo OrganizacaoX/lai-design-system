@@ -147,7 +147,7 @@
     "prepublishOnly": "npm run package:check && npm run package:build",
     "docs:build": "node scripts/build-docs.mjs",
     "check": "tsc --noEmit",
-    "lint": "oxlint",
+    "lint": "oxlint --deny-warnings",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "test:e2e": "playwright test",

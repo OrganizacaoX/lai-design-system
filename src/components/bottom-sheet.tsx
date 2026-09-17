@@ -60,13 +60,16 @@ export function BottomSheet({
       onSnapPointChange={setSnapPoint}
     >
       <DrawerContent
-        className={cn("mx-auto max-w-md", className)}
+        className={cn(
+          "mx-auto min-h-(--lai-bottom-sheet-min-height) max-w-md",
+          className,
+        )}
         style={
           {
             // LAI registers its offset without inheritance; bridge it for the scroll area.
             "--lai-bottom-sheet-offset": "var(--drawer-snap-point-offset, 0px)",
             "--drawer-content-max-height": `${maxHeight * 100}dvh`,
-            minHeight: `${minHeight * 100}dvh`,
+            "--lai-bottom-sheet-min-height": `${minHeight * 100}dvh`,
           } as CSSProperties
         }
       >
@@ -80,10 +83,7 @@ export function BottomSheet({
             <X />
           </DrawerClose>
         </div>
-        <div
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4"
-          style={{ marginBottom: "var(--lai-bottom-sheet-offset, 0px)" }}
-        >
+        <div className="mb-(--lai-bottom-sheet-offset) min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4">
           {children}
         </div>
       </DrawerContent>

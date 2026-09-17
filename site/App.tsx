@@ -88,8 +88,8 @@ function NavLink({
         }
       }}
       className={cn(
-        "relative isolate w-full rounded-md px-3 py-1.5 text-left text-sm transition-[background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none",
-        indent && "pl-4 text-[0.8rem]",
+        "relative isolate w-full rounded-md px-3 py-1.5 text-left text-sm transition-navigation duration-200 ease-linear motion-reduce:transition-none",
+        indent && "pl-4 text-(length:--text-control-sm)",
         active
           ? "font-semibold text-foreground"
           : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
@@ -139,12 +139,13 @@ function Nav({
         >
           Componentes
         </NavLink>
-        <a
+        <NavLink
           href="/fundamentos"
-          className="block w-full rounded-md px-3 py-1.5 text-left text-sm text-muted-foreground transition-colors hover:bg-accent/50 hover:text-foreground"
+          active={view === "fundamentos"}
+          onClick={() => onGo("fundamentos")}
         >
           Guia visual
-        </a>
+        </NavLink>
 
         <div className="mt-4 mb-1 px-1">
           <InputGroup className="h-8">
@@ -161,7 +162,7 @@ function Nav({
         </div>
 
         {filtered.length === 0 ? (
-          <p className="px-3 py-2 text-[0.8rem] text-muted-foreground">
+          <p className="px-3 py-2 text-(length:--text-control-sm) text-muted-foreground">
             Nenhum componente encontrado.
           </p>
         ) : (
@@ -311,7 +312,7 @@ export function App() {
       </header>
 
       <div className="flex w-full gap-8 px-4 py-6 sm:py-8">
-        <aside className="sticky top-20 hidden h-[calc(100svh-6rem)] w-56 shrink-0 overflow-y-auto md:block">
+        <aside className="sticky top-20 hidden h-catalog-viewport w-56 shrink-0 overflow-y-auto md:block">
           <Nav view={view} onGo={go} onGoComponent={goComponent} />
         </aside>
 

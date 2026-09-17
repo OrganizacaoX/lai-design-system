@@ -7,6 +7,52 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-canvas: Canvas;
+  --color-canvas-text: CanvasText;
+  --color-primary-hover: color-mix(
+    in oklch,
+    var(--primary),
+    var(--foreground) 10%
+  );
+  --color-secondary-hover: color-mix(
+    in oklch,
+    var(--secondary),
+    var(--foreground) 5%
+  );
+  --color-muted-hover: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+  --color-bubble-primary: oklch(from var(--primary) 0.93 calc(c * 0.4) h);
+  --color-bubble-primary-dark: oklch(from var(--primary) 0.3 calc(c * 0.4) h);
+  --color-bubble-primary-hover: oklch(from var(--primary) 0.88 calc(c * 0.5) h);
+  --color-bubble-primary-dark-hover: oklch(
+    from var(--primary) 0.35 calc(c * 0.5) h
+  );
+  --text-control-sm: 0.8rem;
+  --text-micro: 0.625rem;
+  --text-code: 0.875em;
+  --spacing-code-x: 0.3rem;
+  --spacing-code-y: 0.2rem;
+  --spacing-kbd-offset: 0.15rem;
+  --spacing-choice-offset: calc(var(--spacing) * 0.45);
+  --spacing-switch: 18.4px;
+  --spacing-questionnaire: 14ch;
+  --spacing-catalog-viewport: calc(100svh - 6rem);
+  --spacing-mobile-nav-clearance: calc(6rem + env(safe-area-inset-bottom));
+  --spacing-mobile-action: calc(1rem + env(safe-area-inset-bottom));
+  --spacing-mobile-nav: max(0.75rem, env(safe-area-inset-bottom));
+  --spacing-viewport-inset: calc(100% - 2rem);
+  --container-screen-inset: calc(100vw - 2rem);
+  --radius-control-check: 4px;
+  --radius-inherit: inherit;
+  --ease-default: ease;
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-message: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-out-message: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-drawer-content: cubic-bezier(0.45, 1.005, 0, 1.005);
+  --shadow-sidebar-outline: 0 0 0 1px var(--sidebar-border);
+  --shadow-sidebar-outline-hover: 0 0 0 1px var(--sidebar-accent);
+  --shadow-mobile-nav:
+    0 8px 32px -8px rgb(0 0 0 / 25%), inset 0 1px 0 0 rgb(255 255 255 / 25%);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-warning: var(--warning);
@@ -57,6 +103,43 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@utility content-empty {
+  --tw-content: "";
+  content: var(--tw-content);
+}
+
+@utility icon-stroke-emphasis {
+  stroke-width: 2.5;
+}
+
+@utility chart-indicator-border {
+  border-width: 1.5px;
+}
+
+/* Keep the drawer composited until Base UI completes the closing transition. */
+@utility opacity-drawer-ending {
+  opacity: 0.9999;
+}
+
+@utility message-item-containment {
+  contain-intrinsic-size: auto 10rem;
+  content-visibility: auto;
+}
+
+@utility interpolate-size-keywords {
+  interpolate-size: allow-keywords;
+}
+
+@utility transition-navigation {
+  transition-property: background-color, color, font-weight;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
+}
+
+@utility sortable-motion {
+  transition: var(--sortable-transition, none);
 }
 
 :root {

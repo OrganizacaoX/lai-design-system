@@ -318,10 +318,7 @@ function AppShellContent({
         {footer && <SidebarFooter>{footer}</SidebarFooter>}
       </Sidebar>
       <SidebarInset
-        className={cn(
-          "min-w-0",
-          "pb-[calc(6rem+env(safe-area-inset-bottom))] md:pb-0",
-        )}
+        className={cn("min-w-0", "pb-mobile-nav-clearance md:pb-0")}
       >
         {banner}
         <div
@@ -340,7 +337,7 @@ function AppShellContent({
           variant="outline"
           size="icon"
           aria-label={labels.toggleNavigation}
-          className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-30 shadow-sm md:hidden"
+          className="fixed right-4 bottom-mobile-action z-30 shadow-sm md:hidden"
           aria-expanded={openMobile}
           onClick={() => setOpenMobile(true)}
         >
@@ -350,7 +347,7 @@ function AppShellContent({
       {bottom && (
         <nav
           aria-label={labels.mobileNavigation}
-          className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-30 mx-auto flex max-w-md items-stretch gap-1 rounded-full border border-foreground/10 bg-background/80 p-1.5 shadow-[0_8px_32px_-8px_rgb(0_0_0/0.25),inset_0_1px_0_0_rgb(255_255_255/0.25)] backdrop-blur-xl backdrop-saturate-150 supports-[not_(backdrop-filter:blur(1px))]:bg-background dark:bg-background/75 md:hidden"
+          className="fixed inset-x-3 bottom-mobile-nav z-30 mx-auto flex max-w-md items-stretch gap-1 rounded-full border border-foreground/10 bg-background/80 p-1.5 shadow-(--shadow-mobile-nav) backdrop-blur-xl backdrop-saturate-150 supports-[not_(backdrop-filter:blur(1px))]:bg-background dark:bg-background/75 md:hidden"
         >
           {shortcuts.map((item) => (
             <div key={item.id} className="min-w-0 flex-1">

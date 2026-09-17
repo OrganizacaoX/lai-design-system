@@ -34,7 +34,7 @@ export function AppUpdateCard({
       role="status"
       aria-live="polite"
       className={cn(
-        "fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 border-border/80 bg-card/95 p-4 shadow-lg shadow-black/10 backdrop-blur-md",
+        "fixed top-4 left-1/2 z-50 w-viewport-inset max-w-xl -translate-x-1/2 border-border/80 bg-card/95 p-4 shadow-lg shadow-black/10 backdrop-blur-md",
         className,
       )}
     >

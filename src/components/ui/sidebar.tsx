@@ -68,7 +68,7 @@ function SidebarActiveIndicator() {
       aria-hidden="true"
       data-slot="sidebar-active-indicator"
       layoutId={reducedMotion ? undefined : "sidebar-active-indicator"}
-      className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-sidebar-primary/10 ring-1 ring-inset ring-sidebar-primary/15"
+      className="pointer-events-none absolute inset-0 -z-10 rounded-inherit bg-sidebar-primary/10 ring-1 ring-inset ring-sidebar-primary/15"
       transition={
         reducedMotion
           ? { duration: 0 }
@@ -323,7 +323,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
       onClick={toggleSidebar}
       title={t("sidebar.toggle", {}, "Toggle Sidebar")}
       className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:start-1/2 after:w-[2px] hover:after:bg-sidebar-border sm:flex ltr:-translate-x-1/2 rtl:-translate-x-1/2",
+        "absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:start-1/2 after:w-0.5 hover:after:bg-sidebar-border sm:flex ltr:-translate-x-1/2 rtl:-translate-x-1/2",
         "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full hover:group-data-[collapsible=offcanvas]:bg-sidebar",
@@ -509,13 +509,13 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button group/menu-button relative isolate flex w-full items-center gap-2 overflow-visible group-data-[collapsible=icon]:overflow-hidden rounded-md p-2 text-left text-sm ring-sidebar-ring outline-hidden transition-[width,height,padding,background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground data-active:bg-transparent data-active:font-semibold data-active:text-sidebar-foreground data-active:hover:bg-transparent data-active:hover:text-sidebar-foreground data-active:active:bg-transparent data-active:active:text-sidebar-foreground data-active:[&_svg]:stroke-[2.5] [&_svg]:transition-[stroke-width] [&_svg]:duration-200 [&_svg]:ease-linear motion-reduce:[&_svg]:transition-none [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
+  "peer/menu-button group/menu-button relative isolate flex w-full items-center gap-2 overflow-visible group-data-[collapsible=icon]:overflow-hidden rounded-md p-2 text-left text-sm ring-sidebar-ring outline-hidden transition-[width,height,padding,background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground data-active:bg-transparent data-active:font-semibold data-active:text-sidebar-foreground data-active:hover:bg-transparent data-active:hover:text-sidebar-foreground data-active:active:bg-transparent data-active:active:text-sidebar-foreground data-active:[&_svg]:icon-stroke-emphasis [&_svg]:transition-[stroke-width] [&_svg]:duration-200 [&_svg]:ease-linear motion-reduce:[&_svg]:transition-none [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
   {
     variants: {
       variant: {
         default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         outline:
-          "bg-background shadow-[0_0_0_1px_var(--sidebar-border)] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_var(--sidebar-accent)]",
+          "bg-background shadow-(--shadow-sidebar-outline) hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-(--shadow-sidebar-outline-hover)",
       },
       size: {
         default: "h-8 text-sm",
@@ -724,7 +724,7 @@ function SidebarMenuSubButton({
     props: mergeProps<"a">(
       {
         className: cn(
-          "relative isolate transition-[background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-visible rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-transparent data-active:font-semibold data-active:text-sidebar-foreground data-active:hover:bg-transparent data-active:hover:text-sidebar-foreground data-active:active:bg-transparent data-active:active:text-sidebar-foreground data-active:[&_svg]:stroke-[2.5] [&_svg]:transition-[stroke-width] [&_svg]:duration-200 [&_svg]:ease-linear motion-reduce:[&_svg]:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-current",
+          "relative isolate transition-[background-color,color,font-weight] duration-200 ease-linear motion-reduce:transition-none flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-visible rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-transparent data-active:font-semibold data-active:text-sidebar-foreground data-active:hover:bg-transparent data-active:hover:text-sidebar-foreground data-active:active:bg-transparent data-active:active:text-sidebar-foreground data-active:[&_svg]:icon-stroke-emphasis [&_svg]:transition-[stroke-width] [&_svg]:duration-200 [&_svg]:ease-linear motion-reduce:[&_svg]:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-current",
           className,
         ),
       },

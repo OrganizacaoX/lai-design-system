@@ -6,6 +6,7 @@ import {
   useEffect,
   useMemo,
   type ReactNode,
+  type CSSProperties,
 } from "react";
 import {
   Table,
@@ -137,7 +138,7 @@ function BulkActionBar({
 }
 
 const selectionColClass =
-  "w-14 min-w-[3.5rem] max-w-14 px-2 align-middle [&:has([role=checkbox])]:w-14";
+  "w-14 min-w-14 max-w-14 px-2 align-middle [&:has([role=checkbox])]:w-14";
 
 function TableSkeleton({
   columns,
@@ -161,7 +162,7 @@ function TableSkeleton({
           )}
           {Array.from({ length: columns }).map((__, colIdx) => (
             <TableCell key={colIdx}>
-              <Skeleton className="w-[80%] h-[18px] rounded" />
+              <Skeleton className="w-4/5 h-4.5 rounded" />
             </TableCell>
           ))}
         </TableRow>
@@ -253,10 +254,16 @@ export function DataTable<T extends { id: string }>({
               {columns.map((col) => (
                 <TableHead
                   key={col.key}
-                  style={{
-                    ...(col.width && { width: col.width }),
-                    ...(col.align && { textAlign: col.align }),
-                  }}
+                  className="w-(--column-width) data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right"
+                  data-align={col.align}
+                  style={
+                    {
+                      "--column-width":
+                        typeof col.width === "number"
+                          ? `${col.width}px`
+                          : col.width,
+                    } as CSSProperties
+                  }
                 >
                   {col.label}
                 </TableHead>
@@ -275,8 +282,7 @@ export function DataTable<T extends { id: string }>({
             <TableBody>
               <TableRow>
                 <TableCell
-                  style={{ textAlign: "center", padding: 40 }}
-                  className="text-muted-foreground"
+                  className="p-10 text-center text-muted-foreground"
                   colSpan={
                     columns.length +
                     (hasBulkActions ? 1 : 0) +
@@ -326,10 +332,16 @@ export function DataTable<T extends { id: string }>({
                     {columns.map((col) => (
                       <TableCell
                         key={col.key}
-                        style={{
-                          ...(col.align && { textAlign: col.align }),
-                          ...(col.width ? { width: col.width } : undefined),
-                        }}
+                        className="w-(--column-width) data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right"
+                        data-align={col.align}
+                        style={
+                          {
+                            "--column-width":
+                              typeof col.width === "number"
+                                ? `${col.width}px`
+                                : col.width,
+                          } as CSSProperties
+                        }
                       >
                         {col.render(item)}
                       </TableCell>

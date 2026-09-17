@@ -2,7 +2,7 @@ import { WorkflowDemo } from "../components/workflow-demo";
 import workflowSource from "../components/workflow-demo?raw";
 import { CodeBlock } from "../components/code-block";
 import { ThemeCustomizer } from "../components/theme-customizer";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -20,7 +20,7 @@ export function FoundationsPage() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="text-[length:var(--text-page-title)] font-semibold">
+        <h1 className="text-(length:--text-page-title) font-semibold">
           Fundamentos
         </h1>
         <p className="mt-2 text-muted-foreground">
@@ -73,7 +73,10 @@ export function FoundationsPage() {
             "info",
           ].map((token) => (
             <div key={token} className="overflow-hidden rounded-lg border">
-              <div className="h-20" style={{ background: `var(--${token})` }} />
+              <div
+                className="h-20 bg-(--swatch-color)"
+                style={{ "--swatch-color": `var(--${token})` } as CSSProperties}
+              />
               <p className="p-3 font-mono text-sm">{token}</p>
             </div>
           ))}
@@ -90,8 +93,10 @@ export function FoundationsPage() {
           {[1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="flex-1">
               <div
-                className="h-16 rounded-md"
-                style={{ background: `var(--chart-${i})` }}
+                className="h-16 rounded-md bg-(--swatch-color)"
+                style={
+                  { "--swatch-color": `var(--chart-${i})` } as CSSProperties
+                }
               />
               <p className="mt-2 text-xs">Série {i}</p>
             </div>
@@ -109,7 +114,13 @@ export function FoundationsPage() {
           ["body", "Texto de conteúdo"],
           ["caption", "Legenda e informação auxiliar"],
         ].map(([token, label]) => (
-          <p key={token} style={{ fontSize: `var(--text-${token})` }}>
+          <p
+            key={token}
+            className="text-(length:--sample-font-size)"
+            style={
+              { "--sample-font-size": `var(--text-${token})` } as CSSProperties
+            }
+          >
             {label}{" "}
             <code className="text-xs text-muted-foreground">
               --text-{token}
@@ -167,8 +178,12 @@ export function FoundationsPage() {
           {["surface", "overlay"].map((value) => (
             <div
               key={value}
-              className="rounded-xl bg-card p-6"
-              style={{ boxShadow: `var(--elevation-${value})` }}
+              className="rounded-xl bg-card p-6 shadow-(--sample-elevation)"
+              style={
+                {
+                  "--sample-elevation": `var(--elevation-${value})`,
+                } as CSSProperties
+              }
             >
               {value}
             </div>

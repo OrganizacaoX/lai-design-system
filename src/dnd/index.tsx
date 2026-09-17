@@ -15,7 +15,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useLaiTranslation } from "../hooks/use-lai-translation";
 const instructions = {
   pt: "Pressione espaço para mover. Use as setas para ordenar, espaço para soltar e Escape para cancelar.",
@@ -43,11 +43,14 @@ function SortableItem({
   return (
     <li
       ref={setNodeRef}
-      style={{
-        transform: CSS.Transform.toString(transform),
-        transition,
-        opacity: isDragging ? 0.6 : 1,
-      }}
+      className="transform-(--sortable-transform) sortable-motion data-dragging:opacity-60"
+      data-dragging={isDragging || undefined}
+      style={
+        {
+          "--sortable-transform": CSS.Transform.toString(transform),
+          "--sortable-transition": transition ?? "none",
+        } as CSSProperties
+      }
     >
       <button
         type="button"
@@ -55,7 +58,7 @@ function SortableItem({
         {...attributes}
         {...listeners}
         aria-label={label}
-        style={{ touchAction: "none", cursor: "grab" }}
+        className="touch-none cursor-grab"
       >
         ⠿
       </button>
