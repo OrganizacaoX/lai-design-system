@@ -4,6 +4,13 @@ import { ComponentPlayground } from "../components/component-playground";
 import { usageGuidance } from "../usage-guidance";
 import { ControlStates } from "../components/control-states";
 import { lazy, Suspense, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { ChevronDownIcon } from "lucide-react";
 import { ComponentPreview } from "../components/component-preview";
 import { CodeBlock } from "../components/code-block";
 import catalog from "../catalog.json";
@@ -103,7 +110,6 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
         <h1 className="mt-3 text-3xl font-semibold">{entry.title}</h1>
         <p className="mt-2 text-muted-foreground">{entry.description}</p>
       </header>
-      <ComponentReliability id={id} />
       <section className="space-y-2">
         <h2 className="text-xl font-semibold">Quando usar</h2>
         <p className="leading-relaxed text-muted-foreground">
@@ -150,6 +156,7 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
         </p>
         <CodeBlock code={`bunx shadcn@latest add @lai/${id}`} />
       </section>
+      <ComponentReliability id={id} />
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">API e valores padrão</h2>
         <p className="text-sm text-muted-foreground">
@@ -157,16 +164,23 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
           props restantes são encaminhadas ao elemento ou primitiva indicada
           pelo tipo.
         </p>
-        <details className="rounded-lg border p-3">
-          <summary className="cursor-pointer font-medium">
+        <Collapsible>
+          <CollapsibleTrigger
+            render={<Button variant="ghost" />}
+            className="group w-full justify-between"
+          >
             Ver assinaturas e propriedades
-          </summary>
-          <div className="mt-3">
+            <ChevronDownIcon
+              aria-hidden="true"
+              className="transition-transform group-aria-expanded:rotate-180"
+            />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-3">
             <CodeBlock
               code={entry.api || "Consulte os tipos exportados pelo pacote."}
             />
-          </div>
-        </details>
+          </CollapsibleContent>
+        </Collapsible>
       </section>
       <ComponentAccessibility id={id} />
     </article>
