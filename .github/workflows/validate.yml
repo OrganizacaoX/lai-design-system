@@ -36,6 +36,12 @@ jobs:
           fi
       - run: npx playwright install --with-deps chromium
       - run: bun test ./tests/site-auth.test.ts ./tests/component-reliability.test.ts
+      - run: bun test ./tests/accessibility-audit.test.ts ./tests/accessibility-results.test.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: component-accessibility
+          path: public/component-accessibility.json
       - run: bun test ./tests/style-runtime.test.ts
       - run: npm run test:reliability-unit
       - run: npm run test:reliability

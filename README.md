@@ -386,3 +386,24 @@ subpaths do pacote. Consulte [Integrações de aplicação](docs/app-platform.md
 
 Execute `npm run lint`. As seis regras do shadcn são erros e avisos bloqueiam a validação.
 Veja a [política de lint e as exceções técnicas](LINT.md).
+
+### Auditoria de acessibilidade dos exemplos
+
+O card de acessibilidade consome `public/component-accessibility.json`, gerado por:
+
+```sh
+bun test ./tests/accessibility-audit.test.ts
+```
+
+A coleta executa axe-core com regras WCAG A/AA (incluindo contraste de texto e
+alvos de interação) nos 77 exemplos, em 390/1280 px e temas claro/escuro. Registra
+aprovações, violações com seletores e detalhes, regras não aplicáveis e resultados
+que exigem revisão manual. Tamanhos de fonte são medições, não critérios de aprovação.
+A suíte falha se a coleta não termina; violações detectadas são diagnósticos
+publicados no relatório. A CI preserva esse relatório como artefato.
+
+O escopo é o exemplo visível no estado inicial: overlays fechados, navegação por
+teclado, foco, zoom/refluxo, leitor de tela e contraste não textual ainda exigem
+verificação específica/manual. A interface identifica relatórios de versões
+anteriores. Para publicar resultados atuais, execute a coleta sobre o código final
+antes do build e versione o JSON gerado.

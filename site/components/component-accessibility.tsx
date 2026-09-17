@@ -1,3 +1,4 @@
+import { AccessibilityResults } from "./accessibility-results";
 import {
   Card,
   CardHeader,
@@ -24,6 +25,10 @@ export function ComponentAccessibility({ id }: { id: string }) {
           </p>
         </CardHeader>
         <CardContent>
+          <AccessibilityResults id={id} />
+          <h3 className="mt-6 mb-3 font-semibold">
+            Orientações para este componente
+          </h3>
           <div className="grid gap-4 md:grid-cols-3">
             {[
               ["Semântica e rótulos", guidance.semantics],
