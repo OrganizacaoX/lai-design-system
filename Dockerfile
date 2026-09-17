@@ -1,6 +1,7 @@
 # --- build: gera o registry (public/r) e o site de docs (dist) --------------
 FROM node:22-alpine AS build
 WORKDIR /app
+RUN npm install --global npm@11.19.0
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .

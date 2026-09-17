@@ -3,7 +3,7 @@
   "name": "bottom-sheet",
   "title": "Bottom Sheet",
   "dependencies": [
-    "lucide-react@1.41.0"
+    "lucide-react@1.47.0"
   ],
   "registryDependencies": [
     "@lai/button",

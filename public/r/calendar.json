@@ -3,8 +3,8 @@
   "name": "calendar",
   "title": "Calendar",
   "dependencies": [
-    "cn@0.2.6",
-    "lucide-react@1.41.0",
+    "cn@0.3.0",
+    "lucide-react@1.47.0",
     "react-day-picker@10.0.1"
   ],
   "registryDependencies": [

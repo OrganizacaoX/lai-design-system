@@ -3,9 +3,9 @@
   "name": "input-otp",
   "title": "Input Otp",
   "dependencies": [
-    "cn@0.2.6",
+    "cn@0.3.0",
     "input-otp@1.5.0",
-    "lucide-react@1.41.0"
+    "lucide-react@1.47.0"
   ],
   "files": [
     {

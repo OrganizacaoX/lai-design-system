@@ -4,7 +4,7 @@
   "title": "Date Range Picker",
   "dependencies": [
     "date-fns@4.4.0",
-    "lucide-react@1.41.0",
+    "lucide-react@1.47.0",
     "react-day-picker@10.0.1"
   ],
   "registryDependencies": [

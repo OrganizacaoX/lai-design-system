@@ -3,8 +3,8 @@
   "name": "chart",
   "title": "Chart",
   "dependencies": [
-    "cn@0.2.6",
-    "recharts@3.8.0"
+    "cn@0.3.0",
+    "recharts@3.10.1"
   ],
   "files": [
     {

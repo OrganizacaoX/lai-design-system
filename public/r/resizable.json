@@ -3,8 +3,8 @@
   "name": "resizable",
   "title": "Resizable",
   "dependencies": [
-    "cn@0.2.6",
-    "react-resizable-panels@4.12.3"
+    "cn@0.3.0",
+    "react-resizable-panels@4.12.4"
   ],
   "files": [
     {

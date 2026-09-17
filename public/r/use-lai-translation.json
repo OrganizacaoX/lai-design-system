@@ -4,7 +4,7 @@
   "title": "Use Lai Translation",
   "dependencies": [
     "i18next@26.4.2",
-    "react-i18next@17.0.13"
+    "react-i18next@17.0.14"
   ],
   "files": [
     {

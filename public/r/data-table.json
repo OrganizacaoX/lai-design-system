@@ -3,7 +3,7 @@
   "name": "data-table",
   "title": "Data Table",
   "dependencies": [
-    "lucide-react@1.41.0"
+    "lucide-react@1.47.0"
   ],
   "registryDependencies": [
     "@lai/button",

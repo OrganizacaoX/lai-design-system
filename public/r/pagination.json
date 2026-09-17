@@ -3,8 +3,8 @@
   "name": "pagination",
   "title": "Pagination",
   "dependencies": [
-    "cn@0.2.6",
-    "lucide-react@1.41.0"
+    "cn@0.3.0",
+    "lucide-react@1.47.0"
   ],
   "registryDependencies": [
     "@lai/button",
