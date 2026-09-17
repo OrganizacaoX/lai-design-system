@@ -1,3 +1,4 @@
+import { ComponentAccessibility } from "../components/component-accessibility";
 import { ComponentReliability } from "../components/component-reliability";
 import { ComponentPlayground } from "../components/component-playground";
 import { usageGuidance } from "../usage-guidance";
@@ -63,7 +64,8 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
         <header>
           <h1 className="text-3xl font-semibold">Componentes</h1>
           <p className="mt-2 text-muted-foreground">
-            Escolha um componente para ver exemplos, API e orientações de uso.
+            Escolha um componente para ver exemplos, API, acessibilidade e
+            orientações de uso.
           </p>
         </header>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -166,31 +168,7 @@ export function ComponentsPage({ id = "" }: { id?: string }) {
           </div>
         </details>
       </section>
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Estados e acessibilidade</h2>
-        <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-          <li>
-            Controles interativos precisam de nome acessível e foco visível.
-            Navegue por Tab e Shift+Tab; botões devem funcionar por teclado.
-          </li>
-          <li>
-            Em campos, associe rótulo, ajuda e erro. Use disabled apenas quando
-            a ação estiver indisponível; explique o motivo próximo ao controle.
-          </li>
-          <li>
-            Durante carregamento, preserve o contexto e anuncie o progresso com
-            role="status" ou aria-busy. Mostre erro com uma ação de recuperação.
-          </li>
-          <li>
-            Em menus, seletores e diálogos, verifique setas, Escape e retorno do
-            foco ao gatilho. Não esconda o foco atrás de cabeçalhos fixos.
-          </li>
-          <li>
-            Confira claro/escuro, texto longo e largura mobile. Estados não
-            devem depender apenas da cor.
-          </li>
-        </ul>
-      </section>
+      <ComponentAccessibility id={id} />
     </article>
   );
 }
