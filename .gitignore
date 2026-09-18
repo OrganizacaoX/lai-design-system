@@ -8,3 +8,4 @@ playwright-report/
 .consumer-check/
 .env.local
 .env.*.local
+__pycache__/

@@ -99,6 +99,33 @@ O pacote completo requer `react` e `react-dom` 19. Componentes independentes
 copiados pelo registry podem funcionar em React 18, conforme suas dependências;
 `questionnaire` e `message-scroller` usam `@shadcn/react` e exigem React 19.
 
+## Skill para agentes de código
+
+O pacote publica uma skill em `skills/lai-design-system/`, lida por agentes como
+Claude Code e Cursor. Ela ensina o que não dá para deduzir dos tipos: que a
+composição usa `render` e não `asChild` (isto aqui é Base UI, não Radix), quais
+variantes cada componente aceita de fato, que existem composições prontas como
+`DataList` e `AppShell`, e que as bibliotecas de apoio devem vir pelos subpaths do
+pacote para não duplicar instância.
+
+Como a skill viaja dentro do pacote, a versão que o agente lê acompanha a versão do
+design system que o projeto usa. No projeto consumidor, copie de `node_modules` para
+`.claude/skills/` (o `template-front` já faz isso no `postinstall`, via
+`scripts/sync-skills.mjs`) e mantenha `.claude/skills/` fora do git — é conteúdo
+derivado.
+
+Ao alterar componentes, regenere as referências e confira o guia:
+
+```bash
+python3 skills/lai-design-system/scripts/extract_api.py   # regenera references/
+python3 skills/lai-design-system/scripts/verify_skill.py  # confere o SKILL.md
+```
+
+Os dois aceitam ser usados como verificação no CI: `extract_api.py --check` falha
+quando existe componente novo ainda não refletido na referência, e `verify_skill.py`
+falha quando o SKILL.md cita algo que deixou de existir. Sem isso a documentação
+envelhece em silêncio, que é exatamente o problema que a skill existe para resolver.
+
 ## Consumir pelo registry shadcn
 
 Requisito: o projeto de destino já ter o shadcn inicializado
