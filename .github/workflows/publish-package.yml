@@ -28,7 +28,12 @@ jobs:
         run: node -e "if (process.env.GITHUB_REF_NAME !== 'v' + require('./package.json').version) { throw new Error('A tag da release deve ser v' + require('./package.json').version) }"
 
       - name: Install dependencies
-        run: npm ci
+        # @shadcn/helpers declara @tanstack/ai e @tanstack/ai-client como peers
+        # opcionais presos a faixas antigas (>=0.40 <0.41 e >=0.20 <0.21), enquanto o
+        # projeto usa 0.55 e 0.32. Optional aqui significa "pode faltar", não "qualquer
+        # versão serve", então o npm ci aborta. O bun, usado no desenvolvimento, é
+        # permissivo e não acusa. Remover quando o @shadcn/helpers acompanhar as faixas.
+        run: npm ci --legacy-peer-deps
 
       - name: Publish
         run: npm publish
