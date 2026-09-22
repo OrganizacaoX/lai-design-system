@@ -43,6 +43,21 @@ expansíveis. Informe `label` para nomear o botão do grupo. Ao selecionar uma r
 do grupo, ele se abre automaticamente; na sidebar recolhida, clicar no grupo
 expande a navegação para revelar suas opções.
 
+Com `accordion`, no máximo um grupo recolhível fica aberto: abrir um fecha o
+que estava aberto, e a mudança de rota abre o grupo do item ativo e fecha os
+outros — inclusive um grupo que a pessoa tinha aberto na mão. Sem rota ativa
+em grupo, começa no primeiro com `defaultOpen`. Na sidebar recolhida, clicar
+num grupo expande a navegação e abre só ele. Sem `accordion`, cada grupo segue
+com o próprio estado, como antes.
+
+```tsx
+<AppShell accordion navigation={navigation} /* ... */ />
+```
+
+Abrir e fechar um grupo anima a altura do painel (a regra global de
+`[data-slot="collapsible-content"]`) e os subitens descem um pouco na entrada,
+com os mesmos tokens `--motion-normal` e `--motion-ease`.
+
 Por padrão, os itens são âncoras HTML. Para navegação SPA:
 
 ```tsx

@@ -67,6 +67,11 @@ export interface AppShellProps {
   banner?: ReactNode;
   children: ReactNode;
   mobileNavigation?: "bottom" | "drawer";
+  /**
+   * Keep at most one collapsible group open: opening a group closes the others,
+   * and a route change opens the active item's group and closes the rest.
+   */
+  accordion?: boolean;
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -108,6 +113,8 @@ export function AppShell({
 function AppShellNavigationGroup({
   group,
   renderItem,
+  expanded: controlledExpanded,
+  onExpandedChange,
 }: {
   group: AppShellNavGroup;
   renderItem: (
@@ -115,13 +122,20 @@ function AppShellNavigationGroup({
     mobile?: boolean,
     sub?: boolean,
   ) => ReactNode;
+  /** Set by the accordion: the shell owns which group is open. */
+  expanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
 }) {
   const { isMobile, state, setOpen } = useSidebar();
   const activeId = group.items.find((item) => item.active)?.id;
-  const [expanded, setExpanded] = useState(group.defaultOpen ?? !!activeId);
+  const [ownExpanded, setOwnExpanded] = useState(
+    group.defaultOpen ?? !!activeId,
+  );
   useEffect(() => {
-    if (activeId) setExpanded(true);
+    if (activeId) setOwnExpanded(true);
   }, [activeId]);
+  const expanded = controlledExpanded ?? ownExpanded;
+  const setExpanded = onExpandedChange ?? setOwnExpanded;
   // O espaçamento entre grupos vive no <nav> (`gap-1.5`), então o grupo em si não
   // adiciona padding — senão itens vizinhos ficariam a 16px um do outro.
   if (!group.collapsible)
@@ -179,6 +193,7 @@ function AppShellContent({
   banner,
   children,
   mobileNavigation = "bottom",
+  accordion = false,
   renderLink,
   labels: overrides,
   contentClassName,
@@ -195,6 +210,24 @@ function AppShellContent({
   useEffect(() => {
     setOpenMobile(false);
   }, [activeIds, setOpenMobile]);
+  // Acordeão: o shell guarda qual grupo está aberto. Começa no grupo da rota
+  // ativa (ou no primeiro com defaultOpen) e troca para o grupo da nova rota a
+  // cada navegação — quem abriu outro grupo na mão vê ele fechar ao navegar.
+  const collapsibleGroups = navigation.filter(
+    (group) => group.collapsible && group.items.length > 0,
+  );
+  const activeGroupId = collapsibleGroups.find((group) =>
+    group.items.some((item) => item.active),
+  )?.id;
+  const [openGroupId, setOpenGroupId] = useState<string | null>(
+    () =>
+      activeGroupId ??
+      collapsibleGroups.find((group) => group.defaultOpen)?.id ??
+      null,
+  );
+  useEffect(() => {
+    if (activeGroupId) setOpenGroupId(activeGroupId);
+  }, [activeGroupId, activeIds]);
   const labels = {
     navigation: t("nav.main"),
     mobileNavigation: t("nav.mobile"),
@@ -310,6 +343,19 @@ function AppShellContent({
                     key={group.id}
                     group={group}
                     renderItem={link}
+                    {...(accordion && group.collapsible
+                      ? {
+                          expanded: openGroupId === group.id,
+                          onExpandedChange: (next: boolean) =>
+                            setOpenGroupId((current) =>
+                              next
+                                ? group.id
+                                : current === group.id
+                                  ? null
+                                  : current,
+                            ),
+                        }
+                      : {})}
                   />
                 ),
             )}

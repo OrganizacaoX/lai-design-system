@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.10.0 — 2026-09-22
+
+- `AppShell`: nova prop `accordion`. Com ela, no máximo um grupo recolhível fica aberto — abrir um fecha o que estava aberto, e a mudança de rota abre o grupo do item ativo e fecha os outros. Na sidebar recolhida, clicar num grupo expande a navegação e abre só ele. O cadence fazia isso por fora, clicando no gatilho dos outros grupos, porque o shell só aceitava `defaultOpen`. Sem `accordion` nada muda: cada grupo segue com o próprio estado.
+- Subitens de um grupo da sidebar descem um pouco enquanto o painel abre, com os tokens `--motion-normal`/`--motion-ease` da animação de altura que o `collapsible-content` já tinha.
+
 ## 0.7.0 — 2026-09-09
 
 - `AppUpdatingScreen`: novas props `brand` e `description`. `brand` renderiza a marca acima do conteúdo nas **duas** variantes — uma tela cheia sem nada do produto parece uma página de terceiro travando o app, e é justamente na falha que a pessoa fica olhando para ela; o `icon` continua substituindo só o spinner do progresso. `description` é a segunda linha da variante `updating`, para o app dizer o que está acontecendo (a `failed` já tem a sua). As duas saíram das telas do cadence e do meetcore, que faziam exatamente isso à mão. Nada muda para quem já usa `variant`/`onRetry`/`onClearCache`/`icon`.

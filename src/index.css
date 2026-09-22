@@ -344,6 +344,16 @@
   opacity: 0;
 }
 
+/* Subitens de um grupo da sidebar descem um pouco enquanto o painel abre. */
+[data-slot="collapsible-content"] > [data-slot="sidebar-menu-sub"] {
+  transition: transform var(--motion-normal) var(--motion-ease);
+}
+
+[data-slot="collapsible-content"][data-starting-style]
+  > [data-slot="sidebar-menu-sub"] {
+  transform: translateY(-0.375rem);
+}
+
 @keyframes lai-selection-in {
   from {
     opacity: 0;

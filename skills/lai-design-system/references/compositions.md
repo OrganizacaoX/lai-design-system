@@ -4,23 +4,6 @@ Gerado por `scripts/extract_api.py` a partir de `src/components/`. Não edite à
 
 Estes componentes montam telas inteiras e já carregam acessibilidade, i18n e os estados de carregamento, erro e vazio. Antes de compor uma tela a partir das primitivas, verifique se uma destas resolve: refazer à mão custa mais e perde comportamento que não é óbvio que existia.
 
-## AppShell
-
-- `brand: ReactNode`
-- `brandIcon?: ReactNode` — Compact mark shown when the desktop sidebar is collapsed.
-- `navigation: AppShellNavGroup[]`
-- `footer?: ReactNode` — User menu or other product actions. Also available inside the mobile drawer.
-- `banner?: ReactNode`
-- `children: ReactNode`
-- `mobileNavigation?: "bottom" | "drawer"`
-- `defaultOpen?: boolean`
-- `open?: boolean`
-- `onOpenChange?: (open: boolean) => void`
-- `renderLink?: (item: AppShellNavItem) => ReactElement` — Return an anchor or router Link that forwards DOM props and events.
-- `labels?: Partial<{ navigation: string; mobileNavigation: string; toggleNavigation: string; menu: string; skipToContent: string; }>`
-- `className?: string`
-- `contentClassName?: string`
-
 ## AppUpdateCard
 
 - `onUpdate: () => void`
