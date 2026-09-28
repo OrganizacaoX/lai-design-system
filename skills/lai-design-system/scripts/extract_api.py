@@ -239,7 +239,9 @@ def extract_own_props(raw: str, masked: str) -> dict[str, list[str]]:
         params_end = match_brace(masked, params_start)
         if params_end < 0 or params_end + 1 >= len(masked) or masked[params_end + 1] != ":":
             continue
-        sig_close = match_brace(masked, match.end() - 1, "(", ")")
+        # Conta a partir do `(` da assinatura: começando da `{`, o primeiro `)` fechado
+        # era o da própria assinatura e a contagem só acertava por acaso num `)` do corpo.
+        sig_close = match_brace(masked, masked.index("(", match.start()), "(", ")")
         if sig_close < 0:
             continue
         annot_r = raw[params_end + 1 : sig_close]

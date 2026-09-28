@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.0 — 2026-09-28
+
+- `Card` e todas as partes (`CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent`, `CardFooter`) aceitam `render`, como o `Badge` e o `Button`: `<Card render={<li />}>` numa lista, `<Card render={<section />}>`, `<CardHeader render={<header />}>`. Antes o cartão era sempre um `div`, e quem precisava de `li` dentro de um `<ul>` tinha de envolver o cartão — o que muda a estrutura que o CSS da lista espera — ou manter um cartão próprio (o Culture tinha o `Cartao`, com 36 usos, 18 deles trocando o elemento). Estilo, `data-slot`, `data-size` e `ref` continuam iguais; nada muda para quem não passa `render`.
+
 ## 0.11.0 — 2026-09-28
 
 - `Badge`: novas variantes `success`, `warning` e `info`, com os tokens `--success`, `--warning` e `--info` que o tema já tinha. Selo de situação (Ativo, Pendente, Em análise) é o uso mais comum de badge, e sem esses tons os apps mantinham um selo próprio só para ter verde e âmbar — o Culture tinha o `Selo` com 121 usos. Mesmo formato do `destructive`: fundo translúcido e texto na cor do tom. No `warning` claro o texto usa `--warning-foreground`, porque o âmbar do token não tem contraste como texto; no escuro usa o próprio `--warning`. Nada muda para as variantes existentes.
