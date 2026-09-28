@@ -48,7 +48,6 @@ Variantes de `Attachment`:
 Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 - `state?: "idle" | "uploading" | "processing" | "error" | "done"`  <!-- Attachment -->
-- `type: render ? type : (type ?? "button")`  <!-- AttachmentTrigger -->
 
 ## avatar
 
@@ -197,14 +196,10 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 - `inset?: boolean`  <!-- ContextMenuCheckboxItem -->
-- `inset?: boolean`  <!-- ContextMenuGroup -->
 - `inset?: boolean`  <!-- ContextMenuItem -->
 - `variant?: "default" | "destructive"`  <!-- ContextMenuItem -->
 - `inset?: boolean`  <!-- ContextMenuLabel -->
-- `inset?: boolean`  <!-- ContextMenuRadioGroup -->
 - `inset?: boolean`  <!-- ContextMenuRadioItem -->
-- `inset?: boolean`  <!-- ContextMenuSub -->
-- `inset?: boolean`  <!-- ContextMenuSubContent -->
 - `inset?: boolean`  <!-- ContextMenuSubTrigger -->
 
 ## dialog
@@ -237,13 +232,10 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 - `inset?: boolean`  <!-- DropdownMenuCheckboxItem -->
-- `inset?: boolean`  <!-- DropdownMenuGroup -->
 - `inset?: boolean`  <!-- DropdownMenuItem -->
 - `variant?: "default" | "destructive"`  <!-- DropdownMenuItem -->
 - `inset?: boolean`  <!-- DropdownMenuLabel -->
-- `inset?: boolean`  <!-- DropdownMenuRadioGroup -->
 - `inset?: boolean`  <!-- DropdownMenuRadioItem -->
-- `inset?: boolean`  <!-- DropdownMenuSub -->
 - `inset?: boolean`  <!-- DropdownMenuSubTrigger -->
 
 ## empty
@@ -337,9 +329,7 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 - `inset?: boolean`  <!-- MenubarCheckboxItem -->
 - `inset?: boolean`  <!-- MenubarLabel -->
-- `inset?: boolean`  <!-- MenubarRadioGroup -->
 - `inset?: boolean`  <!-- MenubarRadioItem -->
-- `inset?: boolean`  <!-- MenubarSub -->
 - `inset?: boolean`  <!-- MenubarSubTrigger -->
 
 ## message
@@ -376,7 +366,6 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
-- `isActive?: boolean`  <!-- PaginationItem -->
 - `isActive?: boolean`  <!-- PaginationLinkProps -->
 - `text?: string`  <!-- PaginationNext -->
 - `text?: string`  <!-- PaginationPrevious -->
@@ -404,7 +393,6 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 - `withHandle?: boolean`  <!-- ResizableHandle -->
-- `withHandle?: boolean`  <!-- ResizablePanel -->
 
 ## scroll-area
 
@@ -456,10 +444,9 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 - `showIcon?: boolean`  <!-- SidebarMenuSkeleton -->
 - `size?: "sm" | "md"`  <!-- SidebarMenuSubButton -->
 - `isActive?: boolean`  <!-- SidebarMenuSubButton -->
-- `duration: 0`  <!-- SidebarSelectionGroup -->
-- `type: "tween", duration: 0.2, ease: "linear"`  <!-- SidebarSelectionGroup -->
-- `open: openProp`  <!-- SidebarSelectionGroup -->
-- `onOpenChange: setOpenProp`  <!-- SidebarSelectionGroup -->
+- `defaultOpen?: boolean`  <!-- SidebarProvider -->
+- `open?: boolean`  <!-- SidebarProvider -->
+- `onOpenChange?: (open: boolean) => void`  <!-- SidebarProvider -->
 
 ## skeleton
 
