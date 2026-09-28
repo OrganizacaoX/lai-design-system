@@ -139,6 +139,9 @@ export const demos: Demo[] = [
         <Badge variant="secondary">Secondary</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="success">Success</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="info">Info</Badge>
       </>
     ),
     code: `import { Badge } from "@/components/ui/badge"
@@ -146,7 +149,10 @@ export const demos: Demo[] = [
 <Badge>Default</Badge>
 <Badge variant="secondary">Secondary</Badge>
 <Badge variant="outline">Outline</Badge>
-<Badge variant="destructive">Destructive</Badge>`,
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="info">Info</Badge>`,
   },
   {
     id: "alert",

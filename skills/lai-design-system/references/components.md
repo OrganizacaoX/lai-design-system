@@ -64,7 +64,7 @@ Props próprias do LAI, que o shadcn/ui equivalente não tem:
 
 Variantes de `Badge`:
 
-- `variant`: `default` | `secondary` | `destructive` | `outline` | `ghost` | `link` (padrão `default`)
+- `variant`: `default` | `secondary` | `destructive` | `success` | `warning` | `info` | `outline` | `ghost` | `link` (padrão `default`)
 
 ## breadcrumb
 

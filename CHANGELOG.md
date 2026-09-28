@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.0 — 2026-09-28
+
+- `Badge`: novas variantes `success`, `warning` e `info`, com os tokens `--success`, `--warning` e `--info` que o tema já tinha. Selo de situação (Ativo, Pendente, Em análise) é o uso mais comum de badge, e sem esses tons os apps mantinham um selo próprio só para ter verde e âmbar — o Culture tinha o `Selo` com 121 usos. Mesmo formato do `destructive`: fundo translúcido e texto na cor do tom. No `warning` claro o texto usa `--warning-foreground`, porque o âmbar do token não tem contraste como texto; no escuro usa o próprio `--warning`. Nada muda para as variantes existentes.
+
 ## 0.10.0 — 2026-09-22
 
 - `AppShell`: nova prop `accordion`. Com ela, no máximo um grupo recolhível fica aberto — abrir um fecha o que estava aberto, e a mudança de rota abre o grupo do item ativo e fecha os outros. Na sidebar recolhida, clicar num grupo expande a navegação e abre só ele. O cadence fazia isso por fora, clicando no gatilho dos outros grupos, porque o shell só aceitava `defaultOpen`. Sem `accordion` nada muda: cada grupo segue com o próprio estado.
